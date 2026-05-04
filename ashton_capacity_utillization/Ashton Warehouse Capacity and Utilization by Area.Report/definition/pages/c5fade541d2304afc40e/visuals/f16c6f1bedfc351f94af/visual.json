@@ -1,0 +1,285 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "f16c6f1bedfc351f94af",
+  "position": {
+    "x": 9.6969696969696972,
+    "y": 30.303030303030305,
+    "z": 0,
+    "height": 689.69696969696975,
+    "width": 1270.3030303030305,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Ashton_Locations"
+                    }
+                  },
+                  "Property": "Location ID"
+                }
+              },
+              "queryRef": "F_Ashton_Locations.Location ID",
+              "nativeQueryRef": "Location ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Ashton_Locations"
+                    }
+                  },
+                  "Property": "Location Pallet Type"
+                }
+              },
+              "queryRef": "F_Ashton_Locations.Location Pallet Type",
+              "nativeQueryRef": "Loc Pallet Type",
+              "displayName": "Loc Pallet Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Ashton_Locations"
+                    }
+                  },
+                  "Property": "Area"
+                }
+              },
+              "queryRef": "F_Ashton_Locations.Area",
+              "nativeQueryRef": "Area"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Ashton_Locations"
+                    }
+                  },
+                  "Property": "Sub_Area_1"
+                }
+              },
+              "queryRef": "F_Ashton_Locations.Sub_Area_1",
+              "nativeQueryRef": "Sub_Area_1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Ashton_Locations"
+                    }
+                  },
+                  "Property": "Sub_Area_2"
+                }
+              },
+              "queryRef": "F_Ashton_Locations.Sub_Area_2",
+              "nativeQueryRef": "Sub_Area_2"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_Ashton_Locations"
+                        }
+                      },
+                      "Property": "Location_CBM"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(F_Ashton_Locations.Location_CBM)",
+              "nativeQueryRef": "Location_CBM",
+              "displayName": "Location_CBM"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_Ashton_Locations"
+                        }
+                      },
+                      "Property": "Product_CBM"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(F_Ashton_Locations.Product_CBM)",
+              "nativeQueryRef": "Product_CBM",
+              "displayName": "Product_CBM"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Ashton_Locations"
+                    }
+                  },
+                  "Property": "Capacity(By Pieces)"
+                }
+              },
+              "queryRef": "Sum(F_Ashton_Locations.Capacity(By Pieces))",
+              "nativeQueryRef": "Capacity(By Pieces)"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_Ashton_Locations"
+                        }
+                      },
+                      "Property": "Product_OnHand"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(F_Ashton_Locations.Product_OnHand)",
+              "nativeQueryRef": "OnHand",
+              "displayName": "OnHand"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_Ashton_Locations"
+                        }
+                      },
+                      "Property": "Location_Pallets_Capacity"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(F_Ashton_Locations.Location_Pallets_Capacity)",
+              "nativeQueryRef": "Loc_Pallets_Capacity",
+              "displayName": "Loc_Pallets_Capacity"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_Ashton_Locations"
+                        }
+                      },
+                      "Property": "Product_Pallets_Qty"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(F_Ashton_Locations.Product_Pallets_Qty)",
+              "nativeQueryRef": "Product_Pallets_Qty",
+              "displayName": "Product_Pallets_Qty"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Ashton_Locations"
+                    }
+                  },
+                  "Property": "Item_Multiplied_Strings"
+                }
+              },
+              "queryRef": "F_Ashton_Locations.Item_Multiplied_Strings",
+              "nativeQueryRef": "Item_Multiplied_Strings"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "A_Measure"
+                    }
+                  },
+                  "Property": "Products Qty"
+                }
+              },
+              "queryRef": "A_Measure.Products in Location Qty",
+              "nativeQueryRef": "Products in Location Qty"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "F_Ashton_Locations"
+                  }
+                },
+                "Property": "Location ID"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#0D5128'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

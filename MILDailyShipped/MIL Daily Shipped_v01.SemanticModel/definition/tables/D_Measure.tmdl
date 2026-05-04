@@ -1,0 +1,71 @@
+table D_Measure
+	lineageTag: 2a392512-cf8b-4061-9d96-16c06bb46664
+
+	measure 'ContainerQ''ty' = COUNTROWS(VALUES('fct_MILCNTDETAILS'[CONTAINER#]))
+		formatString: #,0
+		lineageTag: 10e03494-084b-4de4-b28f-099157d2b8c9
+
+	measure 'Q''ty' = SUM(fct_MILCNTDETAILS[QTY])
+		formatString: #,0
+		lineageTag: 5c86fc29-b29d-458c-931d-f016eb74a0ed
+
+		changedProperty = FormatString
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure Cubes = sum('fct_MILCNTDETAILS'[CUBES])
+		formatString: #,0
+		lineageTag: c16d316f-1b51-41cc-9705-4a17c0f9690e
+
+	measure Container_Products_Category = countrows(values('fct_MILCNTDETAILS'[PRODUCT]))
+		formatString: 0
+		lineageTag: 462f195a-8a77-4712-9e19-df4099f2f692
+
+	measure Products = if(HASONEVALUE(fct_MILCNTDETAILS[CONTAINER#]),CONCATENATEX(VALUES('fct_MILCNTDETAILS'[PRODUCT]),'fct_MILCNTDETAILS'[PRODUCT],", "))
+		lineageTag: 67b4d4ff-0708-4c12-8dba-ce85d553019f
+
+	measure 'Avg. SKUs/Container' = countrows(SUMMARIZE('fct_MILCNTDETAILS','fct_MILCNTDETAILS'[CONTAINER#],'fct_MILCNTDETAILS'[ITEMNUMBER]))/'D_Measure'[ContainerQ'ty]
+		formatString: 0
+		lineageTag: 1fba975c-48a0-45ae-8aa4-3fc15aa42cb1
+
+		changedProperty = FormatString
+
+	measure 'Avg. Categories/Container' = countrows(values('fct_MILCNTDETAILS'[PRODUCT]))/'D_Measure'[ContainerQ'ty]
+		lineageTag: 5748e01f-5b5d-40fc-9593-9100e8d239e2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Utilization(%) = SUM('fct_MILCNTDETAILS'[UTILIZATION])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: d608ca89-a6a7-41cd-ba9a-e050c82e57a9
+
+	measure 'Avg. Utilization/Container' = 'D_Measure'[Utilization(%)]/'D_Measure'[ContainerQ'ty]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 33177b5d-51f8-4e40-9c56-c9c08cacb752
+
+	measure Cartons = SUM('fct_MILCNTDETAILS'[CARTONS])
+		formatString: #,0
+		lineageTag: 01c0a8f3-7023-4ae1-a3d9-f8ff11e3dd6f
+
+	measure SKUs = countrows(SUMMARIZE('fct_MILCNTDETAILS','fct_MILCNTDETAILS'[ITEMNUMBER]))
+		formatString: #,0
+		lineageTag: 64a2114e-5c41-4e9a-9c26-c1d885dc1a17
+
+	measure 'Container Avg. SKUs Goal' = 25
+		formatString: 0
+		lineageTag: e8039dd4-ddbf-4a57-ac8d-2ec609f6e4fc
+
+	partition D_Measure-1fc3eb1a-5657-4e69-a3f4-5113b000225f = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

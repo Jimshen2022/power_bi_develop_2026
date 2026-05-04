@@ -1,0 +1,22 @@
+table NavigationHTML
+	lineageTag: af5df704-b71c-470d-9878-968f6a2df8e1
+
+	column HTMLContent
+		dataType: string
+		lineageTag: 96f42f47-7eb0-4505-a769-02f2626ae076
+		summarizeBy: none
+		sourceColumn: HTMLContent
+
+		annotation SummarizationSetBy = Automatic
+
+	partition NavigationHTML = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("rVdta+M4EP4rIsdCC3HOL7HTuizcQuGuHw6WO5ZlafaDbMmxrrJkJLlpdrn/fpKcpIktp056LgXFGs88Gj3zjPT4OFk2vh/liDwDqTYUf1xOJt+njxOgnzVBqkxB4Psf7vYvK8K8EpNVqVKQ+H798jqVwfxpJXjDUAooYRgKbyUgIpipqyCKEV5NwS9JssAYAv+DHi+SeQZDG+D61U0NESJslYL5kfeCM+UVsCJ0kwKDOlz8jVccgy8P7a8p+CQIpFMgIZOexIIUr19DRiqoCGcpKCDCDwwEsp21CcBLsWTGrk2HTcXxhHl+e8KbQsAKy52Tn4fTFqXgFfgJeA1zojRQ/w7827VR/NAi6Fgc/RiILilB+Es9FL771jwHiFzTSuikFVxUaTukUOFvV5HegeuevXNBJ2MGZ8T03wg4Jj91QyXuYzKkM2TT6T+ILXNI8VVw7dipeMB25sdd80FYM0UUdYBR+EV5kJKVpmSuSwSL3rot5SX5gU2p6Vpwzq+3xXjr93c255SLFKxLonBvsoJipYs540pxvbTYFcGClCVEfK2ZA+b1Cwi1HRCrDF75U/s3i/o7dlBuO676sxsJMJTY4426G5e6HArk5XqVUMuJ6OcQEVlTqAm2EgT1QJiXnsJVbYil3dCmYlKTsRDmv28O6xRErix0MjXv2gwvgMFnzyyiD32noaHviphxgbDwjHo2GnIYO2z2iy8o7s9aZnl63ys5yK9/GqlIsbEZ1hZjeBglb/FwcS4POxwLNb2CMRzLGyGN15oTJ2pbtqQlIaRUEzBqCejI9ssBABs86iEIz2e57Yhrvf3yTLqkTJVeXhKKtC71uTOq0RZFkiWZHmAcw3B+Ar2HsOWRPwveATS8FGiIonmU6IFvn1FAw3cAjS4F6vvZze3cDpLbOB8FNHoH0PnFQG9v5jgygyQO7+9HAZ2fDbTkzy5Ndnd1z1TV9VH/PF2Fts3EvSo8xeN02/eDWSwBYQVhXbkZXlXWaG1no3qNU27HSqltMqFL8h1iEhxIiW8Wda6eZMpxRN2fr4PYCJ2rtRwIfnDzluAnDsHv9C/n2eIS/R4IlALG2eitVsyrhU622JyuLy2hGMLFUDfbCtf5UYcq5zg2yrPE0Szd1RW5zumOtmYOEm1BhXE0Df1oGgSmrDrleHoZEmuWozfTtw0TT3f/zh568miw211zJpBcV4XDbiTWMUl3g9htd3tzvXhH9jjbK+avjjvmsYW5k+cUSvnR3iCW25vqJ1lqpQKfP/8B7qEsM671YOtSf9Ha7K+9+0HX5XJyfLbeed9/4P5oJ/57MLouiQUzCGGcowemZwlqIP0fnH3F+IlubIr+guzpnd7+1Dkqx7i7ZBe6fefEPrSmr19qbT8QlT1a7ca4snB/55BuUbVfn+t8Xz479/d8zSiHqOUf1pGoPBXBmZP+y+//AQ==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [HTMLContent = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"HTMLContent", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

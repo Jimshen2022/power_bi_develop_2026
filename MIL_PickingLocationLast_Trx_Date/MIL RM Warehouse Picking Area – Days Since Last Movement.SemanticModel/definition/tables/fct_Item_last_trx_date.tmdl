@@ -1,0 +1,112 @@
+table fct_Item_last_trx_date
+	lineageTag: d02858c8-054d-492d-8f80-2d30182f19a4
+
+	column Item
+		dataType: string
+		lineageTag: fa5a1aa9-5c15-4e3d-9c77-b8c337c4b0e5
+		summarizeBy: none
+		sourceColumn: Item
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: b70bdf36-2bff-4f9c-a671-537a993c69b9
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 1daa191c-fa8f-4489-94e4-e09b40a10c56
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column Qty
+		dataType: double
+		lineageTag: 6d617b5f-0591-45af-8866-a7e77f4edce5
+		summarizeBy: sum
+		sourceColumn: Qty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UOM
+		dataType: string
+		lineageTag: 5bcad8e3-a39e-42d1-a38c-5ac7af633788
+		summarizeBy: none
+		sourceColumn: UOM
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: 4dd6490c-bcb6-4e31-8448-65f9cfa382dc
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Last Transaction Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: eaf1c02b-d669-4f17-b93a-e93a20f3b7a6
+		summarizeBy: none
+		sourceColumn: Last Transaction Date
+
+		variation Variation
+			isDefault
+			relationship: 9cf7f528-6d7d-4011-a17d-89e28ec1c82f
+			defaultHierarchy: LocalDateTable_e86aacb7-2d1d-4f18-8a10-f0aee6920774.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Last Transaction Type'
+		dataType: string
+		lineageTag: adf92ee2-6bd5-4081-9394-d5b6ba64215a
+		summarizeBy: none
+		sourceColumn: Last Transaction Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Days Since Last Movement'
+		dataType: int64
+		formatString: 0
+		lineageTag: ebc86373-514c-4912-823c-bbc0de972574
+		summarizeBy: sum
+		sourceColumn: Days Since Last Movement
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day ranges'
+		dataType: string
+		lineageTag: ac89e72b-907b-4ff7-b8af-916545c154a9
+		summarizeBy: none
+		sourceColumn: Day ranges
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fct_Item_last_trx_date = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"5839814b-ec95-48ea-a07a-ec0241ac9946" = Workspaces{[workspaceId="5839814b-ec95-48ea-a07a-ec0241ac9946"]}[Data],
+				    #"019a0763-4e4b-4d36-abec-287422b65028" = #"5839814b-ec95-48ea-a07a-ec0241ac9946"{[dataflowId="019a0763-4e4b-4d36-abec-287422b65028"]}[Data],
+				    fct_Item_last_trx_date_ = #"019a0763-4e4b-4d36-abec-287422b65028"{[entity="fct_Item_last_trx_date",version=""]}[Data]
+				in
+				    fct_Item_last_trx_date_
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,44 @@
+table Dim_Metric
+	lineageTag: 62070201-e113-49f2-bf20-6598855347d4
+
+	column MetricName
+		lineageTag: f359aa66-f2bc-4ef6-86c2-a138463bb460
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MetricName]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Order
+		formatString: 0
+		lineageTag: 385868bf-c642-4fd2-a1dc-57f12caea7e6
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Order]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Metric = calculated
+		mode: import
+		source = ```
+				
+				DATATABLE(
+				    "MetricName", STRING,
+				    "Order", INTEGER,
+				    {
+				        {"1_All in PPH Shipping", 1},
+				        {"2_All in PPH CG Receiving", 2},
+				        {"3_All in PPH Unload UPH", 3},
+				        {"I01_Individual Loading PPH", 4},
+				        {"I02_Individual Picking PPH", 5},
+				        {"I03_Individual CG Unload PPH", 6},
+				        {"I04_Individual UPH Unload PPH", 7},
+				        {"I05_Individual CG Putaway PPH", 8},
+				        {"I06_Individual UPH Putaway PPH", 9}
+				    }
+				)
+				
+				```
+
+	annotation PBI_Id = f8ac40736a114395b33b721d8edea6cf
+

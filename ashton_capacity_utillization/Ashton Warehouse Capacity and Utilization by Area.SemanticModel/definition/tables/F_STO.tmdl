@@ -1,0 +1,255 @@
+table F_STO
+	lineageTag: e2e483f7-ff3e-46b2-bdae-ebf119180f49
+
+	column sequence
+		dataType: int64
+		formatString: 0
+		lineageTag: abc70941-27dc-4851-b2f3-3741d11a79f0
+		summarizeBy: sum
+		sourceColumn: sequence
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_number
+		dataType: string
+		lineageTag: b849b495-f68a-42b3-98d6-db2ba680f6a2
+		summarizeBy: none
+		sourceColumn: item_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column actual_qty
+		dataType: double
+		formatString: #,0
+		lineageTag: 9e931606-584b-455a-b83d-906b1f1c88f9
+		summarizeBy: sum
+		sourceColumn: actual_qty
+
+		annotation SummarizationSetBy = Automatic
+
+	column unavailable_qty
+		dataType: double
+		lineageTag: f17bdf8f-3179-4d73-8661-5180775778f3
+		summarizeBy: sum
+		sourceColumn: unavailable_qty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column status
+		dataType: string
+		lineageTag: 6060b7d2-46da-4a80-9556-2df16e2d1f10
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column wh_id
+		dataType: string
+		lineageTag: 14c33d8f-45c6-42e0-9c77-22550e012856
+		summarizeBy: none
+		sourceColumn: wh_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column location_id
+		dataType: string
+		lineageTag: a2fff771-ed1b-4299-b8da-ea7feb7c33b0
+		summarizeBy: none
+		sourceColumn: location_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column TypeDescription
+		dataType: string
+		lineageTag: 6740ac3b-4d71-4553-b6ce-ba376b6b2fae
+		summarizeBy: none
+		sourceColumn: TypeDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column fifo_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: fbb2cb0e-7a85-4d2b-a843-43f44f2270e3
+		summarizeBy: none
+		sourceColumn: fifo_date
+
+		variation Variation
+			isDefault
+			relationship: cc49c439-0248-414b-aa3d-f271f6c1a0b6
+			defaultHierarchy: LocalDateTable_5536d891-8002-4de6-a6b0-1fea743e33e4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column expiration_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4d2f3725-9948-41f1-a685-07670690ed18
+		summarizeBy: none
+		sourceColumn: expiration_date
+
+		variation Variation
+			isDefault
+			relationship: cb50984b-7d9a-4a6b-b658-2f99725ade58
+			defaultHierarchy: LocalDateTable_76e6ff50-e5dc-4d39-b933-ad75a08242f1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column reserved_for
+		dataType: string
+		lineageTag: 967f41de-d307-4849-8f32-7b9b829a7990
+		summarizeBy: none
+		sourceColumn: reserved_for
+
+		annotation SummarizationSetBy = Automatic
+
+	column lot_number
+		dataType: string
+		lineageTag: 3c8ed063-e038-409c-81e6-12a95dab9b19
+		summarizeBy: none
+		sourceColumn: lot_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column inspection_code
+		dataType: string
+		lineageTag: a5ccc832-6e28-4461-88d7-753ba5075b6e
+		summarizeBy: none
+		sourceColumn: inspection_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column serial_number
+		dataType: string
+		lineageTag: 4a7625b8-7823-486a-9799-1cbaaa78b88e
+		summarizeBy: none
+		sourceColumn: serial_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column type
+		dataType: string
+		lineageTag: 366ed974-d475-4d21-8827-93b82572446d
+		summarizeBy: none
+		sourceColumn: type
+
+		annotation SummarizationSetBy = Automatic
+
+	column put_away_location
+		dataType: string
+		lineageTag: c9684149-a9b6-4d54-acd8-0faee2f8e59e
+		summarizeBy: none
+		sourceColumn: put_away_location
+
+		annotation SummarizationSetBy = Automatic
+
+	column first5
+		dataType: string
+		lineageTag: fe4df435-a832-4412-be67-2af9c0b8203a
+		summarizeBy: none
+		sourceColumn: first5
+
+		annotation SummarizationSetBy = Automatic
+
+	column product
+		dataType: string
+		lineageTag: e1672202-6c74-452c-8ffa-09b977610131
+		summarizeBy: none
+		sourceColumn: product
+
+		annotation SummarizationSetBy = Automatic
+
+	column Loc_Type
+		dataType: string
+		lineageTag: d6e0c464-86e0-4162-8ece-a7e08ec40b86
+		summarizeBy: none
+		sourceColumn: Loc_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Phumy
+		dataType: string
+		lineageTag: 22c46753-845d-40f3-8486-9c013518ff96
+		summarizeBy: none
+		sourceColumn: Phumy
+
+		annotation SummarizationSetBy = Automatic
+
+	column Unit_CBM
+		dataType: double
+		formatString: 0.00
+		lineageTag: 83d1173f-50fd-4a0a-860a-5ed0c542a0b3
+		summarizeBy: sum
+		sourceColumn: Unit_CBM
+
+		annotation SummarizationSetBy = Automatic
+
+	column CBM
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 98ffcac4-ff98-4102-8418-4f8cafd02380
+		summarizeBy: sum
+		sourceColumn: CBM
+
+		annotation SummarizationSetBy = Automatic
+
+	column SCOOPQTY
+		dataType: int64
+		formatString: 0
+		lineageTag: 1e401509-be0b-4cd5-9d90-9f41a5f483f3
+		summarizeBy: sum
+		sourceColumn: SCOOPQTY
+
+		annotation SummarizationSetBy = Automatic
+
+	column actual_pallet_Qty
+		dataType: int64
+		formatString: #,0
+		lineageTag: 1dde8f3e-3335-4874-a865-bcf3169ce1a8
+		summarizeBy: sum
+		sourceColumn: actual_pallet_Qty
+
+		annotation SummarizationSetBy = Automatic
+
+	column ITMCLSID
+		dataType: string
+		lineageTag: eeee9409-9a4d-4c9e-8b6f-589fc8bef70d
+		summarizeBy: none
+		sourceColumn: ITMCLSID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sub_Area_2 = LOOKUPVALUE('F_Ashton_Locations'[Sub_Area_2],'F_Ashton_Locations'[Location ID],'F_STO'[location_id])
+		lineageTag: be839e29-594d-47f6-a778-35b6508af65c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition F_STO = m
+		mode: import
+		source =
+				// let
+				//     Source = Sql.Database("ashley-edw.database.windows.net", "ASHLEY_EDW", [Query="WITH sto AS#(lf)         (SELECT *#(lf)          FROM Distribution_Warehouse_Wholesale.t_stored_item AS a1#(lf)          WHERE a1.wh_id IN ('335')),#(lf) itemmaster AS (SELECT i.ITNBR,#(lf)                       i.ITCLS,#(lf)                       i.ITDSC,#(lf)                       i.B2Z95S,#(lf)                       i.B2Z95S * 0.028317 as Unit_CBM,#(lf)--                        CASE#(lf)--                            WHEN i.ITCLS NOT LIKE 'Z%' THEN 'RP'#(lf)--                            WHEN i2.ITMCLSID LIKE 'UPH%' THEN 'UPH'#(lf)--                            WHEN i2.ITMCLSID LIKE 'PAL%' THEN 'CG'#(lf)--                            WHEN i2.ITMCLSID LIKE 'SMALL%' THEN 'CG'#(lf)--                            WHEN i2.ITMCLSID LIKE 'FLOOR%' THEN 'BULK'#(lf)--                            WHEN i2.ITMCLSID LIKE 'RUG%' THEN 'RUG'#(lf)--                            WHEN i2.ITMCLSID LIKE 'RAILS%' THEN 'RAIL'#(lf)--                            ELSE 'CHECK' END AS product,#(lf)                       CASE#(lf)                           WHEN i.ITCLS NOT LIKE 'Z%' THEN 'RP'#(lf)                           WHEN i2.ITMCLSID LIKE 'UPH%' THEN 'UPH'#(lf)                           WHEN i.ITDSC LIKE '%RUG%' THEN 'ACCESSORY'#(lf)                           WHEN i.ITDSC LIKE '%RECLI%' THEN 'UPH'#(lf)                           WHEN i.ITDSC LIKE '%SOFA%' AND i.ITDSC NOT LIKE '%SOFA%TABLE%' THEN 'UPH'#(lf)                           WHEN i.ITDSC LIKE '%LOVE%' THEN 'UPH'#(lf)                           WHEN i2.ITMCLSID LIKE 'PAL%' THEN 'CG'#(lf)                           WHEN i2.ITMCLSID LIKE 'SMALL%' THEN 'CG'#(lf)                           WHEN i2.ITMCLSID LIKE 'FLOOR%' THEN 'BULK'#(lf)                           WHEN i2.ITMCLSID LIKE 'RUG%' THEN 'ACCESSORY'#(lf)                           WHEN i2.ITMCLSID LIKE 'RAILS%' THEN 'RAILS'#(lf)                           WHEN i.ITNBR LIKE 'PA%' THEN 'UPH'#(lf)                           WHEN SUBSTRING(i.ITNBR, 1, 1) IN ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'U') THEN 'UPH'#(lf)                           WHEN SUBSTRING(i.ITNBR, 1, 1) IN ('A', 'D', 'E', 'H', 'L', 'M', 'P', 'Q', 'R', 'T', 'W','Z') THEN 'CG'#(lf)                           WHEN i2.PICKPUT in ('PALLT') THEN 'CG'#(lf)                           WHEN i2.PICKPUT in ('UPH') THEN 'UPH'#(lf)                        ELSE 'CHECK' END AS product,#(lf)--                     SOFA TABLE#(lf)                     i2.TIHIUNLD,#(lf)                     i2.PICKPUT,#(lf)                     i2.ITMCLSID,#(lf)                     i2.UNITSWIDE,#(lf)                     i2.UNITLAYERS,#(lf)                     i2.UNITSDEEP,#(lf)                     i2.SCOOPQTY,#(lf)                     i2.SKIDSIZE#(lf)                FROM (SELECT * FROM MasterData_ItemMaster_AFI.ITMRVA AS a1 WHERE a1.STID IN ('335')) AS i#(lf)                         LEFT JOIN (SELECT *#(lf)                                    FROM MasterData_ItemMaster_AFI.ITBEXT AS a2#(lf)                                    WHERE a2.HOUSE IN ('335')) as i2 ON i.ITNBR = i2.ITNBR#(lf)    ),#(lf)Loc AS (#(lf)    SELECT *#(lf)    FROM Distribution_Warehouse_Wholesale.t_location as a2#(lf)    WHERE a2.wh_id IN ('335')#(lf))#(lf)SELECT#(lf)    s.sequence,s.item_number,s.actual_qty,s.unavailable_qty,s.status,s.wh_id,#(lf)    s.location_id,l.TypeDescription, s.fifo_date,s.expiration_date,s.reserved_for,#(lf)    s.lot_number,s.inspection_code,s.serial_number,s.type,s.put_away_location,#(lf)    SUBSTRING(s.item_number,1,1) AS first5,#(lf)    i.product,#(lf)    CASE WHEN s.location_id LIKE 'A3%' THEN 'In Racking Location' WHEN s.location_id LIKE 'RS%' THEN 'Receiving Stage' WHEN s.location_id LIKE 'S%' THEN 'Shipping Stage' ELSE 'Others' END as Loc_Type,#(lf)    'Phumy' as Phumy,#(lf)    i.Unit_CBM,#(lf)    i.ITMCLSID,#(lf)    CASE WHEN i.product = 'UPH' and i.Unit_CBM = 0 THEN  s.actual_qty* 46.828 * 0.028317    -- 46.828 is Phumy UPH average unit ft3#(lf)         WHEN i.product = 'RUG' and i.Unit_CBM = 0 THEN  s.actual_qty * 0.1          --  0.1 is Phumy accessory average unit CBM#(lf)         WHEN i.product = 'BULK' and i.Unit_CBM = 0 THEN  s.actual_qty * 0.8          --  0.1 is Phumy accessory average unit CBM#(lf)         WHEN i.product = 'CG' and i.Unit_CBM = 0 THEN  s.actual_qty * 8.592 * 0.028317     --  8.592 is Phumy CG average unit ft3#(lf)         WHEN i.product = 'RP' and i.Unit_CBM = 0 THEN  s.actual_qty * 0.001#(lf)         WHEN i.product = 'RAIL' and i.Unit_CBM = 0 THEN  s.actual_qty * 0.1#(lf)         WHEN i.product = 'CHECK' and i.Unit_CBM = 0 THEN  s.actual_qty * 0.001#(lf)         ELSE   i.Unit_CBM*s.actual_qty  END AS CBM,#(lf)    i.SCOOPQTY,#(lf)    CEILING(CASE#(lf)                WHEN i.SCOOPQTY = 0  THEN 0#(lf)                WHEN i.ITMCLSID = 'FLOOR' THEN 0#(lf)                ELSE s.actual_qty / i.SCOOPQTY END) AS actual_pallet_Qty#(lf)#(lf)FROM sto as s#(lf)LEFT JOIN loc as l ON s.location_id = l.location_id AND s.wh_id = l.wh_id#(lf)LEFT JOIN itemmaster as i on s.item_number = i.ITNBR#(lf)ORDER BY s.location_id#(lf)    ", CreateNavigationProperties=false, CommandTimeout=#duration(0, 1, 0, 0)]),
+				//     #"Trimmed Text" = Table.TransformColumns(Source,{{"location_id", Text.Trim, type text}}),
+				//     #"Filtered Rows" = Table.SelectRows(#"Trimmed Text", each Text.StartsWith([location_id], "A")),
+				//     #"Replaced Value" = Table.ReplaceValue(#"Filtered Rows",null,0,Replacer.ReplaceValue,{"SCOOPQTY"}),
+				//     #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value",null,0,Replacer.ReplaceValue,{"actual_pallet_Qty"}),
+				//     #"Changed Type" = Table.TransformColumnTypes(#"Replaced Value1",{{"SCOOPQTY", Int64.Type}, {"actual_pallet_Qty", Int64.Type}})
+				// in
+				//     #"Changed Type"
+				
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"8edf7929-ae1a-4e4e-8b6a-f955dc7f1f4d" = Workspaces{[workspaceId="8edf7929-ae1a-4e4e-8b6a-f955dc7f1f4d"]}[Data],
+				    #"93f65813-ee08-4da2-a9a8-0e133553b720" = #"8edf7929-ae1a-4e4e-8b6a-f955dc7f1f4d"{[dataflowId="93f65813-ee08-4da2-a9a8-0e133553b720"]}[Data],
+				    F_STO_ = #"93f65813-ee08-4da2-a9a8-0e133553b720"{[entity="F_STO",version=""]}[Data]
+				in
+				    F_STO_
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

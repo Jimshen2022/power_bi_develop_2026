@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Wanek_PPH"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "968340d6-d2db-4f99-9903-80cd1a8c69bc"
+  }
+}

@@ -1,0 +1,48 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup 'Transform File from Query1'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'Transform File from Query1\Helper Queries'
+
+	annotation PBI_QueryGroupOrder = 0
+
+annotation PBI_QueryOrder = ["GetTotalPieces","Fact_Transactions","Dim_Calendar","A_Measures","Fct_Supervisors_Hours_Pieces","A_Measure","Parameter1","Transform Sample File","Sample File","Transform File","Dim_Employee_","Fct_metrics_goal","NavigationHTML"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation __TEdtr = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Fact_Transactions
+ref table DateTableTemplate_ee96304c-3fd8-4c0f-8ade-5e70e615750a
+ref table LocalDateTable_bfd9b925-28df-41ae-898b-bc26f5e80f78
+ref table Dim_Calendar
+ref table LocalDateTable_774b84c4-d63a-4544-8cb0-0a7d32867b85
+ref table LocalDateTable_47ef376a-a38c-4658-a403-a86344a75366
+ref table Fct_Supervisors_Hours_Pieces
+ref table Dim_Group
+ref table Dim_Shift
+ref table Fct_SCOOP_Picking_Replenishment
+ref table A_Measure
+ref table Dim_PPH_Type
+ref table Dim_Employee_
+ref table Dim_Team
+ref table Dim_Position
+ref table Dim_Metric
+ref table Fct_metrics_goal
+ref table Fct_All_Details_Rows_Summary
+ref table LocalDateTable_b86c50ad-fe11-4891-9a77-45a29a95806f
+ref table LocalDateTable_6d660a9b-99c3-48bc-ad8b-fb481858e6a6
+ref table NavigationHTML
+
+ref cultureInfo en-US
+

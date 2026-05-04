@@ -1,0 +1,254 @@
+table Fact_Transactions
+	lineageTag: 877a7203-6e2f-4a94-a027-47dec1b96d1c
+
+	column item_number
+		dataType: string
+		lineageTag: 4eff365b-c324-4d51-9286-b8454cf08713
+		summarizeBy: none
+		sourceColumn: item_number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column pick_put_id
+		dataType: string
+		lineageTag: b0f46674-cd6c-41cf-b8fe-e60adb978c43
+		summarizeBy: none
+		sourceColumn: pick_put_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column whse
+		dataType: string
+		lineageTag: 6102f543-ad42-463c-a8f7-7294170bf12f
+		summarizeBy: none
+		sourceColumn: whse
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column tran_type
+		dataType: string
+		lineageTag: ae69e130-c657-40e5-b049-e5b2ba385db2
+		summarizeBy: none
+		sourceColumn: tran_type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: 2ad0b6a4-b68a-4585-9a5d-483de71cb89a
+		summarizeBy: none
+		sourceColumn: description
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_id
+		dataType: string
+		lineageTag: bc2958e1-6cf0-48ca-aebd-8f3600486eb9
+		summarizeBy: none
+		sourceColumn: employee_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column emp_name
+		dataType: string
+		lineageTag: 3fc6121d-dd25-4360-84da-1037bbb63c47
+		summarizeBy: none
+		sourceColumn: emp_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column dept_nbr
+		dataType: string
+		lineageTag: 66b42501-1be9-4ce7-8fc9-12aad6cbd48e
+		summarizeBy: none
+		sourceColumn: dept_nbr
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column deparment
+		dataType: string
+		lineageTag: 06db6984-bd9e-4cd2-bfed-ff5c31ed37ec
+		summarizeBy: none
+		sourceColumn: deparment
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column group_nbr
+		dataType: double
+		lineageTag: ed317863-e317-4273-b789-0ac27629d077
+		summarizeBy: sum
+		sourceColumn: group_nbr
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column group_name
+		dataType: string
+		lineageTag: 328ad691-9782-48ef-b0a7-09441384d577
+		summarizeBy: none
+		sourceColumn: group_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column supervisor_nbr
+		dataType: double
+		lineageTag: ca70a147-e1c3-4b2d-a4b3-36620f706410
+		summarizeBy: sum
+		sourceColumn: supervisor_nbr
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column supervisor
+		dataType: string
+		lineageTag: 2624a047-7181-451c-bd55-32a18a8b2034
+		summarizeBy: none
+		sourceColumn: supervisor
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_tran_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: dbd97e10-7c58-45b9-96bc-eedad619c819
+		summarizeBy: none
+		sourceColumn: start_tran_date
+
+		variation Variation
+			isDefault
+			relationship: a3234b9f-1dec-4f2e-a068-8e39e14610aa
+			defaultHierarchy: LocalDateTable_bfd9b925-28df-41ae-898b-bc26f5e80f78.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column product
+		dataType: string
+		lineageTag: 5ddb7148-8911-4350-82c3-1e2630b1d960
+		summarizeBy: none
+		sourceColumn: product
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column shift_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 5713afc1-64e5-4429-95dc-abbb4d3f7a6a
+		summarizeBy: none
+		sourceColumn: shift_date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column shift
+		dataType: string
+		lineageTag: 11103c5c-5c2f-4810-9a75-3e4c85e46a6b
+		summarizeBy: none
+		sourceColumn: shift
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column pph_type
+		dataType: string
+		lineageTag: 910b2a8b-8f0f-48d2-ae70-66d1f5bbe195
+		summarizeBy: none
+		sourceColumn: pph_type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Pallet_Qty
+		dataType: int64
+		formatString: 0
+		lineageTag: 64745306-3e73-4587-94e6-83e7746224f6
+		summarizeBy: sum
+		sourceColumn: Pallet_Qty
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column pieces
+		dataType: double
+		formatString: #,0
+		lineageTag: bb88c641-0a22-4df2-aff9-7ffaecb49679
+		summarizeBy: sum
+		sourceColumn: pieces
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_category
+		dataType: string
+		lineageTag: b5c73f33-3c03-444b-a891-7cfc19dbecf0
+		summarizeBy: none
+		sourceColumn: product_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column SCOOPQTY
+		dataType: double
+		lineageTag: d03c8894-8012-4ae1-bb58-f19bb3866ad2
+		summarizeBy: sum
+		sourceColumn: SCOOPQTY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Fact_Transactions = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"8edf7929-ae1a-4e4e-8b6a-f955dc7f1f4d" = Workspaces{[workspaceId="8edf7929-ae1a-4e4e-8b6a-f955dc7f1f4d"]}[Data],
+				    #"4cc8db98-6e7b-4fb2-9040-660dc15e8a58" = #"8edf7929-ae1a-4e4e-8b6a-f955dc7f1f4d"{[dataflowId="4cc8db98-6e7b-4fb2-9040-660dc15e8a58"]}[Data],
+				    AshtonPPH_ = #"4cc8db98-6e7b-4fb2-9040-660dc15e8a58"{[entity="AshtonPPH",version=""]}[Data]
+				in
+				    AshtonPPH_
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

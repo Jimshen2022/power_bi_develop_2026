@@ -1,0 +1,21 @@
+relationship 9cf7f528-6d7d-4011-a17d-89e28ec1c82f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_Item_last_trx_date.'Last Transaction Date'
+	toColumn: LocalDateTable_e86aacb7-2d1d-4f18-8a10-f0aee6920774.Date
+
+relationship AutoDetected_5ad4eca0-16e2-495d-b0e1-30531f6747c9
+	fromColumn: fct_Item_last_trx_date.Location
+	toColumn: dim_picking_locations.LOCATION
+
+relationship 4e157a25-a7b1-ed5b-d08d-f20efbc569b6
+	fromColumn: fct_Item_last_trx_date.Category
+	toColumn: fct_item_category.ITCLS
+
+relationship 0f69e78b-967f-db9d-7582-340cc2de3d81
+	fromColumn: fct_item_category.'Category for report'
+	toColumn: Dim_Category.Category
+
+relationship 03c09c23-b3f4-1b8c-8f98-c353f8d62899
+	fromColumn: fct_Item_last_trx_date.'Day ranges'
+	toColumn: Dim_Days_Range.'Day ranges'
+

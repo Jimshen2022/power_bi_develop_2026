@@ -1,0 +1,337 @@
+table fct_MILCNTDETAILS
+	lineageTag: a59cd028-c4f2-4100-a610-769eccf0a15c
+
+	column WCIORIGIN
+		dataType: string
+		lineageTag: 96b693d5-be73-4a7a-a22b-fa671a05a0bd
+		summarizeBy: none
+		sourceColumn: WCIORIGIN
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTAINER#
+		dataType: string
+		lineageTag: 3dd51552-7ade-477e-8dda-bbc8ed766f86
+		summarizeBy: none
+		sourceColumn: CONTAINER#
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTAINERTYPE
+		dataType: string
+		lineageTag: 73ecac49-2562-4dcf-83cd-2754df123c00
+		summarizeBy: none
+		sourceColumn: CONTAINERTYPE
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT
+		dataType: string
+		lineageTag: db7cd535-8dd4-4812-af5c-fa0228c42fd7
+		summarizeBy: none
+		sourceColumn: PRODUCT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUBES
+		dataType: double
+		lineageTag: acd84146-8fbf-4c09-80a4-89e7c8698f5b
+		summarizeBy: sum
+		sourceColumn: CUBES
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ITCLS
+		dataType: string
+		lineageTag: 48130f17-6b84-454c-ac20-bdfccaa41048
+		summarizeBy: none
+		sourceColumn: ITCLS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCIDESTINATION
+		dataType: string
+		lineageTag: a5066e46-0d1f-4bac-a7a3-505d434fab9d
+		summarizeBy: none
+		sourceColumn: WCIDESTINATION
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCIORDER
+		dataType: string
+		lineageTag: 33bb633a-451a-4e33-97e1-f897dbd898b5
+		summarizeBy: none
+		sourceColumn: WCIORDER
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ITEMNUMBER
+		dataType: string
+		lineageTag: 16643b4f-b53e-4252-ae85-92199f537916
+		summarizeBy: none
+		sourceColumn: ITEMNUMBER
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTY
+		dataType: double
+		formatString: #,0
+		lineageTag: bf75337d-c330-4cff-b5de-c6e6d0f66765
+		summarizeBy: sum
+		sourceColumn: QTY
+
+		changedProperty = IsHidden
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column WCILASTMAINTENANCETIMESTAMP
+		dataType: string
+		lineageTag: a9b48e79-05e1-4142-8c6a-d44aa897a625
+		summarizeBy: none
+		sourceColumn: WCILASTMAINTENANCETIMESTAMP
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTAINERNUMBER
+		dataType: string
+		lineageTag: 4b39c152-f146-48ca-91a5-3c0f448b124a
+		summarizeBy: none
+		sourceColumn: CONTAINERNUMBER
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCILASTMAINTENANCEUSER
+		dataType: string
+		lineageTag: cecfde30-1d9e-4660-8005-59b698e3f1b4
+		summarizeBy: none
+		sourceColumn: WCILASTMAINTENANCEUSER
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ITMCQTY
+		dataType: double
+		lineageTag: 482adb1d-8b49-4fbc-8651-481d642dc1e1
+		summarizeBy: sum
+		sourceColumn: ITMCQTY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UNITCUBE
+		dataType: double
+		lineageTag: 76cf858a-9301-425e-8d0a-280796682e53
+		summarizeBy: sum
+		sourceColumn: UNITCUBE
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UNITWEIGHT
+		dataType: double
+		lineageTag: 20166232-e657-4ed5-a28b-d23e7a7ca89f
+		summarizeBy: sum
+		sourceColumn: UNITWEIGHT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CARTONS
+		dataType: double
+		lineageTag: 3508c538-42f2-4378-acc6-8c005e25da45
+		summarizeBy: sum
+		sourceColumn: CARTONS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DATE
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 36ebd467-d6e5-4b9b-9643-355120e240e0
+		summarizeBy: none
+		sourceColumn: DATE
+
+		changedProperty = DataType
+
+		changedProperty = FormatString
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column WCHCONTAINERSIZE
+		dataType: string
+		lineageTag: 7b89e88a-3dac-4a22-94a8-e61a878103f7
+		summarizeBy: none
+		sourceColumn: WCHCONTAINERSIZE
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column UTILIZATION
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 96c47fe9-f2d9-40fd-a0d4-ef0302a36540
+		summarizeBy: sum
+		sourceColumn: UTILIZATION
+
+		changedProperty = FormatString
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCHDOORNUMBER
+		dataType: double
+		lineageTag: c53e6644-da69-4328-bae2-c2e949767bea
+		summarizeBy: sum
+		sourceColumn: WCHDOORNUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column WCHBUILDING
+		dataType: string
+		lineageTag: f74c1ffe-f58e-4c8f-a281-4a32684cef6d
+		summarizeBy: none
+		sourceColumn: WCHBUILDING
+
+		annotation SummarizationSetBy = Automatic
+
+	column H_CUBES
+		dataType: double
+		lineageTag: 83f017fd-5df3-47c1-a93b-ec5a6c88f27c
+		summarizeBy: sum
+		sourceColumn: H_CUBES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CONTAINER#2
+		dataType: string
+		lineageTag: a2c8d269-4a65-4fdc-8e57-801090030f2c
+		summarizeBy: none
+		sourceColumn: CONTAINER#2
+
+		annotation SummarizationSetBy = Automatic
+
+	column WH
+		dataType: string
+		lineageTag: 6a545d28-cfc7-4831-88f6-3433acc9073d
+		summarizeBy: none
+		sourceColumn: WH
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Container Utilization%' = ```
+			
+			SWITCH(
+			    TRUE(),
+			    // 条件 1: 尺寸开头为 "53"
+			    MID('fct_MILCNTDETAILS'[WCHCONTAINERSIZE], 1, 2) = "53" && 3831 <> 0, 
+			    DIVIDE('fct_MILCNTDETAILS'[H_CUBES], 3831, 0), 
+			    
+			    // 条件 2: 尺寸开头为 "50"
+			    MID('fct_MILCNTDETAILS'[WCHCONTAINERSIZE], 1, 2) = "50" && 3333 <> 0, 
+			    DIVIDE('fct_MILCNTDETAILS'[H_CUBES], 3333, 0), 
+			    
+			    // 条件 3: 尺寸开头为 "40H"
+			    MID('fct_MILCNTDETAILS'[WCHCONTAINERSIZE], 1, 3) = "40H" && 2650 <> 0, 
+			    DIVIDE('fct_MILCNTDETAILS'[H_CUBES], 2650, 0), 
+			    
+			    // 条件 4: 尺寸开头为 "40"
+			    MID('fct_MILCNTDETAILS'[WCHCONTAINERSIZE], 1, 3) = "40" && 2383 <> 0, 
+			    DIVIDE('fct_MILCNTDETAILS'[H_CUBES], 2383, 0), 
+			    
+			    // 条件 5: 尺寸开头为 "2"
+			    MID('fct_MILCNTDETAILS'[WCHCONTAINERSIZE], 1, 1) = "2" && 1325 <> 0, 
+			    DIVIDE('fct_MILCNTDETAILS'[H_CUBES], 1325, 0), 
+			    
+			    // 默认值: 当上述条件都不匹配时
+			    DIVIDE('fct_MILCNTDETAILS'[H_CUBES], 2650, 0)
+			)
+			
+			```
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 4bcbb42a-8eba-45cc-9c65-f6c72727902f
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column SKU_COUNT
+		dataType: int64
+		formatString: 0
+		lineageTag: e651411d-d4b7-459d-8156-743c5c19eb29
+		summarizeBy: sum
+		sourceColumn: SKU_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fct_MILCNTDETAILS-b1cf1cad-cf42-4270-99e6-38d0e6b82193 = m
+		mode: import
+		source = ```
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"5839814b-ec95-48ea-a07a-ec0241ac9946" = Workspaces{[workspaceId="5839814b-ec95-48ea-a07a-ec0241ac9946"]}[Data],
+				    #"61456a58-5221-49a3-a963-ca77dc011dac" = #"5839814b-ec95-48ea-a07a-ec0241ac9946"{[dataflowId="61456a58-5221-49a3-a963-ca77dc011dac"]}[Data],
+				    mil_daily_shipped_ = #"61456a58-5221-49a3-a963-ca77dc011dac"{[entity="mil_daily_shipped",version=""]}[Data],    
+				    #"Reordered Columns" = Table.ReorderColumns(mil_daily_shipped_,{"WCIORIGIN", "CONTAINER#", "CUBES", "ITCLS", "PRODUCT", "WCIDESTINATION", "WCIORDER", "ITEMNUMBER", "QTY", "WCILASTMAINTENANCETIMESTAMP", "CONTAINERNUMBER", "CONTAINERTYPE", "WCILASTMAINTENANCEUSER", "ITMCQTY", "UNITCUBE", "UNITWEIGHT", "CARTONS", "WCHCONTAINERSIZE", "WCHDOORNUMBER", "WCHBUILDING", "H_CUBES", "UTILIZATION", "WH", "DATE"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Reordered Columns", each [#"CONTAINER#"] <> null and [#"CONTAINER#"] <> "")
+				in
+				    #"Filtered Rows"
+				```
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

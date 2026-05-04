@@ -1,0 +1,425 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "c5fade541d2304afc40e",
+  "displayName": "Capacity Details",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "065f01b698c3c263a058",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Capacity by Cubes(CBM)"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "d34652fd393ac0851d11",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Capacity by Pallets"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "42eee7f7ee34324345f2",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Capacity by Pieces"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "62d5b49c997278351108",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Empty Location Qty"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "b7b2fc4b8953abd0c094",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Empty Locations Cubes"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "00d30d3047df1ff4cccf",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Location_Qty"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "8f9548f3c9bbc82e3ff2",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "On Hand"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "d8420d3c8f404bf21d1c",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Products Cubes(CBM)"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "bb6d18953b6836b72f53",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Products Pallets Qty"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "b68893a0233bef520473",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "SKU"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "fb78c61a9cdd347a78eb",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Utilization by cubes"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "9422293f8e24713be1d6",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Utilization by Pallets"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "2ff522191966ef2208cf",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Utilization by Pieces"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "1a323061319c300579d7",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "On Hand"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "7526e21d23f71b6b7eff",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "421fa8eb88b1bea24af6",
+        "boundFilter": "065f01b698c3c263a058",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Capacity by Cubes(CBM)"
+          }
+        }
+      },
+      {
+        "name": "fc3a155b382547a70b42",
+        "boundFilter": "d34652fd393ac0851d11",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Capacity by Pallets"
+          }
+        }
+      },
+      {
+        "name": "5aa2fc3a078fea96b3ba",
+        "boundFilter": "42eee7f7ee34324345f2",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Capacity by Pieces"
+          }
+        }
+      },
+      {
+        "name": "41b36e1eb58832043eab",
+        "boundFilter": "62d5b49c997278351108",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Empty Location Qty"
+          }
+        }
+      },
+      {
+        "name": "96df11869c73eff839d1",
+        "boundFilter": "b7b2fc4b8953abd0c094",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Empty Locations Cubes"
+          }
+        }
+      },
+      {
+        "name": "d17dc5ae1f2a301ac3fd",
+        "boundFilter": "00d30d3047df1ff4cccf",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Location_Qty"
+          }
+        }
+      },
+      {
+        "name": "e31f6af689f324ebc9e5",
+        "boundFilter": "8f9548f3c9bbc82e3ff2",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "On Hand"
+          }
+        }
+      },
+      {
+        "name": "b8b8084bf04de30dc344",
+        "boundFilter": "d8420d3c8f404bf21d1c",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Products Cubes(CBM)"
+          }
+        }
+      },
+      {
+        "name": "2655edc2c4e7993c72b5",
+        "boundFilter": "bb6d18953b6836b72f53",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Products Pallets Qty"
+          }
+        }
+      },
+      {
+        "name": "f8edbae8b9226dce2674",
+        "boundFilter": "b68893a0233bef520473",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "SKU"
+          }
+        }
+      },
+      {
+        "name": "b1611473182c5209bcd9",
+        "boundFilter": "fb78c61a9cdd347a78eb",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Utilization by cubes"
+          }
+        }
+      },
+      {
+        "name": "543abc01a1eab9695beb",
+        "boundFilter": "9422293f8e24713be1d6",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Utilization by Pallets"
+          }
+        }
+      },
+      {
+        "name": "96e2e138a70db1789d57",
+        "boundFilter": "2ff522191966ef2208cf",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Utilization by Pieces"
+          }
+        }
+      },
+      {
+        "name": "4f0a3fe656a5879ae790",
+        "boundFilter": "1a323061319c300579d7",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "On Hand"
+          }
+        }
+      }
+    ],
+    "referenceScope": "CrossReport"
+  }
+}

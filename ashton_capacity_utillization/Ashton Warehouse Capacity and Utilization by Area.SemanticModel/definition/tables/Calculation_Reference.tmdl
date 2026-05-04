@@ -1,0 +1,49 @@
+table Calculation_Reference
+	lineageTag: 75e832c3-5676-475c-a580-79b4c11546e4
+
+	column No
+		dataType: int64
+		formatString: 0
+		lineageTag: 8ca256ae-e9de-4a24-ad20-eabbce5296a9
+		summarizeBy: sum
+		sourceColumn: No
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Defined Area'
+		dataType: string
+		lineageTag: ef9b1a96-fd0d-4c19-bb50-2a2d3ba67ef1
+		summarizeBy: none
+		sourceColumn: Defined Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Planned for storage products'
+		dataType: string
+		lineageTag: d2acb379-fc7c-4211-a7a9-85a5ea8d6b37
+		summarizeBy: none
+		sourceColumn: Planned for storage products
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Calculation_Reference = m
+		mode: import
+		source =
+				let
+				    Source = SharePoint.Files("https://masterashley.sharepoint.com/sites/AsiaWarehouseOperations/", [ApiVersion = 15]),
+				    #"Filtered Rows" = Table.SelectRows(Source, each ([Extension] = ".xlsx") and ([Name] = "Ashton Capacity.xlsx")),
+				    Custom1 = #"Filtered Rows"{[Name="Ashton Capacity.xlsx",#"Folder Path"="https://masterashley.sharepoint.com/sites/AsiaWarehouseOperations/Shared Documents/Ashton/Four Box/Inventory/whse_capacity/"]}[Content],
+				    #"Imported Excel Workbook" = Excel.Workbook(Custom1),
+				    #"Filtered Rows1" = Table.SelectRows(#"Imported Excel Workbook", each ([Name] = "Calculation_Reference")),
+				    #"Removed Columns" = Table.RemoveColumns(#"Filtered Rows1",{"Name"}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Removed Columns",{"Data"}),
+				    #"Expanded Data" = Table.ExpandTableColumn(#"Removed Other Columns", "Data", {"Column1", "Column2", "Column3"}, {"Data.Column1", "Data.Column2", "Data.Column3"}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Expanded Data", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"No", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

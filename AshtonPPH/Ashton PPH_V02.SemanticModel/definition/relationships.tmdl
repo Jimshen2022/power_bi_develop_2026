@@ -1,0 +1,119 @@
+relationship a3234b9f-1dec-4f2e-a068-8e39e14610aa
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fact_Transactions.start_tran_date
+	toColumn: LocalDateTable_bfd9b925-28df-41ae-898b-bc26f5e80f78.Date
+
+relationship 6051093c-7eed-4600-9899-80232ca752f7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Calendar.Date
+	toColumn: LocalDateTable_774b84c4-d63a-4544-8cb0-0a7d32867b85.Date
+
+relationship 7705e3c2-29b8-417d-bc0a-c401b91b1a78
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Calendar.WeekSaturday
+	toColumn: LocalDateTable_47ef376a-a38c-4658-a403-a86344a75366.Date
+
+relationship 2c2b1c25-1c92-ca14-5e57-e2df08519450
+	fromColumn: Fct_Supervisors_Hours_Pieces.Date
+	toColumn: Dim_Calendar.Date
+
+relationship f1fa95ec-9048-d7d1-2095-00839cf2a0ec
+	fromColumn: Fct_Supervisors_Hours_Pieces.Shift
+	toColumn: Dim_Shift.Shift
+
+relationship 936ded4b-a4de-0e22-30fe-42fa20f2993e
+	fromColumn: Fct_Supervisors_Hours_Pieces.Group
+	toColumn: Dim_Group.Group
+
+relationship bf09fbb3-c833-919c-82c2-171d8dee5cb7
+	fromColumn: Fct_SCOOP_Picking_Replenishment.Group
+	toColumn: Dim_Group.Group
+
+relationship 415c1882-eba3-56c5-b583-09f16e2afc49
+	fromColumn: Fct_SCOOP_Picking_Replenishment.Date
+	toColumn: Dim_Calendar.Date
+
+relationship 275c64f2-8a7a-1930-f67c-492684aff69c
+	fromColumn: Fct_SCOOP_Picking_Replenishment.Shift
+	toColumn: Dim_Shift.Shift
+
+relationship 093f0a9a-4d5d-1be8-0645-9532a86ca6cd
+	fromColumn: Fact_Transactions.shift_date
+	toColumn: Dim_Calendar.Date
+
+relationship d3d882bf-9787-d737-6afa-6ff8ebc1a97b
+	fromColumn: Fact_Transactions.shift
+	toColumn: Dim_Shift.Shift
+
+relationship fe4d2a74-f6e5-7f89-dc9b-d2032ef1179a
+	fromColumn: Fact_Transactions.pph_type
+	toColumn: Dim_PPH_Type.pph_type
+
+relationship 222ea51b-c59c-ea22-b899-74de67c25dcd
+	fromColumn: Fct_Supervisors_Hours_Pieces.PPH_Type
+	toColumn: Dim_PPH_Type.pph_type
+
+relationship eaad381a-1312-08a6-3ea1-2640ae1e97b5
+	fromColumn: Fct_SCOOP_Picking_Replenishment.PPH_Type
+	toColumn: Dim_PPH_Type.pph_type
+
+relationship AutoDetected_83224863-0845-4228-b907-487dfe56ded4
+	fromColumn: Fct_Supervisors_Hours_Pieces.Employee_ID
+	toColumn: Dim_Employee_.Employee_ID
+
+relationship cf6e7a24-e7db-fa7f-7cfa-1a6ffb867885
+	fromColumn: Fact_Transactions.employee_id
+	toColumn: Dim_Employee_.Employee_ID
+
+relationship 84e527ea-1176-23f5-c0b5-b2fa3e3f2a27
+	fromColumn: Fct_SCOOP_Picking_Replenishment.Employee_ID
+	toColumn: Dim_Employee_.Employee_ID
+
+relationship 27ef932c-2211-64f4-b380-c88e317e3d40
+	fromColumn: Fct_Supervisors_Hours_Pieces.Team
+	toColumn: Dim_Team.Team
+
+relationship c31c0c6e-caf1-736c-a72e-a206f4f4f26f
+	fromColumn: Fct_Supervisors_Hours_Pieces.Position
+	toColumn: Dim_Position.Position
+
+relationship 3e934401-f9db-46c6-7fde-d19493dcf78b
+	fromColumn: Fct_SCOOP_Picking_Replenishment.Team
+	toColumn: Dim_Team.Team
+
+relationship 3cfb42bf-4259-68f6-2889-4279f9ab8b01
+	fromColumn: Fct_SCOOP_Picking_Replenishment.Position
+	toColumn: Dim_Position.Position
+
+relationship 20a366b3-3115-7544-bd59-8790901b680a
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Dim_Metric.MetricName
+	toColumn: Fct_metrics_goal.MetricName
+
+relationship b1150e8c-3a18-46fd-917a-68834517e0f8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fct_All_Details_Rows_Summary.YearSaturday
+	toColumn: LocalDateTable_b86c50ad-fe11-4891-9a77-45a29a95806f.Date
+
+relationship 5cf67750-1821-ace5-047a-f88c0275e13c
+	fromColumn: Fct_All_Details_Rows_Summary.Date
+	toColumn: Dim_Calendar.Date
+
+relationship c5a9f185-eb3c-f7da-226e-b9321abff863
+	fromColumn: Fct_All_Details_Rows_Summary.Employee_ID
+	toColumn: Dim_Employee_.Employee_ID
+
+relationship 03b097a4-2b51-e8c6-4e20-a99231a9cde6
+	fromColumn: Fct_All_Details_Rows_Summary.Position
+	toColumn: Dim_Position.Position
+
+relationship 04725ea0-98ce-e7a1-a010-a296589d2d58
+	fromColumn: Fct_All_Details_Rows_Summary.MetricName
+	toColumn: Fct_metrics_goal.MetricName
+
+relationship 56e8f416-294b-4c77-9357-5b2a9c27711c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fct_Supervisors_Hours_Pieces.WeekSaturday
+	toColumn: LocalDateTable_6d660a9b-99c3-48bc-ad8b-fb481858e6a6.Date
+

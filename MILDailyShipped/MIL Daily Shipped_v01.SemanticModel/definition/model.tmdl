@@ -1,0 +1,26 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["D_Measure","fct_MILCNTDETAILS","fct_mil_loading_audit"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_2ea68546-ed84-4156-8bbe-4d58a26727d6
+ref table D_Measure
+ref table fct_MILCNTDETAILS
+ref table D_Date
+ref table D_Product_Category
+ref table fct_mil_loading_audit
+ref table LocalDateTable_6964c371-f2fe-4bcc-bcbf-2eda93ea502a
+ref table LocalDateTable_22855ec9-91d1-43df-8464-207e9494b206
+ref table LocalDateTable_f561553f-1413-4652-b508-2e087b0bf9e0
+
+ref cultureInfo en-US
+

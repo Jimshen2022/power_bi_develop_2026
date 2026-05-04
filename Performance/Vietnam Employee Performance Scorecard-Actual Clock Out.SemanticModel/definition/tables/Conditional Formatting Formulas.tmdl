@@ -1,0 +1,170 @@
+table 'Conditional Formatting Formulas'
+	lineageTag: 285f4774-38cc-4883-94f2-0f5b86c33ea2
+
+	measure 'Ecomm F7 formatting' = IF([ECOMM F7 Exceptions]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="F7 Ecomm Exceptions"))*[# of Days Worked],"#DE6A73")
+		lineageTag: e12a0166-071b-4e34-9f70-69c0f519c5e7
+
+	measure 'F1 formatting' = IF([F1 Exceptions]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="F1 Exceptions"))*[# of Days Worked],"#DE6A73")
+		lineageTag: d60c8a63-eccd-4ad6-bb5e-5d66c430efd5
+
+	measure 'F3 formatting' = IF([F3 Exceptions]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="F3 Exceptions"))*[# of Days Worked],"#DE6A73")
+		lineageTag: 84f5aa4e-fcdf-4d38-8f7e-135eff7ea21a
+
+	measure 'F6 formatting' = IF([F6 Exceptions]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="F6 Exceptions"))*[# of Days Worked],"#DE6A73")
+		lineageTag: 31822d3f-bb94-40a2-90c1-c87c8434f273
+
+	measure 'F8 formatting' = IF([F8 Exceptions]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="F8 Exceptions"))*[# of Days Worked],"#DE6A73")
+		lineageTag: dab2740e-ce69-48f4-87cc-046db9902840
+
+	measure 'Shipping F7 formatting' = IF([Shipping F7 Exceptions]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="F7 Shipping Exceptions"))*[# of Days Worked],"#DE6A73")
+		lineageTag: 4c494e20-b17c-45c1-85b0-cbbcf54d06de
+
+	measure 'Transfers F7 formatting' = IF([Transfer F7 Exceptions]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="F7 Transfers Exceptions"))*[# of Days Worked],"#DE6A73")
+		lineageTag: 62d00ed3-c93c-40a0-9ee2-ee17260489c6
+
+	measure '# of Break Locks formatting' = IF([Break Trans Exceeding SAM Lock]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="# of Break Locks"))*[# of Days Worked],"#DE6A73")
+		lineageTag: 6ad8a020-9b73-480c-89f7-1376f282ad50
+
+	measure '# of Loading SAM Locks formatting' = IF([Loading Occurrences Exceeding SAM Lock]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="# of Loading SAM Locks"))*[# of Days Worked],"#DE6A73")
+		lineageTag: d1952c2d-308b-45c1-81a5-e2c8a4ed96cf
+
+	measure '# of Lunch Locks formatting' = IF([Lunch Trans Exceeding SAM Lock]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="# of Lunch Locks"))*[# of Days Worked],"#DE6A73")
+		lineageTag: 60f9478e-23b7-455d-8256-5f25d71f1c86
+
+	measure '# of Picking SAM Locks formatting' = IF([Picking Occurrences Exceeding SAM Lock]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="# of Picking SAM Locks"))*[# of Days Worked],"#DE6A73")
+		lineageTag: 09f4a487-3f54-4dc5-9e51-1244d759d558
+
+	measure 'Mins. exceeding SAM formatting' = IF([Mins. Exceeding SAMS]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="Mins. exceeding SAM"))*[# of Days Worked],"#DE6A73")
+		lineageTag: a324cdeb-c378-4820-9043-f8f7d14ff94a
+
+	measure 'Start of Day formatting' = IF([Start of Day Weekly]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="Start of Day Mins.")),"#DE6A73")
+		lineageTag: 1f7d644e-076a-42fc-ae9a-2eab66d25214
+
+	measure 'End of Day formatting' = IF([End of Day Weekly]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="End of Day Mins.")),"#DE6A73")
+		lineageTag: 94f80624-a78b-439c-af8e-5ab3679e0384
+
+	measure 'Performance % formatting' = IF([Perf % Final Weekly]<CALCULATE(Sum('Performance Goals'[Number format]),FILTER('Performance Goals','Performance Goals'[Measure]="Performance %")),IF([Perf % Final Weekly]<>BLANK(),"#DE6A73"))
+		lineageTag: fb93d6cf-804d-474b-a08b-6659534e59be
+
+	measure 'Efficiency % formatting' = IF([Eff % Weekly]<CALCULATE(Sum('Performance Goals'[Number format]),FILTER('Performance Goals','Performance Goals'[Measure]="Efficiency %")),IF([Eff % Weekly]<>BLANK(),"#DE6A73"))
+		lineageTag: e27fe8f4-8d2c-4a06-a9dd-c90787dc4c8c
+
+	measure 'Direct Time % formatting' = IF([Direct Time % Weekly]<CALCULATE(Sum('Performance Goals'[Number format]),FILTER('Performance Goals','Performance Goals'[Measure]="Direct Time %")),IF([Direct Time % Weekly]<>BLANK(),"#DE6A73"))
+		lineageTag: 395958c3-1053-4643-b343-822ad0bbb796
+
+	measure 'Indirect Time % formatting' = IF([Indirect Time % Weekly]>CALCULATE(Sum('Performance Goals'[Number format]),FILTER('Performance Goals','Performance Goals'[Measure]="Indirect Time %")),"#DE6A73")
+		lineageTag: cb1bb307-6d8f-422c-ad55-24abe53128af
+
+	measure 'Lost Time % formatting' = IF([Lost Time % Weekly]>CALCULATE(Sum('Performance Goals'[Number format]),FILTER('Performance Goals','Performance Goals'[Measure]="Lost Time %")),"#DE6A73")
+		lineageTag: 56914e93-148a-4899-b610-afc9561ccf21
+
+	measure 'Gap Time formatting' = IF([Gap Time (Hrs) Final]>CALCULATE(Sum('Performance Goals'[Number format]),FILTER('Performance Goals','Performance Goals'[Measure]="Gap Time (Hrs)")),"#DE6A73")
+		lineageTag: d7b9283c-c966-473b-97bc-a9c9eff39fe4
+
+	measure 'Lunch Logins formatting' = IF([Lunch Log Ins]<>CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="# of Lunch Logins"))*[# of Days Worked],"#DE6A73")
+		lineageTag: 9f090153-efcc-4e2e-b957-640673b883ed
+
+	measure 'Break Logins formatting' = IF([Break Log Ins]<>CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="# of Break Logins"))*[# of Days Worked],"#DE6A73")
+		lineageTag: 5d9c35c0-9787-44c9-95ce-311e958dacea
+
+	measure '# of Break Locks formatting overall' = IF([Break Trans Exceeding SAM Lock]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="# of Break Locks"))*[Headcount],"#DE6A73")
+		lineageTag: e7a7c998-9b96-4419-9f67-a559b8afdf84
+
+	measure 'Mins. exceeding SAM formatting overall' = IF([Mins. Exceeding SAMS]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="Mins. exceeding SAM"))*[Headcount],"#DE6A73")
+		lineageTag: 495a889e-3dfb-4d75-82e1-e84de46d1a46
+
+	measure '# of Loading SAM Locks formatting overall' = IF([Loading Occurrences Exceeding SAM Lock]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="# of Loading SAM Locks"))*[Headcount],"#DE6A73")
+		lineageTag: 74acc90c-d68e-48c4-994e-d701da4f164a
+
+	measure '# of Lunch Locks formatting overall' = IF([Lunch Trans Exceeding SAM Lock]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="# of Lunch Locks"))*[Headcount],"#DE6A73")
+		lineageTag: 52fdc447-4c99-4b81-b618-af46bf9d96af
+
+	measure '# of Picking SAM Locks formatting overall' = IF([Picking Occurrences Exceeding SAM Lock]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="# of Picking SAM Locks"))*[Headcount],"#DE6A73")
+		lineageTag: ddd009ca-2c89-490e-bba1-a213ec9665c2
+
+	measure 'Break Logins formatting overall' = IF([Break Log Ins]>CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="# of Break Logins"))*[Headcount],"#DE6A73")
+		lineageTag: 8d5725ba-1bb1-4c4c-9765-a9578ed3e778
+
+	measure 'Ecomm F7 formatting overall' = IF([ECOMM F7 Exceptions]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="F7 Ecomm Exceptions"))*[Headcount],"#DE6A73")
+		lineageTag: e8bf2e9c-600a-44e5-b612-36028d3cc310
+
+	measure 'F1 formatting overall' = IF([F1 Exceptions]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="F1 Exceptions"))*[Headcount],"#DE6A73")
+		lineageTag: 63be3549-e6c8-4a06-a2d3-f3bd4ee54332
+
+	measure 'F3 formatting overall' = IF([F3 Exceptions]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="F3 Exceptions"))*[Headcount],"#DE6A73")
+		lineageTag: f6921fa3-7f68-4642-a93b-ac6924a8a6e1
+
+	measure 'F6 formatting overall' = IF([F6 Exceptions]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="F6 Exceptions"))*[Headcount],"#DE6A73")
+		lineageTag: 55327ede-cab0-47a6-b0c0-c068f1738cca
+
+	measure 'F8 formatting overall' = IF([F8 Exceptions]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="F8 Exceptions"))*[Headcount],"#DE6A73")
+		lineageTag: b362f91d-f85d-4422-b6bd-2eb2e02a2f52
+
+	measure 'Lunch Logins formatting overall' = IF([Lunch Log Ins]>CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="# of Lunch Logins"))*[Headcount],"#DE6A73")
+		lineageTag: 6e7be671-b7e5-43fd-bc4f-d66d690f8a89
+
+	measure 'Shipping F7 formatting overall' = IF([Shipping F7 Exceptions]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="F7 Exceptions"))*[Headcount],"#DE6A73")
+		lineageTag: 87b7a872-e75f-4925-872a-42371b12f9e8
+
+	measure 'Transfers F7 formatting overall' = IF([Transfer F7 Exceptions]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="F7 Transfers Exceptions"))*[Headcount],"#DE6A73")
+		lineageTag: f29c0d1a-e528-468b-90e1-f7461e52ca8a
+
+	measure 'Approved Battery Changes formatting' = IF([# of Battery Changes Approved]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="Approved Battery Changes"))*[# of Days Worked],"#DE6A73")
+		lineageTag: 2c5925f9-4223-4ee9-816d-62cc6a18683b
+
+	measure 'Approved Battery Changes formatting overall' = IF([# of Battery Changes Approved]>=CALCULATE(Sum('Performance Goals'[Goal]),FILTER('Performance Goals','Performance Goals'[Measure]="Approved Battery Changes"))*[Headcount],"#DE6A73")
+		lineageTag: 61b40e4e-3298-4a79-85ad-22039604857b
+
+	measure 'Mins in Approved Battery Change formatting' = IF([Battery Change Time Approved]>=CALCULATE(Sum('Performance Goals'[Number format]),FILTER('Performance Goals','Performance Goals'[Measure]="Mins. of Approved Battery Change")),"#DE6A73")
+		lineageTag: f8f5e6c4-c6bf-4c3a-b9f0-0caf516a5212
+
+	measure 'Break Over Time formatting_Jim' = IF('Summed Process Report'[Break Over Hours]>=0.083,"#DE6A73")
+		lineageTag: 2640debe-c0b1-4c5b-a388-781b944ae050
+
+	measure 'Lunch Over Time formatting_Jim' = IF('Summed Process Report'[Lunch Over Hours]>=0.083,"#DE6A73")
+		lineageTag: 1248db78-dfde-4e3b-92fb-6c8dd84e2e51
+
+	measure 'StartOfDayMins formatting_Jim' =
+			
+			SWITCH(
+			    TRUE(),
+			    ISBLANK('Start/End of Day'[Start of Day]), "#DE6A73", // 1. 如果为空值，显示红色
+			    'Start/End of Day'[Start of Day] > 60, "#DE6A73",     // 2. 大于60，显示红色
+			    'Start/End of Day'[Start of Day] > 30, "#FFD966",     // 3. 30到60之间，显示黄色
+			    'Start/End of Day'[Start of Day] >= 0, "#93C47D",     // 4. 0到30之间，显示绿色
+			    BLANK()                                               // 5. 其他异常情况（如负数）保持透明
+			)
+		lineageTag: 5fc1ed2d-7de3-47c1-bd60-782646e95877
+
+	measure 'EndOfDayMins formatting_Jim' = ```
+			
+			SWITCH(
+			    TRUE(),
+			    ISBLANK('Start/End of Day'[End of Day]), "#DE6A73", 
+			    'Start/End of Day'[End of Day] > 60, "#DE6A73",   // 大于60为红色 (沿用你之前的红色)
+			    'Start/End of Day'[End of Day] > 30, "#FFD966",   // 30到60之间为黄色
+			    'Start/End of Day'[End of Day] >= 0, "#93C47D",   // 小于等于30为绿色 (假设不处理负数)
+			    BLANK()                                             // 处理空值，保持底色透明
+			)
+			```
+		lineageTag: 2f8987ea-d013-4aa7-8350-94a1f1135071
+
+	column Column1
+		dataType: string
+		lineageTag: 37be7af5-c6b8-462f-920a-b100780d66a8
+		summarizeBy: none
+		sourceColumn: Column1
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Conditional Formatting Formulas' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Exception
+

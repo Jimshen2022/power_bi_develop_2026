@@ -1,0 +1,132 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.2.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY24SU10",
+      "reportVersionAtImport": {
+        "visual": "1.8.95",
+        "report": "2.0.95",
+        "page": "1.3.95"
+      },
+      "type": "SharedResources"
+    },
+    "customTheme": {
+      "name": "AccessibleDefault",
+      "reportVersionAtImport": {
+        "visual": "2.1.0",
+        "report": "2.1.0",
+        "page": "2.0.0"
+      },
+      "type": "SharedResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "publicCustomVisuals": [
+    "controlChart472594076712483CA839CF8D0F61F2F1",
+    "controlChartXmRA59AC4AAE43A4F0086A0A8F797DEC983",
+    "htmlContent443BE3AD55E043BF878BED274D3A6855",
+    "individualsmovingrange42E8DF98F1244DB799B2A8A65DBCB226",
+    "paretoEDD8E69761BA4B7BB3AA6D813990D7BF",
+    "paretoplus2EFEC13210A14D3E82580687601DE984",
+    "PBI_CV_7B952816_A48F_49B4_9E13_15E3BB2C0337",
+    "simpleImageEBC4593F96F1425FB3D84C5BF02B5075",
+    "xbar42E8DF98F1244DB799B2A8A65DBCB226"
+  ],
+  "resourcePackages": [
+    {
+      "name": "Histogram1445664487616_OrgStore",
+      "type": "OrganizationalStoreCustomVisual",
+      "items": [
+        {
+          "name": "resources/Histogram1445664487616_OrgStore.pbiviz.json",
+          "path": "2/5a9d9cfd-c32e-4ac1-a9ed-fe83df4f9e4d/ResourcePackage/BlobIdV2-d0566271-ef57-4573-ac2f-aabacffc6485FNeEv9a91VVQ42yMAo0koMp0FV9YOEu7AgKfbwgp70o=.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    },
+    {
+      "name": "bciCalendarCC0FA2BFE4B54EE1ACCFE383B9B1DE61_OrgStore",
+      "type": "OrganizationalStoreCustomVisual",
+      "items": [
+        {
+          "name": "resources/bciCalendarCC0FA2BFE4B54EE1ACCFE383B9B1DE61_OrgStore.pbiviz.json",
+          "path": "2/5a9d9cfd-c32e-4ac1-a9ed-fe83df4f9e4d/ResourcePackage/BlobIdV2-55511fd7-b65d-4137-a409-c63db20a4926kkmZ0DLtdI4bHZcpT9XGnzuffWw5eRNL6WclS3GN7Sc=.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    },
+    {
+      "name": "scatterChartByAkvelon6CFB0DAB29E746BE850B6DFD1E2789FD_OrgStore",
+      "type": "OrganizationalStoreCustomVisual",
+      "items": [
+        {
+          "name": "resources/scatterChartByAkvelon6CFB0DAB29E746BE850B6DFD1E2789FD_OrgStore.pbiviz.json",
+          "path": "2/5a9d9cfd-c32e-4ac1-a9ed-fe83df4f9e4d/ResourcePackage/BlobIdV2-60fdb473-4614-4390-8763-8ed6c589c4826-Pv8RuLGMzch6fJZ.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    },
+    {
+      "name": "lineGraphVisual0952D5E9314D4CC6B50EB4BFBE30DEB9_OrgStore",
+      "type": "OrganizationalStoreCustomVisual",
+      "items": [
+        {
+          "name": "resources/lineGraphVisual0952D5E9314D4CC6B50EB4BFBE30DEB9_OrgStore.pbiviz.json",
+          "path": "2/5a9d9cfd-c32e-4ac1-a9ed-fe83df4f9e4d/ResourcePackage/BlobIdV2-c8ef48b5-7c8e-4091-b4f7-170a98899511qA.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    },
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "AccessibleDefault",
+          "path": "BuiltInThemes/AccessibleDefault.json",
+          "type": "CustomTheme"
+        },
+        {
+          "name": "CY24SU10",
+          "path": "BaseThemes/CY24SU10.json",
+          "type": "BaseTheme"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  }
+}

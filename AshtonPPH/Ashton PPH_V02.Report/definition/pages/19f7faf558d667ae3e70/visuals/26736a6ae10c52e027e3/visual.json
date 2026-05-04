@@ -1,0 +1,647 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "26736a6ae10c52e027e3",
+  "position": {
+    "x": 10.150674068199843,
+    "y": 0,
+    "z": 0,
+    "height": 719.68279143536881,
+    "width": 1269.8493259318002,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "# 📊",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#79b8ff"
+                    }
+                  },
+                  {
+                    "value": " PPH Metrics Guideline",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "24pt",
+                      "color": "#79b8ff"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "## 🚚 All in PPH Shipping",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#79b8ff"
+                    }
+                  },
+                  {
+                    "value": " =  (Total Qty of ",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#e1e4e8"
+                    }
+                  },
+                  {
+                    "value": "loading",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#dafb05"
+                    }
+                  },
+                  {
+                    "value": ") / (Total HR hour of loader + sup + team + data) + (Total HR hour of picker + sup + team + data) ",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#e1e4e8"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "## 🏗️ All in PPH for CG receiving  = ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#79b8ff"
+                    }
+                  },
+                  {
+                    "value": "(Total Qty of ",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#e1e4e8"
+                    }
+                  },
+                  {
+                    "value": "put away",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#dafb05"
+                    }
+                  },
+                  {
+                    "value": ") / (Total HR hour of ",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#e1e4e8"
+                    }
+                  },
+                  {
+                    "value": "\"Put away\",\"Unloading\",\"Picking-SCOOP\",\"Replenishment\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "12px",
+                      "color": "#dafb05"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "12px",
+                      "color": "#a31515"
+                    }
+                  },
+                  {
+                    "value": " + sup + team + data) ",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#e1e4e8"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "## 📦 All in PPH for UPH receiving = ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#79b8ff"
+                    }
+                  },
+                  {
+                    "value": "(Total Qty of ",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#e1e4e8"
+                    }
+                  },
+                  {
+                    "value": "put away",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#dafb05"
+                    }
+                  },
+                  {
+                    "value": ") / (Total HR hour of ",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#e1e4e8"
+                    }
+                  },
+                  {
+                    "value": "\"Put away\",\"Unloading\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "12px",
+                      "color": "#dafb05"
+                    }
+                  },
+                  {
+                    "value": " + sup + team + data)",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#e1e4e8"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "## 📦 Individual Loading PPH  = ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#79b8ff"
+                    }
+                  },
+                  {
+                    "value": "  ",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#e1e4e8"
+                    }
+                  },
+                  {
+                    "value": "Average ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#79b8ff"
+                    }
+                  },
+                  {
+                    "value": "[(employee by team Qty of ",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#e1e4e8"
+                    }
+                  },
+                  {
+                    "value": "loading",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#dafb05"
+                    }
+                  },
+                  {
+                    "value": ") / (employee by team work hours of loading)]",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#e1e4e8"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "## 📦 Individual Picking PPH  = Average [",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#79b8ff"
+                    }
+                  },
+                  {
+                    "value": "(employee by team Qty of ",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#e1e4e8"
+                    }
+                  },
+                  {
+                    "value": "picking",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#dafb05"
+                    }
+                  },
+                  {
+                    "value": ") / (employee by team work hours of picker)]",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#e1e4e8"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "## 📦 Individual CG Unload =  ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#79b8ff"
+                    }
+                  },
+                  {
+                    "value": " ",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#e1e4e8"
+                    }
+                  },
+                  {
+                    "value": "Average [",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#79b8ff"
+                    }
+                  },
+                  {
+                    "value": "(employee by team Qty of ",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#e1e4e8"
+                    }
+                  },
+                  {
+                    "value": "CG Unloading",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#dafb05"
+                    }
+                  },
+                  {
+                    "value": ") / (employee by team work hours of CG unloading)]",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#e1e4e8"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "## 📦 Individual UPH Unload =",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#79b8ff"
+                    }
+                  },
+                  {
+                    "value": "  ",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#e1e4e8"
+                    }
+                  },
+                  {
+                    "value": "Average [",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#79b8ff"
+                    }
+                  },
+                  {
+                    "value": "(employee by team Qty of",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#e1e4e8"
+                    }
+                  },
+                  {
+                    "value": " UPH Unloading",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#dafb05"
+                    }
+                  },
+                  {
+                    "value": ") / (employee by team work hours of UPH unloading)]",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#e1e4e8"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "## 🧰 Individual CG Put away = ",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#79b8ff"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "             Average [",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#79b8ff"
+                    }
+                  },
+                  {
+                    "value": " (employee by team Qty of ",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#e1e4e8"
+                    }
+                  },
+                  {
+                    "value": "\"Put away\",\"Picking-SCOOP\",\"Replenishment\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "12px",
+                      "color": "#dafb05"
+                    }
+                  },
+                  {
+                    "value": ") / (employee by team work hours of ",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#e1e4e8"
+                    }
+                  },
+                  {
+                    "value": "\"Put away\", \"Picking-SCOOP\",\"Replenishment\"",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "12px",
+                      "color": "#dafb05"
+                    }
+                  },
+                  {
+                    "value": ")]",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#e1e4e8"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "## 🧰 Individual UPH Put away = Average [",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#79b8ff"
+                    }
+                  },
+                  {
+                    "value": " (employee by team Qty of UPH Putaway) / (employee by team work hours of ",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#e1e4e8"
+                    }
+                  },
+                  {
+                    "value": "UPH Put away",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "12px",
+                      "color": "#dafb05"
+                    }
+                  },
+                  {
+                    "value": ")]",
+                    "textStyle": {
+                      "fontFamily": "Consolas, Courier New, monospace",
+                      "fontSize": "14px",
+                      "color": "#e1e4e8"
+                    }
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

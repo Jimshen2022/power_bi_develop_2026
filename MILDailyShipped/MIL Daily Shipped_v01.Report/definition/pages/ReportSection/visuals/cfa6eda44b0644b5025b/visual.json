@@ -1,0 +1,288 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "cfa6eda44b0644b5025b",
+  "position": {
+    "x": 746.40586797066021,
+    "y": 347.38386308068459,
+    "z": 2000,
+    "height": 372.42053789731051,
+    "width": 533.5941320293399,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "D_Date"
+                    }
+                  },
+                  "Property": "Date"
+                }
+              },
+              "queryRef": "D_Date.Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_MILCNTDETAILS"
+                    }
+                  },
+                  "Property": "CONTAINER#"
+                }
+              },
+              "queryRef": "MILCNTDETAILS.CONTAINER#",
+              "displayName": "Container Number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_MILCNTDETAILS"
+                    }
+                  },
+                  "Property": "ITEMNUMBER"
+                }
+              },
+              "queryRef": "MILCNTDETAILS.ITEMNUMBER",
+              "displayName": "Item Number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_MILCNTDETAILS"
+                    }
+                  },
+                  "Property": "PRODUCT"
+                }
+              },
+              "queryRef": "MILCNTDETAILS.PRODUCT",
+              "displayName": "Product"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_MILCNTDETAILS"
+                        }
+                      },
+                      "Property": "QTY"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(MILCNTDETAILS.QTY)",
+              "displayName": "Q'ty"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_MILCNTDETAILS"
+                        }
+                      },
+                      "Property": "CUBES"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(MILCNTDETAILS.CUBES)",
+              "displayName": "ItemCubes"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_MILCNTDETAILS"
+                        }
+                      },
+                      "Property": "H_CUBES"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(MILCNTDETAILS.H_CUBES)",
+              "nativeQueryRef": "ContainerCubes",
+              "displayName": "ContainerCubes"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_MILCNTDETAILS"
+                    }
+                  },
+                  "Property": "Container Utilization%"
+                }
+              },
+              "queryRef": "Sum(MILCNTDETAILS.Container Utilization%)",
+              "nativeQueryRef": "Container Utilization%1"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "MILCNTDETAILS"
+                  }
+                },
+                "Property": "Container#"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "250.6366441704062D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MILCNTDETAILS.CONTAINER#"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "98.17363344051446D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MILCNTDETAILS.ITEMNUMBER"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'BoldHeader'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Mixed Container Details'"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "titleWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "13D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

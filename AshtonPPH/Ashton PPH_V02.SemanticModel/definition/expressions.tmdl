@@ -1,0 +1,93 @@
+expression GetTotalPieces =
+		// let
+		//     GetTransactionPieces = (ShiftDate as any, EmployeeID as text, PPHType as text) as nullable number =>
+		//     let
+		//         // 确保 ShiftDate 是日期类型
+		//         ShiftDateConverted = if Value.Is(ShiftDate, type date) then ShiftDate else Date.FromText(ShiftDate),
+		//         // 筛选符合条件的行
+		//         FilteredRows = Table.SelectRows(Fact_Transactions, each [shift_date] = ShiftDateConverted and [employee_id] = EmployeeID and [pph_type] = PPHType),
+		//         // 计算 pieces 字段的总和
+		//         TotalPieces = if Table.IsEmpty(FilteredRows) then 0 else List.Sum(FilteredRows[pieces])
+		//     in
+		//         TotalPieces
+		// in
+		//     GetTransactionPieces
+		
+		
+		    let
+		    GroupedTransactions = Table.Group(
+		        Fact_Transactions,
+		        {"shift_date", "employee_id", "pph_type","product_category"},
+		        {"TotalPieces", each List.Sum([pieces]), type nullable number}
+		    ),
+		    GetTransactionPieces = (ShiftDate as date, EmployeeID as text, PPHType as text, product_category as text) as nullable number =>
+		        let
+		            Lookup = Table.SelectRows(GroupedTransactions, each [shift_date] = ShiftDate and [employee_id] = EmployeeID and [pph_type] = PPHType and [product_category]=product_category),
+		            Result = if Table.IsEmpty(Lookup) then 0 else Record.Field(Table.First(Lookup), "TotalPieces")
+		        in
+		            Result
+		in
+		    GetTransactionPieces
+	lineageTag: 535a84e7-f3ff-4dea-a499-fd875ee85de8
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+expression A_Measures =
+		let
+		    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+		    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+		    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+		in
+		    #"Removed Columns"
+	lineageTag: cd640b28-3d74-45a3-b930-e70996b314c4
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression Parameter1 = #"Sample File" meta [IsParameterQuery=true, BinaryIdentifier=#"Sample File", Type="Binary", IsParameterQueryRequired=true]
+	lineageTag: 7e8ce0d4-19c0-42db-89ad-fce761f88c60
+	queryGroup: 'Transform File from Query1\Helper Queries'
+
+	annotation PBI_ResultType = Binary
+
+expression 'Transform Sample File' =
+		let
+		    Source = Excel.Workbook(Parameter1, null, true),
+		    Sheet1_Sheet = Source{[Item="Sheet1",Kind="Sheet"]}[Data]
+		in
+		    Sheet1_Sheet
+	lineageTag: 2e043540-70d3-4848-83cf-74e2ca0699cf
+	queryGroup: 'Transform File from Query1'
+
+	annotation PBI_ResultType = Table
+
+expression 'Sample File' =
+		let
+		    Source = SharePoint.Files("https://masterashley.sharepoint.com/sites/AsiaWarehouseOperations/ashton/", [ApiVersion = 15]),
+		    #"Filtered Rows" = Table.SelectRows(Source, each ([Extension] = ".xlsx") and ([Name] = "ashton_pph_metrics.xlsx")),
+		    #"Removed Other Columns" = Table.SelectColumns(#"Filtered Rows",{"Content"}),
+		    Navigation1 = #"Removed Other Columns"{0}[Content]
+		in
+		    Navigation1
+	lineageTag: 18dc0362-ce71-479a-8976-63f5c66be53b
+	queryGroup: 'Transform File from Query1\Helper Queries'
+
+	annotation PBI_ResultType = Binary
+
+expression 'Transform File' =
+		let
+		    Source = (Parameter1 as binary) => let
+		    Source = Excel.Workbook(Parameter1, null, true),
+		    Sheet1_Sheet = Source{[Item="Sheet1",Kind="Sheet"]}[Data]
+		in
+		    Sheet1_Sheet
+		in
+		    Source
+	lineageTag: 13bc5990-3a90-478d-a496-44836b3bf5a9
+	queryGroup: 'Transform File from Query1\Helper Queries'
+
+	annotation PBI_ResultType = Function
+

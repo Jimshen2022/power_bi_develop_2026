@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "10_All in PPH Putaway CG_",
+  "name": "5fa8da38a6893ae19107",
+  "options": {
+    "targetVisualNames": [
+      "e48f704d0c7ab922cd3e"
+    ]
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "8d6f521d6b894dd16de7",
+    "sections": {
+      "8d6f521d6b894dd16de7": {
+        "visualContainers": {}
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+table Dim_Category
+	lineageTag: e51979c7-13a8-46ee-a0de-21f5a439ec8e
+
+	column Category
+		lineageTag: a0c167cc-7ae3-4901-bc99-450c60ea51ab
+		summarizeBy: none
+		sourceColumn: fct_item_category[Category for report]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Category = calculated
+		mode: import
+		source =
+				
+				FILTER(
+				    VALUES('fct_item_category'[Category for report]),
+				    NOT(ISBLANK('fct_item_category'[Category for report])) &&
+				    'fct_item_category'[Category for report] <> ""
+				)
+
+	annotation PBI_Id = 0c563b19aa244c698265f8583774c974
+

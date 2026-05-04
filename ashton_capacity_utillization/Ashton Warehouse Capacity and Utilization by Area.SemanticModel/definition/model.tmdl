@@ -1,0 +1,29 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		fastCombine
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["F_STO","F_Ashton_Locations","A_Measure","Calculation_Reference"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table F_STO
+ref table DateTableTemplate_0be3cb2b-4677-4956-b85c-be3824f4c659
+ref table LocalDateTable_5536d891-8002-4de6-a6b0-1fea743e33e4
+ref table LocalDateTable_76e6ff50-e5dc-4d39-b933-ad75a08242f1
+ref table F_Ashton_Locations
+ref table A_Measure
+ref table Area
+ref table Sub_Area_1
+ref table Sub_Area_2
+ref table Product_Category
+ref table Calculation_Reference
+
+ref cultureInfo en-US
+

@@ -1,0 +1,35 @@
+relationship cc49c439-0248-414b-aa3d-f271f6c1a0b6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: F_STO.fifo_date
+	toColumn: LocalDateTable_5536d891-8002-4de6-a6b0-1fea743e33e4.Date
+
+relationship cb50984b-7d9a-4a6b-b658-2f99725ade58
+	joinOnDateBehavior: datePartOnly
+	fromColumn: F_STO.expiration_date
+	toColumn: LocalDateTable_76e6ff50-e5dc-4d39-b933-ad75a08242f1.Date
+
+relationship AutoDetected_734b2443-654c-4618-8c3e-d13f70298239
+	fromColumn: F_STO.location_id
+	toColumn: F_Ashton_Locations.'Location ID'
+
+relationship 0f592f4b-8ec5-23da-afc4-9da4ee0527c9
+	fromColumn: Sub_Area_1.Area
+	toColumn: Area.Area
+
+relationship 1e7b3f68-325c-1358-8188-d03e9d0e7bf4
+	fromColumn: Sub_Area_2.Sub_Area_1
+	toColumn: Sub_Area_1.Sub_Area_1
+
+relationship bd9b147f-2620-7dce-90e8-07569d938cd1
+	fromColumn: F_Ashton_Locations.Sub_Area_2
+	toColumn: Sub_Area_2.Sub_Area_2
+
+relationship 355945af-6cb9-ab6b-664e-dd37e2e5e54d
+	fromColumn: F_STO.product
+	toColumn: Product_Category.product
+
+relationship 50d83f14-9ca4-115a-07ed-3b372f47c0ea
+	isActive: false
+	fromColumn: F_STO.Sub_Area_2
+	toColumn: Sub_Area_2.Sub_Area_2
+

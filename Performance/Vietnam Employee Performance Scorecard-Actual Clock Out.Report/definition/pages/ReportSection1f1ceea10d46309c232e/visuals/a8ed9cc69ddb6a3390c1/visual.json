@@ -1,0 +1,90 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "a8ed9cc69ddb6a3390c1",
+  "position": {
+    "x": 10.690964312832195,
+    "y": 224.51025056947611,
+    "z": 2000,
+    "height": 386.81852695520126,
+    "width": 180.77448747152621,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "Instructions for updating Role Assignments:"
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": " Gather data like shown in the table.  Note: Employee Number and Name should be exactly as issued in the Highjump Page-Employee List (Page 1169)."
+                  }
+                ],
+                "listType": "ordered"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Fill out the Change Form: "
+                  },
+                  {
+                    "value": "Role Assignment Form",
+                    "textStyle": {},
+                    "url": "https://masterashley.sharepoint.com/:x:/r/sites/AssetManagement/Shared%20Documents/Daily%20Site%20Reporting/Role%20Assignment%20form.xlsm?d=wf6a9bab8835745fe9cb18a82ef765ea5&csf=1&web=1&e=no4T8X"
+                  }
+                ],
+                "listType": "ordered"
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": ""
+                  }
+                ]
+              },
+              {
+                "textRuns": [
+                  {
+                    "value": "Once the changes have been processed, the PowerBI report will reflect the changes when the next scheduled data refresh occurs."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

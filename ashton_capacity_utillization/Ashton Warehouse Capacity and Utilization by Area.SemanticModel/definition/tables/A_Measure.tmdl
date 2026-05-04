@@ -1,0 +1,101 @@
+table A_Measure
+	lineageTag: 385dd4ac-819c-4f1e-9dd6-fa3b0753ead2
+
+	measure 'On Hand' = SUM('F_Ashton_Locations'[Product_OnHand])
+		formatString: #,0
+		lineageTag: 2b033bb4-4f3e-4499-81c9-dc0a2618d673
+
+	measure Location_Qty = COUNTROWS(VALUES('F_Ashton_Locations'[Location ID]))
+		formatString: #,0
+		lineageTag: 3600ebc8-735b-4a0b-90c1-4a57118f356e
+
+	measure SKU = COUNTROWS(VALUES('F_STO'[item_number]))
+		formatString: 0
+		lineageTag: 2b3b1746-786c-4666-a918-dc183ae9bc4a
+
+	measure 'Empty Location Qty' = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT(F_Ashton_Locations[Location ID]),
+			    'F_Ashton_Locations'[Loc_Control_Value] = "A",
+			    'F_Ashton_Locations'[Switch] = "ON",
+			    'F_Ashton_Locations'[Product_OnHand] = 0
+			)
+			
+			```
+		formatString: #,0
+		lineageTag: 33a5cd45-c443-4d4a-83ba-f18c2d4820ba
+
+	measure 'Capacity by Pieces' = SUM('F_Ashton_Locations'[Capacity(By Pieces)])
+		formatString: #,0
+		lineageTag: d2c142d9-1fbe-4eb7-b122-a69fdd580313
+
+	measure 'Capacity by Cubes(CBM)' = SUM('F_Ashton_Locations'[Location_CBM])
+		formatString: #,0
+		lineageTag: 11585743-ac9e-4be2-9322-dc67146a3253
+
+	measure 'Empty Locations Cubes' = ```
+			
+			CALCULATE(
+			    'A_Measure'[Capacity by Cubes(CBM)],
+			    'F_Ashton_Locations'[Loc_Control_Value] = "A",
+			    'F_Ashton_Locations'[Switch] = "ON",
+			    'F_Ashton_Locations'[Product_OnHand] = 0
+			)
+			
+			```
+		formatString: #,0
+		lineageTag: cf30dfb1-037f-4ed5-ae70-64e08f5db3a7
+
+	measure 'Products Cubes(CBM)' = SUM('F_Ashton_Locations'[Product_CBM])
+		formatString: #,0
+		lineageTag: 13cbae2e-de41-4ae3-a2ad-9479ce013498
+
+	measure 'Capacity by Pallets' = ```
+			
+			CALCULATE(
+			    SUM('F_Ashton_Locations'[Location_Pallets_Capacity]),
+			    'F_Ashton_Locations'[Loc_Control_Value] = "A",
+			    'F_Ashton_Locations'[Switch] = "ON"
+			)
+			
+			```
+		formatString: #,0
+		lineageTag: 2d90ca8d-1d63-4d6f-930a-a899fb7b50b9
+
+	measure 'Utilization by cubes' = 'A_Measure'[Products Cubes(CBM)]/'A_Measure'[Capacity by Cubes(CBM)]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 18d5a5e4-08fd-4bd9-aaab-078a1f4d05be
+
+	measure 'Utilization by Pieces' = 'A_Measure'[On Hand]/'A_Measure'[Capacity by Pieces]
+		formatString: #,0.00%;-#,0.00%;#,0.00%
+		lineageTag: 4e511805-6500-4388-871f-c0d478d0a771
+
+	measure 'Products Pallets Qty' = SUM('F_Ashton_Locations'[Product_Pallets_Qty])
+		formatString: #,0
+		lineageTag: cbbdec81-21c0-4485-8e96-5d0171dc2ee1
+
+	measure 'Utilization by Pallets' = 'A_Measure'[Products Pallets Qty]/'A_Measure'[Capacity by Pallets]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 1515f278-382b-49fb-9577-21caa61f0c49
+
+	measure 'Products Qty' = SUM('F_STO'[actual_qty])
+		formatString: #,0
+		lineageTag: 530f6ae5-9f1e-46d0-a42c-5887f4997b93
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	partition A_Measure = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

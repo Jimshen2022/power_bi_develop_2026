@@ -1,0 +1,63 @@
+table Dim_Employee_
+	lineageTag: f2cbc8d3-d8ff-4198-87bd-88ea5f4bd275
+
+	column Employee_ID
+		dataType: string
+		lineageTag: 06b0820b-48f5-42de-a75e-af0a7efc99d3
+		summarizeBy: none
+		sourceColumn: Employee_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Employee_Name
+		dataType: string
+		lineageTag: 13aaa7e5-a792-471d-b124-20ff1570ac8d
+		summarizeBy: none
+		sourceColumn: Employee_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Employee_ = m
+		mode: import
+		source =
+				let
+				    Source = Fct_Supervisors_Hours_Pieces,
+				    KeptCols = Table.SelectColumns(Source, {"Employee_ID","Name","Date"}),
+				
+				    // 数据类型（ID 一律用文本，防止丢前导零）
+				    Typed = Table.TransformColumnTypes(
+				        KeptCols,
+				        {{"Employee_ID", type text}, {"Name", type text}, {"Date", type date}}
+				    ),
+				
+				    // 去空格
+				    Trimmed = Table.TransformColumns(
+				        Typed,
+				        {{"Employee_ID", Text.Trim, type text}, {"Name", Text.Trim, type text}}
+				    ),
+				
+				    // 过滤无效值：空、"0"
+				    FilteredID = Table.SelectRows(Trimmed, each [Employee_ID] <> null and [Employee_ID] <> "" and [Employee_ID] <> "0"),
+				    FilteredName = Table.SelectRows(FilteredID, each [Name] <> null and [Name] <> "" and [Name] <> "0"),
+				
+				    // 按日期降序，确保最新名字排前面（可选）
+				    Sorted = Table.Sort(FilteredName, {{"Date", Order.Descending}}),
+				
+				    // 分组：每个 Employee_ID 下把所有 Name 用逗号连接
+				    Grouped = Table.Group(
+				        Sorted,
+				        {"Employee_ID"},
+				        {
+				            {"Employee_Name", each Text.Combine(List.Distinct([Name]), ", "), type text}
+				        }
+				    ),
+				
+				    // 按 ID 排序，美观
+				    Final = Table.Sort(Grouped, {{"Employee_ID", Order.Ascending}})
+				in
+				    Final
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

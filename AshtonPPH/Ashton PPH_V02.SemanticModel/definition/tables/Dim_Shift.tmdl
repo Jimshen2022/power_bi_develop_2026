@@ -1,0 +1,23 @@
+table Dim_Shift
+	lineageTag: 074e6525-a7d2-416f-95ce-117768e89796
+
+	column Shift
+		lineageTag: 41a04468-692a-45fc-a899-52e99a2b2948
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Fct_Supervisors_Hours_Pieces[Shift]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Shift = calculated
+		mode: import
+		source =
+				
+				FILTER(
+				    VALUES('Fct_Supervisors_Hours_Pieces'[Shift]),
+				    NOT(ISBLANK('Fct_Supervisors_Hours_Pieces'[Shift])) &&
+				    'Fct_Supervisors_Hours_Pieces'[Shift] <> ""
+				)
+
+	annotation PBI_Id = 3a669cce689045cc8f98d6b8ecfd90bb
+

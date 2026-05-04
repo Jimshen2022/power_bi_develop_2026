@@ -1,0 +1,228 @@
+table ashton_picking_exception_hj_sql_server_df
+	lineageTag: 0ccc2b59-9d7d-4e0b-9015-3d17107f2662
+
+	column tran_type
+		dataType: string
+		lineageTag: c667f240-b460-4a80-941d-06fe92abb68a
+		summarizeBy: none
+		sourceColumn: tran_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: e33debe3-7e1d-457a-8d97-e4ffc7ee4578
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column transaction_datetime
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: dfc317f0-22d8-42ce-b9d5-b940f79c958b
+		summarizeBy: none
+		sourceColumn: transaction_datetime
+
+		variation Variation
+			isDefault
+			relationship: 16083228-3b8a-4db1-b138-b73a7c98bdb0
+			defaultHierarchy: LocalDateTable_567824b1-581f-40df-877a-7f58bbeddce1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_id
+		dataType: string
+		lineageTag: 154fc777-4cac-4a7d-8763-25883fc2aa5c
+		summarizeBy: none
+		sourceColumn: employee_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_number
+		dataType: string
+		lineageTag: bbf02cf4-53bb-4e4c-a057-39f26813945c
+		summarizeBy: none
+		sourceColumn: item_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column lot_number
+		dataType: string
+		lineageTag: 0ea6aeb6-ca0b-4ad3-a7e1-39e77a4e3ae0
+		summarizeBy: none
+		sourceColumn: lot_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column tran_qty
+		dataType: double
+		lineageTag: 815d68f1-39d4-41c5-a1b5-babde4c7a7a0
+		summarizeBy: sum
+		sourceColumn: tran_qty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column source_location
+		dataType: string
+		lineageTag: 1d54095d-27e9-4431-bd49-9dbaf07ddf0b
+		summarizeBy: none
+		sourceColumn: source_location
+
+		annotation SummarizationSetBy = Automatic
+
+	column destination_location
+		dataType: string
+		lineageTag: b1b207f0-1040-4ba4-a9ba-b4885787fa60
+		summarizeBy: none
+		sourceColumn: destination_location
+
+		annotation SummarizationSetBy = Automatic
+
+	column outside_id
+		dataType: string
+		lineageTag: f21c6a8c-aa35-4c56-ae42-8b2192d40be4
+		summarizeBy: none
+		sourceColumn: outside_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column process
+		dataType: string
+		lineageTag: a639bd27-2d87-49f4-a093-20eafdba1b86
+		summarizeBy: none
+		sourceColumn: process
+
+		annotation SummarizationSetBy = Automatic
+
+	column equipment_zone
+		dataType: string
+		lineageTag: 4f184bda-fbc8-451d-8369-d63f4112582e
+		summarizeBy: none
+		sourceColumn: equipment_zone
+
+		annotation SummarizationSetBy = Automatic
+
+	column exception_reason
+		dataType: string
+		lineageTag: 227ce5bb-b5dc-47b9-95ad-4293a841fb2b
+		summarizeBy: none
+		sourceColumn: exception_reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column rule
+		dataType: string
+		lineageTag: c40aa636-a0a1-4cd6-ac4a-4d2e61b166d2
+		summarizeBy: none
+		sourceColumn: rule
+
+		annotation SummarizationSetBy = Automatic
+
+	column shift_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 14469b68-a4af-493d-848f-5fd850b6e151
+		summarizeBy: none
+		sourceColumn: shift_date
+
+		variation Variation
+			isDefault
+			relationship: 2e345f22-a185-4baf-9419-dbf6fdbd8626
+			defaultHierarchy: LocalDateTable_b7f7aa99-cfca-4940-835f-f1b1f72d8d40.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column shift
+		dataType: string
+		lineageTag: 6e471997-6d25-43b3-85f7-d5d96cf9079e
+		summarizeBy: none
+		sourceColumn: shift
+
+		annotation SummarizationSetBy = Automatic
+
+	column emp_number
+		dataType: string
+		lineageTag: efbd8d4f-780e-46f7-831b-e0cf6a634331
+		summarizeBy: none
+		sourceColumn: emp_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: aa2ae9d0-170e-482d-9cdd-a8026c3abe06
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column dept
+		dataType: string
+		lineageTag: aa142c43-d614-4d26-8feb-3c1f7d8307f9
+		summarizeBy: none
+		sourceColumn: dept
+
+		annotation SummarizationSetBy = Automatic
+
+	column supervisor
+		dataType: string
+		lineageTag: 3a160c50-db31-4c0d-a3f6-e630129e0ca0
+		summarizeBy: none
+		sourceColumn: supervisor
+
+		annotation SummarizationSetBy = Automatic
+
+	column department
+		dataType: string
+		lineageTag: 1d954169-33f7-4bdf-9cce-83d5429d3344
+		summarizeBy: none
+		sourceColumn: department
+
+		annotation SummarizationSetBy = Automatic
+
+	column exception_severity
+		dataType: string
+		lineageTag: 4ef3c3bb-fa32-4634-8170-f7842a9a685f
+		summarizeBy: none
+		sourceColumn: exception_severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column WhseEmployee#
+		dataType: string
+		lineageTag: 520eb2bd-bc7b-4e11-aecd-96d7606cc565
+		summarizeBy: none
+		sourceColumn: WhseEmployee#
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'master key' = 'ashton_picking_exception_hj_sql_server_df'[WhseEmployee#]&"-"&'ashton_picking_exception_hj_sql_server_df'[shift_date]
+		lineageTag: 2bd91535-5719-4be2-a84d-73ec607b7782
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ashton_picking_exception_hj_sql_server_df = m
+		mode: import
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"5839814b-ec95-48ea-a07a-ec0241ac9946" = Source{[workspaceId="5839814b-ec95-48ea-a07a-ec0241ac9946"]}[Data],
+				    #"3a7f43fb-7a71-4e95-b4cb-7b7a2725b184" = #"5839814b-ec95-48ea-a07a-ec0241ac9946"{[dataflowId="3a7f43fb-7a71-4e95-b4cb-7b7a2725b184"]}[Data],
+				    ashton_picking_exception_hj_sql_server_df1 = #"3a7f43fb-7a71-4e95-b4cb-7b7a2725b184"{[entity="ashton_picking_exception_hj_sql_server_df"]}[Data],
+				    #"Added Custom" = Table.AddColumn(ashton_picking_exception_hj_sql_server_df1, "WhseEmployee#", each "335" &"-"&[emp_number]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"WhseEmployee#", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

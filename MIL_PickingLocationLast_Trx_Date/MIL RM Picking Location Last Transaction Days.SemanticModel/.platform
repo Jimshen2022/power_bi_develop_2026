@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "MIL RM Picking Location Last Transaction Days"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a1e04d3d-2c74-45d3-9b4e-955f91e0b0c0"
+  }
+}

@@ -1,0 +1,293 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "d5b09184eb4e02e3ad18",
+  "position": {
+    "x": 707.28606356968214,
+    "y": 405.28117359413204,
+    "z": 2000,
+    "height": 314.52322738386312,
+    "width": 572.71393643031786,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_MILCNTDETAILS"
+                    }
+                  },
+                  "Property": "DATE"
+                }
+              },
+              "queryRef": "MILCNTDETAILS.DATE",
+              "nativeQueryRef": "DATE"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_MILCNTDETAILS"
+                    }
+                  },
+                  "Property": "CONTAINER#"
+                }
+              },
+              "queryRef": "MILCNTDETAILS.CONTAINER#",
+              "displayName": "Container Number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_MILCNTDETAILS"
+                    }
+                  },
+                  "Property": "ITEMNUMBER"
+                }
+              },
+              "queryRef": "MILCNTDETAILS.ITEMNUMBER",
+              "displayName": "Item Number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_MILCNTDETAILS"
+                    }
+                  },
+                  "Property": "PRODUCT"
+                }
+              },
+              "queryRef": "MILCNTDETAILS.PRODUCT",
+              "displayName": "Products"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_MILCNTDETAILS"
+                    }
+                  },
+                  "Property": "ITCLS"
+                }
+              },
+              "queryRef": "fct_MILCNTDETAILS.ITCLS",
+              "nativeQueryRef": "ItemClass",
+              "displayName": "ItemClass"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_MILCNTDETAILS"
+                        }
+                      },
+                      "Property": "QTY"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(MILCNTDETAILS.QTY)",
+              "displayName": "Q'ty"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_MILCNTDETAILS"
+                        }
+                      },
+                      "Property": "CUBES"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(MILCNTDETAILS.CUBES)",
+              "displayName": "ItemCubes"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_MILCNTDETAILS"
+                    }
+                  },
+                  "Property": "UTILIZATION"
+                }
+              },
+              "queryRef": "Sum(MILCNTDETAILS.UTILIZATION)",
+              "nativeQueryRef": "UTILIZATION",
+              "displayName": "ItemUtilization%"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_MILCNTDETAILS"
+                    }
+                  },
+                  "Property": "H_CUBES"
+                }
+              },
+              "queryRef": "Sum(MILCNTDETAILS.H_CUBES)",
+              "nativeQueryRef": "TotalContainerCubes",
+              "displayName": "TotalContainerCubes"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_MILCNTDETAILS"
+                        }
+                      },
+                      "Property": "Container Utilization%"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(MILCNTDETAILS.Container Utilization%)",
+              "nativeQueryRef": "Container Utilization%"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "250.6366441704062D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MILCNTDETAILS.CONTAINER#"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "98.17363344051446D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MILCNTDETAILS.ITEMNUMBER"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'BoldHeader'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Container Details'"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

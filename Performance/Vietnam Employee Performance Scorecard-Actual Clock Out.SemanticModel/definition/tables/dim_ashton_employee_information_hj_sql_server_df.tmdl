@@ -1,0 +1,74 @@
+table dim_ashton_employee_information_hj_sql_server_df
+	lineageTag: 699578d7-91d4-4302-9897-97b4b57fc313
+
+	column id
+		dataType: string
+		lineageTag: b5d0ace3-842e-475d-a758-15711b5e236c
+		summarizeBy: none
+		sourceColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	column name
+		dataType: string
+		lineageTag: c1afa2af-fa42-42c5-b4a9-a5936384b69b
+		summarizeBy: none
+		sourceColumn: name
+
+		annotation SummarizationSetBy = Automatic
+
+	column emp_number
+		dataType: string
+		lineageTag: 4496f2a2-051a-4b73-9b37-9a13168feeee
+		summarizeBy: none
+		sourceColumn: emp_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column dept
+		dataType: string
+		lineageTag: 0ddd4fab-2c64-487e-9148-f2d4b766e2c8
+		summarizeBy: none
+		sourceColumn: dept
+
+		annotation SummarizationSetBy = Automatic
+
+	column supervisor
+		dataType: string
+		lineageTag: 1f96fad9-ce3c-46dd-b475-5f3bc12c7021
+		summarizeBy: none
+		sourceColumn: supervisor
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: fe5c2cbb-d531-4eeb-b192-c0c091b38cb9
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column department_code
+		dataType: string
+		lineageTag: a878cbad-2b67-418e-8d52-851d086d1e34
+		summarizeBy: none
+		sourceColumn: department_code
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_ashton_employee_information_hj_sql_server_df = m
+		mode: import
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"5839814b-ec95-48ea-a07a-ec0241ac9946" = Source{[workspaceId="5839814b-ec95-48ea-a07a-ec0241ac9946"]}[Data],
+				    #"3a7f43fb-7a71-4e95-b4cb-7b7a2725b184" = #"5839814b-ec95-48ea-a07a-ec0241ac9946"{[dataflowId="3a7f43fb-7a71-4e95-b4cb-7b7a2725b184"]}[Data],
+				    dim_ashton_employee_information_hj_sql_server_df1 = #"3a7f43fb-7a71-4e95-b4cb-7b7a2725b184"{[entity="dim_ashton_employee_information_hj_sql_server_df"]}[Data]
+				in
+				    dim_ashton_employee_information_hj_sql_server_df1
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

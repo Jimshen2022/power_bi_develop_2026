@@ -1,0 +1,83 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 747.2,
+            "y": 0
+          },
+          "nodeIndex": "D_Date",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 28.400000000000091,
+            "y": 224
+          },
+          "nodeIndex": "D_Product_Category",
+          "size": {
+            "height": 196,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 351,
+            "y": 0
+          },
+          "nodeIndex": "D_Measure",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 959.040418118467,
+            "y": 322.23344947735188
+          },
+          "nodeIndex": "fct_mil_loading_audit",
+          "nodeLineageTag": "8ee31c9c-37fa-4ac0-8b8e-83d392dba2d6",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 326.20000000000005,
+            "y": 314
+          },
+          "nodeIndex": "fct_MILCNTDETAILS",
+          "size": {
+            "height": 361,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 86.838124054462938,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

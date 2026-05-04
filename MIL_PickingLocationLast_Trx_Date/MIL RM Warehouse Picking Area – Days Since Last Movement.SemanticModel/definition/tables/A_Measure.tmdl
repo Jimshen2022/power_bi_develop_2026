@@ -1,0 +1,40 @@
+table A_Measure
+	lineageTag: 73da1ebb-8385-4e89-985f-24f90c25d2d2
+
+	measure 'Total Qty' = SUM('fct_Item_last_trx_date'[Qty])
+		formatString: #,0.00
+		lineageTag: 694f444d-1991-42d7-906b-ac516c00048d
+
+	measure 'Total Active SKUs' = DISTINCTCOUNT('fct_Item_last_trx_date'[Item])
+		formatString: #,0
+		lineageTag: b467fa79-e17d-46ec-adee-507eec5921d0
+
+	measure 'Qty 90+ Days' =
+			
+			CALCULATE(
+			    [Total Qty],
+			    'fct_Item_last_trx_date'[Day ranges] = "90+ days"
+			)
+		formatString: #,0.00
+		lineageTag: fc862271-0751-4ef2-83eb-427ddbe60d42
+
+	measure 'Avg Aging Days' = AVERAGE('fct_Item_last_trx_date'[Days Since Last Movement])
+		formatString: 0.0
+		lineageTag: 22811331-a94b-4298-a7f4-bd3bd1d532dc
+
+	measure Locations = DISTINCTCOUNT('fct_Item_last_trx_date'[Location])
+		formatString: #,0
+		lineageTag: 453bcb2c-9f25-49e4-8128-e9b5ca8952a5
+
+	partition A_Measure = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

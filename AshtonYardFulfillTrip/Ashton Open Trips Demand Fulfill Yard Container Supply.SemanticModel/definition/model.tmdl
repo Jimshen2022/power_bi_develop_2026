@@ -1,0 +1,24 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["final_demand_table","final_supply_table"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+annotation __TEdtr = 1
+
+ref table final_demand_table
+ref table DateTableTemplate_1d892353-57b5-4236-9577-bfa886bc8da9
+ref table LocalDateTable_55b418e7-4df4-408e-a159-d122f9c15fba
+ref table final_supply_table
+ref table LocalDateTable_483736ab-42ea-4f62-a8a3-2cfc74bc30f1
+
+ref cultureInfo en-US
+

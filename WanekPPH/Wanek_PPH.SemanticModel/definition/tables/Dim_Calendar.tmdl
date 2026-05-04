@@ -1,0 +1,165 @@
+table Dim_Calendar
+	lineageTag: f3e9c488-be8b-4e74-9c7f-fc4aeb074852
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 6093509c-1e0e-48af-b485-fb3d4e5990f5
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 6051093c-7eed-4600-9899-80232ca752f7
+			defaultHierarchy: LocalDateTable_774b84c4-d63a-4544-8cb0-0a7d32867b85.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Weekday
+		dataType: string
+		lineageTag: 363e948d-dcf6-4b7d-926f-e0d6a34ba139
+		summarizeBy: none
+		sourceColumn: Weekday
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 0a851e73-7b5c-462a-ae59-1a35d3882d0d
+		summarizeBy: sum
+		sourceColumn: Year
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weeknum
+		dataType: int64
+		formatString: 0
+		lineageTag: 915a4ff5-c095-47a2-a2f2-832fd12ed1ea
+		summarizeBy: sum
+		sourceColumn: Weeknum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearWeek
+		dataType: int64
+		formatString: 0
+		lineageTag: 43b098a4-bc4f-475b-ae88-47bb64247556
+		summarizeBy: sum
+		sourceColumn: YearWeek
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Week
+		dataType: int64
+		formatString: 0
+		lineageTag: 07c74862-e481-48d3-92e7-5c1d08c06463
+		summarizeBy: sum
+		sourceColumn: Week
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekSaturday
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: fadd97ff-e976-48ff-a61e-d95055f6e947
+		summarizeBy: none
+		sourceColumn: WeekSaturday
+
+		variation Variation
+			isDefault
+			relationship: 7705e3c2-29b8-417d-bc0a-c401b91b1a78
+			defaultHierarchy: LocalDateTable_47ef376a-a38c-4658-a403-a86344a75366.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column YearMonth
+		dataType: string
+		lineageTag: 0c2bdea5-a395-4b35-9fa2-3d0eb953027a
+		summarizeBy: none
+		sourceColumn: YearMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Calendar = m
+		mode: import
+		source =
+				let
+				    StartDate = #date(2025, 1, 1),  // January 1, 2025
+				    // StartDate = Date.From(DateTime.LocalNow()) - #duration(31, 0, 0, 0),  // 121 days before today
+				    // StartDate = Date.StartOfWeek(Date.From(DateTime.LocalNow()), Day.Sunday),  // 当前周的周日
+				    EndDate = Date.From(DateTime.LocalNow()),                                 // 今天
+				    NumDays = Duration.Days(EndDate - StartDate) + 1,
+				    DateList = List.Generate(
+				        () => StartDate,
+				        each _ <= EndDate,
+				        each _ + #duration(1, 0, 0, 0)
+				    ),
+				    CalendarTable = Table.FromList(DateList, Splitter.SplitByNothing(), {"Date"}),
+				    AddWeekday = Table.AddColumn(CalendarTable, "Weekday", each Date.DayOfWeekName([Date])),
+				    AddYear = Table.AddColumn(AddWeekday, "Year", each Date.Year([Date])),
+				    AddWeeknum = Table.AddColumn(AddYear, "Weeknum", each Date.WeekOfYear([Date])),
+				    AddYearWeek = Table.AddColumn(AddWeeknum, "YearWeek", each [Year] * 100 + [Weeknum]),
+				    AddYearMonth = Table.AddColumn(AddYearWeek, "YearMonth", each  [Year] * 100 +Date.Month([Date])),
+				    AddWeek = Table.AddColumn(AddYearMonth, "Week", each Date.DayOfWeek([Date])),
+				
+				    // 计算每个日期所在周的周六
+				    AddSaturday = Table.AddColumn(AddWeek, "WeekSaturday", each Date.AddDays([Date], 7 - Date.DayOfWeek([Date], Day.Sunday) - 1), type date),
+				
+				    #"Changed Type" = Table.TransformColumnTypes(AddSaturday, {{"Date", type date}, {"Weekday", type text}, {"Year", Int64.Type}, {"Weeknum", Int64.Type}, {"YearWeek", Int64.Type}, {"Week", Int64.Type}, {"WeekSaturday", type date}})
+				in
+				    #"Changed Type"
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				// let
+				//     StartDate = Date.From(DateTime.LocalNow()) - #duration(7, 0, 0, 0),  // 121 days before today
+				//     EndDate = Date.From(DateTime.LocalNow()),                             // Until today
+				//     NumDays = Duration.Days(EndDate - StartDate) + 1,
+				//     DateList = List.Generate(
+				//         () => StartDate,
+				//         each _ <= EndDate,
+				//         each _ + #duration(1, 0, 0, 0)
+				//     ),
+				//     CalendarTable = Table.FromList(DateList, Splitter.SplitByNothing(), {"Date"}),
+				//     AddWeekday = Table.AddColumn(CalendarTable, "Weekday", each Date.DayOfWeekName([Date])),
+				//     AddYear = Table.AddColumn(AddWeekday, "Year", each Date.Year([Date])),
+				//     AddWeeknum = Table.AddColumn(AddYear, "Weeknum", each Date.WeekOfYear([Date])),
+				//     AddYearWeek = Table.AddColumn(AddWeeknum, "YearWeek", each [Year] * 100 + [Weeknum]),
+				//     AddWeek = Table.AddColumn(AddYearWeek, "Week", each Date.DayOfWeek([Date])),
+				
+				//     // 计算每个日期所在周的周六
+				//     AddSaturday = Table.AddColumn(AddWeek, "WeekSaturday", each Date.AddDays([Date], 7 - Date.DayOfWeek([Date], Day.Sunday) - 1), type date),
+				
+				//     #"Changed Type" = Table.TransformColumnTypes(AddSaturday, {{"Date", type date}, {"Weekday", type text}, {"Year", Int64.Type}, {"Weeknum", Int64.Type}, {"YearWeek", Int64.Type}, {"Week", Int64.Type}, {"WeekSaturday", type date}})
+				// in
+				//     #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

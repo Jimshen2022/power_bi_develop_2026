@@ -1,0 +1,23 @@
+table Dim_Position
+	lineageTag: 42a4f3e4-f647-43a1-a1ca-183c78d0224b
+
+	column Position
+		lineageTag: 1f745be1-1189-4d7f-a7b0-76de19d87bec
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Fct_Supervisors_Hours[Position]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Position = calculated
+		mode: import
+		source =
+				
+				FILTER(
+				    VALUES('Fct_Supervisors_Hours'[Position]),
+				    NOT(ISBLANK('Fct_Supervisors_Hours'[Position])) &&
+				    'Fct_Supervisors_Hours'[Position] <> ""
+				)
+
+	annotation PBI_Id = 4f2d07a966bc48e7acdc67ceeec60335
+

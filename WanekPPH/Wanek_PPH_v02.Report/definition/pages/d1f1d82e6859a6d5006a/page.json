@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "d1f1d82e6859a6d5006a",
+  "displayName": "2_WN3 All in PPH Line Clearing",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "objects": {
+    "outspace": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 0,
+                    "Percent": -0.1
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "4650c734200d0088c22a",
+      "target": "d28f8687b200917dc202",
+      "type": "DataFilter"
+    },
+    {
+      "source": "4650c734200d0088c22a",
+      "target": "b2f7d1a0bb0a03ad0760",
+      "type": "NoFilter"
+    },
+    {
+      "source": "b2f7d1a0bb0a03ad0760",
+      "target": "4650c734200d0088c22a",
+      "type": "NoFilter"
+    }
+  ]
+}

@@ -1,0 +1,2677 @@
+table A_Measure
+	lineageTag: d0044d11-9b58-4635-96b6-bd4ff116557e
+
+	measure '1_All in PPH Shipping Target Line' =
+			
+			13
+		formatString: 0
+		displayFolder: 1_All in PPH Shipping
+		lineageTag: c371a688-e88b-47f2-8950-ff41d76948d7
+
+	measure 0_Trx_Pieces =
+			
+			SUM ( 'Fct_Supervisors_Hours_Pieces'[Transaction_Pieces] )
+		lineageTag: 685cd3b2-349b-482c-bf76-7e571b96cbde
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '1_All in PPH Shipping Pieces' =
+			
+			CALCULATE (
+			    'A_Measure'[0_Trx_Pieces],
+			    Fct_Supervisors_Hours_Pieces[PPH_Type] IN { "Loading" }
+			)
+		formatString: #,0
+		displayFolder: 1_All in PPH Shipping
+		lineageTag: 1b6212bd-9063-42c1-b523-6198b02de579
+
+	measure '1_All in PPH Shipping Hours' =
+			
+			CALCULATE (
+			    SUM ( Fct_Supervisors_Hours_Pieces[Final_Hrs_All_In] ),
+			    Fct_Supervisors_Hours_Pieces[PPH_Type] IN { "Loading", "Picking" }
+			)
+		formatString: #,0.0
+		displayFolder: 1_All in PPH Shipping
+		lineageTag: d3d222c4-c8a1-4310-9eee-c2f8f75642db
+
+	measure '1_All in PPH Shipping' =
+			
+			DIVIDE ( [1_All in PPH Shipping Pieces], [1_All in PPH Shipping Hours] )
+		formatString: 0.0
+		displayFolder: 1_All in PPH Shipping
+		lineageTag: 2ca02f58-c04d-40fb-985b-9656a77439d5
+
+	measure 0_Hours_all_in =
+			
+			SUM ( 'Fct_Supervisors_Hours_Pieces'[Final_Hrs_All_In] )
+		lineageTag: d0b4bf4f-4afe-4bcb-ba4d-e506600c6726
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 0_Hours_individual =
+			
+			SUM ( 'Fct_Supervisors_Hours_Pieces'[Final_Hrs_Individual] )
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 05aaa0f3-ba15-4224-b4c2-ecf087760bf9
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure '2_All in PPH CG Receiving Pieces' =
+			
+			CALCULATE (
+			    'A_Measure'[0_Trx_Pieces],
+			    Fct_Supervisors_Hours_Pieces[PPH_Type]
+			        IN { "Put away" } && Fct_Supervisors_Hours_Pieces[product_category] = "CG"
+			)
+		formatString: #,0
+		displayFolder: 2_All in PPH CG Receiving
+		lineageTag: c98003ec-8ab2-46fc-8f38-d75d9d0afabb
+
+	measure '2_All in PPH CG Receiving Hours' =
+			
+			CALCULATE (
+			    'A_Measure'[0_Hours_all_in],
+			    Fct_Supervisors_Hours_Pieces[PPH_Type]
+			        IN { "Put away", "Unloading", "Picking-SCOOP", "Replenishment" }
+			            && Fct_Supervisors_Hours_Pieces[product_category] = "CG"
+			)
+		formatString: #,0.0
+		displayFolder: 2_All in PPH CG Receiving
+		lineageTag: 339a7f87-2cf9-400f-802e-9b259942a3b0
+
+	measure '2_All in PPH CG Receiving' =
+			
+			DIVIDE (
+			    'A_Measure'[2_All in PPH CG Receiving Pieces],
+			    'A_Measure'[2_All in PPH CG Receiving Hours]
+			)
+		formatString: #,##0.0
+		displayFolder: 2_All in PPH CG Receiving
+		lineageTag: 63abcbd7-adf1-48c4-b11e-256522e9863c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 0_Trx_Pallets =
+			
+			SUM ( 'Fct_Supervisors_Hours_Pieces'[Transaction_Pallet_Qty] )
+		formatString: #,0
+		lineageTag: 9ab035a8-cb2e-4ee4-b67c-0b93d32a7ebb
+
+	measure 'I02_Individual Picking Pieces' =
+			
+			CALCULATE (
+			    'A_Measure'[0_Individual PPH Pieces],
+			    FILTER (
+			        'Fct_Supervisors_Hours_Pieces',
+			        'Fct_Supervisors_Hours_Pieces'[PPH_Type] IN { "Picking" }
+			    )
+			)
+		formatString: #,0
+		displayFolder: I02_Individual Picking Hours
+		lineageTag: 76197d5c-d77c-48c1-8c86-169091df9a80
+
+	measure 'I02_Individual Picking Hours' =
+			
+			CALCULATE (
+			    'A_Measure'[0_Hours_individual],
+			    FILTER (
+			        'Fct_Supervisors_Hours_Pieces',
+			        Fct_Supervisors_Hours_Pieces[PPH_Type] IN { "Picking" }
+			    )
+			)
+		formatString: #,0.0
+		displayFolder: I02_Individual Picking Hours
+		lineageTag: 31aa5259-9562-40bf-b303-9d25fd1ab29f
+
+	measure '3_All in PPH Unload UPH Pieces' =
+			
+			CALCULATE (
+			    'A_Measure'[0_Trx_Pieces],
+			    Fct_Supervisors_Hours_Pieces[PPH_Type]
+			        IN { "Put away" } && Fct_Supervisors_Hours_Pieces[product_category] = "UPH"
+			)
+		formatString: #,##0
+		displayFolder: 3_All in PPH Unload UPH
+		lineageTag: bf777367-19b1-402c-83c1-c3337be205cb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3_All in PPH Unload UPH Hours' =
+			
+			CALCULATE (
+			    'A_Measure'[0_Hours_all_in],
+			    Fct_Supervisors_Hours_Pieces[PPH_Type]
+			        IN { "Put away", "Unloading" }
+			            && Fct_Supervisors_Hours_Pieces[product_category] = "UPH"
+			)
+		formatString: #,##0.0
+		displayFolder: 3_All in PPH Unload UPH
+		lineageTag: e10e1858-7f6d-47d7-a50f-0cf526235ba8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3_All in PPH Unload UPH' =
+			
+			DIVIDE (
+			    'A_Measure'[3_All in PPH Unload UPH Pieces],
+			    'A_Measure'[3_All in PPH Unload UPH Hours]
+			)
+		formatString: #,##0.0
+		displayFolder: 3_All in PPH Unload UPH
+		lineageTag: 11adcc10-fb60-4dd2-9ea9-e0f506a8b3f3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '2_All in PPH CG Receiving Target' =
+			
+			25
+		formatString: 0
+		displayFolder: 2_All in PPH CG Receiving
+		lineageTag: ab776dd5-4492-415b-a7e9-98674f14e97c
+
+	measure '3_All in PPH Unload Target' =
+			
+			15
+		formatString: 0
+		displayFolder: 3_All in PPH Unload UPH
+		lineageTag: 1753daff-cec1-4f20-a835-a58de18fc3bb
+
+	measure 'I01_Individual Loading PPH' =
+			
+			AVERAGEX (
+			    VALUES ( 'Fct_Supervisors_Hours_Pieces'[Employee_ID] ),
+			    CALCULATE (
+			        AVERAGE ( 'Fct_Supervisors_Hours_Pieces'[Group_Date_Team_by_Pieces_PPH] ),
+			        FILTER (
+			            'Fct_Supervisors_Hours_Pieces',
+			            'Fct_Supervisors_Hours_Pieces'[PPH_Type] IN { "Loading" }
+			        )
+			    )
+			)
+		formatString: #,0.0
+		displayFolder: I01_Individual Loading Hours
+		lineageTag: e62452dd-250c-486f-8000-91f3f28d668f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I01_Individual Loading Pieces' =
+			
+			CALCULATE (
+			    'A_Measure'[0_Individual PPH Pieces],
+			    FILTER (
+			        'Fct_Supervisors_Hours_Pieces',
+			        'Fct_Supervisors_Hours_Pieces'[PPH_Type] IN { "Loading" }
+			    )
+			)
+		formatString: #,##0
+		displayFolder: I01_Individual Loading Hours
+		lineageTag: 32b7ce10-4d77-4acc-98c6-465bf6c73690
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I01_Individual Loading Hours' =
+			
+			CALCULATE (
+			    'A_Measure'[0_Individual PPH Hours],
+			    FILTER (
+			        'Fct_Supervisors_Hours_Pieces',
+			        'Fct_Supervisors_Hours_Pieces'[PPH_Type] IN { "Loading" }
+			    )
+			)
+		formatString: #,##0.0
+		displayFolder: I01_Individual Loading Hours
+		lineageTag: ab290f97-ac5d-4ffb-9f55-8de9d3e1457c
+
+	measure '0_Individual PPH Pieces' =
+			
+			SUM ( Fct_Supervisors_Hours_Pieces[Group_Date_Team_Avg_Transaction_Pieces] )
+		formatString: #,0
+		lineageTag: 910a10bd-6204-43a1-9daa-98220ec29f09
+
+	measure '0_Individual PPH Hours' =
+			
+			SUM ( Fct_Supervisors_Hours_Pieces[Group_Date_Team_Avg_Hrs] )
+		formatString: #,0.00
+		lineageTag: 20160f02-5607-472c-9757-1e9ad61cbd25
+
+	measure 'I01_Individual Loading PPH Target' =
+			
+			30
+		formatString: 0
+		displayFolder: I01_Individual Loading Hours
+		lineageTag: b725a665-7772-4591-aaf7-3b767364af06
+
+	measure 'I02_Individual Picking PPH' =
+			
+			AVERAGEX (
+			    VALUES ( 'Fct_Supervisors_Hours_Pieces'[Employee_ID] ),
+			    CALCULATE (
+			        AVERAGE ( 'Fct_Supervisors_Hours_Pieces'[Group_Date_Team_by_Pieces_PPH] ),
+			        FILTER (
+			            'Fct_Supervisors_Hours_Pieces',
+			            'Fct_Supervisors_Hours_Pieces'[PPH_Type] IN { "Picking" }
+			        )
+			    )
+			)
+		formatString: #,0.0
+		displayFolder: I02_Individual Picking Hours
+		lineageTag: 8894bdfd-0031-45eb-bf0d-1b4cdbd1daf0
+
+	measure 'I03_Individual CG Unload Pieces' =
+			
+			CALCULATE (
+			    'A_Measure'[0_Individual PPH Pieces],
+			    FILTER (
+			        'Fct_Supervisors_Hours_Pieces',
+			        'Fct_Supervisors_Hours_Pieces'[PPH_Type]
+			            IN { "Unloading" } && MID ( 'Fct_Supervisors_Hours_Pieces'[Group], 1, 2 ) = "CG"
+			    )
+			)
+		formatString: #,0
+		displayFolder: I03_Individual CG Unload PPH
+		lineageTag: e1eb679a-d0ec-4f78-acca-994ce9ffc8bf
+
+	measure 'I03_Individual CG Unload Hours' =
+			
+			CALCULATE (
+			    'A_Measure'[0_Individual PPH Hours],
+			    FILTER (
+			        'Fct_Supervisors_Hours_Pieces',
+			        Fct_Supervisors_Hours_Pieces[PPH_Type]
+			            IN { "Unloading" } && MID ( 'Fct_Supervisors_Hours_Pieces'[Group], 1, 2 ) = "CG"
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: I03_Individual CG Unload PPH
+		lineageTag: 47097e28-ee05-42c1-a6a5-abd114d707ba
+
+	measure 'I03_Individual CG Unload PPH' =
+			
+			AVERAGEX (
+			    VALUES ( 'Fct_Supervisors_Hours_Pieces'[Employee_ID] ),
+			    CALCULATE (
+			        AVERAGE ( 'Fct_Supervisors_Hours_Pieces'[Group_Date_Team_by_Pieces_PPH] ),
+			        FILTER (
+			            'Fct_Supervisors_Hours_Pieces',
+			            'Fct_Supervisors_Hours_Pieces'[PPH_Type]
+			                IN { "Unloading" } && MID ( 'Fct_Supervisors_Hours_Pieces'[Group], 1, 2 ) = "CG"
+			        )
+			    )
+			)
+		formatString: #,0.0
+		displayFolder: I03_Individual CG Unload PPH
+		lineageTag: 888f60fa-a597-44d8-a0f6-efb78e0f105f
+
+		changedProperty = IsHidden
+
+	measure 'I04_Individual UPH Unload Pieces' =
+			
+			CALCULATE (
+			    'A_Measure'[0_Individual PPH Pieces],
+			    FILTER (
+			        'Fct_Supervisors_Hours_Pieces',
+			        'Fct_Supervisors_Hours_Pieces'[PPH_Type]
+			            IN { "Unloading" } && MID ( 'Fct_Supervisors_Hours_Pieces'[Group], 1, 3 ) = "UPH"
+			    )
+			)
+		formatString: #,0
+		displayFolder: I04_Individual UPH Unload
+		lineageTag: cc4211f9-a071-480f-bcb3-91672e39335a
+
+	measure 'I04_Individual UPH Unload Hours' =
+			
+			CALCULATE (
+			    'A_Measure'[0_Individual PPH Hours],
+			    FILTER (
+			        'Fct_Supervisors_Hours_Pieces',
+			        Fct_Supervisors_Hours_Pieces[PPH_Type]
+			            IN { "Unloading" } && MID ( 'Fct_Supervisors_Hours_Pieces'[Group], 1, 3 ) = "UPH"
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: I04_Individual UPH Unload
+		lineageTag: c9fceee1-1279-4b92-8f09-9d29fc789fdb
+
+	measure 'I04_Individual UPH Unload PPH' =
+			
+			AVERAGEX (
+			    VALUES ( 'Fct_Supervisors_Hours_Pieces'[Employee_ID] ),
+			    CALCULATE (
+			        AVERAGE ( 'Fct_Supervisors_Hours_Pieces'[Group_Date_Team_by_Pieces_PPH] ),
+			        FILTER (
+			            'Fct_Supervisors_Hours_Pieces',
+			            'Fct_Supervisors_Hours_Pieces'[PPH_Type]
+			                IN { "Unloading" } && MID ( 'Fct_Supervisors_Hours_Pieces'[Group], 1, 3 ) = "UPH"
+			        )
+			    )
+			)
+		formatString: #,0.0
+		displayFolder: I04_Individual UPH Unload
+		lineageTag: 4e7ea47c-a5f3-4253-b907-a5a198f16523
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I05_Individual CG Putaway Pieces' =
+			
+			CALCULATE (
+			    'A_Measure'[0_Individual PPH Pieces],
+			    FILTER (
+			        'Fct_Supervisors_Hours_Pieces',
+			        'Fct_Supervisors_Hours_Pieces'[PPH_Type]
+			            IN { "Put away", "Replenishment", "Picking-SCOOP" }
+			                && MID ( 'Fct_Supervisors_Hours_Pieces'[Group], 1, 2 ) = "CG"
+			    )
+			)
+		formatString: #,0
+		displayFolder: I05_Individual CG Putaway
+		lineageTag: a2626e49-4d5f-4e71-8686-1663806eac71
+
+	measure 'I05_Individual CG Putaway Hours' =
+			
+			CALCULATE (
+			    'A_Measure'[0_Individual PPH Hours],
+			    FILTER (
+			        'Fct_Supervisors_Hours_Pieces',
+			        Fct_Supervisors_Hours_Pieces[PPH_Type]
+			            IN { "Put away", "Replenishment", "Picking-SCOOP" }
+			                && MID ( 'Fct_Supervisors_Hours_Pieces'[Group], 1, 2 ) = "CG"
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: I05_Individual CG Putaway
+		lineageTag: cf998a23-c9e1-4d46-822a-6294de334c63
+
+	measure 'I05_Individual CG Putaway PPH' =
+			
+			AVERAGEX (
+			    VALUES ( 'Fct_Supervisors_Hours_Pieces'[Employee_ID] ),
+			    CALCULATE (
+			        AVERAGE ( 'Fct_Supervisors_Hours_Pieces'[Group_Date_Team_by_Pieces_PPH] ),
+			        FILTER (
+			            'Fct_Supervisors_Hours_Pieces',
+			            'Fct_Supervisors_Hours_Pieces'[PPH_Type]
+			                IN { "Put away", "Replenishment", "Picking-SCOOP" }
+			                    && MID ( 'Fct_Supervisors_Hours_Pieces'[Group], 1, 2 ) = "CG"
+			        )
+			    )
+			)
+		formatString: #,0.0
+		displayFolder: I05_Individual CG Putaway
+		lineageTag: 9106ac0d-9e6c-48cc-8756-b37a74710ea3
+
+	measure 'I06_Individual UPH Putaway Pieces' =
+			
+			CALCULATE (
+			    'A_Measure'[0_Individual PPH Pieces],
+			    FILTER (
+			        'Fct_Supervisors_Hours_Pieces',
+			        'Fct_Supervisors_Hours_Pieces'[PPH_Type]
+			            IN { "Put away" } && MID ( 'Fct_Supervisors_Hours_Pieces'[Group], 1, 3 ) = "UPH"
+			    )
+			)
+		formatString: #,0
+		displayFolder: I06_Individual UPH Putaway
+		lineageTag: d4f5c4d1-7e7b-47a5-889a-9c700503b121
+
+	measure 'I06_Individual UPH Putaway Hours' =
+			
+			CALCULATE (
+			    'A_Measure'[0_Individual PPH Hours],
+			    FILTER (
+			        'Fct_Supervisors_Hours_Pieces',
+			        Fct_Supervisors_Hours_Pieces[PPH_Type]
+			            IN { "Put away" } && MID ( 'Fct_Supervisors_Hours_Pieces'[Group], 1, 3 ) = "UPH"
+			    )
+			)
+		formatString: #,0.00
+		displayFolder: I06_Individual UPH Putaway
+		lineageTag: b77b6688-6256-4225-846f-0078f2773f2d
+
+	measure 'I06_Individual UPH Putaway PPH' =
+			
+			AVERAGEX (
+			    VALUES ( 'Fct_Supervisors_Hours_Pieces'[Employee_ID] ),
+			    CALCULATE (
+			        AVERAGE ( 'Fct_Supervisors_Hours_Pieces'[Group_Date_Team_by_Pieces_PPH] ),
+			        FILTER (
+			            'Fct_Supervisors_Hours_Pieces',
+			            'Fct_Supervisors_Hours_Pieces'[PPH_Type]
+			                IN { "Put away" } && MID ( 'Fct_Supervisors_Hours_Pieces'[Group], 1, 3 ) = "UPH"
+			        )
+			    )
+			)
+		formatString: #,0.0
+		displayFolder: I06_Individual UPH Putaway
+		lineageTag: d4fe03f3-fc76-4409-b50d-1929bb015c3e
+
+	measure 'PPH Metric Value' =
+			
+			VAR m =
+			    SELECTEDVALUE ( Dim_Metric[MetricName] )
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        m = "1_All in PPH Shipping", [1_All in PPH Shipping],
+			        m = "2_All in PPH CG Receiving", [2_All in PPH CG Receiving],
+			        m = "3_All in PPH Unload UPH", [3_All in PPH Unload UPH],
+			        m = "I01_Individual Loading PPH", [I01_Individual Loading PPH],
+			        m = "I02_Individual Picking PPH", [I02_Individual Picking PPH],
+			        m = "I03_Individual CG Unload PPH", [I03_Individual CG Unload PPH],
+			        m = "I04_Individual UPH Unload PPH", [I04_Individual UPH Unload PPH],
+			        m = "I05_Individual CG Putaway PPH", [I05_Individual CG Putaway PPH],
+			        m = "I06_Individual UPH Putaway PPH", [I06_Individual UPH Putaway PPH],
+			        BLANK ()
+			    )
+		displayFolder: 00_Achievement
+		lineageTag: 01a314c9-f091-495c-b3e3-85e5cda12a96
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '0_LastWeek Sun-Sat Flag' =
+			
+			VAR _utc = 7 / 24
+			VAR _today =
+			    INT ( TODAY () + _utc ) -- 今天（按越南时区）
+			VAR _currSun =
+			    _today - WEEKDAY ( _today, 1 ) + 1 -- 本周周日
+			VAR _start = _currSun - 7 -- 上周周日
+			VAR _end = _start + 6 -- 上周周六
+			VAR d =
+			    SELECTEDVALUE ( 'Dim_Calendar'[Date] )
+			RETURN
+			    IF ( NOT ISBLANK ( d ) && d >= _start && d <= _end, 1, 0 )
+		formatString: 0
+		lineageTag: 9e16882b-42ae-48ce-95d5-5bdc0e6bb467
+
+	measure '1_All in PPH Shipping (Daily, NoDims)' =
+			
+			//-- ① 每日 PPH（去掉 Group / Shift / Employee 等维度，只按日期算）
+			CALCULATE (
+			    [1_All in PPH Shipping],
+			    -- 你原来的度量：Pieces ÷ Hours
+			    REMOVEFILTERS ( 'Dim_Group' ),
+			    REMOVEFILTERS ( 'Dim_Team' ),
+			    REMOVEFILTERS ( 'Dim_Shift' ),
+			    REMOVEFILTERS ( 'Dim_Employee_' ),
+			    REMOVEFILTERS ( 'Dim_PPH_Type' )
+			)
+		displayFolder: 1_All in PPH Shipping
+		lineageTag: cc6e319d-e42d-4562-9ac6-90beef1b29fd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '1_All in PPH Shipping UCL (Dynamic)' =
+			
+			VAR _CL = [1_All in PPH Shipping CL (Dynamic)]
+			VAR _Sigma = [1_All in PPH Shipping Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: 1_All in PPH Shipping
+		lineageTag: 4fc46157-e87b-475f-a7c0-0a646af0f9ef
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '1_All in PPH Shipping LCL (Dynamic)' =
+			
+			VAR _CL = [1_All in PPH Shipping CL (Dynamic)]
+			VAR _Sigma = [1_All in PPH Shipping Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma ) -- 不要小于 0
+			    )
+		displayFolder: 1_All in PPH Shipping
+		lineageTag: 36824a52-f8ff-4b33-90a3-855d36204a5f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '2_All in PPH CG Receiving (Daily, NoDims)' =
+			
+			//-- ① 每日 PPH（去掉 Group / Shift / Employee 等维度，只按日期算）
+			CALCULATE (
+			    [2_All in PPH CG Receiving],
+			    -- 你原来的度量：Pieces ÷ Hours
+			    REMOVEFILTERS ( 'Dim_Group' ),
+			    REMOVEFILTERS ( 'Dim_Team' ),
+			    REMOVEFILTERS ( 'Dim_Shift' ),
+			    REMOVEFILTERS ( 'Dim_Employee_' ),
+			    REMOVEFILTERS ( 'Dim_PPH_Type' )
+			)
+		displayFolder: 2_All in PPH CG Receiving
+		lineageTag: ec2d0bc2-db53-4d04-8915-da21b9c89acb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '2_All in PPH CG Receiving CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] ) -- 获取切片器选中的日期集合
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [2_All in PPH CG Receiving (Daily, NoDims)]
+			                    ),
+			        DateWindow
+			    )
+		displayFolder: 2_All in PPH CG Receiving
+		lineageTag: d137bb9b-5992-4f54-92b7-66bd4e50b578
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '2_All in PPH CG Receiving Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P ( -- 使用总体标准差
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [2_All in PPH CG Receiving (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 2_All in PPH CG Receiving
+		lineageTag: 02982a7e-bf12-4612-9d62-5a8956ee9cfe
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '2_All in PPH CG Receiving LCL' =
+			
+			VAR _CL = [2_All in PPH CG Receiving CL (Dynamic)]
+			VAR _Sigma = [2_All in PPH CG Receiving Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma ) -- 不要小于 0
+			    )
+		displayFolder: 2_All in PPH CG Receiving
+		lineageTag: bc35b4e7-c37e-48ab-978d-53d1234372ae
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '2_All in PPH CG Receiving UCL' =
+			
+			VAR _CL = [2_All in PPH CG Receiving CL (Dynamic)]
+			VAR _Sigma = [2_All in PPH CG Receiving Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: 2_All in PPH CG Receiving
+		lineageTag: 62d60a6e-d321-4960-a2e1-f197ee5f92f8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3_All in PPH Unload UPH (Daily, NoDims)' =
+			
+			CALCULATE (
+			    [3_All in PPH Unload UPH],
+			    REMOVEFILTERS ( 'Dim_Group' ),
+			    REMOVEFILTERS ( 'Dim_Team' ),
+			    REMOVEFILTERS ( 'Dim_Shift' ),
+			    REMOVEFILTERS ( 'Dim_Employee_' ),
+			    REMOVEFILTERS ( 'Dim_PPH_Type' )
+			)
+		displayFolder: 3_All in PPH Unload UPH
+		lineageTag: f10a7a0f-6086-42f4-939e-fc60314420da
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3_All in PPH Unload CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] ) -- 获取切片器选中的日期集合
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [3_All in PPH Unload UPH (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 3_All in PPH Unload UPH
+		lineageTag: 51b72b66-f243-4437-9e47-5c2fd138db4c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3_All in PPH Unload LCL (Dynamic)' =
+			
+			VAR _CL = [3_All in PPH Unload CL (Dynamic)]
+			VAR _Sigma = [3_All in PPH Unload UPH Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma ) -- 不要小于 0
+			    )
+		displayFolder: 3_All in PPH Unload UPH
+		lineageTag: ab0f66c5-1d7f-4373-a249-9741dd4657da
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3_All in PPH Unload UPH Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P ( -- 使用总体标准差
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [3_All in PPH Unload UPH (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 3_All in PPH Unload UPH
+		lineageTag: b6d92b6b-0339-4708-9312-43693665a088
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3_All in PPH Unload UPH UCL (Dynamic)' =
+			
+			VAR _CL = [3_All in PPH Unload CL (Dynamic)]
+			VAR _Sigma = [3_All in PPH Unload UPH Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: 3_All in PPH Unload UPH
+		lineageTag: 718cb6bd-a5c4-4df0-b470-b7cefa0c9a29
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I01_Individual Loading PPH (Daily, NoDims)' =
+			
+			CALCULATE (
+			    [I01_Individual Loading PPH],
+			    REMOVEFILTERS ( 'Dim_Group' ),
+			    REMOVEFILTERS ( 'Dim_Team' ),
+			    REMOVEFILTERS ( 'Dim_Shift' ),
+			    REMOVEFILTERS ( 'Dim_Employee_' ),
+			    REMOVEFILTERS ( 'Dim_PPH_Type' )
+			)
+		displayFolder: I01_Individual Loading Hours
+		lineageTag: b52961cf-536e-46f3-a0de-2d96fa678b48
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I01_Individual Loading PPH CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] ) -- 获取切片器选中的日期集合
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I01_Individual Loading PPH (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I01_Individual Loading Hours
+		lineageTag: 835523d6-6cf0-46eb-97a2-39f9acce5570
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I01_Individual Loading PPH Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P ( -- 使用总体标准差
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I01_Individual Loading PPH (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I01_Individual Loading Hours
+		lineageTag: 23258022-851c-4cc3-818a-ca0fa45c1144
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I01_Individual Loading PPH LCL (Dynamic)' =
+			
+			VAR _CL = [I01_Individual Loading PPH CL (Dynamic)]
+			VAR _Sigma = [I01_Individual Loading PPH Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: I01_Individual Loading Hours
+		lineageTag: 6131dd79-50b1-416d-97d8-d23e090f938e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I01_Individual Loading PPH UCL (Dynamic)' =
+			
+			VAR _CL = [I01_Individual Loading PPH CL (Dynamic)]
+			VAR _Sigma = [I01_Individual Loading PPH Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: I01_Individual Loading Hours
+		lineageTag: be12ebc9-5dce-4ae8-8558-bddce70a74b9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I02_Individual Picking PPH (Daily, NoDims)' =
+			
+			CALCULATE (
+			    [I02_Individual Picking PPH],
+			    REMOVEFILTERS ( 'Dim_Group' ),
+			    REMOVEFILTERS ( 'Dim_Team' ),
+			    REMOVEFILTERS ( 'Dim_Shift' ),
+			    REMOVEFILTERS ( 'Dim_Employee_' ),
+			    REMOVEFILTERS ( 'Dim_PPH_Type' )
+			)
+		displayFolder: I02_Individual Picking Hours
+		lineageTag: c8cff410-d417-4e91-970d-53c72fa1f790
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I02_Individual Picking PPH CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] ) -- 获取切片器选中的日期集合
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I02_Individual Picking PPH (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I02_Individual Picking Hours
+		lineageTag: bce905ad-34c5-46be-a3fd-a3b473c77c0f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I02_Individual Picking PPH Sigma (Dynamic)' = ```
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P ( -- 使用总体标准差
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I02_Individual Picking PPH (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+			    
+			```
+		displayFolder: I02_Individual Picking Hours
+		lineageTag: 583eaef5-2aef-4a67-bcef-d2d0a75cdab1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I02_Individual Picking PPH LCL (Dynamic)' =
+			
+			VAR _CL = [I02_Individual Picking PPH CL (Dynamic)]
+			VAR _Sigma = [I02_Individual Picking PPH Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: I02_Individual Picking Hours
+		lineageTag: 6a7dac68-9a80-4ffd-a8ee-62cab5356263
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I02_Individual Picking PPH UCL (Dynamic)' =
+			
+			VAR _CL = [I02_Individual Picking PPH CL (Dynamic)]
+			VAR _Sigma = [I02_Individual Picking PPH Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: I02_Individual Picking Hours
+		lineageTag: 014b3333-3245-46ee-9f07-d41361273243
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I02_Individual Picking PPH Target' =
+			
+			25
+		formatString: 0
+		displayFolder: I02_Individual Picking Hours
+		lineageTag: c74cd2a4-ff00-41a4-92b4-dbc34a28702f
+
+	measure 'I03_Individual CG Unload PPH (Daily, NoDims)' =
+			
+			CALCULATE (
+			    [I03_Individual CG Unload PPH],
+			    REMOVEFILTERS ( 'Dim_Group' ),
+			    REMOVEFILTERS ( 'Dim_Team' ),
+			    REMOVEFILTERS ( 'Dim_Shift' ),
+			    REMOVEFILTERS ( 'Dim_Employee_' ),
+			    REMOVEFILTERS ( 'Dim_PPH_Type' )
+			)
+		displayFolder: I03_Individual CG Unload PPH
+		lineageTag: 5c6f5607-f609-49fa-852b-e5b6b69a4fb0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I03_Individual CG Unload PPH CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] ) -- 获取切片器选中的日期集合
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I03_Individual CG Unload PPH (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I03_Individual CG Unload PPH
+		lineageTag: b925dde0-4122-4d60-ad6a-e0d8d7a47c45
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I03_Individual CG Unload PPH Sigma (Dynamic)' =
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P ( -- 使用总体标准差
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I03_Individual CG Unload PPH (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I03_Individual CG Unload PPH
+		lineageTag: 8317a066-2cfa-4073-9fe7-68f6b3fa8185
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I03_Individual CG Unload PPH LCL (Dynamic)' =
+			
+			VAR _CL = [I03_Individual CG Unload PPH CL (Dynamic)]
+			VAR _Sigma = [I03_Individual CG Unload PPH Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: I03_Individual CG Unload PPH
+		lineageTag: 9c15e99b-e970-4066-9ee9-1ea27735222c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I03_Individual CG Unload PPH UCL (Dynamic)' =
+			
+			VAR _CL = [I03_Individual CG Unload PPH CL (Dynamic)]
+			VAR _Sigma = [I03_Individual CG Unload PPH Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: I03_Individual CG Unload PPH
+		lineageTag: 48ff3e2c-e446-4a2c-b2d8-a2e68f7eaeaa
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I04_Individual UPH Unload PPH (Daily, NoDims)' =
+			
+			CALCULATE (
+			    [I04_Individual UPH Unload PPH],
+			    REMOVEFILTERS ( 'Dim_Group' ),
+			    REMOVEFILTERS ( 'Dim_Team' ),
+			    REMOVEFILTERS ( 'Dim_Shift' ),
+			    REMOVEFILTERS ( 'Dim_Employee_' ),
+			    REMOVEFILTERS ( 'Dim_PPH_Type' )
+			)
+		displayFolder: I04_Individual UPH Unload
+		lineageTag: 99fa6bce-7ad9-4f46-bfe8-39f5270b2052
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I04_Individual UPH Unload PPH CL (Dynamic)' =
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] ) -- 获取切片器选中的日期集合
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I04_Individual UPH Unload PPH (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I04_Individual UPH Unload
+		lineageTag: 59683210-5936-47c1-93af-a12a01e7651c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I04_Individual UPH Unload PPH Sigma (Dynamic)' =
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P ( -- 使用总体标准差
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I04_Individual UPH Unload PPH (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I04_Individual UPH Unload
+		lineageTag: 4e6c47d3-1485-4988-b6f6-7bf74e364af2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I04_Individual UPH Unload PPH LCL (Dynamic)' =
+			
+			VAR _CL = [I04_Individual UPH Unload PPH CL (Dynamic)]
+			VAR _Sigma = [I04_Individual UPH Unload PPH Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: I04_Individual UPH Unload
+		lineageTag: 674ef923-ade3-43e1-87f7-e8bfcfaf9c47
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I04_Individual UPH Unload PPH UCL (Dynamic)' =
+			
+			VAR _CL = [I04_Individual UPH Unload PPH CL (Dynamic)]
+			VAR _Sigma = [I04_Individual UPH Unload PPH Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: I04_Individual UPH Unload
+		lineageTag: 50ee392c-7cf3-4795-a8bd-f22bae19767b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I05_Individual CG Putaway PPH (Daily, NoDims)' =
+			
+			CALCULATE (
+			    [I05_Individual CG Putaway PPH],
+			    REMOVEFILTERS ( 'Dim_Group' ),
+			    REMOVEFILTERS ( 'Dim_Team' ),
+			    REMOVEFILTERS ( 'Dim_Shift' ),
+			    REMOVEFILTERS ( 'Dim_Employee_' ),
+			    REMOVEFILTERS ( 'Dim_PPH_Type' )
+			)
+		displayFolder: I05_Individual CG Putaway
+		lineageTag: 861422bb-72c8-4509-9f46-4f50ec2bbbcb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I05_Individual CG Putaway PPH CL (Dynamic)' =
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] ) -- 获取切片器选中的日期集合
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I05_Individual CG Putaway PPH (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I05_Individual CG Putaway
+		lineageTag: e243e176-c132-414e-8732-2a71edc7bb1c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I05_Individual CG Putaway PPH Sigma (Dynamic)' =
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P ( -- 使用总体标准差
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I05_Individual CG Putaway PPH (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I05_Individual CG Putaway
+		lineageTag: 62bcad6f-7410-43e3-bdb8-6d944e74a498
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I05_Individual CG Putaway PPH LCL (Dynamic)' =
+			
+			VAR _CL = [I05_Individual CG Putaway PPH CL (Dynamic)]
+			VAR _Sigma = [I05_Individual CG Putaway PPH Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: I05_Individual CG Putaway
+		lineageTag: 43aa86c9-7b83-4cf1-b98c-0bcc05828517
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I05_Individual CG Putaway PPH UCL (Dynamic)' =
+			
+			VAR _CL = [I05_Individual CG Putaway PPH CL (Dynamic)]
+			VAR _Sigma = [I05_Individual CG Putaway PPH Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: I05_Individual CG Putaway
+		lineageTag: 117178e3-4bf4-4794-aef0-6ca7ed1fe809
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I06_Individual UPH Putaway PPH (Daily, NoDims)' =
+			
+			CALCULATE (
+			    [I06_Individual UPH Putaway PPH],
+			    REMOVEFILTERS ( 'Dim_Group' ),
+			    REMOVEFILTERS ( 'Dim_Team' ),
+			    REMOVEFILTERS ( 'Dim_Shift' ),
+			    REMOVEFILTERS ( 'Dim_Employee_' ),
+			    REMOVEFILTERS ( 'Dim_PPH_Type' )
+			)
+		displayFolder: I06_Individual UPH Putaway
+		lineageTag: bf80316d-3577-4951-8a46-9e685d430312
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I06_Individual UPH Putaway PPH CL (Dynamic)' =
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] ) -- 获取切片器选中的日期集合
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I06_Individual UPH Putaway PPH (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I06_Individual UPH Putaway
+		lineageTag: b2356b22-f199-40e6-99e3-7ef6a3da41e6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I06_Individual UPH Putaway PPH Sigma (Dynamic)' =
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P ( -- 使用总体标准差
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I06_Individual UPH Putaway PPH (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I06_Individual UPH Putaway
+		lineageTag: f175afcf-4b19-4bc1-b81a-e6047610679a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I06_Individual UPH Putaway PPH LCL (Dynamic)' =
+			
+			VAR _CL = [I06_Individual UPH Putaway PPH CL (Dynamic)]
+			VAR _Sigma = [I06_Individual UPH Putaway PPH Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: I06_Individual UPH Putaway
+		lineageTag: e17c5257-2e7f-42e2-9276-b196f7ccde11
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I06_Individual UPH Putaway PPH UCL (Dynammic)' =
+			
+			VAR _CL = [I06_Individual UPH Putaway PPH CL (Dynamic)]
+			VAR _Sigma = [I06_Individual UPH Putaway PPH Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: I06_Individual UPH Putaway
+		lineageTag: a303076b-ef9f-4fdb-8dce-92ebe838e68d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I03_Individual PPH CG Unload Target' =
+			
+			50
+		formatString: 0
+		displayFolder: I03_Individual CG Unload PPH
+		lineageTag: 4060ce6a-8bf6-4926-84d5-72da7219b647
+
+	measure 'I06_Individual UPH Putaway PPH Target' =
+			
+			30
+		formatString: 0
+		displayFolder: I06_Individual UPH Putaway
+		lineageTag: 00206d21-4e21-48a6-92ca-c91082f8259b
+
+	measure 'I04_Individual UPH Unload PPH Target' =
+			
+			30
+		formatString: 0
+		displayFolder: I04_Individual UPH Unload
+		lineageTag: 28c8fc13-1065-4500-aeac-42796224f5d3
+
+	measure 'I05_Individual CG Putaway PPH Target' =
+			
+			120
+		formatString: 0
+		displayFolder: I05_Individual CG Putaway
+		lineageTag: f24e81a4-7bea-4002-a509-5d3cafd4bea0
+
+	measure Achievement% =
+			
+			DIVIDE ( 'A_Measure'[PPH Metric Value], 'A_Measure'[Goal] )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 00_Achievement
+		lineageTag: d3c133ef-5e5f-4c64-a5b2-35ec3fb58f8d
+
+	measure Goal =
+			
+			CALCULATE ( SUM ( 'Fct_metrics_goal'[Goal] ) )
+		formatString: 0
+		displayFolder: 00_Achievement
+		lineageTag: 4bfe9ff5-d770-4642-8d0c-5b456c1d7eb7
+
+	measure 'Achievement% (Last 3 Months)' =
+			
+			CALCULATE (
+			    [Achievement%],
+			    DATESINPERIOD ( 'Dim_Calendar'[Date], MAX ( 'Dim_Calendar'[Date] ), -3, MONTH )
+			)
+		displayFolder: 00_Achievement
+		lineageTag: 119d8f96-fb9f-4e2d-8e0b-6db775abadba
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Rank Week by Achievement' =
+			
+			VAR _metric =
+			    SELECTEDVALUE ( 'Fct_All_Details_Rows_Summary'[MetricName] )
+			VAR _week =
+			    SELECTEDVALUE ( 'Dim_Calendar'[YearWeek] )
+			RETURN
+			    IF (
+			        ISBLANK ( [Achievement%] ),
+			        BLANK (),
+			        RANKX (
+			            FILTER (
+			                ALL ( 'Fct_All_Details_Rows_Summary' ),
+			                'Fct_All_Details_Rows_Summary'[MetricName] = _metric
+			                    && RELATED ( 'Dim_Calendar'[YearWeek] ) = _week
+			            ),
+			            CALCULATE ( [Achievement%] ),
+			            ,
+			            DESC,
+			            DENSE
+			        )
+			    )
+		formatString: 0
+		displayFolder: 01_Rank
+		lineageTag: 83b3285d-5667-4aa5-ba93-1f00088df1c3
+
+	measure 'Rank Month by Achievement' =
+			
+			VAR _metric =
+			    SELECTEDVALUE ( 'Fct_All_Details_Rows_Summary'[MetricName] )
+			VAR _yearMonth =
+			    SELECTEDVALUE ( 'Dim_Calendar'[YearMonth] )
+			RETURN
+			    IF (
+			        ISBLANK ( [Achievement%] ),
+			        BLANK (),
+			        RANKX (
+			            FILTER (
+			                ALL ( 'Fct_All_Details_Rows_Summary' ),
+			                'Fct_All_Details_Rows_Summary'[MetricName] = _metric
+			                    && RELATED ( 'Dim_Calendar'[YearMonth] ) = _yearMonth
+			            ),
+			            CALCULATE ( [Achievement%] ),
+			            ,
+			            DESC,
+			            DENSE
+			        )
+			    )
+		formatString: 0
+		displayFolder: 01_Rank
+		lineageTag: 9b15efaf-4d9d-446c-9aaa-7a4d02bcc9c5
+
+	measure 'Is Top5 Week' =
+			
+			VAR _r = [Rank Week by Achievement]
+			RETURN
+			    IF ( NOT ISBLANK ( _r ) && _r <= 5, 1 )
+		formatString: 0
+		displayFolder: 01_Rank
+		lineageTag: 3e8a64f4-25a8-4dc8-94b4-227681cb79af
+
+	measure 'Is Top5 Month' =
+			
+			VAR _r = [Rank Month by Achievement]
+			RETURN
+			    IF ( NOT ISBLANK ( _r ) && _r <= 5, 1 )
+		formatString: 0
+		displayFolder: 01_Rank
+		lineageTag: 036b67d1-05b4-4f07-817f-5a88603a617b
+
+	measure 'Individual Achievement%' =
+			
+			DIVIDE ( [PPH Metric Value], -- 这里的 PPH 度量不要有 ALL('Dim_Employee_')
+			    [Goal] )
+		lineageTag: e2351690-8a84-410a-9efd-672c2b48ef97
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Week Avg Achievement%' =
+			
+			VAR currWeek =
+			    SELECTEDVALUE ( 'Dim_Calendar'[WeekSaturday] )
+			VAR currEmp =
+			    SELECTEDVALUE ( 'Dim_Employee_'[Employee_ID] )
+			RETURN
+			    CALCULATE (
+			        AVERAGE ( 'Fct_All_Details_Rows_Summary'[Achievement%] ),
+			        KEEPFILTERS ( 'Dim_Calendar'[WeekSaturday] = currWeek ),
+			        KEEPFILTERS ( 'Dim_Employee_'[Employee_ID] = currEmp )
+			    )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 00_Week_Rank
+		lineageTag: 76c0e3c0-6a6b-46ef-9523-5f885940809d
+
+	measure 'Week Rank' =
+			
+			VAR CurrentAvg = [Week Avg Achievement%] // 如果 Avg% 是列，请替换为 AVERAGE('Table'[Avg%])
+			RETURN
+			    IF (
+			        // 1. 只有当 Avg% 不为空时才进行排名，避免显示无数据的员工
+			        NOT ( ISBLANK ( CurrentAvg ) ),
+			        RANKX (
+			            // 2. ALL 函数：移除员工ID和姓名的筛选，但保留 WeekSaturday 的筛选
+			            // 这样做的目的是获取当前周所有员工的列表
+			            ALL (
+			                Dim_Employee_[Employee_ID],
+			                Dim_Employee_[employee_name]
+			            ),
+			            // 3. 排序依据：使用 Avg%
+			            [Week Avg Achievement%],
+			            ,
+			            // 5. 排序方向：DESC 表示从大到小 (高的排第一)
+			            DESC,
+			            // 6. 排名方式：Dense 表示如果不连续（例如并列第一），下一个是第二名而不是第三名
+			            DENSE
+			        )
+			    )
+		formatString: 0
+		displayFolder: 00_Week_Rank
+		lineageTag: b8c7c808-52bd-4040-9d4c-4caaa0c59c7e
+
+	measure 'Week Medal' =
+			
+			VAR _currentAvg = [Week Avg Achievement%] // 获取当前行的平均值
+			VAR _rank = [Week Rank] // 获取你刚才写好的排名度量值
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        // 1. 安全检查：如果平均值为为空，或者排名为空，则不显示奖牌
+			        ISBLANK ( _currentAvg ) || ISBLANK ( _rank ), BLANK (),
+			        // 2. 根据排名分配奖牌
+			        _rank = 1, "🥇",
+			        _rank = 2, "🥈",
+			        _rank = 3, "🥉",
+			        // 3. 第4名及以后不显示任何内容
+			        BLANK ()
+			    )
+		displayFolder: 00_Week_Rank
+		lineageTag: 6ac59d51-3a3e-4129-805d-5823f5609cef
+
+	measure 'Month Avg Achievement%' =
+			
+			VAR currMonth =
+			    SELECTEDVALUE ( 'Dim_Calendar'[YearMonth] )
+			VAR currEmp =
+			    SELECTEDVALUE ( 'Dim_Employee_'[Employee_ID] )
+			RETURN
+			    CALCULATE (
+			        AVERAGE ( 'Fct_All_Details_Rows_Summary'[Achievement%] ),
+			        KEEPFILTERS ( 'Dim_Calendar'[YearMonth] = currMonth ),
+			        KEEPFILTERS ( 'Dim_Employee_'[Employee_ID] = currEmp )
+			    )
+		formatString: #,0.00%;-#,0.00%;#,0.00%
+		displayFolder: 00_Month_Rank
+		lineageTag: 814cd1a6-af8d-4665-a066-433870c995be
+
+	measure 'Medal by AVG% (Big)' =
+			
+			VAR _rank = [Week Rank]
+			VAR _icon =
+			    SWITCH ( _rank, 1, "🥇", 2, "🥈", 3, "🥉" )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _icon ),
+			        "data:image/svg+xml;utf8, " & "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>" & "<text x='25' y='45' font-size='90' text-anchor='middle'>" & _icon & "</text>" & "</svg>"
+			    )
+		displayFolder: 00_Week_Rank
+		lineageTag: d235c3d4-b6fa-4841-b390-12735f51bdea
+		dataCategory: ImageUrl
+
+	measure 'Medal by AVG% (Adjusted)' =
+			
+			VAR _rank = [Week Rank]
+			VAR _icon =
+			    SWITCH ( _rank, 1, "🥇", 2, "🥈", 3, "🥉" )
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _icon ),
+			        "data:image/svg+xml;utf8, " & "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>" & // 建议 y 值调整到 75 左右，使图标在单元格内垂直居中
+			        "<text x='50' y='45' font-size='35' text-anchor='middle'>" & _icon & "</text>" & "</svg>"
+			    )
+		displayFolder: 00_Week_Rank
+		lineageTag: 2dfe71ef-defc-49e5-be79-17b04ff49e27
+		dataCategory: ImageUrl
+
+	measure 'Employee Week Position' =
+			
+			VAR _week =
+			    SELECTEDVALUE ( 'Dim_Calendar'[WeekSaturday] )
+			VAR _empID =
+			    SELECTEDVALUE ( 'Dim_Employee_'[Employee_ID] )
+			VAR _empName =
+			    SELECTEDVALUE ( 'Dim_Employee_'[Employee_Name] ) -- 先算这一周这个员工的 Week Achievement% Avg.
+			VAR _achv =
+			    CALCULATE (
+			        [Week Avg Achievement%],
+			        'Dim_Calendar'[WeekSaturday] = _week,
+			        'Dim_Employee_'[Employee_ID] = _empID
+			    )
+			RETURN
+			    IF (
+			        -- 只有 Week Achievement% Avg. > 0 的行才显示
+			        _achv > 0,
+			        CONCATENATEX (
+			            CALCULATETABLE (
+			                DISTINCT ( 'Fct_All_Details_Rows_Summary'[Position] ),
+			                'Dim_Calendar'[WeekSaturday] = _week,
+			                'Dim_Employee_'[Employee_ID] = _empID,
+			                'Dim_Employee_'[Employee_Name] = _empName
+			            ),
+			            'Fct_All_Details_Rows_Summary'[Position],
+			            ", ",
+			            'Fct_All_Details_Rows_Summary'[Position], ASC
+			        )
+			    )
+		displayFolder: 00_Week_Rank
+		lineageTag: 52e73d2b-f8f4-4ffa-9358-92411d05ffdb
+
+	measure 'Month Rank' =
+			
+			VAR CurrentAvg = [Month Avg Achievement%] // 如果 Avg% 是列，请替换为 AVERAGE('Table'[Avg%])
+			RETURN
+			    IF (
+			        // 1. 只有当 Avg% 不为空时才进行排名，避免显示无数据的员工
+			        NOT ( ISBLANK ( CurrentAvg ) ),
+			        RANKX (
+			            // 2. ALL 函数：移除员工ID和姓名的筛选，但保留 WeekSaturday 的筛选
+			            // 这样做的目的是获取当前周所有员工的列表
+			            ALL (
+			                Dim_Employee_[Employee_ID],
+			                Dim_Employee_[employee_name]
+			            ),
+			            // 3. 排序依据：使用 Avg%
+			            [Month Avg Achievement%],
+			            ,
+			            // 5. 排序方向：DESC 表示从大到小 (高的排第一)
+			            DESC,
+			            // 6. 排名方式：Dense 表示如果不连续（例如并列第一），下一个是第二名而不是第三名
+			            DENSE
+			        )
+			    )
+		formatString: 0
+		displayFolder: 00_Month_Rank
+		lineageTag: ff562006-9244-437e-9d20-549651f12d05
+
+	measure 'Month Medal' =
+			
+			VAR _currentAvg = [Month Avg Achievement%] // 获取当前行的平均值
+			VAR _rank = [Month Rank] // 获取你刚才写好的排名度量值
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        // 1. 安全检查：如果平均值为为空，或者排名为空，则不显示奖牌
+			        ISBLANK ( _currentAvg ) || ISBLANK ( _rank ), BLANK (),
+			        // 2. 根据排名分配奖牌
+			        _rank = 1, "🥇",
+			        _rank = 2, "🥈",
+			        _rank = 3, "🥉",
+			        // 3. 第4名及以后不显示任何内容
+			        BLANK ()
+			    )
+		displayFolder: 00_Month_Rank
+		lineageTag: 57cd3490-fb58-446d-94d1-ac4e0faef3f3
+
+	measure 'Employee Month Position' =
+			
+			VAR _month =
+			    SELECTEDVALUE ( 'Dim_Calendar'[YearMonth] )
+			VAR _empID =
+			    SELECTEDVALUE ( 'Dim_Employee_'[Employee_ID] )
+			VAR _empName =
+			    SELECTEDVALUE ( 'Dim_Employee_'[Employee_Name] ) -- 先算这个月员工的 Month Achievement% Avg.
+			VAR _achv =
+			    CALCULATE (
+			        [Month Avg Achievement%],
+			        'Dim_Calendar'[YearMonth] = _month,
+			        'Dim_Employee_'[Employee_ID] = _empID
+			    )
+			RETURN
+			    IF (
+			        -- 只有 Week Achievement% Avg. > 0 的行才显示
+			        _achv > 0,
+			        CONCATENATEX (
+			            CALCULATETABLE (
+			                DISTINCT ( 'Fct_All_Details_Rows_Summary'[Position] ),
+			                'Dim_Calendar'[YearMonth] = _month,
+			                'Dim_Employee_'[Employee_ID] = _empID,
+			                'Dim_Employee_'[Employee_Name] = _empName
+			            ),
+			            'Fct_All_Details_Rows_Summary'[Position],
+			            ", ",
+			            'Fct_All_Details_Rows_Summary'[Position], ASC
+			        )
+			    )
+		displayFolder: 00_Month_Rank
+		lineageTag: 60baf989-1d9f-4b41-96dd-bd08e63a437c
+
+	measure 'Week Avg Achievement% (Total as Average)' =
+			
+			VAR _isEmployeeRow =
+			    ISINSCOPE ( 'Dim_Employee_'[Employee_ID] )
+			RETURN
+			    IF (
+			        -- 行级：按员工显示原来的值
+			        _isEmployeeRow,
+			        [Week Avg Achievement%],
+			        -- Total 行：对当前筛选下所有员工的周达成率再取平均
+			        AVERAGEX (
+			            VALUES ( 'Dim_Employee_'[Employee_ID] ),
+			            [Week Avg Achievement%]
+			        )
+			    )
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		displayFolder: 00_Week_Rank
+		lineageTag: f6cf209e-d2ab-4429-b3a6-3d129ac833b4
+
+	measure 'Month Avg Achievement% (Total as Average)' =
+			
+			VAR _isEmployeeRow =
+			    ISINSCOPE ( 'Dim_Employee_'[Employee_ID] )
+			RETURN
+			    IF (
+			        -- 行级：按员工显示原来的值
+			        _isEmployeeRow,
+			        [Month Avg Achievement%],
+			        -- Total 行：对当前筛选下所有员工的周达成率再取平均
+			        AVERAGEX (
+			            VALUES ( 'Dim_Employee_'[Employee_ID] ),
+			            [Month Avg Achievement%]
+			        )
+			    )
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		displayFolder: 00_Month_Rank
+		lineageTag: 3da48e78-28da-4821-a4df-2838eaa46fc8
+
+	measure HTMLCode = ```
+			
+			"<div style='background: linear-gradient(135deg, #667eea, #764ba2); padding: 40px; min-height: 600px; font-family: Arial;'>
+			    <h1 style='text-align: center; color: white; font-size: 50px;'>Ashton PPH Dashboard</h1>
+			    <div style='display: grid; grid-template-columns: 1fr 1fr; gap: 25px;'>
+			        <div style='background: linear-gradient(135deg, #ff6b6b, #ee5a24); height: 180px; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 30px; font-weight: bold;'>All in PPH</div>
+			        <div style='background: linear-gradient(135deg, #2d3436, #000); height: 180px; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 30px; font-weight: bold;'>Individual PPH</div>
+			        <div style='background: linear-gradient(135deg, #00b894, #00695c); height: 180px; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 30px; font-weight: bold;'>Weekly PPH Rank</div>
+			        <div style='background: linear-gradient(135deg, #0984e3, #0652DD); height: 180px; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 30px; font-weight: bold;'>Monthly PPH Rank</div>
+			    </div>
+			</div>"
+			
+			```
+		displayFolder: HTML
+		lineageTag: 9783ba4e-5670-49ce-a335-7a39abb4c532
+
+	measure Html_Navigate_V2 = ```
+			
+			"
+			<style>
+			  body {
+			    margin: 0;
+			    font-family: 'Segoe UI', Arial, sans-serif;
+			    background: #808080;
+			  }
+			
+			  .pph-wrapper {
+			    display: flex;
+			    flex-direction: column;
+			    align-items: center;
+			    justify-content: center;
+			    gap: 24px;
+			    padding: 24px;
+			  }
+			
+			  .pph-title {
+			    font-size: 40px;
+			    font-weight: 800;
+			    color: #1e90ff;
+			    margin-bottom: 16px;
+			    text-align: center;
+			  }
+			
+			  .pph-row {
+			    display: flex;
+			    gap: 32px;
+			  }
+			
+			  .pph-card {
+			    width: 320px;
+			    height: 150px;
+			    border-radius: 32px;
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;
+			    color: #ffffff;
+			    font-size: 26px;
+			    font-weight: 700;
+			    letter-spacing: 0.5px;
+			    cursor: default;
+			    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+			    transition: transform 0.25s ease, box-shadow 0.25s ease;
+			  }
+			
+			  .pph-card:hover {
+			    transform: translateY(-6px) scale(1.03);
+			    box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+			  }
+			
+			  .pph-orange { background: #e76f2f; }      /* All in PPH */
+			  .pph-black  { background: #000000; }      /* Individual */
+			  .pph-green  { background: #004b45; }      /* Weekly */
+			  .pph-blue   { background: #004f9e; }      /* Monthly */
+			</style>
+			
+			<div class='pph-wrapper'>
+			  <div class='pph-title'>Ashton PPH Dashboard</div>
+			
+			  <div class='pph-row'>
+			    <div class='pph-card pph-orange'>All in PPH</div>
+			    <div class='pph-card pph-black'>Individual PPH</div>
+			  </div>
+			
+			  <div class='pph-row'>
+			    <div class='pph-card pph-green'>Weekly PPH Rank</div>
+			    <div class='pph-card pph-blue'>Monthly PPH Rank</div>
+			  </div>
+			</div>
+			"
+			
+			```
+		displayFolder: HTML
+		lineageTag: ab63bd64-872b-4937-9967-4f0c68c5b823
+
+	measure Html_Navigate_V3 = ```
+			
+			"
+			<style>
+			  body {
+			    margin: 0;
+			    font-family: 'Segoe UI', Arial, sans-serif;
+			    background: #808080;
+			  }
+			
+			  .pph-wrapper {
+			    display: flex;
+			    flex-direction: column;
+			    align-items: center;
+			    justify-content: center;
+			    gap: 24px;
+			    padding: 24px;
+			  }
+			
+			  .pph-title {
+			    font-size: 40px;
+			    font-weight: 800;
+			    color: #1e90ff;
+			    margin-bottom: 16px;
+			    text-align: center;
+			  }
+			
+			  .pph-row {
+			    display: flex;
+			    gap: 32px;
+			  }
+			
+			  .pph-card {
+			    width: 320px;
+			    height: 150px;
+			    border-radius: 32px;
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;
+			    color: #ffffff;
+			    font-size: 26px;
+			    font-weight: 700;
+			    letter-spacing: 0.5px;
+			    cursor: default;
+			    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+			    transition: transform 0.25s ease, box-shadow 0.25s ease;
+			  }
+			
+			  .pph-card:hover {
+			    transform: translateY(-6px) scale(1.03);
+			    box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+			  }
+			
+			  .pph-orange { background: #e76f2f; }      /* All in PPH */
+			  .pph-black  { background: #000000; }      /* Individual */
+			  .pph-green  { background: #004b45; }      /* Weekly */
+			  .pph-blue   { background: #004f9e; }      /* Monthly */
+			
+			  /* --- small buttons area --- */
+			  .pph-small-row {
+			    margin-top: 32px;
+			    display: flex;
+			    gap: 24px;
+			  }
+			
+			  .pph-small-btn {
+			    min-width: 190px;
+			    padding: 10px 24px;
+			    border-radius: 12px;
+			    font-size: 14px;
+			    font-weight: 600;
+			    letter-spacing: 0.05em;
+			    text-transform: uppercase;
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;
+			    cursor: default;
+			    box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+			    transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+			  }
+			
+			  .pph-small-btn:hover {
+			    transform: translateY(-3px) scale(1.02);
+			    box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+			  }
+			
+			  .pph-small-goal {
+			    background: #a8e6a3;
+			    color: #275b24;
+			  }
+			
+			  .pph-small-download {
+			    background: #00a36c;
+			    color: #ffffff;
+			    border: 2px solid #00d89e;
+			    animation: glow 2.5s ease-in-out infinite;
+			  }
+			
+			  @keyframes glow {
+			    0%   { box-shadow: 0 0 0 rgba(0, 255, 170, 0.15); }
+			    50%  { box-shadow: 0 0 8px rgba(0, 255, 170, 0.35),
+			                     0 0 16px rgba(0, 255, 170, 0.25); }
+			    100% { box-shadow: 0 0 0 rgba(0, 255, 170, 0.15); }
+			  }
+			</style>
+			
+			<div class='pph-wrapper'>
+			  <div class='pph-title'>Ashton PPH Dashboard</div>
+			
+			  <div class='pph-row'>
+			    <div class='pph-card pph-orange'>All in PPH</div>
+			    <div class='pph-card pph-black'>Individual PPH</div>
+			  </div>
+			
+			  <div class='pph-row'>
+			    <div class='pph-card pph-green'>Weekly PPH Rank</div>
+			    <div class='pph-card pph-blue'>Monthly PPH Rank</div>
+			  </div>
+			
+			  <div class='pph-small-row'>
+			    <div class='pph-small-btn pph-small-goal'>Maintain PPH Goal</div>
+			    <div class='pph-small-btn pph-small-download'>⬇ Download PPH Details</div>
+			  </div>
+			</div>
+			"
+			
+			```
+		displayFolder: HTML
+		lineageTag: b3f7be20-1129-44ec-a511-87610ae9befd
+
+	measure Html_Navigate_Pro = ```
+			
+			"
+			<style>
+			  body {
+			    margin: 0;
+			    font-family: 'Segoe UI', Arial, sans-serif;
+			    background: #4a4f58;
+			  }
+			
+			  .nav-shell {
+			    display: flex;
+			    justify-content: center;
+			    align-items: center;
+			    padding: 32px 24px;
+			  }
+			
+			  .nav-wrapper {
+			    width: 880px;
+			    max-width: 100%;
+			    display: flex;
+			    flex-direction: column;
+			    align-items: center;
+			    gap: 28px;
+			  }
+			
+			  .nav-title {
+			    width: 100%;
+			    display: flex;
+			    justify-content: space-between;
+			    align-items: baseline;
+			  }
+			
+			  .nav-title-main {
+			    font-size: 34px;
+			    font-weight: 800;
+			    color: #1ec0ff;
+			    letter-spacing: 0.04em;
+			  }
+			
+			  .nav-title-sub {
+			    font-size: 12px;
+			    text-transform: uppercase;
+			    letter-spacing: 0.18em;
+			    color: rgba(255,255,255,0.7);
+			  }
+			
+			  .nav-grid {
+			    width: 100%;
+			    display: grid;
+			    grid-template-columns: repeat(2, minmax(0,1fr));
+			    gap: 22px 28px;
+			  }
+			
+			  .nav-card {
+			    position: relative;
+			    border-radius: 26px;
+			    padding: 20px 26px;
+			    color: #ffffff;
+			    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+			    overflow: hidden;
+			    cursor: default;
+			    transition: transform 0.25s ease, box-shadow 0.25s ease;
+			  }
+			
+			  .nav-card::before {
+			    content: '';
+			    position: absolute;
+			    left: 0;
+			    top: 0;
+			    width: 6px;
+			    height: 100%;
+			    opacity: 0.7;
+			  }
+			
+			  .nav-card:hover {
+			    transform: translateY(-5px);
+			    box-shadow: 0 14px 30px rgba(0,0,0,0.45);
+			  }
+			
+			  .nav-card-title {
+			    font-size: 22px;
+			    font-weight: 700;
+			    margin-bottom: 4px;
+			  }
+			
+			  .nav-card-desc {
+			    font-size: 12px;
+			    opacity: 0.85;
+			  }
+			
+			  /* 颜色方案：左列偏运营，右列偏个人 & 排名 */
+			  .nav-all {
+			    background: linear-gradient(135deg, #f28b3b 0%, #d45a19 100%);
+			  }
+			  .nav-all::before { background: #ffdfb4; }
+			
+			  .nav-ind {
+			    background: linear-gradient(135deg, #151515 0%, #262626 100%);
+			  }
+			  .nav-ind::before { background: #ffc65c; }
+			
+			  .nav-week {
+			    background: linear-gradient(135deg, #00534c 0%, #00846e 100%);
+			  }
+			  .nav-week::before { background: #9fffe3; }
+			
+			  .nav-month {
+			    background: linear-gradient(135deg, #004b9e 0%, #0076ce 100%);
+			  }
+			  .nav-month::before { background: #b7daff; }
+			
+			  /* 底部小按钮区 */
+			  .nav-bottom-row {
+			    margin-top: 10px;
+			    width: 100%;
+			    display: flex;
+			    justify-content: center;
+			    gap: 20px;
+			  }
+			
+			  .nav-pill {
+			    min-width: 220px;
+			    padding: 12px 24px;
+			    border-radius: 999px;
+			    font-size: 13px;
+			    font-weight: 600;
+			    letter-spacing: 0.12em;
+			    text-transform: uppercase;
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;
+			    cursor: default;
+			    box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+			    transition: transform 0.22s ease, box-shadow 0.22s ease;
+			  }
+			
+			  .nav-pill:hover {
+			    transform: translateY(-3px);
+			    box-shadow: 0 10px 20px rgba(0,0,0,0.45);
+			  }
+			
+			  .nav-pill-goal {
+			    background: #f0f4f2;
+			    color: #264b3c;
+			  }
+			
+			  .nav-pill-download {
+			    background: linear-gradient(135deg, #00a36c 0%, #00c99a 100%);
+			    color: #ffffff;
+			    position: relative;
+			  }
+			
+			  .nav-pill-download::after {
+			    content: '';
+			    position: absolute;
+			    inset: -2px;
+			    border-radius: inherit;
+			    border: 1px solid rgba(255,255,255,0.45);
+			    opacity: 0;
+			    transition: opacity 0.25s ease;
+			  }
+			
+			  .nav-pill-download:hover::after {
+			    opacity: 1;
+			  }
+			</style>
+			
+			<div class='nav-shell'>
+			  <div class='nav-wrapper'>
+			    <div class='nav-title'>
+			      <div class='nav-title-main'>Ashton PPH Dashboard</div>
+			      <div class='nav-title-sub'>Performance &amp; Productivity Navigation</div>
+			    </div>
+			
+			    <div class='nav-grid'>
+			      <div class='nav-card nav-all'>
+			        <div class='nav-card-title'>All in PPH</div>
+			        <div class='nav-card-desc'>Overall pieces-per-hour across operations.</div>
+			      </div>
+			
+			      <div class='nav-card nav-ind'>
+			        <div class='nav-card-title'>Individual PPH</div>
+			        <div class='nav-card-desc'>Employee-level performance distribution.</div>
+			      </div>
+			
+			      <div class='nav-card nav-week'>
+			        <div class='nav-card-title'>Weekly PPH Rank</div>
+			        <div class='nav-card-desc'>Weekly ranking by team and employee.</div>
+			      </div>
+			
+			      <div class='nav-card nav-month'>
+			        <div class='nav-card-title'>Monthly PPH Rank</div>
+			        <div class='nav-card-desc'>Monthly trend and ranking summary.</div>
+			      </div>
+			    </div>
+			
+			    <div class='nav-bottom-row'>
+			      <div class='nav-pill nav-pill-goal'>Maintain PPH Goal</div>
+			      <div class='nav-pill nav-pill-download'>Download PPH Details</div>
+			    </div>
+			  </div>
+			</div>
+			"
+			
+			```
+		displayFolder: HTML
+		lineageTag: 220a25a2-27eb-4ba4-b69b-7cc6bda39485
+
+	measure '1_All in PPH Shipping CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] ) -- 获取切片器选中的日期集合
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [1_All in PPH Shipping (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 1_All in PPH Shipping
+		lineageTag: 4118b78c-78a9-4f86-9480-5a389ac0079a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '1_All in PPH Shipping Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P ( -- 使用总体标准差
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [1_All in PPH Shipping (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 1_All in PPH Shipping
+		lineageTag: 7105b421-e415-423f-a46a-4ddca1c620f1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '1_All in PPH Shipping Count Green Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF([1_All in PPH Shipping (Daily, NoDims)] >= 13, 1, 0)
+			)
+			```
+		formatString: 0
+		displayFolder: 1_All in PPH Shipping
+		lineageTag: 852955d4-3d7d-4f96-857a-8c04b21a02c7
+
+	measure '1_All in PPH Shipping Count Yellow Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF(
+			        [1_All in PPH Shipping (Daily, NoDims)] >= 10 && 
+			        [1_All in PPH Shipping (Daily, NoDims)] < 13, 
+			        1, 0
+			    )
+			)
+			```
+		formatString: 0
+		displayFolder: 1_All in PPH Shipping
+		lineageTag: eb6a0036-a987-4098-8c54-ef392fba356c
+
+	measure '1_All in PPH Shipping Count Red Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF(
+			        NOT ISBLANK([1_All in PPH Shipping (Daily, NoDims)]) && 
+			        [1_All in PPH Shipping (Daily, NoDims)] < 10, 
+			        1, 0
+			    )
+			)
+			```
+		formatString: 0
+		displayFolder: 1_All in PPH Shipping
+		lineageTag: 5e7be983-94a9-4c44-b2d8-241a194b0216
+
+	measure '2_All in PPH CG Receiving Count Green Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF([2_All in PPH CG Receiving] >= 25, 1, 0)
+			)
+			```
+		formatString: 0
+		displayFolder: 2_All in PPH CG Receiving
+		lineageTag: 00dd6965-9543-4058-9e8e-4134177d3302
+
+	measure '2_All in PPH CG Receiving Count Yellow Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF(
+			        [2_All in PPH CG Receiving (Daily, NoDims)] >= 23 && 
+			        [2_All in PPH CG Receiving (Daily, NoDims)] < 25, 
+			        1, 0
+			    )
+			)
+			
+			```
+		formatString: 0
+		displayFolder: 2_All in PPH CG Receiving
+		lineageTag: b284499a-89c9-406c-ac6b-501076a68408
+
+	measure '2_All in PPH CG Receiving Count Red Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF(
+			        NOT ISBLANK([2_All in PPH CG Receiving]) && 
+			        [2_All in PPH CG Receiving] < 23, 
+			        1, 0
+			    )
+			)
+			```
+		formatString: 0
+		displayFolder: 2_All in PPH CG Receiving
+		lineageTag: e3a1b120-2cb8-4c86-ba88-1ab8ed65a0e2
+
+	measure '1_All in PPH Shipping Target' =
+			
+			25
+		formatString: 0
+		displayFolder: 1_All in PPH Shipping
+		lineageTag: 8ebd395c-ce56-4acd-90d0-2f824f4bb708
+
+	measure '3_All in PPH Unload UPH Count Green Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF([3_All in PPH Unload UPH (Daily, NoDims)] >= 15, 1, 0)
+			)
+			
+			```
+		formatString: 0
+		displayFolder: 3_All in PPH Unload UPH
+		lineageTag: 62202d62-cbac-46e8-978e-559750d7a40c
+
+	measure '3_All in PPH Unload UPH Count Yellow Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF(
+			        [3_All in PPH Unload UPH (Daily, NoDims)] >= 12 && 
+			        [3_All in PPH Unload UPH (Daily, NoDims)] < 15, 
+			        1, 0
+			    )
+			)
+			
+			```
+		formatString: 0
+		displayFolder: 3_All in PPH Unload UPH
+		lineageTag: 3e532d4c-0326-4b32-bebe-14d22f193308
+
+	measure '3_All in PPH Unload UPH Count Red Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF(
+			        NOT ISBLANK([3_All in PPH Unload UPH (Daily, NoDims)]) && 
+			        [3_All in PPH Unload UPH (Daily, NoDims)] < 12, 
+			        1, 0
+			    )
+			)
+			```
+		formatString: 0
+		displayFolder: 3_All in PPH Unload UPH
+		lineageTag: 5e20c2f0-1370-4f43-b1dc-aaabe0adcaf8
+
+	measure 'I01_Individual Loading PPH Count Green Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF([I01_Individual Loading PPH (Daily, NoDims)] >= 36, 1, 0)
+			)
+			
+			```
+		formatString: 0
+		displayFolder: I01_Individual Loading Hours
+		lineageTag: 31990a30-1c05-4886-9c32-db241e1ea29e
+
+	measure 'I01_Individual Loading PPH Count Yellow Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF(
+			        [I01_Individual Loading PPH (Daily, NoDims)] >= 26  && 
+			        [I01_Individual Loading PPH (Daily, NoDims)] < 36, 
+			        1, 0
+			    )
+			)
+			
+			```
+		formatString: 0
+		displayFolder: I01_Individual Loading Hours
+		lineageTag: ee065f72-b146-474f-8fd5-c3adcccd76e3
+
+	measure 'I01_Individual Loading PPH Count Red Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF(
+			        NOT ISBLANK([I01_Individual Loading PPH (Daily, NoDims)]) && 
+			        [I01_Individual Loading PPH (Daily, NoDims)] < 26, 
+			        1, 0
+			    )
+			)
+			
+			```
+		formatString: 0
+		displayFolder: I01_Individual Loading Hours
+		lineageTag: 50618a7d-5323-403d-884c-5df686c1ec85
+
+	measure 'I02_Individual Picking PPH Count Green Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF([I02_Individual Picking PPH (Daily, NoDims)] >= 36, 1, 0)
+			)
+			
+			```
+		formatString: 0
+		displayFolder: I02_Individual Picking Hours
+		lineageTag: f0f21f3d-66d4-48d6-892a-2df1e8d3bbee
+
+	measure 'I02_Individual Picking PPH Count Yellow Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF(
+			        [I02_Individual Picking PPH (Daily, NoDims)] >= 26  && 
+			        [I02_Individual Picking PPH (Daily, NoDims)] < 36, 
+			        1, 0
+			    )
+			)
+			
+			
+			```
+		formatString: 0
+		displayFolder: I02_Individual Picking Hours
+		lineageTag: 850c3162-3570-4de2-bf61-bff7a7043d65
+
+	measure 'I02_Individual Picking PPH Count Red Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF(
+			        NOT ISBLANK([I02_Individual Picking PPH (Daily, NoDims)]) && 
+			        [I02_Individual Picking PPH (Daily, NoDims)] < 26, 
+			        1, 0
+			    )
+			)
+			
+			
+			```
+		formatString: 0
+		displayFolder: I02_Individual Picking Hours
+		lineageTag: 197b713f-eb6b-4b42-a178-a6ef464507f4
+
+	measure 'I03_Individual CG Unload PPH Count Green Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF([I03_Individual CG Unload PPH (Daily, NoDims)] >= 50, 1, 0)
+			)
+			
+			```
+		formatString: 0
+		displayFolder: I03_Individual CG Unload PPH
+		lineageTag: 46ecc858-a45d-4bbc-b69b-310071fb9ca1
+
+	measure 'I03_Individual CG Unload PPH Count Yellow Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF(
+			        [I03_Individual CG Unload PPH (Daily, NoDims)] >= 40  && 
+			        [I03_Individual CG Unload PPH (Daily, NoDims)] < 50, 
+			        1, 0
+			    )
+			)
+			
+			
+			
+			```
+		formatString: 0
+		displayFolder: I03_Individual CG Unload PPH
+		lineageTag: e1d815ca-31d7-49b1-b1b0-e1886ddf10a4
+
+	measure 'I03_Individual CG Unload PPH Count Red Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF(
+			        NOT ISBLANK([I03_Individual CG Unload PPH (Daily, NoDims)]) && 
+			        [I03_Individual CG Unload PPH (Daily, NoDims)] < 40, 
+			        1, 0
+			    )
+			)
+			
+			
+			```
+		formatString: 0
+		displayFolder: I03_Individual CG Unload PPH
+		lineageTag: 666a1ec3-7022-45c0-b5ae-84f669ba0aea
+
+	measure 'I04_Individual UPH Unload PPH Count Green Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF([I04_Individual UPH Unload PPH (Daily, NoDims)] >= 50, 1, 0)
+			)
+			
+			```
+		formatString: 0
+		displayFolder: I04_Individual UPH Unload
+		lineageTag: 94fc09c4-7a2a-4177-a6fa-13ba76df3383
+
+	measure 'I04_Individual UPH Unload PPH Count Yellow Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF(
+			        [I04_Individual UPH Unload PPH (Daily, NoDims)] >= 25  && 
+			        [I04_Individual UPH Unload PPH (Daily, NoDims)] < 30, 
+			        1, 0
+			    )
+			)
+			
+			
+			
+			```
+		formatString: 0
+		displayFolder: I04_Individual UPH Unload
+		lineageTag: 439ea24b-ee39-4b11-8558-87bd11802c3a
+
+	measure 'I04_Individual UPH Unload PPH Count Red Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF(
+			        NOT ISBLANK([I04_Individual UPH Unload PPH (Daily, NoDims)]) && 
+			        [I04_Individual UPH Unload PPH (Daily, NoDims)] < 25, 
+			        1, 0
+			    )
+			)
+			
+			
+			```
+		formatString: 0
+		displayFolder: I04_Individual UPH Unload
+		lineageTag: e332a6e6-ee98-462c-b12f-e75d7a29e99f
+
+	measure 'I05_Individual CG Putaway PPH Count Green Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF([I05_Individual CG Putaway PPH (Daily, NoDims)] >= 120, 1, 0)
+			)
+			
+			```
+		formatString: 0
+		displayFolder: I05_Individual CG Putaway
+		lineageTag: 3bbf585c-86e0-435c-824f-0ee4fd3957b5
+
+	measure 'I05_Individual CG Putaway PPH Count Yellow Days ' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF(
+			        [I05_Individual CG Putaway PPH (Daily, NoDims)] >= 100  && 
+			        [I05_Individual CG Putaway PPH (Daily, NoDims)] < 120, 
+			        1, 0
+			    )
+			)
+			
+			
+			
+			```
+		formatString: 0
+		displayFolder: I05_Individual CG Putaway
+		lineageTag: 0f461a74-3903-4457-a57d-22d61a08989e
+
+	measure 'I05_Individual CG Putaway PPH Count Red Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF(
+			        NOT ISBLANK([I05_Individual CG Putaway PPH (Daily, NoDims)]) && 
+			        [I05_Individual CG Putaway PPH (Daily, NoDims)] < 100, 
+			        1, 0
+			    )
+			)
+			
+			
+			```
+		formatString: 0
+		displayFolder: I05_Individual CG Putaway
+		lineageTag: 114a27c5-b3ad-48c1-84bb-5f1491a5d2d8
+
+	measure Notice = ```
+			
+			// Define the SVG wrapper and MIME type required by Power BI
+			VAR Prefix = "data:image/svg+xml;utf8,"
+			
+			// Build the SVG XML structure
+			//     <text x='15' y='35' font-family='Segoe UI, Arial' font-size='18' font-weight='bold' fill='black'>Notice:</text>
+			VAR SvgContent = 
+			"<svg xmlns='http://www.w3.org/2000/svg' width='300' height='80'>
+			    <rect width='100%' height='100%' fill='white' stroke='lightgray' stroke-width='1' rx='8' />
+			    
+			
+			    
+			    <text x='15' y='15' font-family='Segoe UI, Arial' font-size='18' fill='black'>Team begin with:</text>
+			    
+			    <text x='30' y='45' font-family='Segoe UI, Arial' font-size='16' fill='black'>• RM* --- work hours &lt; 5 hours</text>
+			    <text x='30' y='70' font-family='Segoe UI, Arial' font-size='16' fill='black'>• SP* --- Supporting people</text>
+			</svg>"
+			
+			RETURN Prefix & SvgContent
+			```
+		lineageTag: 6a703181-8669-4ad5-a8ab-0ca172d41fd3
+		dataCategory: ImageUrl
+
+	measure 'I06_Individual UPH Putaway PPH Count Green Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF([I06_Individual UPH Putaway PPH (Daily, NoDims)] >= 30, 1, 0)
+			)
+			
+			```
+		formatString: 0
+		displayFolder: I06_Individual UPH Putaway
+		lineageTag: fefe885e-742c-4388-a89f-317a303e2f7f
+
+	measure 'I06_Individual UPH Putaway PPH Count Yellow Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF(
+			        [I06_Individual UPH Putaway PPH (Daily, NoDims)] >= 25  && 
+			        [I06_Individual UPH Putaway PPH (Daily, NoDims)] < 30, 
+			        1, 0
+			    )
+			)
+			
+			
+			
+			```
+		formatString: 0
+		displayFolder: I06_Individual UPH Putaway
+		lineageTag: c947e417-fd3f-4dd1-801f-cf684523ad64
+
+	measure 'I06_Individual UPH Putaway PPH Count Red Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF(
+			        NOT ISBLANK([I06_Individual UPH Putaway PPH (Daily, NoDims)]) && 
+			        [I06_Individual UPH Putaway PPH (Daily, NoDims)] < 25, 
+			        1, 0
+			    )
+			)
+			
+			
+			```
+		formatString: 0
+		displayFolder: I06_Individual UPH Putaway
+		lineageTag: de74d407-ebf9-49cd-8b3a-c9449ee4f24a
+
+	measure 'I02_Emp Picking Yellow Days' =
+			COUNTROWS(
+			    FILTER(
+			        SUMMARIZECOLUMNS(
+			            'Dim_Employee_'[Employee_ID],
+			            'Dim_Calendar'[Date],
+			            "__PPH", [I02_Individual Picking PPH]
+			        ),
+			        [__PPH] >= 26 && [__PPH] < 36
+			    )
+			)
+		displayFolder: I02_Individual Picking Hours
+		lineageTag: 38b5a033-7448-4f4a-893d-8dd15162d8d4
+
+	measure 'I02_Emp Picking Green Days' =
+			COUNTROWS(
+			    FILTER(
+			        SUMMARIZECOLUMNS(
+			            'Dim_Employee_'[Employee_ID],
+			            'Dim_Calendar'[Date],
+			            "__PPH", [I02_Individual Picking PPH]
+			        ),
+			        [__PPH] >= 36
+			    )
+			)
+		displayFolder: I02_Individual Picking Hours
+		lineageTag: ae313865-afb5-4ec2-b40e-54afd829aa5b
+
+	measure 'I02_Emp Picking Red Days' =
+			COUNTROWS(
+			    FILTER(
+			        SUMMARIZECOLUMNS(
+			            'Dim_Employee_'[Employee_ID],
+			            'Dim_Calendar'[Date],
+			            "__PPH", [I02_Individual Picking PPH]
+			        ),
+			        NOT ISBLANK([__PPH]) && [__PPH] < 26
+			    )
+			)
+		displayFolder: I02_Individual Picking Hours
+		lineageTag: af4640fb-6584-4479-b83c-c0365880a612
+
+	measure 'I01_Emp Loading Green Days' =
+			COUNTROWS(
+			    FILTER(
+			        SUMMARIZECOLUMNS(
+			            'Dim_Employee_'[Employee_ID],
+			            'Dim_Calendar'[Date],
+			            "__PPH", [I01_Individual Loading PPH]
+			        ),
+			        [__PPH] >= 36
+			    )
+			)
+		displayFolder: I01_Individual Loading Hours
+		lineageTag: 4a0ee7a6-915b-494b-99cc-e8c5e5ea847d
+
+	measure 'I01_Emp Loading Yellow Days' =
+			COUNTROWS(
+			    FILTER(
+			        SUMMARIZECOLUMNS(
+			            'Dim_Employee_'[Employee_ID],
+			            'Dim_Calendar'[Date],
+			            "__PPH", [I01_Individual Loading PPH]
+			        ),
+			        [__PPH] >= 26 && [__PPH] < 36
+			    )
+			)
+		displayFolder: I01_Individual Loading Hours
+		lineageTag: 4f48e2d9-cfa5-4e01-983c-0bc6fabb650a
+
+	measure 'I01_Emp Loading Red Days' =
+			COUNTROWS(
+			    FILTER(
+			        SUMMARIZECOLUMNS(
+			            'Dim_Employee_'[Employee_ID],
+			            'Dim_Calendar'[Date],
+			            "__PPH", [I01_Individual Loading PPH]
+			        ),
+			        NOT ISBLANK([__PPH]) && [__PPH] < 26
+			    )
+			)
+		displayFolder: I01_Individual Loading Hours
+		lineageTag: 5fdb0f74-49f0-4a7a-9c22-5b2752923b74
+
+	measure 'I03_Emp CG Unload Green Days' =
+			COUNTROWS(
+			    FILTER(
+			        SUMMARIZECOLUMNS(
+			            'Dim_Employee_'[Employee_ID],
+			            'Dim_Calendar'[Date],
+			            "__PPH", [I03_Individual CG Unload PPH]
+			        ),
+			        [__PPH] >= 50
+			    )
+			)
+		displayFolder: I03_Individual CG Unload PPH
+		lineageTag: 8f6ad55a-bbba-49cb-b18b-1f1b27dde227
+
+	measure 'I03_Emp CG Unload Yellow Days' =
+			COUNTROWS(
+			    FILTER(
+			        SUMMARIZECOLUMNS(
+			            'Dim_Employee_'[Employee_ID],
+			            'Dim_Calendar'[Date],
+			            "__PPH", [I03_Individual CG Unload PPH]
+			        ),
+			        [__PPH] >= 40 && [__PPH] < 50
+			    )
+			)
+		displayFolder: I03_Individual CG Unload PPH
+		lineageTag: 6ee55227-d22e-4022-b51f-a38016d34b1c
+
+	measure 'I03_Emp CG Unload Red Days' =
+			COUNTROWS(
+			    FILTER(
+			        SUMMARIZECOLUMNS(
+			            'Dim_Employee_'[Employee_ID],
+			            'Dim_Calendar'[Date],
+			            "__PPH", [I03_Individual CG Unload PPH]
+			        ),
+			        NOT ISBLANK([__PPH]) && [__PPH] < 40
+			    )
+			)
+		displayFolder: I03_Individual CG Unload PPH
+		lineageTag: 7a1fed89-0944-4d46-b8fa-3c941d28af55
+
+	measure 'I04_Emp UPH Unload Green Days' =
+			COUNTROWS(
+			    FILTER(
+			        SUMMARIZECOLUMNS(
+			            'Dim_Employee_'[Employee_ID],
+			            'Dim_Calendar'[Date],
+			            "__PPH", [I04_Individual UPH Unload PPH]
+			        ),
+			        [__PPH] >= 30
+			    )
+			)
+		displayFolder: I04_Individual UPH Unload
+		lineageTag: 239c82e7-6bf6-41c2-81de-37daf084b0ef
+
+	measure 'I04_Emp UPH Unload Yellow Days' =
+			COUNTROWS(
+			    FILTER(
+			        SUMMARIZECOLUMNS(
+			            'Dim_Employee_'[Employee_ID],
+			            'Dim_Calendar'[Date],
+			            "__PPH", [I04_Individual UPH Unload PPH]
+			        ),
+			        [__PPH] >= 25 && [__PPH] < 30
+			    )
+			)
+		displayFolder: I04_Individual UPH Unload
+		lineageTag: 9b72c7e3-fd98-4201-9c81-f48f4b05d083
+
+	measure 'I04_Emp UPH Unload Red Days' =
+			COUNTROWS(
+			    FILTER(
+			        SUMMARIZECOLUMNS(
+			            'Dim_Employee_'[Employee_ID],
+			            'Dim_Calendar'[Date],
+			            "__PPH", [I04_Individual UPH Unload PPH]
+			        ),
+			        NOT ISBLANK([__PPH]) && [__PPH] < 25
+			    )
+			)
+		displayFolder: I04_Individual UPH Unload
+		lineageTag: 7ebde227-b5f1-46bb-b1bb-d527c681ca79
+
+	measure 'I05_Emp CG Putaway Green Days' =
+			COUNTROWS(
+			    FILTER(
+			        SUMMARIZECOLUMNS(
+			            'Dim_Employee_'[Employee_ID],
+			            'Dim_Calendar'[Date],
+			            "__PPH", [I05_Individual CG Putaway PPH]
+			        ),
+			        [__PPH] >= 120
+			    )
+			)
+		displayFolder: I05_Individual CG Putaway
+		lineageTag: b760a26b-f976-4703-a058-b648781c1149
+
+	measure 'I05_Emp CG Putaway Yellow Days' =
+			COUNTROWS(
+			    FILTER(
+			        SUMMARIZECOLUMNS(
+			            'Dim_Employee_'[Employee_ID],
+			            'Dim_Calendar'[Date],
+			            "__PPH", [I05_Individual CG Putaway PPH]
+			        ),
+			        [__PPH] >= 100 && [__PPH] < 120
+			    )
+			)
+		displayFolder: I05_Individual CG Putaway
+		lineageTag: 3fe3fb81-4ada-4557-93dd-42ff84ac59fd
+
+	measure 'I05_Emp CG Putaway Red Days' =
+			COUNTROWS(
+			    FILTER(
+			        SUMMARIZECOLUMNS(
+			            'Dim_Employee_'[Employee_ID],
+			            'Dim_Calendar'[Date],
+			            "__PPH", [I05_Individual CG Putaway PPH]
+			        ),
+			        NOT ISBLANK([__PPH]) && [__PPH] < 100
+			    )
+			)
+		displayFolder: I05_Individual CG Putaway
+		lineageTag: 565ccb68-a9ed-40f2-9ace-d8a812d97d33
+
+	measure 'I06_Emp UPH Putaway Green Days' =
+			COUNTROWS(
+			    FILTER(
+			        SUMMARIZECOLUMNS(
+			            'Dim_Employee_'[Employee_ID],
+			            'Dim_Calendar'[Date],
+			            "__PPH", [I06_Individual UPH Putaway PPH]
+			        ),
+			        [__PPH] >= 30
+			    )
+			)
+		displayFolder: I06_Individual UPH Putaway
+		lineageTag: 5d88ed50-4b32-4b67-b791-dc45e6f9e46d
+
+	measure 'I06_Emp UPH Putaway Yellow Days' =
+			COUNTROWS(
+			    FILTER(
+			        SUMMARIZECOLUMNS(
+			            'Dim_Employee_'[Employee_ID],
+			            'Dim_Calendar'[Date],
+			            "__PPH", [I06_Individual UPH Putaway PPH]
+			        ),
+			        [__PPH] >= 25 && [__PPH] < 30
+			    )
+			)
+		displayFolder: I06_Individual UPH Putaway
+		lineageTag: c2b241b4-8ad3-43f4-b49a-7c666feb61df
+
+	measure 'I06_Emp UPH Putaway Red Days' =
+			COUNTROWS(
+			    FILTER(
+			        SUMMARIZECOLUMNS(
+			            'Dim_Employee_'[Employee_ID],
+			            'Dim_Calendar'[Date],
+			            "__PPH", [I06_Individual UPH Putaway PPH]
+			        ),
+			        NOT ISBLANK([__PPH]) && [__PPH] < 25
+			    )
+			)
+		displayFolder: I06_Individual UPH Putaway
+		lineageTag: 8e8f9c81-4160-43d4-8849-dae4226e8213
+
+	measure 'I03_Individual CG Unload PPH2' =
+			AVERAGEX (
+			    VALUES ( 'Fct_Supervisors_Hours_Pieces'[Employee_ID] ),
+			    CALCULATE (
+			        AVERAGE ( 'Fct_Supervisors_Hours_Pieces'[Group_Date_Team_by_Pieces_PPH] ),
+			        FILTER (
+			            'Fct_Supervisors_Hours_Pieces',
+			            'Fct_Supervisors_Hours_Pieces'[PPH_Type]
+			                IN { "Unloading" } && MID ( 'Fct_Supervisors_Hours_Pieces'[Group], 1, 2 ) = "CG"
+			        )
+			    )
+			)
+		displayFolder: I03_Individual CG Unload PPH
+		lineageTag: d46dc302-1a80-4bb7-85a9-1cd09e210c17
+
+	partition A_Measure = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

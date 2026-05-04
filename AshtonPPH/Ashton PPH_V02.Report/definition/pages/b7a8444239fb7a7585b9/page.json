@@ -1,0 +1,47 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "b7a8444239fb7a7585b9",
+  "displayName": "I04_Individual UPH Unload",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "pageBinding": {
+    "name": "cb4e536aa30555d658b1",
+    "type": "Default",
+    "parameters": [],
+    "referenceScope": "CrossReport",
+    "acceptsFilterContext": "None"
+  },
+  "objects": {
+    "outspace": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 1,
+                    "Percent": 0.6
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "d4d3623fb8ac14e74716",
+      "target": "65a16935b448f13db8b7",
+      "type": "DataFilter"
+    },
+    {
+      "source": "d4d3623fb8ac14e74716",
+      "target": "a6b79b98f048ecd45ebb",
+      "type": "DataFilter"
+    }
+  ]
+}

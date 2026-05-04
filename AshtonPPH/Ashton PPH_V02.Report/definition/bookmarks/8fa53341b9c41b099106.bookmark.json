@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "I02_Picking PPH by Order picker",
+  "name": "8fa53341b9c41b099106",
+  "options": {
+    "targetVisualNames": [
+      "96a7940d24d403284a0c"
+    ]
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "b6dce747807b557ade8e",
+    "sections": {
+      "b6dce747807b557ade8e": {
+        "visualContainers": {}
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

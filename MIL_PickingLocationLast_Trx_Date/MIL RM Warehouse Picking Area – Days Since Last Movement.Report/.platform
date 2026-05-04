@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "MIL RM Warehouse Picking Area – Days Since Last Movement"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "11a4d9fb-d134-42ab-b069-d684133a6990"
+  }
+}

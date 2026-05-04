@@ -1,0 +1,7 @@
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+
+*.pbix
+*.pbit
+# 忽略本地临时数据缓存
+.pbi/

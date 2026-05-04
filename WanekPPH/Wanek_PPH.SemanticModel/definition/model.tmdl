@@ -1,0 +1,36 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["GetTotalPieces","Fact_Transactions","Dim_Calendar","A_Measures","Fct_Supervisors_Hours","A_Measure","Dim_Employee","Fct_metrics_goal"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation __TEdtr = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Fact_Transactions
+ref table DateTableTemplate_ee96304c-3fd8-4c0f-8ade-5e70e615750a
+ref table Dim_Calendar
+ref table LocalDateTable_774b84c4-d63a-4544-8cb0-0a7d32867b85
+ref table LocalDateTable_47ef376a-a38c-4658-a403-a86344a75366
+ref table Fct_Supervisors_Hours
+ref table Dim_Group
+ref table Dim_Shift
+ref table A_Measure
+ref table Dim_PPH_Type
+ref table Dim_Position
+ref table Dim_Team
+ref table Dim_Site
+ref table Dim_Employee
+ref table Fct_All_Details_Rows_Summary
+ref table Dim_Metric
+ref table Fct_metrics_goal
+
+ref cultureInfo en-US
+

@@ -1,0 +1,516 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "Mixed Container Details",
+  "name": "Bookmark8753160b0200a1986001",
+  "options": {
+    "targetVisualNames": [
+      "cfa6eda44b0644b5025b",
+      "c4505446a197155cbbab",
+      "05b9f694eab5011ebb24"
+    ]
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "ReportSection",
+    "sections": {
+      "ReportSection": {
+        "visualContainers": {
+          "dda4c575826b19d58b93": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "a1cac6ce0d2e4652d2d2",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "D_Date"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "9ed0fe00a416a7d576d5",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "D_Measure"
+                        }
+                      },
+                      "Property": "ContainerQ'ty"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "a5a19083efb622b9c468",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_MILCNTDETAILS"
+                        }
+                      },
+                      "Property": "Product_Category_Qty"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "columnChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "D_Date"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  }
+                },
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_MILCNTDETAILS"
+                        }
+                      },
+                      "Property": "Product_Category_Qty"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "D_Date"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "bc976d92333043c4a0aa": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "32b8f01a389f0a1aadb7",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_MILCNTDETAILS"
+                        }
+                      },
+                      "Property": "CONTAINER#"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "9507e635af6dbc9889e1",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_MILCNTDETAILS"
+                        }
+                      },
+                      "Property": "Product_Category_Qty"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "9815b98fb3b99dd66aca",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "D_Measure"
+                        }
+                      },
+                      "Property": "ContainerQ'ty"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "a8291035ec7696c4ac26",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "D_Measure"
+                        }
+                      },
+                      "Property": "Products"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "D_Measure"
+                        }
+                      },
+                      "Property": "Products"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "cfa6eda44b0644b5025b": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "ea3c459ad89529b757ca",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_MILCNTDETAILS"
+                        }
+                      },
+                      "Property": "CONTAINER#"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "1544ffab088a098d94af",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_MILCNTDETAILS"
+                        }
+                      },
+                      "Property": "ITEMNUMBER"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "75c7ce4aec02a82292d5",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "fct_MILCNTDETAILS"
+                            }
+                          },
+                          "Property": "QTY"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "b3a2f1139dfcae6f3b36",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "fct_MILCNTDETAILS"
+                            }
+                          },
+                          "Property": "TOTAL_CUBES"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "45caf7e559353a4a43c1",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "fct_MILCNTDETAILS"
+                            }
+                          },
+                          "Property": "TOTAL_WEIGHT"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "2e5abcab1b0a16fbd2e0",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_MILCNTDETAILS"
+                        }
+                      },
+                      "Property": "PRODUCT"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "22b6290131e7b0995e7f",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "fct_MILCNTDETAILS"
+                            }
+                          },
+                          "Property": "CUBES"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "dde5c293acd9f4e573e4",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "fct_MILCNTDETAILS"
+                            }
+                          },
+                          "Property": "UTILIZATION"
+                        }
+                      },
+                      "Function": 0
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_MILCNTDETAILS"
+                        }
+                      },
+                      "Property": "CONTAINER#"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "05b9f694eab5011ebb24": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "812173fda57f49eb5a49",
+                  "type": "Advanced",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_MILCNTDETAILS"
+                        }
+                      },
+                      "Property": "Product_Category_Qty"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Basic'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_MILCNTDETAILS"
+                        }
+                      },
+                      "Property": "Product_Category_Qty"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "c4505446a197155cbbab": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "cf1b577c1bc07c5e8238",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "D_Date"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Between'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "D_Date"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "D_Date"
+                        }
+                      },
+                      "Property": "Date"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,114 @@
+table fct_mil_loading_audit
+	lineageTag: 8ee31c9c-37fa-4ac0-8b8e-83d392dba2d6
+
+	column DWFDOORNUMBER
+		dataType: int64
+		formatString: 0
+		lineageTag: 02096337-e370-4b26-b9f2-821021a31ec7
+		summarizeBy: sum
+		sourceColumn: DWFDOORNUMBER
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column DWFCONTAINERNUMBER
+		dataType: string
+		lineageTag: c9ac3b1f-1761-4f79-bb80-af35f14175d0
+		summarizeBy: none
+		sourceColumn: DWFCONTAINERNUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column DWFROWNUMBER
+		dataType: double
+		formatString: 0
+		lineageTag: d7adae8d-107c-4e85-a40a-5bcd91e89850
+		summarizeBy: sum
+		sourceColumn: DWFROWNUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column DWFFINISHITEM
+		dataType: string
+		lineageTag: 00fa9876-0d94-409b-8439-e508344e62cf
+		summarizeBy: none
+		sourceColumn: DWFFINISHITEM
+
+		annotation SummarizationSetBy = Automatic
+
+	column CARTONS
+		dataType: double
+		formatString: #,0
+		lineageTag: f12018ca-4234-4ac1-a817-b4c7346d5eba
+		summarizeBy: sum
+		sourceColumn: CARTONS
+
+		annotation SummarizationSetBy = Automatic
+
+	column KITS
+		dataType: double
+		formatString: #,0
+		lineageTag: e7de468d-df22-41f9-a988-3b0149e5d4ed
+		summarizeBy: sum
+		sourceColumn: KITS
+
+		annotation SummarizationSetBy = Automatic
+
+	column LAST_AUDIT_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 51220f05-4779-4ae2-a3e8-823fa60cf645
+		summarizeBy: none
+		sourceColumn: LAST_AUDIT_TIME
+
+		variation Variation
+			isDefault
+			relationship: 278e4ff8-fb8b-49b4-9217-3682251af1ff
+			defaultHierarchy: LocalDateTable_6964c371-f2fe-4bcc-bcbf-2eda93ea502a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: b1d70d97-2c00-4caf-bf9b-216ccd19ab33
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 06a5d164-80c2-466b-b398-b2b0ab98c29e
+			defaultHierarchy: LocalDateTable_22855ec9-91d1-43df-8464-207e9494b206.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column WCHDESTINATION
+		dataType: string
+		lineageTag: 28f0ce64-0654-40f1-ab41-28e6142c3975
+		summarizeBy: none
+		sourceColumn: WCHDESTINATION
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fct_mil_loading_audit = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"5839814b-ec95-48ea-a07a-ec0241ac9946" = Workspaces{[workspaceId="5839814b-ec95-48ea-a07a-ec0241ac9946"]}[Data],
+				    #"61456a58-5221-49a3-a963-ca77dc011dac" = #"5839814b-ec95-48ea-a07a-ec0241ac9946"{[dataflowId="61456a58-5221-49a3-a963-ca77dc011dac"]}[Data],
+				    mil_loading_audit_ = #"61456a58-5221-49a3-a963-ca77dc011dac"{[entity="mil_loading_audit",version=""]}[Data],
+				    #"Added Custom" = Table.AddColumn(mil_loading_audit_, "Custom", each Date.From([LAST_AUDIT_TIME])),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"Custom", type date}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"Custom", "Date"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

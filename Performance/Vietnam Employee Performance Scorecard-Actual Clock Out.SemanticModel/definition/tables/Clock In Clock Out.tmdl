@@ -1,0 +1,309 @@
+table 'Clock In Clock Out'
+	lineageTag: 73244cc4-db9b-4204-896a-c39984830642
+
+	measure HRS = CALCULATE(SUM('Clock In Clock Out'[TTIW]))/60
+		lineageTag: 79cb725e-d2e3-4216-a87e-f3c29ef1534c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'TTIW minutes' = SUM('Clock In Clock Out'[Final TTIW])
+		lineageTag: 0fbbcc17-624b-44be-92ac-bd211d8e6f75
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Shipping test' = SUM('Clock In Clock Out'[Column])
+		formatString: 0
+		lineageTag: 294e506e-c92d-4a57-9fee-22ac923fab87
+
+	measure 'TTIW for lost time calc' = CALCULATE(SUM('Clock In Clock Out'[Final TTIW]),FILTER('Clock In Clock Out','Clock In Clock Out'[Shipping Flag]="Yes"))
+		lineageTag: 8fa00c07-1bef-41e9-9110-170667fa6923
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '# of Days Worked' = DISTINCTCOUNT('Clock In Clock Out'[Work Day])
+		formatString: 0
+		lineageTag: e1efa871-a8ac-4962-bade-8f7d23803f6c
+
+	measure 'Headcount v1' = DISTINCTCOUNT('Clock In Clock Out'[Employee Name])
+		formatString: 0
+		lineageTag: f2096b56-bed9-4523-b6e5-117576667b76
+
+	measure Headcount = SUMX(VALUES('Calendar'[Date]),'Clock In Clock Out'[Headcount v1])
+		formatString: 0
+		lineageTag: 6e7f9297-490b-48b4-bd71-9801c32228ae
+
+	measure 'Card EE name' = IF(HASONEVALUE('Clock In Clock Out'[Employee Name]),SELECTEDVALUE('Clock In Clock Out'[Employee Name]),"")
+		lineageTag: ff98f72a-0e09-49e2-8e34-5ad23e0d609c
+
+	measure 'Card dept' = IF(HASONEVALUE('Clock In Clock Out'[DC Department]),SELECTEDVALUE('Clock In Clock Out'[DC Department]),"")
+		lineageTag: 735c9469-8330-42d6-96ad-64994d557cd2
+
+	column 'Work Day'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 825c67c8-9281-4ade-96fb-6f5d757fedfa
+		summarizeBy: none
+		sourceColumn: Work Day
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'EE Number'
+		dataType: string
+		lineageTag: a366d0d6-7abe-43d9-8181-1ca0a292385f
+		summarizeBy: none
+		sourceColumn: EE Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column DC
+		dataType: string
+		lineageTag: e673fc14-1a1e-456a-9f43-4fb27c5ac178
+		summarizeBy: none
+		sourceColumn: DC
+
+		annotation SummarizationSetBy = Automatic
+
+	column Shift
+		dataType: string
+		lineageTag: fb8e9f4d-3672-4f5f-a5fa-5130b9825169
+		summarizeBy: none
+		sourceColumn: Shift
+
+		annotation SummarizationSetBy = Automatic
+
+	column source
+		dataType: string
+		lineageTag: 5c902c97-5f5f-45f5-b2fa-fb613bc8e2bd
+		summarizeBy: none
+		sourceColumn: source
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dept #'
+		dataType: string
+		lineageTag: b9550764-898f-479c-be1a-63ea3aa70ab6
+		summarizeBy: none
+		sourceColumn: Dept #
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employee Name'
+		dataType: string
+		lineageTag: 2595fc52-2d8e-4a24-b314-378617fb157a
+		summarizeBy: none
+		sourceColumn: Employee Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column supervisor_nbr
+		dataType: double
+		lineageTag: 18265fe6-08bf-4ef2-ad7e-77e90e5bc9c2
+		summarizeBy: sum
+		sourceColumn: supervisor_nbr
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Supervisor
+		dataType: string
+		lineageTag: 69be558c-eb55-4387-89f4-09b58812d4da
+		summarizeBy: none
+		sourceColumn: Supervisor
+
+		annotation SummarizationSetBy = Automatic
+
+	column status
+		dataType: string
+		lineageTag: 68848f3f-e12c-4daf-9c64-481818b3d6f3
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Dept Description'
+		dataType: string
+		lineageTag: bbbe14b8-f03e-40d2-8067-05bd9dfac5da
+		summarizeBy: none
+		sourceColumn: Dept Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Clock In'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ff73d175-9524-448f-a5e7-3ff50d6a6569
+		summarizeBy: none
+		sourceColumn: Clock In
+
+		variation Variation
+			isDefault
+			relationship: 19b6dea8-d997-4526-bdb7-21e066a7d632
+			defaultHierarchy: LocalDateTable_188e1f1d-d89d-4dff-b429-91e6a7942fd0.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column TTIW
+		dataType: double
+		lineageTag: f9c53658-0f52-455b-b8f2-3522be6fd5ae
+		summarizeBy: sum
+		sourceColumn: TTIW
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Hours
+		dataType: string
+		lineageTag: cf43076c-6df8-497e-9a3f-5ee3466f33c1
+		summarizeBy: none
+		sourceColumn: Hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column WhseEmployee#
+		dataType: string
+		lineageTag: d6d937ed-a269-46b2-b8ec-9d93099ba1d4
+		summarizeBy: none
+		sourceColumn: WhseEmployee#
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'lunch subtraction'
+		dataType: string
+		lineageTag: 95770e67-8507-4538-9982-bf35c39ce21b
+		summarizeBy: none
+		sourceColumn: lunch subtraction
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Final TTIW'
+		dataType: double
+		lineageTag: 63b0ba5d-cc8f-428a-9b00-bd82f149cc93
+		summarizeBy: sum
+		sourceColumn: Final TTIW
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Hire Date'
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 1608228e-132e-4305-9493-e84ade14a975
+		summarizeBy: none
+		sourceColumn: Hire Date
+
+		variation Variation
+			isDefault
+			relationship: 0c2a9a51-d1d7-47a5-9a88-99e8dfe876a7
+			defaultHierarchy: LocalDateTable_3dff066b-5637-4655-8bad-810b583050c7.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'master key' = 'Clock In Clock Out'[WhseEmployee#]&"-"&'Clock In Clock Out'[Work Day]
+		lineageTag: d51d0584-ffea-472d-91c3-a63ae98e6a3f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Shipping Flag'
+		dataType: string
+		lineageTag: 403cea7d-460a-475f-bd63-59a824aa69d3
+		summarizeBy: none
+		sourceColumn: Shipping Flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column Column = if('Clock In Clock Out'[Shipping Flag]="Yes",1,0)
+		formatString: 0
+		lineageTag: 8c4997e0-e5dd-4545-84cd-e8563c2d9f91
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Role lookup' = RELATED('Sup Lead List'[ROLE])
+		lineageTag: 68080117-b4f2-42ce-a003-c1f669f798ae
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Role = IF(ISBLANK('Clock In Clock Out'[Role lookup]),"ASSOCIATE", 'Clock In Clock Out'[Role lookup])
+		lineageTag: 5bd501fc-c709-4120-9633-ed464d56a28b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Days of Service' = 'Clock In Clock Out'[Work Day]-'Clock In Clock Out'[Hire Date]
+		dataType: int64
+		formatString: 0
+		lineageTag: 867c6976-9c6a-4424-86de-baf509a3edc8
+		summarizeBy: sum
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'End Time'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e5a14b43-cc3e-4b4e-a180-1e8d71fd44b7
+		summarizeBy: none
+		sourceColumn: End Time
+
+		variation Variation
+			isDefault
+			relationship: ce107c31-0e82-44fa-825c-5ed8d2f5a644
+			defaultHierarchy: LocalDateTable_6c1eb866-91a9-438b-92f5-62f671975009.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column End_Time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 960b6b04-7faf-4a68-9fdd-2222f793a699
+		summarizeBy: none
+		sourceColumn: End_Time
+
+		variation Variation
+			isDefault
+			relationship: c53cdca7-89b5-4d82-865f-323f5592307f
+			defaultHierarchy: LocalDateTable_f97887b0-00c9-4227-97c8-11f94f26c192.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Clock In Clock Out-61de552a-6356-452c-bbfd-50aa2a15cb18' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("ashley-edw.database.windows.net", "ASHLEY_EDW", [Query="DECLARE @min_date       AS DATE          --minimum date of data pull#(lf)      , @whse_list      AS VARCHAR(MAX)  --whse list;#(lf)SET @min_date = DATEADD(DAY, -15, GETDATE());#(lf)#(lf)#(lf)#(lf)SELECT [work_day]#(lf)     , [emp_number]#(lf)     , home_wh_id#(lf)     --, [t1].[work_shift_id]#(lf)     , [work_shift]#(lf)     , [source]#(lf)     , MIN([dept]) AS [dept]#(lf)     , [name]#(lf)     , [supervisor_nbr]#(lf)     , [supervisor]#(lf)     , [status]#(lf)     , [description]#(lf)#(tab) , [return_date]#(lf)     , MIN(t1.clock_in)        clock_in   --aggregation to avoid data errors due to multiple clock ins#(lf)    , MAX(t1.End_Time) as [End_Time]  -- by crystal#(lf)    , MAX(t1.[End Time])      [End Time] --accounting for cases where the shift is yet to complete by Crystal#(lf)     , SUM(spent_time_minutes) AS spent_time_minutes#(lf)FROM#(lf)(#(lf)    SELECT DISTINCT#(lf)           t.[work_day]#(lf)         , t.[emp_number]#(lf)         , t.home_wh_id#(lf)         --, [t].[work_shift_id]#(lf)         , t.[source]#(lf)         , [work_shift]#(lf)         , t.[dept]#(lf)         , t.[name]#(lf)#(tab)#(tab) , t.[return_date]#(lf)         , t.[supervisor_nbr]#(lf)         , t.[supervisor]#(lf)         , t.[status]#(lf)         , t.[description]#(lf)         , t.clock_in#(lf)        , (t.[End Time]) [End_Time]   -- by crystal#(lf)        , DATEADD(MINUTE, #(lf)            DATEDIFF(MINUTE, '00:00:00', CAST(t.[End Time] AS TIME)) / 15 * 15,#(lf)            CAST(CAST(t.[End Time] AS DATE) AS DATETIME)#(lf)    ) AS [End Time] -- Aug.24.2024 - to round the clock out time to the nearest 15 minutes by Jim,Shen #(lf)         , CAST(DATEDIFF(SECOND, t.clock_in, DATEADD(MINUTE, #(lf)            DATEDIFF(MINUTE, '00:00:00', CAST(t.[End Time] AS TIME)) / 15 * 15,#(lf)            CAST(CAST(t.[End Time] AS DATE) AS DATETIME)#(lf)    )) / 60.00 AS FLOAT) AS spent_time_minutes#(lf)    FROM#(lf)    (#(lf) #(lf)       SELECT [home_wh_id]#(lf)             , CAST([work_day] AS DATE) [work_day]#(lf)             --, [work_shift_id]#(lf)             , [source]#(lf)             , b.[emp_number]#(lf)             , b.[work_shift]#(lf)             , [actual_clock_in]#(lf)             , [actual_clock_out]#(lf)             , [clock_in]#(lf)             , [actual_clock_out] AS[clock_out]#(lf)             , a.[home_department] AS [dept]#(lf)             , b.[name]#(lf)             , b.[supervisor_nbr]#(lf)             , b.[supervisor]#(lf)             , b.[status]#(lf)             , c.[description]#(lf)#(tab)#(tab)#(tab) , cast(b.[return_date] AS DATE) [return_date]#(lf)             , CASE#(lf)                   WHEN a.clock_out <> '' THEN#(lf)                       a.actual_clock_out#(lf)                   ELSE#(lf)                       DATEADD(HOUR, 7, GETUTCDATE())#(lf)               END                      AS [End Time] --this case statement to assign correct end time if the shift is in progress for a current day and no clock out occured yet#(lf)        FROM [PowerBI_Distribution].[EmployeeClockInOut]  a#(lf)            LEFT JOIN [PowerBI_Distribution].[Employee]    b#(lf)                ON a.employee_id = b.employee_id#(lf)                   AND a.home_wh_id = b.wh_id#(lf)            LEFT JOIN [PowerBI_Distribution].[Department] c#(lf)                ON a.home_wh_id = c.wh_id#(lf)                   AND b.dept = c.department#(lf)        WHERE CAST([work_day] AS DATE)#(lf)              BETWEEN @min_date AND CAST(DATEADD(HOUR, 7, GETUTCDATE()) AS DATE) --this case statement to assign correct end time if the shift is in progress for a current day and no clock out occured yet#(lf)#(lf)              AND a.home_wh_id IN ( '335','35' )#(lf)    --AND b.emp_number = '138801'#(lf)    ) t#(lf)    GROUP BY t.work_day#(lf)           , t.emp_number#(lf)           , t.home_wh_id#(lf)           --, t.work_shift_id#(lf)           , t.work_shift#(lf)           , t.[source]#(lf)           , t.[dept]#(lf)           , t.[name]#(lf)#(tab)#(tab)   , t.[return_date]#(lf)           , t.[supervisor_nbr]#(lf)           , t.[supervisor]#(lf)           , t.[status]#(lf)           , t.[description]#(lf)           , t.clock_in#(lf)           , t.[End Time]#(lf)) t1 --aggregate table to calculate time spent between clock in and clock out#(lf)GROUP BY t1.work_day#(lf)       , t1.emp_number#(lf)       , t1.home_wh_id#(lf)       --, t1.work_shift_id#(lf)       , t1.work_shift#(lf)       , t1.[source]#(lf)       --, t1.[dept]#(lf)       , t1.[name]#(lf)#(tab)   , t1.[return_date]#(lf)       , t1.[supervisor_nbr]#(lf)       , t1.[supervisor]#(lf)       , t1.[status]#(lf)       , t1.[description]", CreateNavigationProperties=false, CommandTimeout=#duration(0, 2, 40, 0)]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"work_day", type date}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"work_day", "Work Day"}, {"emp_number", "EE Number"}, {"home_wh_id", "DC"},  {"work_shift", "Shift"}, {"dept", "Dept #"}, {"name", "Employee Name"}, {"supervisor", "Supervisor"}, {"description", "Dept Description"}, {"clock_in", "Clock In"}, {"spent_time_minutes", "TTIW"}}),
+				    #"Added Custom" = Table.AddColumn(#"Renamed Columns", "Hours", each [TTIW]/60),
+				    #"Added Custom1" = Table.AddColumn(#"Added Custom", "WhseEmployee#", each [DC]&"-"&[EE Number]),
+				    #"Filtered Rows" = Table.SelectRows(#"Added Custom1", each ([status] = "A")),
+				    #"Added Custom2" = Table.AddColumn(#"Filtered Rows", "lunch subtraction", each if [TTIW]>325 then [TTIW]-30 else [TTIW]),
+				    #"Added Conditional Column" = Table.AddColumn(#"Added Custom2", "Final TTIW", each if [DC] = "5" then [TTIW] else if [DC] = "42" then [TTIW] else [lunch subtraction]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Conditional Column",{{"return_date", type date}}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Changed Type1",{{"return_date", "Hire Date"}}),
+				    #"Filtered Rows1" = Table.SelectRows(#"Renamed Columns1", each ([source] <> "WebWise Clock In")),
+				    #"Added Conditional Column1" = Table.AddColumn(#"Filtered Rows1", "Shipping Flag", each if [#"Dept #"] = "1322" then "Yes" else if [#"Dept #"] = "3345" then "Yes" else if [#"Dept #"] = "4402" then "Yes" else if [#"Dept #"] = "3619" then "Yes" else if [#"Dept #"] = "2642" then "Yes" else if [#"Dept #"] = "4005" then "Yes" else if [#"Dept #"] = "4905" then "Yes" else "No"),
+				    #"Extracted Text Before Delimiter" = Table.TransformColumns(#"Added Conditional Column1", {{"Dept Description", each Text.BeforeDelimiter(_, "*"), type text}}),
+				    #"Uppercased Text" = Table.TransformColumns(#"Extracted Text Before Delimiter",{{"Dept Description", Text.Upper, type text}}),
+				    #"Added Custom3" = Table.AddColumn(#"Uppercased Text", "Custom", each Text.From([Work Day]) & [EE Number] & [DC]),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Added Custom3",{{"Custom", type text}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Changed Type2", {"Custom"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Removed Duplicates",{"Custom"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

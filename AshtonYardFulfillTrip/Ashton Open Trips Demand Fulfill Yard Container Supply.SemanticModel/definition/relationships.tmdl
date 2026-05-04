@@ -1,0 +1,10 @@
+relationship 2be0e40f-0e26-4399-8c5c-ded861d57e15
+	joinOnDateBehavior: datePartOnly
+	fromColumn: final_demand_table.dispatch_date
+	toColumn: LocalDateTable_55b418e7-4df4-408e-a159-d122f9c15fba.Date
+
+relationship 06b511e4-3e6d-426a-b55d-f7560f076175
+	joinOnDateBehavior: datePartOnly
+	fromColumn: final_supply_table.check_into_yard_time
+	toColumn: LocalDateTable_483736ab-42ea-4f62-a8a3-2cfc74bc30f1.Date
+

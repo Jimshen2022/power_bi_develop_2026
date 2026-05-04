@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "5_All in PPH Picking",
+  "name": "808a24360aa8ad003623",
+  "options": {
+    "targetVisualNames": [
+      "5dd334ae8612dda6de69"
+    ]
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "fbc659fb01c872e9db63",
+    "sections": {
+      "fbc659fb01c872e9db63": {
+        "visualContainers": {}
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

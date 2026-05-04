@@ -1,0 +1,4566 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "4.1.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "final_demand_table": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_demand_table"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "final demand table": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "final_demand_table": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "demand table": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "final demand tabletop": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "demand tabletop": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "final demand bench": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "final demand board": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "final demand counter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "final demand stand": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "final demand slab": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "final demand desk": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "final demand stall": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "final demand table top": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        }
+			      ]
+			    },
+			    "final_demand_table.dispatch_date": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_demand_table",
+			          "ConceptualProperty": "dispatch_date"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dispatch date": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dispatch_date": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        },
+			        {
+			          "dispatch moment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "dispatch period": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "DispatchDate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "final_demand_table.dispatch_date.date_hierarchy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_demand_table",
+			          "VariationSource": "dispatch_date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dispatch date hierarchy": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date hierarchy": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "final_demand_table.dispatch_date.year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_demand_table",
+			          "VariationSource": "dispatch_date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Year"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dispatch year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dispatch date year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date year": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "dispatch date yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "dispatch yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "date yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "dispatch moment year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "moment year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "dispatch period year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "period year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "final_demand_table.dispatch_date.quarter": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_demand_table",
+			          "VariationSource": "dispatch_date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Quarter"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dispatch quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dispatch date quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date quarter": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "dispatch date qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.846
+			          }
+			        },
+			        {
+			          "dispatch qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.833
+			          }
+			        },
+			        {
+			          "date qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.833
+			          }
+			        },
+			        {
+			          "qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.818
+			          }
+			        },
+			        {
+			          "dispatch moment quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "moment quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "dispatch period quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "period quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "final_demand_table.dispatch_date.month": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_demand_table",
+			          "VariationSource": "dispatch_date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Month"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dispatch month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dispatch date month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date month": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "dispatch date mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "dispatch mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "date mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "dispatch moment month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "moment month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "dispatch period month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "period month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "final_demand_table.dispatch_date.day": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_demand_table",
+			          "VariationSource": "dispatch_date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Day"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dispatch day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "dispatch date day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date day": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "dispatch moment day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "moment day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "dispatch period day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "period day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "final_demand_table.item_number": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_demand_table",
+			          "ConceptualProperty": "item_number"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "item number": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "item_number": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "item no": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "product number": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "element number": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "entry number": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "article number": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "object number": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "piece number": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "token number": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "ItemNumber": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "final_demand_table.trip_number": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_demand_table",
+			          "ConceptualProperty": "trip_number"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "trip number": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "trip_number": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "trip no": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "TripNumber": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "final_demand_table.ldm_status": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_demand_table",
+			          "ConceptualProperty": "ldm_status"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ldm status": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ldm_status": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "ldm category": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "ldm importance": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "ldm prestige": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "ldm prominence": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "ldm condition": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "ldm class": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "ldm grade": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "ldm level": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "ldm position": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "ldm rank": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "TripStatus": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "final_demand_table.trip_needed": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_demand_table",
+			          "ConceptualProperty": "trip_needed"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "trip needed": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "trip_needed": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "excursion needed": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "expedition needed": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "spree needed": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "journey needed": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "tour needed": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "outing needed": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "voyage needed": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "jaunt needed": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "visit needed": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "fall needed": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.461
+			          }
+			        }
+			      ]
+			    },
+			    "final_demand_table.trip_picked": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_demand_table",
+			          "ConceptualProperty": "trip_picked"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "trip picked": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "trip_picked": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "excursion picked": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "expedition picked": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "spree picked": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "journey picked": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "tour picked": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "outing picked": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "voyage picked": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "jaunt picked": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "visit picked": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "fall picked": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.461
+			          }
+			        }
+			      ]
+			    },
+			    "final_demand_table.trip_demand_qty": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_demand_table",
+			          "ConceptualProperty": "trip_demand_qty"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "trip demand qty": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "trip_demand_qty": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "final_demand_table.allocated_supply_qty": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_demand_table",
+			          "ConceptualProperty": "Allocated_Supply_Qty"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "allocated supply qty": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Allocated_Supply_Qty": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "final_demand_table.allocated_supply_detail": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_demand_table",
+			          "ConceptualProperty": "Allocated_Supply_Details"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "allocated supply detail": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Allocated_Supply_Details": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "detail": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "supply detail": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "allocated supply aspect": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "allocated supply element": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "allocated supply fact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "supply aspect": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "supply element": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "supply fact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "allocated supply part": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "allocated supply feature": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "allocated supply point": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "allocated supply factor": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "AllocatedSupplyDetails": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "final_demand_table.allocated_status": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_demand_table",
+			          "ConceptualProperty": "Allocated_Status"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "allocated status": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Allocated_Status": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "status": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "allocated category": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "allocated importance": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "allocated prestige": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "allocated prominence": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "category": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "importance": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "prestige": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "prominence": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "allocated condition": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "allocated class": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "AllocatedStatus": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "final_demand_table.fulfill_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_demand_table",
+			          "ConceptualProperty": "Fulfill_Rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "fulfill rate": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Fulfill_Rate": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "fulfill degree": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "fulfill frequency": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "fulfill percentage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "fulfill ratio": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "fulfill quotient": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "fulfill amount": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "fulfill proportion": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "fulfill speed": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "fulfill level": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "fulfill scale": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "FulfillRate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "final_demand_table.allocated_container_count": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_demand_table",
+			          "ConceptualProperty": "Allocated_Container_Count"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "allocated container count": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Allocated_Container_Count": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "container count": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "allocated container amount": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "container amount": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "AllocatedContainerCount": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Allocated_Ctn_Count": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "final_demand_table.SK_us": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_demand_table",
+			          "ConceptualProperty": "SKUs"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "SK us": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "SKUs": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "final_supply_table": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_supply_table"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "final supply table": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "final_supply_table": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "supply table": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "final supply tabletop": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "supply tabletop": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "final supply bench": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "final supply board": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "final supply counter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "final supply stand": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "final supply slab": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "final supply desk": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "final supply stall": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "final supply table top": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        }
+			      ]
+			    },
+			    "final_supply_table.container_number": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_supply_table",
+			          "ConceptualProperty": "container_number"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "container number": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "container_number": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "container no": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "ContainerNumber": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "final_supply_table.item_number": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_supply_table",
+			          "ConceptualProperty": "item_number"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "item number": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "item_number": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "item no": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "product number": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "element number": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "entry number": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "article number": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "object number": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "piece number": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "token number": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "ItemNumber": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "final_supply_table.unreceived_qty": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_supply_table",
+			          "ConceptualProperty": "unreceived_qty"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "unreceived qty": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "unreceived_qty": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "final_supply_table.check_into_yard_time": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_supply_table",
+			          "ConceptualProperty": "check_into_yard_time"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "check into yard time": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "check_into_yard_time": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        },
+			        {
+			          "cheque into yard time": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.771
+			          }
+			        },
+			        {
+			          "checkup into yard time": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.771
+			          }
+			        },
+			        {
+			          "inspection into yard time": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.771
+			          }
+			        },
+			        {
+			          "payment into yard time": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.771
+			          }
+			        },
+			        {
+			          "test into yard time": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.748
+			          }
+			        },
+			        {
+			          "tick into yard time": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.748
+			          }
+			        },
+			        {
+			          "bill into yard time": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.748
+			          }
+			        },
+			        {
+			          "safety inspection into yard time": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "safety test into yard time": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "check into yard duration": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "CheckIntoYardTime": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "final_supply_table.check_into_yard_time.date_hierarchy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_supply_table",
+			          "VariationSource": "check_into_yard_time",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "check into yard time date hierarchy": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date hierarchy": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "final_supply_table.check_into_yard_time.year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_supply_table",
+			          "VariationSource": "check_into_yard_time",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Year"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "check into yard time year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "cheque into yard time year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "checkup into yard time year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "inspection into yard time year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "payment into yard time year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "test into yard time year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.757
+			          }
+			        },
+			        {
+			          "tick into yard time year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.757
+			          }
+			        },
+			        {
+			          "bill into yard time year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.757
+			          }
+			        },
+			        {
+			          "yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "safety inspection into yard time year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.629
+			          }
+			        },
+			        {
+			          "safety test into yard time year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.629
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "final_supply_table.check_into_yard_time.quarter": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_supply_table",
+			          "VariationSource": "check_into_yard_time",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Quarter"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "check into yard time quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.818
+			          }
+			        },
+			        {
+			          "cheque into yard time quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "checkup into yard time quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "inspection into yard time quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "payment into yard time quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "test into yard time quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.757
+			          }
+			        },
+			        {
+			          "tick into yard time quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.757
+			          }
+			        },
+			        {
+			          "bill into yard time quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.757
+			          }
+			        },
+			        {
+			          "check into yard time qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.693
+			          }
+			        },
+			        {
+			          "safety inspection into yard time quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.629
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "final_supply_table.check_into_yard_time.month": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_supply_table",
+			          "VariationSource": "check_into_yard_time",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Month"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "check into yard time month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "cheque into yard time month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "checkup into yard time month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "inspection into yard time month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "payment into yard time month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "test into yard time month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.757
+			          }
+			        },
+			        {
+			          "tick into yard time month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.757
+			          }
+			        },
+			        {
+			          "bill into yard time month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.757
+			          }
+			        },
+			        {
+			          "mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "safety inspection into yard time month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.629
+			          }
+			        },
+			        {
+			          "safety test into yard time month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.629
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "final_supply_table.check_into_yard_time.day": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_supply_table",
+			          "VariationSource": "check_into_yard_time",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Day"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "check into yard time day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "cheque into yard time day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "checkup into yard time day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "inspection into yard time day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "payment into yard time day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "test into yard time day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.757
+			          }
+			        },
+			        {
+			          "tick into yard time day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.757
+			          }
+			        },
+			        {
+			          "bill into yard time day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.757
+			          }
+			        },
+			        {
+			          "safety inspection into yard time day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.629
+			          }
+			        },
+			        {
+			          "safety test into yard time day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.629
+			          }
+			        },
+			        {
+			          "check into yard duration day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.624
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "final_supply_table.allocated_demand_qty": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_supply_table",
+			          "ConceptualProperty": "Allocated_Demand_Qty"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "allocated demand qty": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Allocated_Demand_Qty": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "final_supply_table.allocated_demand_detail": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_supply_table",
+			          "ConceptualProperty": "Allocated_Demand_Details"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "allocated demand detail": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Allocated_Demand_Details": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "detail": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "demand detail": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "allocated demand aspect": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "allocated demand element": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "allocated demand fact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.508
+			          }
+			        },
+			        {
+			          "demand aspect": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "demand element": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "demand fact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "allocated demand part": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "allocated demand feature": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "allocated demand point": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "allocated demand factor": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.492
+			          }
+			        },
+			        {
+			          "AllocatedDemandDetails": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "final_supply_table.allocated_status": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_supply_table",
+			          "ConceptualProperty": "Allocated_Status"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "allocated status": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Allocated_Status": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "status": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "allocated category": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "allocated importance": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "allocated prestige": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "allocated prominence": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "category": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "importance": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "prestige": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "prominence": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "allocated condition": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "allocated class": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "AllocatedStatus": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "final_supply_table.fulfill_rate": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_supply_table",
+			          "ConceptualProperty": "Fulfill_Rate"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "fulfill rate": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Fulfill_Rate": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "fulfill degree": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "fulfill frequency": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "fulfill percentage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "fulfill ratio": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "fulfill quotient": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "fulfill amount": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "fulfill proportion": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "fulfill speed": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "fulfill level": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "fulfill scale": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "FulfillRate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "final_supply_table.trip_counted": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_supply_table",
+			          "ConceptualProperty": "Trip_Counted"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "trip counted": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Trip_Counted": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "excursion counted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "expedition counted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "spree counted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "journey counted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "tour counted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "outing counted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "voyage counted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "jaunt counted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "visit counted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "fall counted": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.461
+			          }
+			        },
+			        {
+			          "TripsCounted": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "final_supply_table.max_trip_dispatch_date": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_supply_table",
+			          "ConceptualProperty": "max_trip_dispatch_date"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "max trip dispatch date": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "max_trip_dispatch_date": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "trip dispatch date": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "max trip dispatch moment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.771
+			          }
+			        },
+			        {
+			          "trip dispatch moment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "max trip dispatch period": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.748
+			          }
+			        },
+			        {
+			          "trip dispatch period": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "maximum trip dispatch date": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "MaxTripDispatchDate": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "final_supply_table.SK_us": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "final_supply_table",
+			          "ConceptualProperty": "SKUs"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "SK us": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "SKUs": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    }
+			  },
+			  "Relationships": {
+			    "final_supply_table_check_into_yard_time_date_hierarchy_has_final_supply_table_check_into_yard_time_day": {
+			      "Binding": {
+			        "ConceptualEntity": "final_supply_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_supply_table.check_into_yard_time.date_hierarchy": {
+			          "Target": {
+			            "Entity": "final_supply_table.check_into_yard_time.date_hierarchy"
+			          }
+			        },
+			        "final_supply_table.check_into_yard_time.day": {
+			          "Target": {
+			            "Entity": "final_supply_table.check_into_yard_time.day"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_supply_table.check_into_yard_time.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "final_supply_table.check_into_yard_time.day"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "check_into_yard_time_date_hierarchy_have_check_into_yard_time_day"
+			        }
+			      ]
+			    },
+			    "final_supply_table_check_into_yard_time_date_hierarchy_has_final_supply_table_check_into_yard_time_month": {
+			      "Binding": {
+			        "ConceptualEntity": "final_supply_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_supply_table.check_into_yard_time.date_hierarchy": {
+			          "Target": {
+			            "Entity": "final_supply_table.check_into_yard_time.date_hierarchy"
+			          }
+			        },
+			        "final_supply_table.check_into_yard_time.month": {
+			          "Target": {
+			            "Entity": "final_supply_table.check_into_yard_time.month"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_supply_table.check_into_yard_time.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "final_supply_table.check_into_yard_time.month"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "check_into_yard_time_date_hierarchy_have_check_into_yard_time_month"
+			        }
+			      ]
+			    },
+			    "final_supply_table_check_into_yard_time_date_hierarchy_has_final_supply_table_check_into_yard_time_quarter": {
+			      "Binding": {
+			        "ConceptualEntity": "final_supply_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_supply_table.check_into_yard_time.date_hierarchy": {
+			          "Target": {
+			            "Entity": "final_supply_table.check_into_yard_time.date_hierarchy"
+			          }
+			        },
+			        "final_supply_table.check_into_yard_time.quarter": {
+			          "Target": {
+			            "Entity": "final_supply_table.check_into_yard_time.quarter"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_supply_table.check_into_yard_time.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "final_supply_table.check_into_yard_time.quarter"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "check_into_yard_time_date_hierarchy_have_check_into_yard_time_quarter"
+			        }
+			      ]
+			    },
+			    "final_supply_table_check_into_yard_time_date_hierarchy_has_final_supply_table_check_into_yard_time_year": {
+			      "Binding": {
+			        "ConceptualEntity": "final_supply_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_supply_table.check_into_yard_time.date_hierarchy": {
+			          "Target": {
+			            "Entity": "final_supply_table.check_into_yard_time.date_hierarchy"
+			          }
+			        },
+			        "final_supply_table.check_into_yard_time.year": {
+			          "Target": {
+			            "Entity": "final_supply_table.check_into_yard_time.year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_supply_table.check_into_yard_time.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "final_supply_table.check_into_yard_time.year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "check_into_yard_time_date_hierarchy_have_check_into_yard_time_year"
+			        }
+			      ]
+			    },
+			    "final_supply_table_check_into_yard_time_has_date_hierarchy": {
+			      "Binding": {
+			        "ConceptualEntity": "final_supply_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_supply_table.check_into_yard_time": {
+			          "Target": {
+			            "Entity": "final_supply_table.check_into_yard_time"
+			          }
+			        },
+			        "final_supply_table.check_into_yard_time.date_hierarchy": {
+			          "Target": {
+			            "Entity": "final_supply_table.check_into_yard_time.date_hierarchy"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_supply_table.check_into_yard_time"
+			            },
+			            "Object": {
+			              "Role": "final_supply_table.check_into_yard_time.date_hierarchy"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "check_into_yard_time_have_check_into_yard_time_date_hierarchy"
+			        }
+			      ]
+			    },
+			    "final_demand_table_dispatch_date_date_hierarchy_has_final_demand_table_dispatch_date_day": {
+			      "Binding": {
+			        "ConceptualEntity": "final_demand_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_demand_table.dispatch_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "final_demand_table.dispatch_date.date_hierarchy"
+			          }
+			        },
+			        "final_demand_table.dispatch_date.day": {
+			          "Target": {
+			            "Entity": "final_demand_table.dispatch_date.day"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_demand_table.dispatch_date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "final_demand_table.dispatch_date.day"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dispatch_date_hierarchies_have_dispatch_days"
+			        }
+			      ]
+			    },
+			    "final_demand_table_dispatch_date_date_hierarchy_has_final_demand_table_dispatch_date_month": {
+			      "Binding": {
+			        "ConceptualEntity": "final_demand_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_demand_table.dispatch_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "final_demand_table.dispatch_date.date_hierarchy"
+			          }
+			        },
+			        "final_demand_table.dispatch_date.month": {
+			          "Target": {
+			            "Entity": "final_demand_table.dispatch_date.month"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_demand_table.dispatch_date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "final_demand_table.dispatch_date.month"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dispatch_date_hierarchies_have_dispatch_months"
+			        }
+			      ]
+			    },
+			    "final_demand_table_dispatch_date_date_hierarchy_has_final_demand_table_dispatch_date_quarter": {
+			      "Binding": {
+			        "ConceptualEntity": "final_demand_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_demand_table.dispatch_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "final_demand_table.dispatch_date.date_hierarchy"
+			          }
+			        },
+			        "final_demand_table.dispatch_date.quarter": {
+			          "Target": {
+			            "Entity": "final_demand_table.dispatch_date.quarter"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_demand_table.dispatch_date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "final_demand_table.dispatch_date.quarter"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dispatch_date_hierarchies_have_dispatch_quarters"
+			        }
+			      ]
+			    },
+			    "final_demand_table_dispatch_date_date_hierarchy_has_final_demand_table_dispatch_date_year": {
+			      "Binding": {
+			        "ConceptualEntity": "final_demand_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_demand_table.dispatch_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "final_demand_table.dispatch_date.date_hierarchy"
+			          }
+			        },
+			        "final_demand_table.dispatch_date.year": {
+			          "Target": {
+			            "Entity": "final_demand_table.dispatch_date.year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_demand_table.dispatch_date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "final_demand_table.dispatch_date.year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dispatch_date_hierarchies_have_dispatch_years"
+			        }
+			      ]
+			    },
+			    "final_demand_table_dispatch_date_has_date_hierarchy": {
+			      "Binding": {
+			        "ConceptualEntity": "final_demand_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_demand_table.dispatch_date": {
+			          "Target": {
+			            "Entity": "final_demand_table.dispatch_date"
+			          }
+			        },
+			        "final_demand_table.dispatch_date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "final_demand_table.dispatch_date.date_hierarchy"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_demand_table.dispatch_date"
+			            },
+			            "Object": {
+			              "Role": "final_demand_table.dispatch_date.date_hierarchy"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dispatch_dates_have_dispatch_date_hierarchies"
+			        }
+			      ]
+			    },
+			    "final_supply_table_has_SK_us": {
+			      "Binding": {
+			        "ConceptualEntity": "final_supply_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_supply_table": {
+			          "Target": {
+			            "Entity": "final_supply_table"
+			          }
+			        },
+			        "final_supply_table.SK_us": {
+			          "Target": {
+			            "Entity": "final_supply_table.SK_us"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_supply_table"
+			            },
+			            "Object": {
+			              "Role": "final_supply_table.SK_us"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "final_supply_tables_have_SK_us"
+			        }
+			      ]
+			    },
+			    "final_supply_table_has_max_trip_dispatch_date": {
+			      "Binding": {
+			        "ConceptualEntity": "final_supply_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_supply_table": {
+			          "Target": {
+			            "Entity": "final_supply_table"
+			          }
+			        },
+			        "final_supply_table.max_trip_dispatch_date": {
+			          "Target": {
+			            "Entity": "final_supply_table.max_trip_dispatch_date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_supply_table"
+			            },
+			            "Object": {
+			              "Role": "final_supply_table.max_trip_dispatch_date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "final_supply_tables_have_max_trip_dispatch_dates"
+			        }
+			      ]
+			    },
+			    "final_supply_table_has_trip_counted": {
+			      "Binding": {
+			        "ConceptualEntity": "final_supply_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_supply_table": {
+			          "Target": {
+			            "Entity": "final_supply_table"
+			          }
+			        },
+			        "final_supply_table.trip_counted": {
+			          "Target": {
+			            "Entity": "final_supply_table.trip_counted"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_supply_table"
+			            },
+			            "Object": {
+			              "Role": "final_supply_table.trip_counted"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "final_supply_tables_have_trip_counted"
+			        }
+			      ]
+			    },
+			    "final_supply_table_has_fulfill_rate": {
+			      "Binding": {
+			        "ConceptualEntity": "final_supply_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_supply_table": {
+			          "Target": {
+			            "Entity": "final_supply_table"
+			          }
+			        },
+			        "final_supply_table.fulfill_rate": {
+			          "Target": {
+			            "Entity": "final_supply_table.fulfill_rate"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_supply_table"
+			            },
+			            "Object": {
+			              "Role": "final_supply_table.fulfill_rate"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "final_supply_tables_have_fulfill_rate"
+			        }
+			      ]
+			    },
+			    "final_supply_table_has_allocated_status": {
+			      "Binding": {
+			        "ConceptualEntity": "final_supply_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_supply_table": {
+			          "Target": {
+			            "Entity": "final_supply_table"
+			          }
+			        },
+			        "final_supply_table.allocated_status": {
+			          "Target": {
+			            "Entity": "final_supply_table.allocated_status"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_supply_table"
+			            },
+			            "Object": {
+			              "Role": "final_supply_table.allocated_status"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "final_supply_tables_have_allocated_statuses"
+			        }
+			      ]
+			    },
+			    "final_supply_table_has_allocated_demand_detail": {
+			      "Binding": {
+			        "ConceptualEntity": "final_supply_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_supply_table": {
+			          "Target": {
+			            "Entity": "final_supply_table"
+			          }
+			        },
+			        "final_supply_table.allocated_demand_detail": {
+			          "Target": {
+			            "Entity": "final_supply_table.allocated_demand_detail"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_supply_table"
+			            },
+			            "Object": {
+			              "Role": "final_supply_table.allocated_demand_detail"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "final_supply_tables_have_allocated_demand_details"
+			        }
+			      ]
+			    },
+			    "final_supply_table_has_allocated_demand_qty": {
+			      "Binding": {
+			        "ConceptualEntity": "final_supply_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_supply_table": {
+			          "Target": {
+			            "Entity": "final_supply_table"
+			          }
+			        },
+			        "final_supply_table.allocated_demand_qty": {
+			          "Target": {
+			            "Entity": "final_supply_table.allocated_demand_qty"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_supply_table"
+			            },
+			            "Object": {
+			              "Role": "final_supply_table.allocated_demand_qty"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "final_supply_tables_have_allocated_demand_qties"
+			        }
+			      ]
+			    },
+			    "final_supply_table_has_check_into_yard_time": {
+			      "Binding": {
+			        "ConceptualEntity": "final_supply_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_supply_table": {
+			          "Target": {
+			            "Entity": "final_supply_table"
+			          }
+			        },
+			        "final_supply_table.check_into_yard_time": {
+			          "Target": {
+			            "Entity": "final_supply_table.check_into_yard_time"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_supply_table"
+			            },
+			            "Object": {
+			              "Role": "final_supply_table.check_into_yard_time"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "final_supply_tables_have_check_into_yard_time"
+			        }
+			      ]
+			    },
+			    "final_supply_table_has_unreceived_qty": {
+			      "Binding": {
+			        "ConceptualEntity": "final_supply_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_supply_table": {
+			          "Target": {
+			            "Entity": "final_supply_table"
+			          }
+			        },
+			        "final_supply_table.unreceived_qty": {
+			          "Target": {
+			            "Entity": "final_supply_table.unreceived_qty"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_supply_table"
+			            },
+			            "Object": {
+			              "Role": "final_supply_table.unreceived_qty"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "final_supply_tables_have_unreceived_qties"
+			        }
+			      ]
+			    },
+			    "final_supply_table_has_item_number": {
+			      "Binding": {
+			        "ConceptualEntity": "final_supply_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_supply_table": {
+			          "Target": {
+			            "Entity": "final_supply_table"
+			          }
+			        },
+			        "final_supply_table.item_number": {
+			          "Target": {
+			            "Entity": "final_supply_table.item_number"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_supply_table"
+			            },
+			            "Object": {
+			              "Role": "final_supply_table.item_number"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "final_supply_tables_have_item_numbers"
+			        }
+			      ]
+			    },
+			    "final_supply_table_has_container_number": {
+			      "Binding": {
+			        "ConceptualEntity": "final_supply_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_supply_table": {
+			          "Target": {
+			            "Entity": "final_supply_table"
+			          }
+			        },
+			        "final_supply_table.container_number": {
+			          "Target": {
+			            "Entity": "final_supply_table.container_number"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_supply_table"
+			            },
+			            "Object": {
+			              "Role": "final_supply_table.container_number"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "final_supply_tables_have_container_numbers"
+			        }
+			      ]
+			    },
+			    "final_demand_table_has_SK_us": {
+			      "Binding": {
+			        "ConceptualEntity": "final_demand_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_demand_table": {
+			          "Target": {
+			            "Entity": "final_demand_table"
+			          }
+			        },
+			        "final_demand_table.SK_us": {
+			          "Target": {
+			            "Entity": "final_demand_table.SK_us"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_demand_table"
+			            },
+			            "Object": {
+			              "Role": "final_demand_table.SK_us"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "final_demand_tables_have_SK_us"
+			        }
+			      ]
+			    },
+			    "final_demand_table_has_allocated_container_count": {
+			      "Binding": {
+			        "ConceptualEntity": "final_demand_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_demand_table": {
+			          "Target": {
+			            "Entity": "final_demand_table"
+			          }
+			        },
+			        "final_demand_table.allocated_container_count": {
+			          "Target": {
+			            "Entity": "final_demand_table.allocated_container_count"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_demand_table"
+			            },
+			            "Object": {
+			              "Role": "final_demand_table.allocated_container_count"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "final_demand_tables_have_allocated_container_counts"
+			        }
+			      ]
+			    },
+			    "final_demand_table_has_fulfill_rate": {
+			      "Binding": {
+			        "ConceptualEntity": "final_demand_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_demand_table": {
+			          "Target": {
+			            "Entity": "final_demand_table"
+			          }
+			        },
+			        "final_demand_table.fulfill_rate": {
+			          "Target": {
+			            "Entity": "final_demand_table.fulfill_rate"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_demand_table"
+			            },
+			            "Object": {
+			              "Role": "final_demand_table.fulfill_rate"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "final_demand_tables_have_fulfill_rate"
+			        }
+			      ]
+			    },
+			    "final_demand_table_has_allocated_status": {
+			      "Binding": {
+			        "ConceptualEntity": "final_demand_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_demand_table": {
+			          "Target": {
+			            "Entity": "final_demand_table"
+			          }
+			        },
+			        "final_demand_table.allocated_status": {
+			          "Target": {
+			            "Entity": "final_demand_table.allocated_status"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_demand_table"
+			            },
+			            "Object": {
+			              "Role": "final_demand_table.allocated_status"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "final_demand_tables_have_allocated_statuses"
+			        }
+			      ]
+			    },
+			    "final_demand_table_has_allocated_supply_detail": {
+			      "Binding": {
+			        "ConceptualEntity": "final_demand_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_demand_table": {
+			          "Target": {
+			            "Entity": "final_demand_table"
+			          }
+			        },
+			        "final_demand_table.allocated_supply_detail": {
+			          "Target": {
+			            "Entity": "final_demand_table.allocated_supply_detail"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_demand_table"
+			            },
+			            "Object": {
+			              "Role": "final_demand_table.allocated_supply_detail"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "final_demand_tables_have_allocated_supply_details"
+			        }
+			      ]
+			    },
+			    "final_demand_table_has_allocated_supply_qty": {
+			      "Binding": {
+			        "ConceptualEntity": "final_demand_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_demand_table": {
+			          "Target": {
+			            "Entity": "final_demand_table"
+			          }
+			        },
+			        "final_demand_table.allocated_supply_qty": {
+			          "Target": {
+			            "Entity": "final_demand_table.allocated_supply_qty"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_demand_table"
+			            },
+			            "Object": {
+			              "Role": "final_demand_table.allocated_supply_qty"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "final_demand_tables_have_allocated_supply_qties"
+			        }
+			      ]
+			    },
+			    "final_demand_table_has_trip_demand_qty": {
+			      "Binding": {
+			        "ConceptualEntity": "final_demand_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_demand_table": {
+			          "Target": {
+			            "Entity": "final_demand_table"
+			          }
+			        },
+			        "final_demand_table.trip_demand_qty": {
+			          "Target": {
+			            "Entity": "final_demand_table.trip_demand_qty"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_demand_table"
+			            },
+			            "Object": {
+			              "Role": "final_demand_table.trip_demand_qty"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "final_demand_tables_have_trip_demand_qties"
+			        }
+			      ]
+			    },
+			    "final_demand_table_has_trip_picked": {
+			      "Binding": {
+			        "ConceptualEntity": "final_demand_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_demand_table": {
+			          "Target": {
+			            "Entity": "final_demand_table"
+			          }
+			        },
+			        "final_demand_table.trip_picked": {
+			          "Target": {
+			            "Entity": "final_demand_table.trip_picked"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_demand_table"
+			            },
+			            "Object": {
+			              "Role": "final_demand_table.trip_picked"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "final_demand_tables_have_trip_picked"
+			        }
+			      ]
+			    },
+			    "final_demand_table_has_trip_needed": {
+			      "Binding": {
+			        "ConceptualEntity": "final_demand_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_demand_table": {
+			          "Target": {
+			            "Entity": "final_demand_table"
+			          }
+			        },
+			        "final_demand_table.trip_needed": {
+			          "Target": {
+			            "Entity": "final_demand_table.trip_needed"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_demand_table"
+			            },
+			            "Object": {
+			              "Role": "final_demand_table.trip_needed"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "final_demand_tables_have_trip_needed"
+			        }
+			      ]
+			    },
+			    "final_demand_table_has_ldm_status": {
+			      "Binding": {
+			        "ConceptualEntity": "final_demand_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_demand_table": {
+			          "Target": {
+			            "Entity": "final_demand_table"
+			          }
+			        },
+			        "final_demand_table.ldm_status": {
+			          "Target": {
+			            "Entity": "final_demand_table.ldm_status"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_demand_table"
+			            },
+			            "Object": {
+			              "Role": "final_demand_table.ldm_status"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "final_demand_tables_have_ldm_statuses"
+			        }
+			      ]
+			    },
+			    "final_demand_table_has_trip_number": {
+			      "Binding": {
+			        "ConceptualEntity": "final_demand_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_demand_table": {
+			          "Target": {
+			            "Entity": "final_demand_table"
+			          }
+			        },
+			        "final_demand_table.trip_number": {
+			          "Target": {
+			            "Entity": "final_demand_table.trip_number"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_demand_table"
+			            },
+			            "Object": {
+			              "Role": "final_demand_table.trip_number"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "final_demand_tables_have_trip_numbers"
+			        }
+			      ]
+			    },
+			    "final_demand_table_has_item_number": {
+			      "Binding": {
+			        "ConceptualEntity": "final_demand_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_demand_table": {
+			          "Target": {
+			            "Entity": "final_demand_table"
+			          }
+			        },
+			        "final_demand_table.item_number": {
+			          "Target": {
+			            "Entity": "final_demand_table.item_number"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_demand_table"
+			            },
+			            "Object": {
+			              "Role": "final_demand_table.item_number"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "final_demand_tables_have_item_numbers"
+			        }
+			      ]
+			    },
+			    "final_demand_table_has_dispatch_date": {
+			      "Binding": {
+			        "ConceptualEntity": "final_demand_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_demand_table": {
+			          "Target": {
+			            "Entity": "final_demand_table"
+			          }
+			        },
+			        "final_demand_table.dispatch_date": {
+			          "Target": {
+			            "Entity": "final_demand_table.dispatch_date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "final_demand_table"
+			            },
+			            "Object": {
+			              "Role": "final_demand_table.dispatch_date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "final_demand_tables_have_dispatch_dates"
+			        }
+			      ]
+			    },
+			    "final_demand_table_is_dispatched_on_dispatch_date": {
+			      "Binding": {
+			        "ConceptualEntity": "final_demand_table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "final_demand_table": {
+			          "Target": {
+			            "Entity": "final_demand_table"
+			          }
+			        },
+			        "final_demand_table.dispatch_date": {
+			          "Target": {
+			            "Entity": "final_demand_table.dispatch_date"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "When": {
+			          "Role": "final_demand_table.dispatch_date"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Verb": {
+			            "Verbs": [
+			              {
+			                "dispatch": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "final_demand_table"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.9,
+			          "ID": "final_demand_tables_are_dispatched_on_dispatch_dates"
+			        }
+			      ]
+			    }
+			  },
+			  "Agents": {
+			    "Internal": {
+			      "Version": "1.1.0"
+			    }
+			  }
+			}
+		contentType: json
+

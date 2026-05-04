@@ -1,0 +1,270 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "bc2cb04603991e470ea3",
+  "position": {
+    "x": 0,
+    "y": 115.73415765069551,
+    "z": 0,
+    "height": 537.12519319938178,
+    "width": 1280,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Employee PIV Check Performed Counted"
+                    }
+                  },
+                  "Property": "shift_date"
+                }
+              },
+              "queryRef": "Employee PIV Check Performed Counted.shift_date",
+              "nativeQueryRef": "shift_date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Employee PIV Check Performed Counted"
+                    }
+                  },
+                  "Property": "check_date"
+                }
+              },
+              "queryRef": "Employee PIV Check Performed Counted.check_date",
+              "nativeQueryRef": "check_date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Employee PIV Check Performed Counted"
+                    }
+                  },
+                  "Property": "employee_id"
+                }
+              },
+              "queryRef": "Employee PIV Check Performed Counted.employee_id",
+              "nativeQueryRef": "employee_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Employee PIV Check Performed Counted"
+                    }
+                  },
+                  "Property": "equipment_list"
+                }
+              },
+              "queryRef": "Employee PIV Check Performed Counted.equipment_list",
+              "nativeQueryRef": "equipment_list"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "A_Measure"
+                    }
+                  },
+                  "Property": "Employee PIV Check Times Counted"
+                }
+              },
+              "queryRef": "A_Measure.Employee PIV Check Times Counted",
+              "nativeQueryRef": "Employee PIV Check Times Counted"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Employee PIV Check Performed Counted"
+                    }
+                  },
+                  "Property": "check_time_list"
+                }
+              },
+              "queryRef": "Employee PIV Check Performed Counted.check_time_list",
+              "nativeQueryRef": "check_time_list"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Employee PIV Check Performed Counted"
+                    }
+                  },
+                  "Property": "master_key"
+                }
+              },
+              "queryRef": "Employee PIV Check Performed Counted.master_key",
+              "nativeQueryRef": "master_key"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Employee PIV Check Performed Counted"
+                    }
+                  },
+                  "Property": "shift"
+                }
+              },
+              "queryRef": "Employee PIV Check Performed Counted.shift",
+              "nativeQueryRef": "shift"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "294.00619389132163D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Employee PIV Check Performed Counted.check_time_list"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "92de752c06a2e2852a7c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Employee PIV Check Performed Counted"
+              }
+            },
+            "Property": "shift_date"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f203f15b70a1eb7f20a3",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Employee PIV Check Performed Counted"
+              }
+            },
+            "Property": "check_date"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "851a5a1cc034aa4e505d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Employee PIV Check Performed Counted"
+              }
+            },
+            "Property": "employee_id"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "2dafe52794674303a2e7",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Employee PIV Check Performed Counted"
+              }
+            },
+            "Property": "equipment_list"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "92f4e5e0affb8c6cba87",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Employee PIV Check Performed Counted"
+              }
+            },
+            "Property": "master_key"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "16d2b9a0940809ab9f80",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Employee PIV Check Performed Counted"
+              }
+            },
+            "Property": "shift"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "0bf448c2f7dc5b773ed9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Employee PIV Check Performed Counted"
+              }
+            },
+            "Property": "check_time_list"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "159ca750e0b4d48d9701",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Employee PIV Check Times Counted"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

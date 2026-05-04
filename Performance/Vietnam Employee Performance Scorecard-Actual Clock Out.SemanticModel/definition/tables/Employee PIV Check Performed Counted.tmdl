@@ -1,0 +1,202 @@
+table 'Employee PIV Check Performed Counted'
+	lineageTag: dbf5adcc-22da-44b9-b203-74509f158841
+
+	column wh_id
+		dataType: string
+		lineageTag: 828c0dc2-57a2-4d79-8473-2881f21dee98
+		summarizeBy: none
+		sourceColumn: wh_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column check_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2f3bad0b-1747-4be7-8464-5a6422e4c7d6
+		summarizeBy: none
+		sourceColumn: check_date
+
+		variation Variation
+			isDefault
+			relationship: efaf856f-cde8-42a7-971a-e0bf4c213784
+			defaultHierarchy: LocalDateTable_6907cb54-24eb-430b-9cb3-e9927502edf6.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column shift_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3cd46f4a-ed84-4302-bf70-cf6b1d5a46a8
+		summarizeBy: none
+		sourceColumn: shift_date
+
+		variation Variation
+			isDefault
+			relationship: 918f6ba2-c412-4909-b41a-d587fbc8d07b
+			defaultHierarchy: LocalDateTable_9e2fd9e9-fc55-40e2-a106-17021feb7f16.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column shift
+		dataType: string
+		lineageTag: d85ea41d-bc7d-421d-bd8a-3fed5c09a388
+		summarizeBy: none
+		sourceColumn: shift
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_id
+		dataType: string
+		lineageTag: f5fb162d-5b05-45e2-b588-7421920a6ebd
+		summarizeBy: none
+		sourceColumn: employee_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column equipment_count
+		dataType: int64
+		formatString: 0
+		lineageTag: 4c03a935-cb31-436a-810d-11bb9d6cebc3
+		summarizeBy: sum
+		sourceColumn: equipment_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column equipment_list
+		dataType: string
+		lineageTag: 5a33a2bc-6b39-459b-8fff-6267b391c887
+		summarizeBy: none
+		sourceColumn: equipment_list
+
+		annotation SummarizationSetBy = Automatic
+
+	column check_time_list
+		dataType: string
+		lineageTag: bbbbc267-7da1-40c9-b7dd-79766760fbec
+		summarizeBy: none
+		sourceColumn: check_time_list
+
+		annotation SummarizationSetBy = Automatic
+
+	column master_key
+		dataType: string
+		lineageTag: 8393e287-e1d4-465c-a970-622a349e97dc
+		summarizeBy: none
+		sourceColumn: master_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column WhseEmployee#
+		dataType: string
+		lineageTag: 157f729a-ef6a-43af-8015-29ee6ab7f6ef
+		summarizeBy: none
+		sourceColumn: WhseEmployee#
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Employee PIV Check Performed Counted' = m
+		mode: import
+		source = ```
+				let
+				    Source = Sql.Database("ashley-edw.database.windows.net", "ASHLEY_EDW", [Query="    
+				WITH base AS (
+				    SELECT
+				        wh_id,
+				        employee_id,
+				        equipment_id,
+				        CAST(check_performed AS date)              AS check_date,
+				        CONVERT(varchar(19), check_performed, 120) AS check_datetime,
+				
+				        CAST(
+				            DATEADD(hour, -7, check_performed)
+				        AS date)                                   AS shift_date,
+				
+				        CASE
+				            WHEN DATEPART(hour, check_performed) BETWEEN 7 AND 18
+				                THEN 'D'
+				            ELSE 'N'
+				        END                                        AS shift
+				
+				    FROM  Distribution_Warehouse_Wholesale.EquipmentCheckLog
+				    WHERE check_performed >= '2024-01-01'
+				      AND wh_id = '335'
+				),
+				deduped_equip AS (
+				    SELECT DISTINCT
+				        wh_id,
+				        check_date,
+				        shift_date,
+				        shift,
+				        employee_id,
+				        CAST(equipment_id AS varchar(50))          AS equipment_id
+				    FROM  base
+				),
+				max_time_per_equip AS (
+				    SELECT
+				        wh_id,
+				        check_date,
+				        shift_date,
+				        shift,
+				        employee_id,
+				        CAST(equipment_id AS varchar(50))          AS equipment_id,
+				        MAX(check_datetime)                        AS last_check_datetime
+				    FROM  base
+				    GROUP BY wh_id, check_date, shift_date, shift, employee_id, equipment_id
+				),
+				agg_equip AS (
+				    SELECT
+				        wh_id, check_date, shift_date, shift, employee_id,
+				        COUNT(equipment_id)                        AS equipment_count,
+				        STRING_AGG(equipment_id, ', ')
+				            WITHIN GROUP (ORDER BY equipment_id)   AS equipment_list
+				    FROM  deduped_equip
+				    GROUP BY wh_id, check_date, shift_date, shift, employee_id
+				),
+				agg_time AS (
+				    SELECT
+				        wh_id, check_date, shift_date, shift, employee_id,
+				        STRING_AGG(last_check_datetime, ', ')
+				            WITHIN GROUP (ORDER BY equipment_id)   AS check_time_list
+				    FROM  max_time_per_equip
+				    GROUP BY wh_id, check_date, shift_date, shift, employee_id
+				)
+				SELECT
+				    e.wh_id,
+				    e.check_date,
+				    e.shift_date,
+				    e.shift,
+				    e.employee_id,
+				    e.equipment_count,
+				    e.equipment_list,
+				    t.check_time_list,
+				    CONCAT(
+				        e.wh_id,       '-',
+				        e.employee_id, '-',
+				        CAST(MONTH(e.shift_date) AS varchar(2)), '/',
+				        CAST(DAY(e.shift_date)   AS varchar(2)), '/',
+				        CAST(YEAR(e.shift_date)  AS varchar(4))
+				    )                                              AS master_key
+				FROM       agg_equip e
+				INNER JOIN agg_time  t
+				    ON  t.wh_id       = e.wh_id
+				    AND t.check_date  = e.check_date
+				    AND t.shift_date  = e.shift_date
+				    AND t.shift       = e.shift
+				    AND t.employee_id = e.employee_id
+				ORDER BY
+				    e.shift_date,
+				    e.shift,
+				    e.employee_id;    
+				    ", CreateNavigationProperties=false, CommandTimeout=#duration(0, 2, 40, 0)]),
+				    #"Added Custom" = Table.AddColumn(Source, "WhseEmployee#", each [wh_id]&"-"&[employee_id]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"shift_date", type date}})
+				in
+				    #"Changed Type"
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

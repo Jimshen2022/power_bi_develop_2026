@@ -1,0 +1,227 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "c8a34470068dd518831b",
+  "position": {
+    "x": 9.6969696969696972,
+    "y": 30.303030303030305,
+    "z": 0,
+    "height": 689.69696969696975,
+    "width": 1270.3030303030305,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_STO"
+                    }
+                  },
+                  "Property": "item_number"
+                }
+              },
+              "queryRef": "F_STO.item_number",
+              "nativeQueryRef": "item_number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_STO"
+                    }
+                  },
+                  "Property": "location_id"
+                }
+              },
+              "queryRef": "F_STO.location_id",
+              "nativeQueryRef": "location_id"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_STO"
+                        }
+                      },
+                      "Property": "actual_qty"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(F_STO.actual_qty)",
+              "nativeQueryRef": "onhand",
+              "displayName": "onhand"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_STO"
+                    }
+                  },
+                  "Property": "SCOOPQTY"
+                }
+              },
+              "queryRef": "Sum(F_STO.SCOOPQTY)",
+              "nativeQueryRef": "SCOOPQTY"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_STO"
+                        }
+                      },
+                      "Property": "actual_pallet_Qty"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(F_STO.actual_pallet_Qty)",
+              "nativeQueryRef": "Actual_pallet_Qty",
+              "displayName": "Actual_pallet_Qty"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_STO"
+                    }
+                  },
+                  "Property": "ITMCLSID"
+                }
+              },
+              "queryRef": "F_STO.ITMCLSID",
+              "nativeQueryRef": "ITMCLSID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_STO"
+                    }
+                  },
+                  "Property": "type"
+                }
+              },
+              "queryRef": "F_STO.type",
+              "nativeQueryRef": "type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_STO"
+                    }
+                  },
+                  "Property": "TypeDescription"
+                }
+              },
+              "queryRef": "F_STO.TypeDescription",
+              "nativeQueryRef": "TypeDescription"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_STO"
+                    }
+                  },
+                  "Property": "product"
+                }
+              },
+              "queryRef": "F_STO.product",
+              "nativeQueryRef": "product"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_STO"
+                    }
+                  },
+                  "Property": "Unit_CBM"
+                }
+              },
+              "queryRef": "Sum(F_STO.Unit_CBM)",
+              "nativeQueryRef": "Unit_CBM"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_STO"
+                        }
+                      },
+                      "Property": "CBM"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(F_STO.CBM)",
+              "nativeQueryRef": "CBM",
+              "displayName": "CBM"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#0D5128'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

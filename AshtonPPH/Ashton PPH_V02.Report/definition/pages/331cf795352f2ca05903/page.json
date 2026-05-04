@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "331cf795352f2ca05903",
+  "displayName": "1_All in PPH Shipping",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "pageBinding": {
+    "name": "303c2f240a0bc160e66d",
+    "type": "Default",
+    "parameters": []
+  },
+  "objects": {
+    "outspace": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 1,
+                    "Percent": 0.6
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "7291dbf793a70fe49194",
+      "target": "e17eaa9ae3a97d55c90f",
+      "type": "DataFilter"
+    },
+    {
+      "source": "7291dbf793a70fe49194",
+      "target": "e219f1e0933cd87bd1b6",
+      "type": "DataFilter"
+    }
+  ]
+}

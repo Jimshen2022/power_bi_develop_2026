@@ -1,0 +1,651 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "786216fcfd34461ba9ab",
+  "position": {
+    "x": 0,
+    "y": 160.18223234624145,
+    "z": 0,
+    "height": 559.81776765375855,
+    "width": 1280,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Calendar"
+                    }
+                  },
+                  "Property": "Date"
+                }
+              },
+              "queryRef": "Calendar.Date",
+              "nativeQueryRef": "Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_putaway_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "exception_date"
+                }
+              },
+              "queryRef": "ashton_putaway_exception_hj_sql_server_df.exception_date",
+              "nativeQueryRef": "exception_date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_putaway_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "exception_time"
+                }
+              },
+              "queryRef": "ashton_putaway_exception_hj_sql_server_df.exception_time",
+              "nativeQueryRef": "exception_time"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_putaway_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "department_code"
+                }
+              },
+              "queryRef": "ashton_putaway_exception_hj_sql_server_df.department_code",
+              "nativeQueryRef": "department_code"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_putaway_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "department"
+                }
+              },
+              "queryRef": "ashton_putaway_exception_hj_sql_server_df.department",
+              "nativeQueryRef": "department"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_putaway_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "employee_id"
+                }
+              },
+              "queryRef": "ashton_putaway_exception_hj_sql_server_df.employee_id",
+              "nativeQueryRef": "employee_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_putaway_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "employee_name"
+                }
+              },
+              "queryRef": "ashton_putaway_exception_hj_sql_server_df.employee_name",
+              "nativeQueryRef": "employee_name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_putaway_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "supervisor"
+                }
+              },
+              "queryRef": "ashton_putaway_exception_hj_sql_server_df.supervisor",
+              "nativeQueryRef": "supervisor"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_putaway_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "item_number"
+                }
+              },
+              "queryRef": "ashton_putaway_exception_hj_sql_server_df.item_number",
+              "nativeQueryRef": "item_number"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "A_Measure"
+                    }
+                  },
+                  "Property": "Putaway Exceptions(Major)"
+                }
+              },
+              "queryRef": "A_Measure.Putaway Exceptions(Major)",
+              "nativeQueryRef": "Putaway Exceptions(Major)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_putaway_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "pick_put_id"
+                }
+              },
+              "queryRef": "ashton_putaway_exception_hj_sql_server_df.pick_put_id",
+              "nativeQueryRef": "pick_put_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_putaway_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "suggested_value"
+                }
+              },
+              "queryRef": "ashton_putaway_exception_hj_sql_server_df.suggested_value",
+              "nativeQueryRef": "suggested_value"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_putaway_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "suggested_type"
+                }
+              },
+              "queryRef": "ashton_putaway_exception_hj_sql_server_df.suggested_type",
+              "nativeQueryRef": "suggested_type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_putaway_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "entered_value"
+                }
+              },
+              "queryRef": "ashton_putaway_exception_hj_sql_server_df.entered_value",
+              "nativeQueryRef": "entered_value"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_putaway_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "entered_type"
+                }
+              },
+              "queryRef": "ashton_putaway_exception_hj_sql_server_df.entered_type",
+              "nativeQueryRef": "entered_type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_putaway_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "Reason"
+                }
+              },
+              "queryRef": "ashton_putaway_exception_hj_sql_server_df.Reason",
+              "nativeQueryRef": "Reason"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_putaway_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "rule"
+                }
+              },
+              "queryRef": "ashton_putaway_exception_hj_sql_server_df.rule",
+              "nativeQueryRef": "rule"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_putaway_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "commodity_code"
+                }
+              },
+              "queryRef": "ashton_putaway_exception_hj_sql_server_df.commodity_code",
+              "nativeQueryRef": "commodity_code"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "grid": [
+        {
+          "properties": {
+            "gridHorizontalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "gridVertical": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridVerticalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Putaway Exception Details'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            },
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0.4
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "d21238216274a857d0a5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Calendar"
+              }
+            },
+            "Property": "Date"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "54173a6a7673a21e1baf",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_putaway_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "department"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "01e9465030615f21779f",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_putaway_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "department_code"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ee77a5fb3b259b0f9ab5",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Putaway Exceptions(Major)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "95b8d332a38f97be968b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_putaway_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "employee_name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "67a98da9e21f261822f0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_putaway_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "employee_id"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "fee2b4a53756b3329460",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_putaway_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "suggested_value"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "c9738e24f43583aad4e4",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_putaway_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "suggested_type"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "9a029dd1320e391bafac",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_putaway_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "entered_type"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "75d6f8a70aed14856e43",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_putaway_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "entered_value"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ded791548570cfb3a82f",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_putaway_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "exception_time"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "caab45489f157feb6fb6",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_putaway_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "exception_date"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "14535ada9f6eb86b4553",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_putaway_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "supervisor"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d7f2086b7db7c089ceb2",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_putaway_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "item_number"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "bde976f79e058de64b0d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_putaway_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "pick_put_id"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "1e3ba421d7ab30f063fe",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_putaway_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "Reason"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "26a6a04253e28be377ed",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_putaway_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "rule"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "0fcf46a61b5877a1e1ff",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_putaway_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "commodity_code"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

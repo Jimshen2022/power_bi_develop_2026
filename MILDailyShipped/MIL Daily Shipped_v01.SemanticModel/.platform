@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "MIL Daily Shipped_v01"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "286a80fe-9a5c-457c-9d99-3840247723c6"
+  }
+}

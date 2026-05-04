@@ -1,0 +1,539 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "4f6afb1c20089059ffdb",
+  "position": {
+    "x": 0,
+    "y": 160.18223234624145,
+    "z": 0,
+    "height": 559.81776765375855,
+    "width": 1280,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Calendar"
+                    }
+                  },
+                  "Property": "Date"
+                }
+              },
+              "queryRef": "Calendar.Date",
+              "nativeQueryRef": "Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_picking_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "transaction_datetime"
+                }
+              },
+              "queryRef": "ashton_picking_exception_hj_sql_server_df.transaction_datetime",
+              "nativeQueryRef": "transaction_datetime"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_picking_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "department"
+                }
+              },
+              "queryRef": "ashton_picking_exception_hj_sql_server_df.department",
+              "nativeQueryRef": "department"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_picking_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "dept"
+                }
+              },
+              "queryRef": "ashton_picking_exception_hj_sql_server_df.dept",
+              "nativeQueryRef": "dept"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_picking_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "emp_number"
+                }
+              },
+              "queryRef": "ashton_picking_exception_hj_sql_server_df.emp_number",
+              "nativeQueryRef": "emp_number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_picking_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "name"
+                }
+              },
+              "queryRef": "ashton_picking_exception_hj_sql_server_df.name",
+              "nativeQueryRef": "name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_picking_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "supervisor"
+                }
+              },
+              "queryRef": "ashton_picking_exception_hj_sql_server_df.supervisor",
+              "nativeQueryRef": "supervisor"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_picking_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "item_number"
+                }
+              },
+              "queryRef": "ashton_picking_exception_hj_sql_server_df.item_number",
+              "nativeQueryRef": "item_number"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "A_Measure"
+                    }
+                  },
+                  "Property": "Picking Exceptions(Major)"
+                }
+              },
+              "queryRef": "A_Measure.Picking Exceptions(Major)",
+              "nativeQueryRef": "Picking Exceptions(Major)"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_picking_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "outside_id"
+                }
+              },
+              "queryRef": "ashton_picking_exception_hj_sql_server_df.outside_id",
+              "nativeQueryRef": "outside_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_picking_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "source_location"
+                }
+              },
+              "queryRef": "ashton_picking_exception_hj_sql_server_df.source_location",
+              "nativeQueryRef": "source_location"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_picking_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "destination_location"
+                }
+              },
+              "queryRef": "ashton_picking_exception_hj_sql_server_df.destination_location",
+              "nativeQueryRef": "destination_location"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_picking_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "equipment_zone"
+                }
+              },
+              "queryRef": "ashton_picking_exception_hj_sql_server_df.equipment_zone",
+              "nativeQueryRef": "equipment_zone"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_picking_exception_hj_sql_server_df"
+                    }
+                  },
+                  "Property": "exception_reason"
+                }
+              },
+              "queryRef": "ashton_picking_exception_hj_sql_server_df.exception_reason",
+              "nativeQueryRef": "exception_reason"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "grid": [
+        {
+          "properties": {
+            "gridHorizontalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "gridVertical": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridVerticalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "outlineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Picking Exception Details'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            },
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0.4
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ace0e6cf285e98402655",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_picking_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "department"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "461fb15ffe85abb17127",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_picking_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "dept"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "b4bce656ae6f98a591b5",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "Picking Exceptions(Major)"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "0d4b339e30f3fcb14d6c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_picking_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "emp_number"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "02cdffd929559c851b89",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_picking_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d059a2a34409ac498025",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_picking_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "supervisor"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "fa2142d4c022902b598c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Calendar"
+              }
+            },
+            "Property": "Date"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d9b4c09fdee8e17de73b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_picking_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "exception_reason"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "6a614ba7e6ecd68f735d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_picking_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "equipment_zone"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "004cfbb5471117ddc78c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_picking_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "item_number"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "883ff432554a3c8c61bc",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_picking_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "outside_id"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a7fe0e2d6b7816dfebb9",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_picking_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "source_location"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "7180b56a399981e54d6f",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_picking_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "transaction_datetime"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ae0a199331659e11d1bd",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ashton_picking_exception_hj_sql_server_df"
+              }
+            },
+            "Property": "destination_location"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

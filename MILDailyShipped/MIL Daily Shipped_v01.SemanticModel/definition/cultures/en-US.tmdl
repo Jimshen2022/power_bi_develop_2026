@@ -1,0 +1,6530 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "4.1.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "D_measure": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Measure"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "D measure": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "D_Measure": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "measure": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "d degree": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "d quantity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "d quota": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "d extent": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "degree": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "quota": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "extent": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "d amount": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "d portion": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "d ration": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        }
+			      ]
+			    },
+			    "D_measure.container_Qty": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Measure",
+			          "ConceptualProperty": "ContainerQ'ty"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "container Q'ty": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ContainerQ'ty": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "Container_Q'ty": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "D_measure.Qty": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Measure",
+			          "ConceptualProperty": "Q'ty"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Q'ty": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "D_measure.cubes": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Measure",
+			          "ConceptualProperty": "Cubes"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "cubes": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "D_measure.container_products_category": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Measure",
+			          "ConceptualProperty": "Container_Products_Category"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "container products category": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Container_Products_Category": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "category": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "products category": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "container product classification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "product classification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "container product class": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "container product group": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "container product type": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "container product grouping": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "container product kind": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "classification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "product class": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "product group": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "D_measure.products": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Measure",
+			          "ConceptualProperty": "Products"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "products": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "artifact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "item": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "merchandise": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "produce": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "goods": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.614
+			          }
+			        }
+			      ]
+			    },
+			    "D_measure.avg__SKUs_container": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Measure",
+			          "ConceptualProperty": "Avg. SKUs/Container"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "avg. SKUs/container": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "avg. SKUs": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "avg . SKUs container": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "container": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "average . SKU/container": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        },
+			        {
+			          "average . SKU container": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "average . SKU": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "avg. SKU/ ampule": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.52
+			          }
+			        },
+			        {
+			          "avg. SKU/ vessel": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.52
+			          }
+			        },
+			        {
+			          "avg. SKU/ flask": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.52
+			          }
+			        },
+			        {
+			          "avg. SKU/ ampoule": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.52
+			          }
+			        },
+			        {
+			          "avg . SKU ampule": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "avg . SKU vessel": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "avg . SKU flask": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "fct MILCNTDETAIL": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "fct_MILCNTDETAILS": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.wciorigin": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "WCIORIGIN"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "wciorigin": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.container": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "CONTAINER#"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "container#": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "container no": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "container num": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "Container Number": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.containertype": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "CONTAINERTYPE"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "containertype": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "CTN_Type": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.product": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "PRODUCT"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "product": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "artifact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "item": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "merchandise": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "produce": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "Products": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.cube": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "CUBES"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "cube": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.itcl": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "ITCLS"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "itcl": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ItemClass": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.wcidestination": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "WCIDESTINATION"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "wcidestination": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Destinations": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.wciorder": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "WCIORDER"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "wciorder": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.itemnumber": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "ITEMNUMBER"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "itemnumber": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Item Number": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.qty": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "QTY"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "qty": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.wcilastmaintenancetimestamp": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "WCILASTMAINTENANCETIMESTAMP"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "wcilastmaintenancetimestamp": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.containernumber": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "CONTAINERNUMBER"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "containernumber": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.wcilastmaintenanceuser": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "WCILASTMAINTENANCEUSER"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "wcilastmaintenanceuser": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.itmcqty": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "ITMCQTY"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "itmcqty": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.unitcube": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "UNITCUBE"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "unitcube": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.unitweight": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "UNITWEIGHT"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "unitweight": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.carton": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "CARTONS"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "carton": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "sachet": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "box": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "packet": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "pack": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.date": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "DATE"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "date": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "period": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "fct_MILCNTDETAIL.wchcontainersize": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "WCHCONTAINERSIZE"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "wchcontainersize": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "CTN_Size": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.utilization": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "UTILIZATION"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "utilization": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "operation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "consumption": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "exploitation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "deployment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "use": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "application": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "employment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "ItemUtilization%": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "D_date": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Date"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "D date": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "D_Date": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "d moment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "d period": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "D_date.date": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Date",
+			          "ConceptualProperty": "Date"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "date": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "period": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "D_date.date.date_hierarchy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Date",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "date hierarchy": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "D_date.date.year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Date",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Year"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "moment year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "period year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "D_date.date.quarter": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Date",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Quarter"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.833
+			          }
+			        },
+			        {
+			          "qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.818
+			          }
+			        },
+			        {
+			          "moment quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "period quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "D_date.date.month": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Date",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Month"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "moment month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "period month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "D_date.date.day": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Date",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Day"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "period day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "D_date.year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Date",
+			          "ConceptualProperty": "Year"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "D_date.month": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Date",
+			          "ConceptualProperty": "Month"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        }
+			      ]
+			    },
+			    "D_date.day": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Date",
+			          "ConceptualProperty": "Day"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "day": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "D_date.week": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Date",
+			          "ConceptualProperty": "Week"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "week": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "D_date.week_N": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Date",
+			          "ConceptualProperty": "WeekN"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "week N": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "WeekN": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "N": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        }
+			      ]
+			    },
+			    "D_date.quarter": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Date",
+			          "ConceptualProperty": "Quarter"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.818
+			          }
+			        }
+			      ]
+			    },
+			    "D_date.year_month": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Date",
+			          "ConceptualProperty": "YearMonth"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "year month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "YearMonth": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "year mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "yr month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        }
+			      ]
+			    },
+			    "D_date.year_week": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Date",
+			          "ConceptualProperty": "YearWeek"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "year week": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "YearWeek": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "yr week": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        }
+			      ]
+			    },
+			    "D_product_category": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Product_Category"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "D product category": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "D_Product_Category": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "category": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "product category": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "d product classification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "product classification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "d product class": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "d product group": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "d product type": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "d product grouping": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "d product kind": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "classification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "product class": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "product group": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "D_product_category.product": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Product_Category",
+			          "ConceptualProperty": "PRODUCT"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "product": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "artifact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "item": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "merchandise": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "produce": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ]
+			    },
+			    "D_measure.avg__categories_container": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Measure",
+			          "ConceptualProperty": "Avg. Categories/Container"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "avg. categories/container": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "avg. categories": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "avg . categories container": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "container": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "average . category/container": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        },
+			        {
+			          "average . category container": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "average . category": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "avg. category/ ampule": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.52
+			          }
+			        },
+			        {
+			          "avg. category/ vessel": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.52
+			          }
+			        },
+			        {
+			          "avg. category/ flask": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.52
+			          }
+			        },
+			        {
+			          "avg. category/ ampoule": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.52
+			          }
+			        },
+			        {
+			          "avg . category ampule": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "avg . category vessel": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "avg . category flask": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        }
+			      ]
+			    },
+			    "D_measure.utilization": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Measure",
+			          "ConceptualProperty": "Utilization(%)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "utilization": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "utilization (%)": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Utilization(%)": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "operation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "consumption": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "exploitation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "deployment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "use": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "application": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "employment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ],
+			      "Units": [
+			        "percentage",
+			        "%"
+			      ]
+			    },
+			    "D_measure.avg__utilization_container": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Measure",
+			          "ConceptualProperty": "Avg. Utilization/Container"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "avg. utilization/container": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "avg. utilization": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "avg . utilization container": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "container": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "average . utilization/container": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        },
+			        {
+			          "average . utilization container": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        },
+			        {
+			          "average . utilization": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "avg. utilization/ ampule": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.52
+			          }
+			        },
+			        {
+			          "avg. utilization/ vessel": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.52
+			          }
+			        },
+			        {
+			          "avg. utilization/ flask": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.52
+			          }
+			        },
+			        {
+			          "avg. utilization/ ampoule": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.52
+			          }
+			        },
+			        {
+			          "avg . utilization ampule": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "avg . utilization vessel": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "avg . utilization flask": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        }
+			      ]
+			    },
+			    "D_measure.cartons": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Measure",
+			          "ConceptualProperty": "Cartons"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "cartons": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "sachet": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "box": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "packet": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "pack": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "D_measure.SK_us": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Measure",
+			          "ConceptualProperty": "SKUs"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "SK us": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "SKUs": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "D_measure.container_avg__SKUs_goal": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "D_Measure",
+			          "ConceptualProperty": "Container Avg. SKUs Goal"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "container avg. SKUs goal": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "container average . SKU goal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.605
+			          }
+			        },
+			        {
+			          "container avg. SKU goalmouth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.52
+			          }
+			        },
+			        {
+			          "container avg. SKU box": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.504
+			          }
+			        },
+			        {
+			          "container avg. SKU area": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.504
+			          }
+			        },
+			        {
+			          "container avg. SKU aspiration": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.494
+			          }
+			        },
+			        {
+			          "container avg. SKU objective": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.479
+			          }
+			        },
+			        {
+			          "container avg. SKU aim": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.479
+			          }
+			        },
+			        {
+			          "container avg. SKU end": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.479
+			          }
+			        },
+			        {
+			          "container avg. SKU ambition": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.479
+			          }
+			        },
+			        {
+			          "container avg. SKU purpose": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.479
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.wchdoornumber": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "WCHDOORNUMBER"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "wchdoornumber": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.wchbuilding": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "WCHBUILDING"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "wchbuilding": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.h_cube": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "H_CUBES"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "h cube": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "H_CUBES": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "TotalContainerCubes": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.container2": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "CONTAINER#2"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "container#2": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "container no 2": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "container num 2": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "container number 2": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.wh": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "WH"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "wh": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL.container_utilization": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_MILCNTDETAILS",
+			          "ConceptualProperty": "Container Utilization%"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "container utilization%": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "container utilization percentage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "container utilization pct": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_mil_loading_audit"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "fct mil loading audit": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "fct_mil_loading_audit": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "fct mil loading inspection": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "fct mil loading examination": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "fct mil loading assessment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "fct mil loading appraisal": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.514
+			          }
+			        },
+			        {
+			          "fct mil loading review": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "fct mil loading check": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "fct mil loading inventory": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        },
+			        {
+			          "fct mil loading stocktaking": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.499
+			          }
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit.dwfdoornumber": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_mil_loading_audit",
+			          "ConceptualProperty": "DWFDOORNUMBER"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dwfdoornumber": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Door#": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit.dwfcontainernumber": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_mil_loading_audit",
+			          "ConceptualProperty": "DWFCONTAINERNUMBER"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dwfcontainernumber": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Container Number": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit.dwfrownumber": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_mil_loading_audit",
+			          "ConceptualProperty": "DWFROWNUMBER"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dwfrownumber": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "ROW#": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit.dwffinishitem": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_mil_loading_audit",
+			          "ConceptualProperty": "DWFFINISHITEM"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "dwffinishitem": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Item Number": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit.carton": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_mil_loading_audit",
+			          "ConceptualProperty": "CARTONS"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "carton": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "sachet": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "box": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "packet": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "pack": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit.kit": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_mil_loading_audit",
+			          "ConceptualProperty": "KITS"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "kit": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "equipment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "tackle": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "gear": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "set": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "baggage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "luggage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "paraphernalia": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.466
+			          }
+			        },
+			        {
+			          "stuff": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit.last_audit_time": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_mil_loading_audit",
+			          "ConceptualProperty": "LAST_AUDIT_TIME"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "last audit time": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "LAST_AUDIT_TIME": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "audit time": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "last audit duration": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "last audit interval": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "last audit moment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "audit duration": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "audit interval": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "audit moment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "last audit period": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "last audit timetable": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "audit period": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "audit timetable": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "fct_mil_loading_audit.last_audit_time.date_hierarchy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_mil_loading_audit",
+			          "VariationSource": "LAST_AUDIT_TIME",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "last audit time date hierarchy": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date hierarchy": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "time date hierarchy": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "audit time date hierarchy": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "fct_mil_loading_audit.last_audit_time.year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_mil_loading_audit",
+			          "VariationSource": "LAST_AUDIT_TIME",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Year"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "last audit time year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "time year": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "audit time year": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "last audit time yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.771
+			          }
+			        },
+			        {
+			          "audit time yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "time yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "last audit duration year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "last audit interval year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "last audit moment year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "audit duration year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "audit interval year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "audit moment year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "fct_mil_loading_audit.last_audit_time.quarter": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_mil_loading_audit",
+			          "VariationSource": "LAST_AUDIT_TIME",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Quarter"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "last audit time quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "time quarter": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "audit time quarter": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "last audit time qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.857
+			          }
+			        },
+			        {
+			          "audit time qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.846
+			          }
+			        },
+			        {
+			          "time qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.833
+			          }
+			        },
+			        {
+			          "qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.818
+			          }
+			        },
+			        {
+			          "last audit duration quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "last audit interval quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "last audit moment quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "audit duration quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "audit interval quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "audit moment quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "fct_mil_loading_audit.last_audit_time.month": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_mil_loading_audit",
+			          "VariationSource": "LAST_AUDIT_TIME",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Month"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "last audit time month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "time month": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "audit time month": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "last audit time mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.771
+			          }
+			        },
+			        {
+			          "audit time mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "time mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "last audit duration month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "last audit interval month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "last audit moment month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "audit duration month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "audit interval month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "audit moment month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "fct_mil_loading_audit.last_audit_time.day": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_mil_loading_audit",
+			          "VariationSource": "LAST_AUDIT_TIME",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Day"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "last audit time day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "time day": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "audit time day": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "last audit duration day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "last audit interval day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "last audit moment day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.617
+			          }
+			        },
+			        {
+			          "audit duration day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "audit interval day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "audit moment day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.609
+			          }
+			        },
+			        {
+			          "duration day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "interval day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "moment day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "end audit time day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.599
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "fct_mil_loading_audit.date": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_mil_loading_audit",
+			          "ConceptualProperty": "Date"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "date": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "period": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "fct_mil_loading_audit.date.date_hierarchy": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_mil_loading_audit",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "date hierarchy": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "fct_mil_loading_audit.date.year": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_mil_loading_audit",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Year"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date year": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "yr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "moment year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "period year": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "fct_mil_loading_audit.date.quarter": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_mil_loading_audit",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Quarter"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date quarter": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.833
+			          }
+			        },
+			        {
+			          "qtr": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.818
+			          }
+			        },
+			        {
+			          "moment quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "period quarter": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "fct_mil_loading_audit.date.month": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_mil_loading_audit",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Month"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date month": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "mth": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "moment month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "period month": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "fct_mil_loading_audit.date.day": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_mil_loading_audit",
+			          "VariationSource": "Date",
+			          "VariationSet": "Variation",
+			          "Hierarchy": "Date Hierarchy",
+			          "HierarchyLevel": "Day"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date day": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moment day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "period day": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "fct_mil_loading_audit.wchdestination": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "fct_mil_loading_audit",
+			          "ConceptualProperty": "WCHDESTINATION"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "wchdestination": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Destination Whse": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Destination": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  },
+			  "Relationships": {
+			    "fct_mil_loading_audit_date_date_hierarchy_has_fct_mil_loading_audit_date_day": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_mil_loading_audit"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_mil_loading_audit.date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.date.date_hierarchy"
+			          }
+			        },
+			        "fct_mil_loading_audit.date.day": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.date.day"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_mil_loading_audit.date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "fct_mil_loading_audit.date.day"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_hierarchies_have_days"
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit_date_date_hierarchy_has_fct_mil_loading_audit_date_month": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_mil_loading_audit"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_mil_loading_audit.date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.date.date_hierarchy"
+			          }
+			        },
+			        "fct_mil_loading_audit.date.month": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.date.month"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_mil_loading_audit.date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "fct_mil_loading_audit.date.month"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_hierarchies_have_months"
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit_date_date_hierarchy_has_fct_mil_loading_audit_date_quarter": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_mil_loading_audit"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_mil_loading_audit.date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.date.date_hierarchy"
+			          }
+			        },
+			        "fct_mil_loading_audit.date.quarter": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.date.quarter"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_mil_loading_audit.date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "fct_mil_loading_audit.date.quarter"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_hierarchies_have_quarters"
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit_date_date_hierarchy_has_fct_mil_loading_audit_date_year": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_mil_loading_audit"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_mil_loading_audit.date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.date.date_hierarchy"
+			          }
+			        },
+			        "fct_mil_loading_audit.date.year": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.date.year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_mil_loading_audit.date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "fct_mil_loading_audit.date.year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_hierarchies_have_years"
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit_date_has_date_hierarchy": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_mil_loading_audit"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_mil_loading_audit.date": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.date"
+			          }
+			        },
+			        "fct_mil_loading_audit.date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.date.date_hierarchy"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_mil_loading_audit.date"
+			            },
+			            "Object": {
+			              "Role": "fct_mil_loading_audit.date.date_hierarchy"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dates_have_date_hierarchies"
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit_last_audit_time_date_hierarchy_has_fct_mil_loading_audit_last_audit_time_day": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_mil_loading_audit"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_mil_loading_audit.last_audit_time.date_hierarchy": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.last_audit_time.date_hierarchy"
+			          }
+			        },
+			        "fct_mil_loading_audit.last_audit_time.day": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.last_audit_time.day"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_mil_loading_audit.last_audit_time.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "fct_mil_loading_audit.last_audit_time.day"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "last_audit_time_date_hierarchies_have_last_audit_time_days"
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit_last_audit_time_date_hierarchy_has_fct_mil_loading_audit_last_audit_time_month": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_mil_loading_audit"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_mil_loading_audit.last_audit_time.date_hierarchy": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.last_audit_time.date_hierarchy"
+			          }
+			        },
+			        "fct_mil_loading_audit.last_audit_time.month": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.last_audit_time.month"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_mil_loading_audit.last_audit_time.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "fct_mil_loading_audit.last_audit_time.month"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "last_audit_time_date_hierarchies_have_last_audit_time_months"
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit_last_audit_time_date_hierarchy_has_fct_mil_loading_audit_last_audit_time_quarter": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_mil_loading_audit"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_mil_loading_audit.last_audit_time.date_hierarchy": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.last_audit_time.date_hierarchy"
+			          }
+			        },
+			        "fct_mil_loading_audit.last_audit_time.quarter": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.last_audit_time.quarter"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_mil_loading_audit.last_audit_time.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "fct_mil_loading_audit.last_audit_time.quarter"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "last_audit_time_date_hierarchies_have_last_audit_time_quarters"
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit_last_audit_time_date_hierarchy_has_fct_mil_loading_audit_last_audit_time_year": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_mil_loading_audit"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_mil_loading_audit.last_audit_time.date_hierarchy": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.last_audit_time.date_hierarchy"
+			          }
+			        },
+			        "fct_mil_loading_audit.last_audit_time.year": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.last_audit_time.year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_mil_loading_audit.last_audit_time.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "fct_mil_loading_audit.last_audit_time.year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "last_audit_time_date_hierarchies_have_last_audit_time_years"
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit_last_audit_time_has_date_hierarchy": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_mil_loading_audit"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_mil_loading_audit.last_audit_time": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.last_audit_time"
+			          }
+			        },
+			        "fct_mil_loading_audit.last_audit_time.date_hierarchy": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.last_audit_time.date_hierarchy"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_mil_loading_audit.last_audit_time"
+			            },
+			            "Object": {
+			              "Role": "fct_mil_loading_audit.last_audit_time.date_hierarchy"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "last_audit_times_have_last_audit_time_date_hierarchies"
+			        }
+			      ]
+			    },
+			    "D_date_date_date_hierarchy_has_D_date_date_day": {
+			      "Binding": {
+			        "ConceptualEntity": "D_Date"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "D_date.date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "D_date.date.date_hierarchy"
+			          }
+			        },
+			        "D_date.date.day": {
+			          "Target": {
+			            "Entity": "D_date.date.day"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "D_date.date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "D_date.date.day"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_hierarchies_have_days1"
+			        }
+			      ]
+			    },
+			    "D_date_date_date_hierarchy_has_D_date_date_month": {
+			      "Binding": {
+			        "ConceptualEntity": "D_Date"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "D_date.date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "D_date.date.date_hierarchy"
+			          }
+			        },
+			        "D_date.date.month": {
+			          "Target": {
+			            "Entity": "D_date.date.month"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "D_date.date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "D_date.date.month"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_hierarchies_have_months1"
+			        }
+			      ]
+			    },
+			    "D_date_date_date_hierarchy_has_D_date_date_quarter": {
+			      "Binding": {
+			        "ConceptualEntity": "D_Date"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "D_date.date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "D_date.date.date_hierarchy"
+			          }
+			        },
+			        "D_date.date.quarter": {
+			          "Target": {
+			            "Entity": "D_date.date.quarter"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "D_date.date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "D_date.date.quarter"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_hierarchies_have_quarters1"
+			        }
+			      ]
+			    },
+			    "D_date_date_date_hierarchy_has_D_date_date_year": {
+			      "Binding": {
+			        "ConceptualEntity": "D_Date"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "D_date.date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "D_date.date.date_hierarchy"
+			          }
+			        },
+			        "D_date.date.year": {
+			          "Target": {
+			            "Entity": "D_date.date.year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "D_date.date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "D_date.date.year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_hierarchies_have_years1"
+			        }
+			      ]
+			    },
+			    "D_date_date_has_date_hierarchy": {
+			      "Binding": {
+			        "ConceptualEntity": "D_Date"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "D_date.date": {
+			          "Target": {
+			            "Entity": "D_date.date"
+			          }
+			        },
+			        "D_date.date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "D_date.date.date_hierarchy"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "D_date.date"
+			            },
+			            "Object": {
+			              "Role": "D_date.date.date_hierarchy"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dates_have_date_hierarchies1"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_D_date": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "D_date": {
+			          "Target": {
+			            "Entity": "D_date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "D_date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_D_dates"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "D_date"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "D_dates_have_fct_MILCNTDETAILs"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_D_product_category": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "D_product_category": {
+			          "Target": {
+			            "Entity": "D_product_category"
+			          },
+			          "Nouns": [
+			            {
+			              "product": {
+			                "State": "Generated"
+			              }
+			            },
+			            {
+			              "Products": {
+			                "State": "Generated"
+			              }
+			            }
+			          ]
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "D_product_category"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_D_product_categories"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "D_product_category"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "D_product_categories_have_fct_MILCNTDETAILs"
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit_has_wchdestination": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_mil_loading_audit"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_mil_loading_audit": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit"
+			          }
+			        },
+			        "fct_mil_loading_audit.wchdestination": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.wchdestination"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_mil_loading_audit"
+			            },
+			            "Object": {
+			              "Role": "fct_mil_loading_audit.wchdestination"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_mil_loading_audits_have_wchdestinations"
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit_has_date": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_mil_loading_audit"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_mil_loading_audit": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit"
+			          }
+			        },
+			        "fct_mil_loading_audit.date": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_mil_loading_audit"
+			            },
+			            "Object": {
+			              "Role": "fct_mil_loading_audit.date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_mil_loading_audits_have_dates"
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit_has_last_audit_time": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_mil_loading_audit"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_mil_loading_audit": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit"
+			          }
+			        },
+			        "fct_mil_loading_audit.last_audit_time": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.last_audit_time"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_mil_loading_audit"
+			            },
+			            "Object": {
+			              "Role": "fct_mil_loading_audit.last_audit_time"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_mil_loading_audits_have_last_audit_times"
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit_has_kit": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_mil_loading_audit"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_mil_loading_audit": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit"
+			          }
+			        },
+			        "fct_mil_loading_audit.kit": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.kit"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_mil_loading_audit"
+			            },
+			            "Object": {
+			              "Role": "fct_mil_loading_audit.kit"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_mil_loading_audits_have_kits"
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit_has_carton": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_mil_loading_audit"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_mil_loading_audit": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit"
+			          }
+			        },
+			        "fct_mil_loading_audit.carton": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.carton"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_mil_loading_audit"
+			            },
+			            "Object": {
+			              "Role": "fct_mil_loading_audit.carton"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_mil_loading_audits_have_cartons"
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit_has_dwffinishitem": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_mil_loading_audit"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_mil_loading_audit": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit"
+			          }
+			        },
+			        "fct_mil_loading_audit.dwffinishitem": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.dwffinishitem"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_mil_loading_audit"
+			            },
+			            "Object": {
+			              "Role": "fct_mil_loading_audit.dwffinishitem"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_mil_loading_audits_have_dwffinishitems"
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit_has_dwfrownumber": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_mil_loading_audit"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_mil_loading_audit": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit"
+			          }
+			        },
+			        "fct_mil_loading_audit.dwfrownumber": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.dwfrownumber"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_mil_loading_audit"
+			            },
+			            "Object": {
+			              "Role": "fct_mil_loading_audit.dwfrownumber"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_mil_loading_audits_have_dwfrownumbers"
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit_has_dwfcontainernumber": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_mil_loading_audit"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_mil_loading_audit": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit"
+			          }
+			        },
+			        "fct_mil_loading_audit.dwfcontainernumber": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.dwfcontainernumber"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_mil_loading_audit"
+			            },
+			            "Object": {
+			              "Role": "fct_mil_loading_audit.dwfcontainernumber"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_mil_loading_audits_have_dwfcontainernumbers"
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit_has_dwfdoornumber": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_mil_loading_audit"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_mil_loading_audit": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit"
+			          }
+			        },
+			        "fct_mil_loading_audit.dwfdoornumber": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.dwfdoornumber"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_mil_loading_audit"
+			            },
+			            "Object": {
+			              "Role": "fct_mil_loading_audit.dwfdoornumber"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_mil_loading_audits_have_dwfdoornumbers"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_container_utilization": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.container_utilization": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.container_utilization"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.container_utilization"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_container_utilization"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_wh": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.wh": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.wh"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.wh"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_whs"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_container2": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.container2": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.container2"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.container2"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_container2"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_h_cube": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.h_cube": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.h_cube"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.h_cube"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_h_cubes"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_wchbuilding": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.wchbuilding": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.wchbuilding"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.wchbuilding"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_wchbuildings"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_wchdoornumber": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.wchdoornumber": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.wchdoornumber"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.wchdoornumber"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_wchdoornumbers"
+			        }
+			      ]
+			    },
+			    "D_measure_has_container_avg__SKUs_goal": {
+			      "Binding": {
+			        "ConceptualEntity": "D_Measure"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "D_measure": {
+			          "Target": {
+			            "Entity": "D_measure"
+			          }
+			        },
+			        "D_measure.container_avg__SKUs_goal": {
+			          "Target": {
+			            "Entity": "D_measure.container_avg__SKUs_goal"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "D_measure"
+			            },
+			            "Object": {
+			              "Role": "D_measure.container_avg__SKUs_goal"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "D_measures_have_container_avg__SKUs_goal"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_D_measure_SK_us": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "D_measure.SK_us": {
+			          "Target": {
+			            "Entity": "D_measure.SK_us"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "D_measure.SK_us"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_SK_us"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_D_measure_cartons": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "D_measure.cartons": {
+			          "Target": {
+			            "Entity": "D_measure.cartons"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "D_measure.cartons"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_cartons"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_D_measure_avg__utilization_container": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "D_measure.avg__utilization_container": {
+			          "Target": {
+			            "Entity": "D_measure.avg__utilization_container"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "D_measure.avg__utilization_container"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_avg__utilization_container"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_D_measure_utilization": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "D_measure.utilization": {
+			          "Target": {
+			            "Entity": "D_measure.utilization"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "D_measure.utilization"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_utilization"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_D_measure_avg__categories_container": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "D_measure.avg__categories_container": {
+			          "Target": {
+			            "Entity": "D_measure.avg__categories_container"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "D_measure.avg__categories_container"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_avg__categories_container"
+			        }
+			      ]
+			    },
+			    "D_product_category_has_product": {
+			      "Binding": {
+			        "ConceptualEntity": "D_Product_Category"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "D_product_category": {
+			          "Target": {
+			            "Entity": "D_product_category"
+			          }
+			        },
+			        "D_product_category.product": {
+			          "Target": {
+			            "Entity": "D_product_category.product"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "D_product_category"
+			            },
+			            "Object": {
+			              "Role": "D_product_category.product"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "D_product_categories_have_products"
+			        }
+			      ]
+			    },
+			    "D_date_has_year_week": {
+			      "Binding": {
+			        "ConceptualEntity": "D_Date"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "D_date": {
+			          "Target": {
+			            "Entity": "D_date"
+			          }
+			        },
+			        "D_date.year_week": {
+			          "Target": {
+			            "Entity": "D_date.year_week"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "D_date"
+			            },
+			            "Object": {
+			              "Role": "D_date.year_week"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "D_dates_have_year_weeks"
+			        }
+			      ]
+			    },
+			    "D_date_has_year_month": {
+			      "Binding": {
+			        "ConceptualEntity": "D_Date"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "D_date": {
+			          "Target": {
+			            "Entity": "D_date"
+			          }
+			        },
+			        "D_date.year_month": {
+			          "Target": {
+			            "Entity": "D_date.year_month"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "D_date"
+			            },
+			            "Object": {
+			              "Role": "D_date.year_month"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "D_dates_have_year_months"
+			        }
+			      ]
+			    },
+			    "D_date_has_quarter": {
+			      "Binding": {
+			        "ConceptualEntity": "D_Date"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "D_date": {
+			          "Target": {
+			            "Entity": "D_date"
+			          }
+			        },
+			        "D_date.quarter": {
+			          "Target": {
+			            "Entity": "D_date.quarter"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "D_date"
+			            },
+			            "Object": {
+			              "Role": "D_date.quarter"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "D_dates_have_quarters"
+			        }
+			      ]
+			    },
+			    "D_date_has_week_N": {
+			      "Binding": {
+			        "ConceptualEntity": "D_Date"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "D_date": {
+			          "Target": {
+			            "Entity": "D_date"
+			          }
+			        },
+			        "D_date.week_N": {
+			          "Target": {
+			            "Entity": "D_date.week_N"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "D_date"
+			            },
+			            "Object": {
+			              "Role": "D_date.week_N"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "D_dates_have_week_Ns"
+			        }
+			      ]
+			    },
+			    "D_date_has_week": {
+			      "Binding": {
+			        "ConceptualEntity": "D_Date"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "D_date": {
+			          "Target": {
+			            "Entity": "D_date"
+			          }
+			        },
+			        "D_date.week": {
+			          "Target": {
+			            "Entity": "D_date.week"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "D_date"
+			            },
+			            "Object": {
+			              "Role": "D_date.week"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "D_dates_have_weeks"
+			        }
+			      ]
+			    },
+			    "D_date_has_day": {
+			      "Binding": {
+			        "ConceptualEntity": "D_Date"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "D_date": {
+			          "Target": {
+			            "Entity": "D_date"
+			          }
+			        },
+			        "D_date.day": {
+			          "Target": {
+			            "Entity": "D_date.day"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "D_date"
+			            },
+			            "Object": {
+			              "Role": "D_date.day"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "D_dates_have_days"
+			        }
+			      ]
+			    },
+			    "D_date_has_month": {
+			      "Binding": {
+			        "ConceptualEntity": "D_Date"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "D_date": {
+			          "Target": {
+			            "Entity": "D_date"
+			          }
+			        },
+			        "D_date.month": {
+			          "Target": {
+			            "Entity": "D_date.month"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "D_date"
+			            },
+			            "Object": {
+			              "Role": "D_date.month"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "D_dates_have_months"
+			        }
+			      ]
+			    },
+			    "D_date_has_year": {
+			      "Binding": {
+			        "ConceptualEntity": "D_Date"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "D_date": {
+			          "Target": {
+			            "Entity": "D_date"
+			          }
+			        },
+			        "D_date.year": {
+			          "Target": {
+			            "Entity": "D_date.year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "D_date"
+			            },
+			            "Object": {
+			              "Role": "D_date.year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "D_dates_have_years"
+			        }
+			      ]
+			    },
+			    "D_date_has_date": {
+			      "Binding": {
+			        "ConceptualEntity": "D_Date"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "D_date": {
+			          "Target": {
+			            "Entity": "D_date"
+			          }
+			        },
+			        "D_date.date": {
+			          "Target": {
+			            "Entity": "D_date.date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "D_date"
+			            },
+			            "Object": {
+			              "Role": "D_date.date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "D_dates_have_dates"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_utilization": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.utilization": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.utilization"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.utilization"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_utilizations"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_wchcontainersize": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.wchcontainersize": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.wchcontainersize"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.wchcontainersize"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_wchcontainersizes"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_date": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.date": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.date"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.date"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_dates"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_carton": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.carton": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.carton"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.carton"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_cartons1"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_unitweight": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.unitweight": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.unitweight"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.unitweight"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_unitweights"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_unitcube": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.unitcube": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.unitcube"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.unitcube"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_unitcubes"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_itmcqty": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.itmcqty": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.itmcqty"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.itmcqty"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_itmcqties"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_wcilastmaintenanceuser": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.wcilastmaintenanceuser": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.wcilastmaintenanceuser"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.wcilastmaintenanceuser"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_wcilastmaintenanceusers"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_containernumber": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.containernumber": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.containernumber"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.containernumber"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_containernumbers"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_wcilastmaintenancetimestamp": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.wcilastmaintenancetimestamp": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.wcilastmaintenancetimestamp"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.wcilastmaintenancetimestamp"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_wcilastmaintenancetimestamps"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_qty": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.qty": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.qty"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.qty"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_qties"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_itemnumber": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.itemnumber": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.itemnumber"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.itemnumber"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_itemnumbers"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_wciorder": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.wciorder": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.wciorder"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.wciorder"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_wciorders"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_wcidestination": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.wcidestination": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.wcidestination"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.wcidestination"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_wcidestinations"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_itcl": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.itcl": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.itcl"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.itcl"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_itcls"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_cube": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.cube": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.cube"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.cube"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_cubes"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_containertype": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.containertype": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.containertype"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.containertype"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_containertypes"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_container": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.container": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.container"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.container"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_container"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_wciorigin": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "fct_MILCNTDETAIL.wciorigin": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL.wciorigin"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "fct_MILCNTDETAIL.wciorigin"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_wciorigins"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_D_measure_avg__SKUs_container": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "D_measure.avg__SKUs_container": {
+			          "Target": {
+			            "Entity": "D_measure.avg__SKUs_container"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "D_measure.avg__SKUs_container"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_avg__SKUs_container"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_D_measure_products": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "D_measure.products": {
+			          "Target": {
+			            "Entity": "D_measure.products"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "D_measure.products"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_products"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_D_measure_container_products_category": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "D_measure.container_products_category": {
+			          "Target": {
+			            "Entity": "D_measure.container_products_category"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "D_measure.container_products_category"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_container_products_category"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_D_measure_cubes": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "D_measure.cubes": {
+			          "Target": {
+			            "Entity": "D_measure.cubes"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "D_measure.cubes"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_cubes1"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_D_measure_Qty": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "D_measure.Qty": {
+			          "Target": {
+			            "Entity": "D_measure.Qty"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "D_measure.Qty"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_Qty"
+			        }
+			      ]
+			    },
+			    "fct_MILCNTDETAIL_has_D_measure_container_Qty": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_MILCNTDETAILS"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_MILCNTDETAIL": {
+			          "Target": {
+			            "Entity": "fct_MILCNTDETAIL"
+			          }
+			        },
+			        "D_measure.container_Qty": {
+			          "Target": {
+			            "Entity": "D_measure.container_Qty"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "fct_MILCNTDETAIL"
+			            },
+			            "Object": {
+			              "Role": "D_measure.container_Qty"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "fct_MILCNTDETAILs_have_container_Qty"
+			        }
+			      ]
+			    },
+			    "fct_mil_loading_audit_is_audited_on_last_audit_time": {
+			      "Binding": {
+			        "ConceptualEntity": "fct_mil_loading_audit"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "fct_mil_loading_audit": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit"
+			          }
+			        },
+			        "fct_mil_loading_audit.last_audit_time": {
+			          "Target": {
+			            "Entity": "fct_mil_loading_audit.last_audit_time"
+			          }
+			        }
+			      },
+			      "SemanticSlots": {
+			        "When": {
+			          "Role": "fct_mil_loading_audit.last_audit_time"
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Verb": {
+			            "Verbs": [
+			              {
+			                "audit": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "fct_mil_loading_audit"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.9,
+			          "ID": "fct_mil_loading_audits_are_audited_on_last_audit_times"
+			        }
+			      ]
+			    }
+			  },
+			  "Agents": {
+			    "Internal": {
+			      "Version": "1.1.0"
+			    }
+			  }
+			}
+		contentType: json
+

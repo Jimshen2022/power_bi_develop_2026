@@ -1,0 +1,223 @@
+table Fct_SCOOP_Picking_Replenishment
+	lineageTag: 09465c53-62e1-471a-94c3-aa92d5b2149d
+
+	column Group
+		lineageTag: 7ea024ab-8a01-4495-93fa-e8a75ffb20a5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Group]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		formatString: Short Date
+		lineageTag: 572bd713-7ab8-4dae-8e4b-3d6d995c97cb
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Team
+		lineageTag: 0889a669-827c-42af-9145-de661d355a9a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Team]
+
+		annotation SummarizationSetBy = Automatic
+
+	column PPH_Type
+		lineageTag: 7c6d4255-0943-4e4d-86e3-9d83b1447069
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [PPH_Type]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Shift
+		lineageTag: 295a99ba-0996-442d-ae01-9934270fea8e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Shift]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Employee_ID
+		lineageTag: ab0371c8-10c6-4043-91c6-f9944531d18a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Employee_ID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		lineageTag: e25f6398-ffc5-4783-b859-9f542383c1fd
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Final_Hrs_All_In
+		formatString: 0.00
+		lineageTag: b5325a53-3aca-419a-9a31-7a5fd500c41e
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Final_Hrs_All_In]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Final_Hrs_Individual
+		formatString: #,0.00
+		lineageTag: bb2b9a99-d1fc-4f6b-9065-6a992199535d
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Final_Hrs_Individual]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Position
+		lineageTag: 6d4acc41-af01-4831-8c22-e1ced151e2e2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Position]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Transaction_Pieces =
+			
+			CALCULATE(
+			    SUM('Fact_Transactions'[pieces]),
+			    FILTER(
+			        ALL('Fact_Transactions'),  -- 清除 Fact_Transactions 表的上下文
+			        'Fact_Transactions'[shift_date] = 'Fct_SCOOP_Picking_Replenishment'[Date] &&
+			        'Fact_Transactions'[employee_id] = 'Fct_SCOOP_Picking_Replenishment'[Employee_ID] &&
+			        'Fact_Transactions'[pph_type] = 'Fct_SCOOP_Picking_Replenishment'[PPH_Type]
+			    )
+			)
+		formatString: #,0
+		lineageTag: ba82e7d7-5145-48e7-94c5-877c9f41ac20
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Group_Date_Team_Avg_Transaction_Pieces = ```
+			
+			VAR CurrentTeam = 'Fct_SCOOP_Picking_Replenishment'[Team]
+			VAR CurrentPPHType = 'Fct_SCOOP_Picking_Replenishment'[PPH_Type]
+			VAR AvgValue = 
+			    IF(
+			        NOT(ISBLANK(CurrentTeam)) && CurrentTeam <> "0" && NOT(ISBLANK(CurrentPPHType)),
+			        CALCULATE(
+			            DIVIDE(
+			                SUM('Fct_SCOOP_Picking_Replenishment'[Transaction_Pieces]),
+			                COUNTROWS('Fct_SCOOP_Picking_Replenishment')
+			            ),
+			            ALLEXCEPT('Fct_SCOOP_Picking_Replenishment', 'Fct_SCOOP_Picking_Replenishment'[Group],'Fct_SCOOP_Picking_Replenishment'[Date], 'Fct_SCOOP_Picking_Replenishment'[PPH_Type])
+			        ),
+			        'Fct_SCOOP_Picking_Replenishment'[Transaction_Pieces]
+			    )
+			RETURN
+			    AvgValue
+			```
+		lineageTag: f79bc3d1-00a1-4f80-ad91-669fcedc840f
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Group_Date_Team_Avg_Hrs = ```
+			
+			VAR CurrentTeam = 'Fct_SCOOP_Picking_Replenishment'[Team]
+			VAR CurrentPPHType = Fct_SCOOP_Picking_Replenishment[PPH_Type]
+			VAR AvgValue = 
+			    IF(
+			        NOT(ISBLANK(CurrentTeam)) && CurrentTeam <> "0" && NOT(ISBLANK(CurrentPPHType)),
+			        CALCULATE(
+			            DIVIDE(
+			                SUM(Fct_SCOOP_Picking_Replenishment[Final_Hrs_Individual]),
+			                COUNTROWS(Fct_SCOOP_Picking_Replenishment)
+			            ),
+			            ALLEXCEPT(Fct_SCOOP_Picking_Replenishment,'Fct_SCOOP_Picking_Replenishment'[Group], Fct_SCOOP_Picking_Replenishment[Date], Fct_SCOOP_Picking_Replenishment[PPH_Type])
+			        ),
+			        Fct_SCOOP_Picking_Replenishment[Final_Hrs_Individual]
+			    )
+			RETURN
+			    AvgValue
+			```
+		formatString: #,0.00
+		lineageTag: 59e4c736-19d0-4ac2-b4f3-fd1f307908a5
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Group_Date_Transaction_Pieces_Sum =
+			
+			CALCULATE(
+			    SUM(Fct_SCOOP_Picking_Replenishment[Transaction_Pieces]),
+			    ALLEXCEPT(Fct_SCOOP_Picking_Replenishment, Fct_SCOOP_Picking_Replenishment[Group], Fct_SCOOP_Picking_Replenishment[Date])
+			)
+		lineageTag: a7343a0a-5276-4bb5-be0d-81b533647144
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Group_Date_Hrs_Sum =
+			
+			CALCULATE(
+			    SUM(Fct_SCOOP_Picking_Replenishment[Final_Hrs_All_In]),
+			    ALLEXCEPT(Fct_SCOOP_Picking_Replenishment, Fct_SCOOP_Picking_Replenishment[Group], Fct_SCOOP_Picking_Replenishment[Date])
+			)
+		lineageTag: 24363e67-fdd3-4233-beaa-e1b7df5a79ff
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Group_Date_PPH = DIVIDE('Fct_SCOOP_Picking_Replenishment'[Group_Date_Transaction_Pieces_Sum],'Fct_SCOOP_Picking_Replenishment'[Group_Date_Hrs_Sum])
+		formatString: #,0
+		lineageTag: 5a4f8864-25bf-4ad8-8ef0-84693144f8be
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Group_Date_Team_PPH = DIVIDE('Fct_SCOOP_Picking_Replenishment'[Group_Date_Team_Avg_Transaction_Pieces],'Fct_SCOOP_Picking_Replenishment'[Group_Date_Team_Avg_Hrs])
+		formatString: 0
+		lineageTag: 5140ada7-0d73-4a80-8dc5-be56526b114c
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fct_SCOOP_Picking_Replenishment = calculated
+		mode: import
+		source = ```
+				
+				VAR FilteredTable = 
+				    FILTER(
+				        'Fct_Supervisors_Hours_Pieces',
+				        'Fct_Supervisors_Hours_Pieces'[PPH_Type] IN {"Picking-SCOOP", "Replenishment"}
+				    )
+				RETURN
+				    SELECTCOLUMNS(
+				        FilteredTable,
+				        "Group", 'Fct_Supervisors_Hours_Pieces'[Group],
+				        "Date", 'Fct_Supervisors_Hours_Pieces'[Date],
+				        "Team", 'Fct_Supervisors_Hours_Pieces'[Team],
+				        "PPH_Type", 'Fct_Supervisors_Hours_Pieces'[PPH_Type],
+				        "Shift", 'Fct_Supervisors_Hours_Pieces'[Shift],
+				        "Employee_ID", 'Fct_Supervisors_Hours_Pieces'[Employee_ID],
+				        "Name", 'Fct_Supervisors_Hours_Pieces'[Name],
+				        "Final_Hrs_All_In", 'Fct_Supervisors_Hours_Pieces'[Final_Hrs_All_In],
+				        "Final_Hrs_Individual", 'Fct_Supervisors_Hours_Pieces'[Final_Hrs_Individual],
+				        "Position", 'Fct_Supervisors_Hours_Pieces'[Position]
+				    )
+				
+				
+				```
+
+	annotation PBI_Id = da2522ecb86c41a0945bf837779588c7
+

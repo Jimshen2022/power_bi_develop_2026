@@ -1,0 +1,60 @@
+table fct_item_category
+	lineageTag: d17add7a-244e-45f8-a805-ae912b84b4d0
+
+	column ITCLS
+		dataType: string
+		lineageTag: 7ff50bf6-bc7f-479e-8925-1d04432dd2b3
+		summarizeBy: none
+		sourceColumn: ITCLS
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Detail Des.'
+		dataType: string
+		lineageTag: 9f8cf57a-000f-4667-9901-17c0dec070df
+		summarizeBy: none
+		sourceColumn: Detail Des.
+
+		annotation SummarizationSetBy = Automatic
+
+	column Group
+		dataType: string
+		lineageTag: 6cd104fd-273a-403d-8eab-789e7401d181
+		summarizeBy: none
+		sourceColumn: Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Area
+		dataType: string
+		lineageTag: 674fd413-f66e-4a36-ad1c-be02522771d8
+		summarizeBy: none
+		sourceColumn: Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Category for report'
+		dataType: string
+		lineageTag: 8d0475d3-4961-4c79-b210-ffff8b0a3ccf
+		summarizeBy: none
+		sourceColumn: Category for report
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fct_item_category = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"5839814b-ec95-48ea-a07a-ec0241ac9946" = Workspaces{[workspaceId="5839814b-ec95-48ea-a07a-ec0241ac9946"]}[Data],
+				    #"019a0763-4e4b-4d36-abec-287422b65028" = #"5839814b-ec95-48ea-a07a-ec0241ac9946"{[dataflowId="019a0763-4e4b-4d36-abec-287422b65028"]}[Data],
+				    fct_picking_locations_ = #"019a0763-4e4b-4d36-abec-287422b65028"{[entity="fct_item_category",version=""]}[Data],
+				    #"Removed Duplicates" = Table.Distinct(fct_picking_locations_, {"ITCLS"})
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

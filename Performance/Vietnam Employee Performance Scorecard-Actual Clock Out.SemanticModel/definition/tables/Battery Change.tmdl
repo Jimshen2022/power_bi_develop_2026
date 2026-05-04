@@ -1,0 +1,187 @@
+table 'Battery Change'
+	lineageTag: c835fb5d-763c-453a-8923-477dac485975
+
+	measure '# of Battery Changes' = COUNT('Battery Change'[description])
+		formatString: 0
+		lineageTag: 14bdb55c-d233-4b10-b0bd-1b1056bc8fd6
+
+	measure 'Avg Minutes of Battery Change' =
+			
+			
+			VAR BatteryChangeTime=
+			CALCULATE(AVERAGE('Battery Change'[spent_time_minutes]))
+			
+			VAR Batterychangebyee = AVERAGEX(VALUES('Clock In Clock Out'[Employee Name]),BatteryChangeTime)
+			
+			VAR Batterychangebyworkday = AVERAGEX(VALUES('Clock In Clock Out'[Work Day]),Batterychangebyee)
+			
+			Return
+			Batterychangebyworkday
+		lineageTag: 50d1893e-de4a-420d-acda-6c219484de60
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total Minutes of Battery Change' = ```
+			
+			
+			sum('Battery Change'[spent_time_minutes])
+			
+			```
+		lineageTag: 081e468c-46eb-4e22-89d8-a49e205ab95f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column tran_type
+		dataType: string
+		lineageTag: dcbf0edd-c59b-447f-8e27-8dea72509553
+		summarizeBy: none
+		sourceColumn: tran_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: 077b9c72-15f7-4ff8-a82d-e4d96c8cc7b8
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_tran_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 9bd4fe7d-dd19-4b3f-a6d1-4ed7d10f32ba
+		summarizeBy: none
+		sourceColumn: start_tran_date
+
+		variation Variation
+			isDefault
+			relationship: 96f153b8-39a9-4d3a-a039-c6a1c4fc1b51
+			defaultHierarchy: LocalDateTable_2f2f06d5-f8fb-4936-bfea-105a08cb136a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column start_tran_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 5a6e922e-46a3-4f71-9122-febf2a382493
+		summarizeBy: none
+		sourceColumn: start_tran_time
+
+		variation Variation
+			isDefault
+			relationship: 949b2ce3-c1c5-4690-8754-f594d2c22008
+			defaultHierarchy: LocalDateTable_fa75ccf2-ef16-4ce5-b8e7-47936474ba5c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column end_tran_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 599e36bb-7a71-4dbd-94dc-588f19851026
+		summarizeBy: none
+		sourceColumn: end_tran_date
+
+		variation Variation
+			isDefault
+			relationship: 02fb824b-0a42-439f-967a-619078316a6b
+			defaultHierarchy: LocalDateTable_af64b35f-ecc9-4237-90da-4acf51586ba7.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column end_tran_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 272270db-ab66-48a0-a46d-68da91ac744e
+		summarizeBy: none
+		sourceColumn: end_tran_time
+
+		variation Variation
+			isDefault
+			relationship: d2ca2dd1-399d-4fd4-bbe9-1c13600cc1b1
+			defaultHierarchy: LocalDateTable_959aa935-97cd-42c0-aea9-43fa7284acbd.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_id
+		dataType: string
+		lineageTag: 74e217f9-bde7-4a43-8c1b-c5d734b9fc00
+		summarizeBy: none
+		sourceColumn: employee_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column control_number
+		dataType: string
+		lineageTag: 70e34a01-0c1b-49c1-8310-95b72015e15a
+		summarizeBy: none
+		sourceColumn: control_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column control_number_2
+		dataType: string
+		lineageTag: e8af2119-9af2-4f78-8f1c-ff5af089e956
+		summarizeBy: none
+		sourceColumn: control_number_2
+
+		annotation SummarizationSetBy = Automatic
+
+	column wh_id
+		dataType: string
+		lineageTag: e8344ccd-275d-40a3-bd5e-b45f6355a679
+		summarizeBy: none
+		sourceColumn: wh_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column location_id
+		dataType: string
+		lineageTag: 0d6371c2-185c-45bd-b1b8-f2c1b6a4b9fc
+		summarizeBy: none
+		sourceColumn: location_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column elapsed_time
+		dataType: int64
+		formatString: 0
+		lineageTag: 952f16cd-dcaa-4463-b124-adef10dfec5b
+		summarizeBy: sum
+		sourceColumn: elapsed_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column spent_time_minutes
+		dataType: double
+		formatString: 0.00
+		lineageTag: 5eb67bed-dcff-4a88-9255-88eb90686e53
+		summarizeBy: sum
+		sourceColumn: spent_time_minutes
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Master Key'
+		dataType: string
+		lineageTag: f1bb1a2e-e203-42aa-b215-4c8dd9abe477
+		summarizeBy: none
+		sourceColumn: Master Key
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Battery Change' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("ashley-edw.database.windows.net", "ASHLEY_EDW", [Query="SELECT [tran_type]#(lf)      ,[description]#(lf)      ,[start_tran_date]#(lf)      ,[start_tran_time]#(lf)      ,[end_tran_date]#(lf)      ,[end_tran_time]#(lf)      ,[employee_id]#(lf)      ,[control_number]#(lf)      ,[control_number_2]#(lf)      ,[wh_id]#(lf)      ,[location_id]#(lf)      ,[elapsed_time]#(lf)#(tab)  ,CAST(DATEDIFF(SECOND,start_tran_time, end_tran_time) / 60.00 AS FLOAT) AS spent_time_minutes#(lf)  FROM [PowerBI_Distribution].[TranLog]#(lf)  where [wh_id] IN ('35','335')#(lf)  and [tran_type]='500'#(lf)  order by start_tran_date asc", CreateNavigationProperties=false, CommandTimeout=#duration(0, 2, 40, 0)]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"start_tran_date", type date}, {"end_tran_date", type date}}),
+				    #"Inserted Merged Column" = Table.AddColumn(#"Changed Type", "Master Key", each Text.Combine({[wh_id], [employee_id], Text.From([start_tran_date], "en-US")}, "-"), type text)
+				in
+				    #"Inserted Merged Column"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,210 @@
+table Exceptions
+	lineageTag: 07b463d5-e5c0-429e-80fb-6233911b3f32
+
+	measure 'F1 Exceptions' = CALCULATE(COUNT('Exceptions'[Updated Qty]),FILTER('Exceptions','Exceptions'[tran_type]="DCF1"))
+		formatString: 0
+		lineageTag: abb7f527-f550-4d3d-a046-6d3bbd1626a0
+
+	measure 'F3 Exceptions' = CALCULATE(COUNT('Exceptions'[Updated Qty]),FILTER('Exceptions','Exceptions'[tran_type]="DCF3"))
+		formatString: 0
+		lineageTag: d2e0e3e9-79c8-4983-8e71-582ea21d3c56
+
+	measure 'Shipping F7 Exceptions' = CALCULATE(COUNT('Exceptions'[Updated Qty]),FILTER('Exceptions','Exceptions'[tran_type]="303F7"))
+		formatString: 0
+		lineageTag: cbaad9e9-cff8-4306-88cb-65ad0fa31092
+
+	measure 'F8 Exceptions' = CALCULATE(COUNT('Exceptions'[Updated Qty]),FILTER('Exceptions','Exceptions'[tran_type]="DCF8"))
+		formatString: 0
+		lineageTag: e7345fed-ecc5-413e-9399-c997b4bc5f5a
+
+	measure 'ECOMM F7 Exceptions' = CALCULATE(COUNT('Exceptions'[Updated Qty]),FILTER('Exceptions','Exceptions'[tran_type]="331F7"))
+		formatString: 0
+		lineageTag: bbbd9388-4973-4317-9443-b21e2928275b
+
+	measure 'Transfer F7 Exceptions' = CALCULATE(COUNT('Exceptions'[Updated Qty]),FILTER('Exceptions','Exceptions'[tran_type]="305F7"))
+		formatString: 0
+		lineageTag: 9a65d74f-08e7-4238-9e68-8aabb7453a9b
+
+	measure 'F6 Exceptions' = CALCULATE(COUNT('Exceptions'[Updated Qty]),FILTER('Exceptions','Exceptions'[tran_type]="DCF6"))
+		formatString: 0
+		lineageTag: 050b6392-bc6d-4994-bb01-e856bc05928f
+
+	column tran_type
+		dataType: string
+		lineageTag: ad63495d-5995-4d02-bbcd-e7b3cab78b4d
+		summarizeBy: none
+		sourceColumn: tran_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: 2971533f-87c9-46ad-89f2-730bd573b06b
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column exception_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: b6534bf3-0b20-4704-92e3-43add11a0a75
+		summarizeBy: none
+		sourceColumn: exception_date
+
+		variation Variation
+			isDefault
+			relationship: 79ab0007-0a77-4745-ad4b-6700bb5f1b7b
+			defaultHierarchy: LocalDateTable_6e12f660-b642-463d-b568-7af492e1fd7e.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column exception_time
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 698e98f3-ec1a-4aa9-a833-d40e8bf8a517
+		summarizeBy: none
+		sourceColumn: exception_time
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column employee_id
+		dataType: string
+		lineageTag: 6aa7dba2-830a-42ee-b575-4f00c2dfb415
+		summarizeBy: none
+		sourceColumn: employee_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column wh_id
+		dataType: string
+		lineageTag: 3ba5e4c0-5ab8-4232-9136-544407cecf0d
+		summarizeBy: none
+		sourceColumn: wh_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column suggested_value
+		dataType: string
+		lineageTag: 6d78d53e-5a78-4ed2-b9b7-ba1ae21c6b92
+		summarizeBy: none
+		sourceColumn: suggested_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column entered_value
+		dataType: string
+		lineageTag: 22e0c720-3bb2-49fb-a7b3-764cf4eb5fd9
+		summarizeBy: none
+		sourceColumn: entered_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column location_id
+		dataType: string
+		lineageTag: 89e7fda3-d0dd-4fc9-aefc-15c0106df295
+		summarizeBy: none
+		sourceColumn: location_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_number
+		dataType: string
+		lineageTag: 4e40f0eb-20bf-4e98-9c03-40e3b51d4f74
+		summarizeBy: none
+		sourceColumn: item_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column lot_number
+		dataType: string
+		lineageTag: 9c9debfd-b1d3-4168-a488-310793414a51
+		summarizeBy: none
+		sourceColumn: lot_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity
+		dataType: double
+		formatString: 0.00
+		lineageTag: 655d8a6d-5cd5-478c-9af7-0b9b1079b8c1
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column hu_id
+		dataType: string
+		lineageTag: cfe16dc4-39c6-4d24-a736-326fe08c53bd
+		summarizeBy: none
+		sourceColumn: hu_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column load_id
+		dataType: string
+		lineageTag: bebeb046-ef60-4c25-a1ea-9c96e676d4aa
+		summarizeBy: none
+		sourceColumn: load_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column control_number
+		dataType: string
+		lineageTag: 6640be67-3f82-486e-afcf-0839f9956136
+		summarizeBy: none
+		sourceColumn: control_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column line_number
+		dataType: string
+		lineageTag: b4aaaf53-ae6e-4bb4-82af-03f07de8a951
+		summarizeBy: none
+		sourceColumn: line_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column WhseEmployee#
+		dataType: string
+		lineageTag: a01916f4-ad7b-4a6e-bd00-0f791b03f2a9
+		summarizeBy: none
+		sourceColumn: WhseEmployee#
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Updated Qty' = if([quantity]=0,1,[quantity])
+		lineageTag: 1b8c52ae-2701-4f70-87cd-65a090c7126a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'master key' = 'Exceptions'[WhseEmployee#]&"-"&'Exceptions'[exception_date]
+		lineageTag: 5a76b825-7cd2-466e-9c87-997e36f23e24
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Exceptions-59d02af0-2a1d-486a-91de-43ed99c01954 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("ashley-edw.database.windows.net", "ASHLEY_EDW", [Query="SELECT [tran_type]#(lf)      ,[description]#(lf)      ,[exception_date]#(lf)      ,[exception_time]#(lf)      ,[employee_id]#(lf)      ,[wh_id]#(lf)      ,[suggested_value]#(lf)      ,[entered_value]#(lf)      ,[location_id]#(lf)      ,[item_number]#(lf)      ,[lot_number]#(lf)      ,[quantity]#(lf)      ,[hu_id]#(lf)      ,[load_id]#(lf)      ,[control_number]#(lf)      ,[line_number]#(lf)  FROM [PowerBI_Distribution].[ExceptionLog]#(lf)  --where [tran_type] IN ('DCF1','DCF3','DCF8','331F7','303F7','305F7')#(lf)  where [tran_type] not like '151%'#(lf)  and [tran_type] not like '341%'#(lf)  and [tran_type]<> 'ITMD'#(lf)  and [exception_date] > DATEADD(DAY,-15, GETDATE())#(lf)  and [wh_id] IN ('335')", CreateNavigationProperties=false, CommandTimeout=#duration(0, 2, 40, 0)]),
+				    #"Added Custom" = Table.AddColumn(Source, "WhseEmployee#", each [wh_id]&"-"&[employee_id])
+				in
+				    #"Added Custom"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

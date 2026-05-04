@@ -1,0 +1,126 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 241.75547572847242,
+            "y": 0
+          },
+          "nodeIndex": "F_STO",
+          "nodeLineageTag": "e2e483f7-ff3e-46b2-bdae-ebf119180f49",
+          "size": {
+            "height": 894.11803185559222,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 529.68960588731306,
+            "y": 0
+          },
+          "nodeIndex": "F_Ashton_Locations",
+          "nodeLineageTag": "42a02935-2c56-4635-8a13-8efa9bfdbfd5",
+          "size": {
+            "height": 937.57457064774212,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 2076.4025669200482,
+            "y": 15.502664619627858
+          },
+          "nodeIndex": "A_Measure",
+          "nodeLineageTag": "385dd4ac-819c-4f1e-9dd6-fa3b0753ead2",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 1485.2958425641061,
+            "y": 0
+          },
+          "nodeIndex": "Area",
+          "nodeLineageTag": "e74de724-2e51-44a1-a9ab-46e7e0378670",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 1185.7370073066702,
+            "y": 159.25464563799525
+          },
+          "nodeIndex": "Sub_Area_1",
+          "nodeLineageTag": "f77f98b1-ee82-46f5-82a5-5e0c1ad24368",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 1281.2378517433326,
+            "y": 729.93350953833328
+          },
+          "nodeIndex": "Sub_Area_2",
+          "nodeLineageTag": "dd5c6b84-f15c-4520-aef4-f4c03b2a9439",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 561.44271666555517
+          },
+          "nodeIndex": "Product_Category",
+          "nodeLineageTag": "96551bd1-c51d-4fb2-a301-2a507a50ad5e",
+          "size": {
+            "height": 145,
+            "width": 215.03878621737471
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 1977.277260012125,
+            "y": 337.91199776686676
+          },
+          "nodeIndex": "Calculation_Reference",
+          "nodeLineageTag": "75e832c3-5676-475c-a580-79b4c11546e4",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 1
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 56.639794329975935,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

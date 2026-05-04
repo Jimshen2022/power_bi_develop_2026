@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Wanek_PPH"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "04f639ef-94dc-4cc2-8b1f-c2d0c41466cb"
+  }
+}

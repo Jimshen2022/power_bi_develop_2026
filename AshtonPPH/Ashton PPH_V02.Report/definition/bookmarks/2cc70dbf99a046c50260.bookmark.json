@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "I05_CG Put away PPH",
+  "name": "2cc70dbf99a046c50260",
+  "options": {
+    "targetVisualNames": [
+      "79fcaa65e7d8a558c1c4"
+    ]
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "5b4248000865e6ae1282",
+    "sections": {
+      "5b4248000865e6ae1282": {
+        "visualContainers": {}
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

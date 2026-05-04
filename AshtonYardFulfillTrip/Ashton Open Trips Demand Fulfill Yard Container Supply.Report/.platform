@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Ashton Open Trips Demand Fulfill Yard Container Supply"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3c2be450-d4a0-4521-a27e-c5f0e41a9731"
+  }
+}

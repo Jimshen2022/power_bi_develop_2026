@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "3_All in PPH UPH",
+  "name": "1437ffcde73ed10a4530",
+  "options": {
+    "targetVisualNames": [
+      "8a0314b0315349d0ba07"
+    ]
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "6742ae9010e69c2a0ac6",
+    "sections": {
+      "6742ae9010e69c2a0ac6": {
+        "visualContainers": {}
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

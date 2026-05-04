@@ -1,0 +1,25 @@
+table Dim_PPH_Type
+	lineageTag: c063f278-79be-493f-9b56-a1fd2d44eb77
+
+	column pph_type
+		lineageTag: b23b7df0-0aea-40eb-9753-8f66de4699d4
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Fact_Transactions[pph_type]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_PPH_Type = calculated
+		mode: import
+		source = ```
+				
+				FILTER(
+				    VALUES('Fact_Transactions'[pph_type]),
+				    NOT(ISBLANK('Fact_Transactions'[pph_type])) &&
+				    'Fact_Transactions'[pph_type] <> ""
+				)
+				
+				```
+
+	annotation PBI_Id = ea21fa946b5a40c29edba37a62cc1e1e
+

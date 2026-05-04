@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Ashton PPH_V02"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0bb6c337-0d05-4a51-a098-66297fa7b80a"
+  }
+}

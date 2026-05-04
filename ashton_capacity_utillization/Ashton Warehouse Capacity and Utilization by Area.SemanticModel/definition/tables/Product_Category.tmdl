@@ -1,0 +1,17 @@
+table Product_Category
+	lineageTag: 96551bd1-c51d-4fb2-a301-2a507a50ad5e
+
+	column product
+		lineageTag: 73675e51-3838-44b1-81f3-db1a15e6aef4
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: F_STO[product]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Product_Category = calculated
+		mode: import
+		source = CALCULATETABLE(SUMMARIZECOLUMNS('F_STO'[product]), NOT(ISBLANK('F_STO'[product])))
+
+	annotation PBI_Id = 968639e05801408884e2f007f4e273bc
+

@@ -1,0 +1,468 @@
+table Fct_Supervisors_Hours
+	lineageTag: dc6b18f5-59f4-4e65-9c98-5926c5019e1d
+
+	column Group
+		dataType: string
+		lineageTag: 6ff899ec-3ba6-4cce-be24-bcc5ffd49942
+		summarizeBy: none
+		sourceColumn: Group
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: aa5b908c-1803-4c9a-abde-8e1bd37b9b98
+		summarizeBy: none
+		sourceColumn: Date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Team
+		dataType: string
+		lineageTag: d3819741-69fa-45a7-b45d-e33cea64086d
+		summarizeBy: none
+		sourceColumn: Team
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PPH_Type
+		dataType: string
+		lineageTag: 9070d9ca-e184-436c-b829-63a3796cb068
+		summarizeBy: none
+		sourceColumn: PPH_Type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Shift
+		dataType: string
+		lineageTag: 9a4ff869-adf1-4749-bbd3-d5ba739dba24
+		summarizeBy: none
+		sourceColumn: Shift
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Employee_ID
+		dataType: string
+		lineageTag: cecad4e8-c4cc-4c21-b708-a1b909bd3abd
+		summarizeBy: none
+		sourceColumn: Employee_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: f32aae65-6ba7-44af-929f-3d04eb5527a7
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Final_Hrs_All_In
+		dataType: double
+		formatString: 0.0
+		lineageTag: 6d4b701e-29df-4e1d-9b76-3a5ed91c98b7
+		summarizeBy: sum
+		sourceColumn: Final_Hrs_All_In
+
+		annotation SummarizationSetBy = Automatic
+
+	column Final_Hrs_Individual
+		dataType: decimal
+		formatString: #,0.0
+		lineageTag: fac7e435-555e-4bd6-9e95-b3b0bf3cd84d
+		summarizeBy: sum
+		sourceColumn: Final_Hrs_Individual
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Position
+		dataType: string
+		lineageTag: 85d5355f-6736-4a2a-a38f-2528e762d2d3
+		summarizeBy: none
+		sourceColumn: Position
+
+		annotation SummarizationSetBy = Automatic
+
+	column Transaction_Pieces = ```
+			
+			VAR currentDate = 'Fct_Supervisors_Hours'[Date]
+			VAR currentEmp = 'Fct_Supervisors_Hours'[Employee_ID]
+			VAR baseFilter =
+			    FILTER(
+			        ALL('Fact_Transactions'),
+			        'Fact_Transactions'[shift_date] = currentDate &&
+			        'Fact_Transactions'[employee_id] = currentEmp
+			    )
+			RETURN
+			SWITCH(TRUE(),
+			        'Fct_Supervisors_Hours'[Position] = "DC Load",
+			        CALCULATE(SUM('Fact_Transactions'[tran_qty]), 
+			                  FILTER(baseFilter, 'Fact_Transactions'[pph_type] IN {"Picking", "Loading_PPH","Temp_Cont_Loading"} && 'Fact_Transactions'[site] IN {"DC"})),
+			
+			    'Fct_Supervisors_Hours'[Position] = "DC Put away",
+			        CALCULATE(SUM('Fact_Transactions'[tran_qty]), 
+			                  FILTER(baseFilter, 'Fact_Transactions'[pph_type] IN {"DC_Putaway", "Picking_PPH"} && 'Fact_Transactions'[site] IN {"DC"})),
+			
+			    'Fct_Supervisors_Hours'[Position] = "DC Unload + Load",
+			        CALCULATE(SUM('Fact_Transactions'[tran_qty]), 
+			                  FILTER(baseFilter, 'Fact_Transactions'[pph_type] IN {"Picking", "Loading_PPH", "DC_Unloading_PPH","Temp_Cont_Loading"} && 'Fact_Transactions'[site] IN {"DC"})),
+			
+			    'Fct_Supervisors_Hours'[Position] = "WN2 - Line Clearing",
+			        CALCULATE(SUM('Fact_Transactions'[tran_qty]), 
+			                  FILTER(baseFilter, 'Fact_Transactions'[pph_type] IN {"Production_Received"}  && 'Fact_Transactions'[site] IN {"WN2"} )),
+			
+			    'Fct_Supervisors_Hours'[Position] = "WN2 - Shipping",
+			        CALCULATE(SUM('Fact_Transactions'[tran_qty]), 
+			                  FILTER(baseFilter, 'Fact_Transactions'[pph_type] IN {"Picking","Picking_PPH", "Loading_PPH", "Temp_Cont_Loading"}  && 'Fact_Transactions'[site] IN {"WN2"} )),
+			
+			    'Fct_Supervisors_Hours'[Position] = "WN3 - Line Clearing",
+			        CALCULATE(SUM('Fact_Transactions'[tran_qty]), 
+			                  FILTER(baseFilter, 'Fact_Transactions'[pph_type] IN {"Production_Received"}  && 'Fact_Transactions'[site] IN {"WN3"} )),
+			
+			    'Fct_Supervisors_Hours'[Position] = "WN3 - Shipping",
+			        CALCULATE(SUM('Fact_Transactions'[tran_qty]), 
+			                  FILTER(baseFilter, 'Fact_Transactions'[pph_type] IN {"Picking","Picking_PPH", "Loading_PPH", "Temp_Cont_Loading"}  && 'Fact_Transactions'[site] IN {"WN3"} )),
+			
+			    BLANK()  -- 默认返回空值
+			)
+			
+			```
+		formatString: #,0
+		lineageTag: 721fa5a9-8864-4867-a5b9-568f0fb4fa03
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Group_Date_Team_Avg_Transaction_Pieces = ```
+			
+			VAR CurrentTeam = 'Fct_Supervisors_Hours'[Team]
+			VAR CurrentPPHType = 'Fct_Supervisors_Hours'[PPH_Type]
+			VAR AvgValue = 
+			    IF(
+			        NOT(ISBLANK(CurrentTeam)) && CurrentTeam <> "0" && NOT(ISBLANK(CurrentPPHType)),
+			        CALCULATE(
+			            DIVIDE(
+			                SUM('Fct_Supervisors_Hours'[Transaction_Pieces]),
+			                COUNTROWS('Fct_Supervisors_Hours')
+			            ),
+			            ALLEXCEPT('Fct_Supervisors_Hours', 'Fct_Supervisors_Hours'[Group],'Fct_Supervisors_Hours'[Date], 'Fct_Supervisors_Hours'[Team])
+			        ),
+			        'Fct_Supervisors_Hours'[Transaction_Pieces]
+			    )
+			RETURN
+			    AvgValue
+			
+			```
+		formatString: #,0
+		lineageTag: 4453e471-fc63-4f9c-bc9b-359834ea5cb7
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Group_Date_Team_Avg_Hrs = ```
+			
+			VAR CurrentTeam = 'Fct_Supervisors_Hours'[Team]
+			VAR CurrentPPHType = Fct_Supervisors_Hours[PPH_Type]
+			VAR AvgValue = 
+			    IF(
+			        NOT(ISBLANK(CurrentTeam)) && CurrentTeam <> "0" && NOT(ISBLANK(CurrentPPHType)),
+			        CALCULATE(
+			            DIVIDE(
+			                SUM(Fct_Supervisors_Hours[Final_Hrs_Individual]),
+			                COUNTROWS(Fct_Supervisors_Hours)
+			            ),
+			            ALLEXCEPT(Fct_Supervisors_Hours,'Fct_Supervisors_Hours'[Group], Fct_Supervisors_Hours[Date], Fct_Supervisors_Hours[Team])
+			        ),
+			        Fct_Supervisors_Hours[Final_Hrs_Individual]
+			    )
+			RETURN
+			    AvgValue
+			```
+		formatString: #,0.0
+		lineageTag: 2816c4d4-8d12-4b84-bce0-f48852061bcd
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Group_Date_Team_PPH = DIVIDE('Fct_Supervisors_Hours'[Group_Date_Team_Avg_Transaction_Pieces],'Fct_Supervisors_Hours'[Group_Date_Team_Avg_Hrs])
+		formatString: 0.0
+		lineageTag: 3d1a2ca3-a439-435f-8299-82a4269c3473
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Group_Date_Transaction_Pieces_Sum =
+			
+			CALCULATE(
+			    SUM(Fct_Supervisors_Hours[Transaction_Pieces]),
+			    ALLEXCEPT(Fct_Supervisors_Hours, Fct_Supervisors_Hours[Group], Fct_Supervisors_Hours[Date])
+			)
+		formatString: #,0
+		lineageTag: 7b1e39b2-87e6-4459-a801-61b5cdc73e96
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Group_Date_Hrs_Sum =
+			
+			CALCULATE(
+			    SUM(Fct_Supervisors_Hours[Final_Hrs_All_In]),
+			    ALLEXCEPT(Fct_Supervisors_Hours, Fct_Supervisors_Hours[Group], Fct_Supervisors_Hours[Date])
+			)
+		lineageTag: 4e77923e-aefd-490e-a405-6684286c443d
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Group_Date_PPH = DIVIDE('Fct_Supervisors_Hours'[Group_Date_Transaction_Pieces_Sum],'Fct_Supervisors_Hours'[Group_Date_Hrs_Sum])
+		formatString: 0.0
+		lineageTag: a8836383-97ad-4403-a161-5b29cc36eca2
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Site
+		dataType: string
+		lineageTag: aa216259-87a9-4162-b999-7a1200cb93f3
+		summarizeBy: none
+		sourceColumn: Site
+
+		annotation SummarizationSetBy = Automatic
+
+	column Group_Date_Team_Avg_Runner_Transaction_Pieces = ```
+			
+			VAR _currDate =
+			    Fct_Supervisors_Hours[Date]   -- 如果你表里是别的日期列名，改成对应的
+			
+			VAR _isRunnerRow =
+			    Fct_Supervisors_Hours[Position] = "WN3 - Line Clearing"
+			        && Fct_Supervisors_Hours[Team] = "T1"          -- 只给 T1（Runner）分配
+			
+			-- ① 这一天，B1 Ramp（T2）的总 transaction pieces
+			VAR _totalPieces_T2_ByDate =
+			    CALCULATE (
+			        'A_Measure'[0_Trx_Pieces],          -- 你现成的 pieces 度量
+			        ALLEXCEPT (
+			            Fct_Supervisors_Hours,
+			            Fct_Supervisors_Hours[Date],              -- 只按“日期”分组
+			             Fct_Supervisors_Hours[Shift] 
+			            -- 如果要按 日期+Shift，可以加上 Fct_Supervisors_Hours[Shift]
+			            -- 如果要按 日期+Group，再加 Fct_Supervisors_Hours[Group]
+			        ),
+			        Fct_Supervisors_Hours[Position] = "WN3 - Line Clearing",
+			        Fct_Supervisors_Hours[Team] = "T2"            -- Violet：T2 = B1 Ramp（取 qty）
+			    )
+			
+			-- ② 这一天有多少个 Runner 员工（T1）
+			VAR _runnerCount_T1_ByDate =
+			    CALCULATE (
+			        DISTINCTCOUNT ( Fct_Supervisors_Hours[Employee_ID] ),
+			        ALLEXCEPT (
+			            Fct_Supervisors_Hours,
+			            Fct_Supervisors_Hours[Date],
+			            Fct_Supervisors_Hours[Shift] 
+			        ),
+			        Fct_Supervisors_Hours[Position] = "WN3 - Line Clearing",
+			        Fct_Supervisors_Hours[Team] = "T1"
+			
+			    )
+			
+			RETURN
+			IF (
+			    _isRunnerRow,
+			    DIVIDE ( _totalPieces_T2_ByDate, _runnerCount_T1_ByDate ),   -- 平均到每个 Runner 身上
+			    BLANK()
+			)
+			
+			```
+		lineageTag: 1cfb6650-3cad-46a5-bb38-6b615eaf2119
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Group_Date_Team_Avg_Runner_Transaction_Hours = ```
+			
+			VAR _currDate =
+			    Fct_Supervisors_Hours[Date]   -- 如果你表里是别的日期列名，改成对应的
+			
+			VAR _isRunnerRow =
+			    Fct_Supervisors_Hours[Position] = "WN3 - Line Clearing"
+			        && Fct_Supervisors_Hours[Team] = "T1"          -- 只给 T1（Runner）分配
+			
+			-- ① 这一天，B1 Ramp（T2）的总 transaction Hours
+			VAR _totalPieces_T2_ByDate =
+			    CALCULATE (
+			        'A_Measure'[0_Hours_individual],          -- 你现成的Hour度量
+			        ALLEXCEPT (
+			            Fct_Supervisors_Hours,
+			            Fct_Supervisors_Hours[Date],              -- 只按“日期”分组
+			             Fct_Supervisors_Hours[Shift] 
+			            -- 如果要按 日期+Shift，可以加上 Fct_Supervisors_Hours[Shift]
+			            -- 如果要按 日期+Group，再加 Fct_Supervisors_Hours[Group]
+			        ),
+			        Fct_Supervisors_Hours[Position] = "WN3 - Line Clearing",
+			        Fct_Supervisors_Hours[Team] = "T1"            -- Violet：T2 = B1 Ramp（取 qty）
+			    )
+			
+			-- ② 这一天有多少个 Runner 员工（T1）
+			VAR _runnerCount_T1_ByDate =
+			    CALCULATE (
+			        DISTINCTCOUNT ( Fct_Supervisors_Hours[Employee_ID] ),
+			        ALLEXCEPT (
+			            Fct_Supervisors_Hours,
+			            Fct_Supervisors_Hours[Date],
+			            Fct_Supervisors_Hours[Shift] 
+			        ),
+			        Fct_Supervisors_Hours[Position] = "WN3 - Line Clearing",
+			        Fct_Supervisors_Hours[Team] = "T1"
+			
+			    )
+			
+			RETURN
+			IF (
+			    _isRunnerRow,
+			    DIVIDE ( _totalPieces_T2_ByDate, _runnerCount_T1_ByDate ),   -- 平均到每个 Runner 身上
+			    BLANK()
+			)
+			
+			```
+		formatString: #,0.00
+		lineageTag: 5155c3e6-3909-4a91-9f0c-b2ebe3b3076c
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Source_File
+		dataType: string
+		lineageTag: 29f1a6ce-2fdf-4ae2-b781-243c49e04f7c
+		summarizeBy: none
+		sourceColumn: Source_File
+
+		annotation SummarizationSetBy = Automatic
+
+	column Source_Folder
+		dataType: string
+		lineageTag: dee4f262-91c5-4ebb-b732-c51e9762293b
+		summarizeBy: none
+		sourceColumn: Source_Folder
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fct_Supervisors_Hours = m
+		mode: import
+		source = ```
+				let
+				    // 连接到 SharePoint 文件
+				    Source = SharePoint.Files("https://masterashley.sharepoint.com/sites/AsiaWarehouseOperations/", [ApiVersion = 15]),
+				    
+				    // 筛选指定文件夹
+				    #"Filtered Folder" = Table.SelectRows(Source, each Text.StartsWith([Folder Path], "https://masterashley.sharepoint.com/sites/AsiaWarehouseOperations/Shared Documents/Ashton/Four Box/Wanek_PPH/")),
+				    
+				    // 仅筛选 .xlsx 文件
+				    #"Excel Files Only" = Table.SelectRows(#"Filtered Folder", each Text.EndsWith([Name], ".xlsx")),
+				    
+				    // 展开二进制内容
+				    #"Added Custom" = Table.AddColumn(#"Excel Files Only", "Excel Tables", each Excel.Workbook([Content])),
+				    
+				    // 展开 Excel 表格
+				    #"Expanded Excel Tables" = Table.ExpandTableColumn(#"Added Custom", "Excel Tables", {"Data", "Item", "Kind"}, {"Data", "Item", "Kind"}),
+				    
+				    // 仅保留名为 "DATA" 的工作表
+				    #"Filtered Sheets" = Table.SelectRows(#"Expanded Excel Tables", each [Item] = "DATA"),
+				    
+				    // --- 核心修正点：动态获取所有文件的列名并展开，防止空表报错 ---
+				    DynamicColumnNames = List.Distinct(List.Combine(List.Transform(#"Filtered Sheets"[Data], each if _ is table then Table.ColumnNames(_) else {}))),
+				    #"Expanded Data" = Table.ExpandTableColumn(#"Filtered Sheets", "Data", DynamicColumnNames),
+				    
+				    // 添加源文件信息
+				    #"Added Source Info" = Table.AddColumn(#"Expanded Data", "Source File", each [Name], type text),
+				    #"Added Folder Info" = Table.AddColumn(#"Added Source Info", "Source Folder", each [Folder Path], type text),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Added Folder Info",{"Column1", "Column2", "Column3", "Column4", "Column5", "Column6", "Column7", "Column8", "Column9", "Column10", "Source File", "Source Folder"}),
+				
+				    // 添加索引
+				    #"Added Index" = Table.AddIndexColumn(#"Removed Other Columns", "Row Index", 1, 1),
+				
+				    // 处理占位符
+				    #"Modified First 1 Rows Source File" = Table.AddColumn(#"Added Index", "Source_File", each if [Row Index] <= 1 then "Source_File" else Text.From([Source File]), type text),
+				    #"Modified First 1 Rows Source Folder" = Table.AddColumn(#"Modified First 1 Rows Source File", "Source_Folder", each if [Row Index] <= 1 then "Source_Folder" else Text.From([Source Folder]), type text),
+				    #"Removed Columns" = Table.RemoveColumns(#"Modified First 1 Rows Source Folder",{"Source File", "Source Folder", "Row Index"}),
+				    
+				    // 提升标题
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Removed Columns", [PromoteAllScalars=true]),
+				    
+				    // 基础类型转换（全设为 any，方便后续替换字符）
+				    #"Changed Type Initial" = Table.TransformColumnTypes(#"Promoted Headers",{{"Group", type text}, {"Date", type any}, {"Employee_ID", type any}, {"Final_Hrs_All_In", type any}, {"Final_Hrs_Individual", type any}}),
+				    
+				// 过滤掉空行和多余标题
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type Initial", each ([Date] <> null and [Date] <> "Date")),
+				
+				    // --- 重点修正：改用 Table.TransformColumns，这种方法不会因为类型混合而报错 ---
+				    #"Fixed Hyphens" = Table.TransformColumns(#"Filtered Rows", {
+				        {"Final_Hrs_Individual", each if Text.Trim(Text.From(_)) = "-" then 0 else _, type any},
+				        {"Final_Hrs_All_In", each if Text.Trim(Text.From(_)) = "-" then 0 else _, type any}
+				    }),
+				    
+				    // 现在可以安全地转换类型了
+				    #"Changed Final Types2" = Table.TransformColumnTypes(#"Fixed Hyphens",{
+				        {"Date", type date},
+				        {"Final_Hrs_Individual", type number},
+				        {"Final_Hrs_All_In", type number},
+				        {"Employee_ID", type text}
+				    }),
+				    
+				    // 将Date和数字列进行真正的类型转换
+				    #"Changed Final Types" = Table.TransformColumnTypes(#"Fixed Hyphens",{
+				        {"Date", type date},
+				        {"Final_Hrs_Individual", type number},
+				        {"Final_Hrs_All_In", type number},
+				        {"Employee_ID", type text}
+				    }),
+				    
+				    // 筛选最近1000天
+				    #"Filtered Last Days" = Table.SelectRows(#"Changed Final Types", 
+				        each [Date] >= Date.AddDays(Date.From(DateTime.LocalNow()), -1000) and 
+				             [Date] <= Date.From(DateTime.LocalNow())),
+				    
+				    // 格式化 Employee_ID
+				    #"Formatted Employee_ID" = Table.TransformColumns(#"Filtered Last Days", {
+				        {"Employee_ID", each if _ = null then null else Text.PadStart(Text.From(_), 5, "0")}
+				    }),
+				    
+				    // 调用自定义函数
+				    #"Added Custom2" = Table.AddColumn(#"Formatted Employee_ID", "HJ_Transaction_Pieces", each GetTotalPieces([Date],[Employee_ID],[PPH_Type])),
+				    #"Removed Columns2" = Table.RemoveColumns(#"Added Custom2",{"HJ_Transaction_Pieces"}),
+				        
+				    // 提取 Site
+				    #"Added Site" = Table.AddColumn(#"Removed Columns2", "Site", each 
+				        if [Group] = null then null 
+				        else Text.Trim(Text.Start(Text.From([Group]), 3)), 
+				        type text)
+				in
+				    #"Added Site"
+				```
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

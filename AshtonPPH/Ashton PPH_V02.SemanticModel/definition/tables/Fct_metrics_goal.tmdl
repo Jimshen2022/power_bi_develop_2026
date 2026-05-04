@@ -1,0 +1,43 @@
+table Fct_metrics_goal
+	lineageTag: b4ebc88c-6da3-407b-94be-544f55fed272
+
+	column MetricName
+		dataType: string
+		lineageTag: 8e3875cc-4c78-479c-ad0d-d2c724395413
+		summarizeBy: none
+		sourceColumn: MetricName
+
+		annotation SummarizationSetBy = Automatic
+
+	column Goal
+		dataType: int64
+		formatString: 0
+		lineageTag: 655f89d7-2896-4828-8383-68b233a0e12a
+		summarizeBy: none
+		sourceColumn: Goal
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fct_metrics_goal = m
+		mode: import
+		source = ```
+				let
+				    // 连接 SharePoint 并筛选目标文件夹内的最新 .xlsx 文件
+				    Source = SharePoint.Files("https://masterashley.sharepoint.com/sites/AsiaWarehouseOperations/", [ApiVersion = 15]),
+				    FilteredFolder = Table.SelectRows(Source, each Text.StartsWith([Folder Path], "https://masterashley.sharepoint.com/sites/AsiaWarehouseOperations/Shared Documents/Power BI Source Files/") and Text.EndsWith([Name], ".xlsx")),
+				    #"Filtered Rows" = Table.SelectRows(FilteredFolder, each ([Name] = "ashton_pph_goal.xlsx")),
+				    // 读取 Excel 内容并展开指定工作表
+				    ExcelData = Excel.Workbook(#"Filtered Rows"{0}[Content]),
+				    SheetData = Table.SelectRows(ExcelData, each [Item] = "Sheet1"){0}[Data],
+				    
+				    // 设置列名并转换数据类型
+				    #"Promoted Headers" = Table.PromoteHeaders(SheetData, [PromoteAllScalars = true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Goal", Int64.Type}})
+				in
+				    #"Changed Type"
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

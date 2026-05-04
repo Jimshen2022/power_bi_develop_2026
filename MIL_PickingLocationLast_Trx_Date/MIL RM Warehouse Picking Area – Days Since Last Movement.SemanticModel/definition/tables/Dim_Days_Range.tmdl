@@ -1,0 +1,23 @@
+table Dim_Days_Range
+	lineageTag: 1f9b1427-abda-4c4c-afe9-4ad0db332e29
+
+	column 'Day ranges'
+		lineageTag: 2bd6a929-60f6-44b0-8863-c3355b3fa7be
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: fct_Item_last_trx_date[Day ranges]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Days_Range = calculated
+		mode: import
+		source =
+				
+				FILTER(
+				    VALUES('fct_Item_last_trx_date'[Day ranges]),
+				    NOT(ISBLANK('fct_Item_last_trx_date'[Day ranges])) &&
+				    'fct_Item_last_trx_date'[Day ranges] <> ""
+				)
+
+	annotation PBI_Id = f6642da80c4c4737bb501607af6e2d0e
+

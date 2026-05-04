@@ -1,0 +1,25 @@
+table Sub_Area_1
+	lineageTag: f77f98b1-ee82-46f5-82a5-5e0c1ad24368
+
+	column Sub_Area_1
+		lineageTag: 4eb24c43-c3e3-4617-919e-2b535f1cfd0d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: F_Ashton_Locations[Sub_Area_1]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Area
+		lineageTag: 081df8b3-cb1c-4025-be12-c7ece917b41e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: F_Ashton_Locations[Area]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Sub_Area_1 = calculated
+		mode: import
+		source = CALCULATETABLE(SUMMARIZECOLUMNS('F_Ashton_Locations'[Sub_Area_1],'F_Ashton_Locations'[Area]), NOT(ISBLANK('F_Ashton_Locations'[Sub_Area_1])))
+
+	annotation PBI_Id = 6bbf47b6aba6458a8b9257a6b066645e
+

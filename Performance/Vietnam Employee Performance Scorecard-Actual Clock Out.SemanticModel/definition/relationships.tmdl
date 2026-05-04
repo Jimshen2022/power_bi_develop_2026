@@ -1,0 +1,273 @@
+relationship 4eabff3b-f4a7-4e3d-901a-f1e72598a131
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendar.Date
+	toColumn: LocalDateTable_2766e4ec-b0ba-4674-92a5-e6c22d8fb247.Date
+
+relationship ba779902-d89b-42da-b630-e1f386f7304a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendar.'Week Ending'
+	toColumn: LocalDateTable_1ef2353f-94c5-436a-8c08-0a7a419f4a15.Date
+
+relationship 19b6dea8-d997-4526-bdb7-21e066a7d632
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Clock In Clock Out'.'Clock In'
+	toColumn: LocalDateTable_188e1f1d-d89d-4dff-b429-91e6a7942fd0.Date
+
+relationship 91222207-9bc6-48da-95d3-20d10a123eac
+	fromColumn: 'Clock In Clock Out'.'Work Day'
+	toColumn: Calendar.Date
+
+relationship 0c2a9a51-d1d7-47a5-9a88-99e8dfe876a7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Clock In Clock Out'.'Hire Date'
+	toColumn: LocalDateTable_3dff066b-5637-4655-8bad-810b583050c7.Date
+
+relationship ff488864-b430-4627-a042-9c38dc8f3b23
+	fromColumn: Exceptions.'master key'
+	toColumn: 'Clock In Clock Out'.'master key'
+
+relationship 79ab0007-0a77-4745-ad4b-6700bb5f1b7b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Exceptions.exception_date
+	toColumn: LocalDateTable_6e12f660-b642-463d-b568-7af492e1fd7e.Date
+
+relationship 00a63575-abb8-4922-8206-a3416c3727c9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Summed Process Report'.work_day
+	toColumn: LocalDateTable_d1f44691-daf3-4621-a930-8ff3a111e6e4.Date
+
+relationship 745f661f-2ad4-464b-b272-fa8041086fd0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Summed Process Report'.process_start_min
+	toColumn: LocalDateTable_8d3e7a1f-0bb8-4cc1-b0d8-0754209fdb5f.Date
+
+relationship 53c8aabe-51a9-40b2-b913-5c493f671f5c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Summed Process Report'.process_end_max
+	toColumn: LocalDateTable_633f8970-8aa7-48e0-96d7-a94e985e9589.Date
+
+relationship a15f00cb-5cfe-4666-8127-3d7902a5c05a
+	fromColumn: 'Summed Process Report'.'master key'
+	toColumn: 'Clock In Clock Out'.'master key'
+
+relationship 4b899c8c-7d83-42a6-992d-5fae1c30a4a8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendar.DateTime_ID
+	toColumn: LocalDateTable_b8247e27-3edc-4f35-b3ac-3e5d2ae9d6c4.Date
+
+relationship 9948cdb1-0f87-4dc1-a40c-e768aef4d091
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendar.Calendar_Date
+	toColumn: LocalDateTable_4aaab4c4-6928-4108-b923-c45a96a3eb93.Date
+
+relationship 6bd881b0-0606-45aa-b0e5-6bc4cb3e2d42
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendar.Fiscal_Date
+	toColumn: LocalDateTable_0396acd2-c9a6-47c8-919e-b6470093ac85.Date
+
+relationship 73cc9de7-6d69-42fd-8204-03e705e1166b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendar.First_Date_Of_Fiscal_Week
+	toColumn: LocalDateTable_027e22ec-c911-4e05-90f6-75b464d83460.Date
+
+relationship 0866ee87-e56d-44fa-88ee-966583e5d7f1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendar.Last_Date_Of_Fiscal_Week
+	toColumn: LocalDateTable_bba36bd6-2329-4f60-ba58-6d212ac4fc6b.Date
+
+relationship a8363056-9464-4a5f-a921-a19209e4fc9e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendar.Last_Date_Of_Fiscal_Year
+	toColumn: LocalDateTable_9efbd14c-dca2-4f94-bda6-4433d6d0c962.Date
+
+relationship 7274c485-3525-42ca-bd6a-5011a0d32a8f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendar.First_Date_Of_Fiscal_Year
+	toColumn: LocalDateTable_9024b111-c57f-4c7f-9f4f-e81c1441d404.Date
+
+relationship a1de0a13-edfb-46d0-bcdf-8ee56bb80a43
+	joinOnDateBehavior: datePartOnly
+	fromColumn: GAP.'Start Trans Datetime'
+	toColumn: LocalDateTable_ce5c8c59-39eb-44ff-949f-23d0be2fe7bc.Date
+
+relationship b8ad0b0b-6de4-49f7-aafc-a189488baa84
+	joinOnDateBehavior: datePartOnly
+	fromColumn: GAP.'End Trans Datetime'
+	toColumn: LocalDateTable_0122b10c-88f5-458f-aec3-1e9860f2fece.Date
+
+relationship a7910ef9-3845-4cb3-9615-1b6209ec5498
+	joinOnDateBehavior: datePartOnly
+	fromColumn: GAP.Date
+	toColumn: LocalDateTable_6f11c1c5-ffe9-4174-acfa-1e00211308f0.Date
+
+relationship d3a9be8e-6486-4751-b6d6-31b0c55aca5c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: GAP.work_day
+	toColumn: LocalDateTable_54885b9d-e89e-4681-8fdf-f61381528c88.Date
+
+relationship 22a9a530-d529-4cb9-8563-f0efedff791c
+	fromColumn: GAP.'Master Key'
+	toColumn: 'Clock In Clock Out'.'master key'
+
+relationship 5ee57165-6a28-4c19-9ecc-a745ec527fc6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Indirect History'.WorkDay
+	toColumn: LocalDateTable_6c5b1710-6a26-46e6-a040-6882be098710.Date
+
+relationship 560ecfd7-3186-43e1-9f54-e24dd29fb209
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Indirect History'.ProcessStart
+	toColumn: LocalDateTable_9c1e4c98-eddf-431f-bae5-bf9a6d7ca8bc.Date
+
+relationship 51e51e33-c1b3-4da4-a6ea-3564c6c5a39b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Indirect History'.ProcessEnd
+	toColumn: LocalDateTable_9b1a9963-b893-4bde-882c-40746260bc98.Date
+
+relationship d021572c-7aea-41b6-b5b5-33873e4c39bb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Indirect History'.ClockIn
+	toColumn: LocalDateTable_28d5aee3-b4f8-4fb1-bcc2-13c84401ea68.Date
+
+relationship 26445590-7367-4e66-858c-593edb802ed8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Indirect History'.ClockOut
+	toColumn: LocalDateTable_b9596b4b-d3f2-4d9f-ac27-13b153c59c7f.Date
+
+relationship 8ea50de7-fd49-44cf-8d14-b44380c47dc7
+	fromColumn: 'Indirect History'.Key
+	toColumn: 'Clock In Clock Out'.'master key'
+
+relationship 6965cada-2aa2-4f39-8b55-6fab720551fa
+	joinOnDateBehavior: datePartOnly
+	fromColumn: GAP.start_tran_date
+	toColumn: LocalDateTable_3e724822-d839-4a44-a28b-f9e575e6630a.Date
+
+relationship 09d51699-0167-4592-bf2f-00517d00095a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: GAP.start_tran_time
+	toColumn: LocalDateTable_2f70afab-444c-4664-9931-766e226f5301.Date
+
+relationship 825aa482-6606-483a-8f8b-da4a8c2362d2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: GAP.end_tran_date
+	toColumn: LocalDateTable_95744072-5140-40db-9376-030c64e95786.Date
+
+relationship d8002a34-0eea-4023-852f-20446ed0673c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: GAP.end_tran_time
+	toColumn: LocalDateTable_e8a6cb99-3895-4382-9d80-83f781f6f53b.Date
+
+relationship 96f153b8-39a9-4d3a-a039-c6a1c4fc1b51
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Battery Change'.start_tran_date
+	toColumn: LocalDateTable_2f2f06d5-f8fb-4936-bfea-105a08cb136a.Date
+
+relationship 949b2ce3-c1c5-4690-8754-f594d2c22008
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Battery Change'.start_tran_time
+	toColumn: LocalDateTable_fa75ccf2-ef16-4ce5-b8e7-47936474ba5c.Date
+
+relationship 02fb824b-0a42-439f-967a-619078316a6b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Battery Change'.end_tran_date
+	toColumn: LocalDateTable_af64b35f-ecc9-4237-90da-4acf51586ba7.Date
+
+relationship d2ca2dd1-399d-4fd4-bbe9-1c13600cc1b1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Battery Change'.end_tran_time
+	toColumn: LocalDateTable_959aa935-97cd-42c0-aea9-43fa7284acbd.Date
+
+relationship 5cc573a2-a3df-40c0-b788-51a1429d12fb
+	fromColumn: 'Battery Change'.'Master Key'
+	toColumn: 'Clock In Clock Out'.'master key'
+
+relationship 010a73b3-53a9-48ce-af2c-7e01d4c9486e
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Performance Goals'.Measure
+	toColumn: 'Definition of Calculations'.Measure
+
+relationship 67069b40-5671-4f04-a961-83c7625635b1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Start/End of Day'.work_day
+	toColumn: LocalDateTable_79d7ef64-aa3b-48a6-870f-7bb97b65e47f.Date
+
+relationship 3be674ef-538b-49ad-bc6d-fcb20299be73
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Clock In Clock Out'.'master key'
+	toColumn: 'Start/End of Day'.'Master Key'
+
+relationship befe5854-8961-4224-a26f-41747aa00ce5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Start/End of Day'.clock_in
+	toColumn: LocalDateTable_da581039-c5f4-49d7-89e4-905aea29568e.Date
+
+relationship c6429c06-9709-4f53-9179-0f0acde55b06
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Start/End of Day'.clock_out
+	toColumn: LocalDateTable_2bf48f06-208a-4c27-8f8f-64bfd31005cd.Date
+
+relationship 7faad347-abf4-460e-a466-4cb5544a19e1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Start/End of Day'.'Start of Day Tran Date/Time'
+	toColumn: LocalDateTable_c197a1d8-91da-48ba-bd06-61f393012a30.Date
+
+relationship 89870ddd-ba04-411a-9962-43fc175bb47f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Start/End of Day'.'End of Day Tran Date/Time'
+	toColumn: LocalDateTable_d642b280-1d05-4ac7-804d-b4fd14edfe1a.Date
+
+relationship ce107c31-0e82-44fa-825c-5ed8d2f5a644
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Clock In Clock Out'.'End Time'
+	toColumn: LocalDateTable_6c1eb866-91a9-438b-92f5-62f671975009.Date
+
+relationship c53cdca7-89b5-4d82-865f-323f5592307f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Clock In Clock Out'.End_Time
+	toColumn: LocalDateTable_f97887b0-00c9-4227-97c8-11f94f26c192.Date
+
+relationship 16083228-3b8a-4db1-b138-b73a7c98bdb0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ashton_picking_exception_hj_sql_server_df.transaction_datetime
+	toColumn: LocalDateTable_567824b1-581f-40df-877a-7f58bbeddce1.Date
+
+relationship ef1076a7-a3d7-4374-93df-51031b62489d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ashton_putaway_exception_hj_sql_server_df.exception_date
+	toColumn: LocalDateTable_65c4dbcf-344d-4f33-b69b-ed4e9ef40bd9.Date
+
+relationship 2e345f22-a185-4baf-9419-dbf6fdbd8626
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ashton_picking_exception_hj_sql_server_df.shift_date
+	toColumn: LocalDateTable_b7f7aa99-cfca-4940-835f-f1b1f72d8d40.Date
+
+relationship fdffa1da-d1e3-40bc-8b18-82546525c63b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ashton_putaway_exception_hj_sql_server_df.shift_date
+	toColumn: LocalDateTable_b3b2ae16-9942-45a2-9ee5-a9354424afff.Date
+
+relationship aafdfa01-6763-898a-8554-76d4ddc6952f
+	fromColumn: ashton_picking_exception_hj_sql_server_df.'master key'
+	toColumn: 'Clock In Clock Out'.'master key'
+
+relationship b28f9646-4c55-cb17-d601-1c2896f823b3
+	fromColumn: ashton_putaway_exception_hj_sql_server_df.'master key'
+	toColumn: 'Clock In Clock Out'.'master key'
+
+relationship efaf856f-cde8-42a7-971a-e0bf4c213784
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Employee PIV Check Performed Counted'.check_date
+	toColumn: LocalDateTable_6907cb54-24eb-430b-9cb3-e9927502edf6.Date
+
+relationship 918f6ba2-c412-4909-b41a-d587fbc8d07b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Employee PIV Check Performed Counted'.shift_date
+	toColumn: LocalDateTable_9e2fd9e9-fc55-40e2-a106-17021feb7f16.Date
+
+relationship 86bef136-5b34-efef-2704-8441667eb6b3
+	fromColumn: 'Employee PIV Check Performed Counted'.master_key
+	toColumn: 'Clock In Clock Out'.'master key'
+

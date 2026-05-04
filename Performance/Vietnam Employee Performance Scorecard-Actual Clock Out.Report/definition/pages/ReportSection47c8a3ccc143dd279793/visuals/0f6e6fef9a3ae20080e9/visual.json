@@ -1,0 +1,396 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "0f6e6fef9a3ae20080e9",
+  "position": {
+    "x": 0,
+    "y": 151.61731207289296,
+    "z": 0,
+    "height": 568.56492027334855,
+    "width": 1258.6180713743356,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Clock In Clock Out"
+                    }
+                  },
+                  "Property": "Work Day"
+                }
+              },
+              "queryRef": "Clock In Clock Out.Work Day",
+              "nativeQueryRef": "Work Day"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Clock In Clock Out"
+                    }
+                  },
+                  "Property": "DC"
+                }
+              },
+              "queryRef": "Clock In Clock Out.DC",
+              "nativeQueryRef": "DC"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Clock In Clock Out"
+                    }
+                  },
+                  "Property": "Employee Name"
+                }
+              },
+              "queryRef": "Clock In Clock Out.Employee Name",
+              "nativeQueryRef": "Employee Name"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Clock In Clock Out"
+                    }
+                  },
+                  "Property": "Role"
+                }
+              },
+              "queryRef": "Clock In Clock Out.Role",
+              "nativeQueryRef": "Role"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indirect History"
+                    }
+                  },
+                  "Property": "# of Battery Changes Approved"
+                }
+              },
+              "queryRef": "Indirect History.# of Battery Changes",
+              "nativeQueryRef": "# of Battery Changes Approved"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indirect History"
+                    }
+                  },
+                  "Property": "# of Battery Changes Rejected"
+                }
+              },
+              "queryRef": "Indirect History.# of Battery Changes Rejected",
+              "nativeQueryRef": "# of Battery Changes Rejected"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indirect History"
+                    }
+                  },
+                  "Property": "Battery Change Time Approved"
+                }
+              },
+              "queryRef": "Indirect History.Battery Change Time",
+              "nativeQueryRef": "Battery Change Time Approved"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indirect History"
+                    }
+                  },
+                  "Property": "Battery Change Time Rejected"
+                }
+              },
+              "queryRef": "Indirect History.Battery Change Time Rejected",
+              "nativeQueryRef": "Battery Change Time Rejected"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indirect History"
+                    }
+                  },
+                  "Property": "# of Meeting"
+                }
+              },
+              "queryRef": "Indirect History.# of Meeting",
+              "nativeQueryRef": "# of Meeting"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indirect History"
+                    }
+                  },
+                  "Property": "# of Clean Up"
+                }
+              },
+              "queryRef": "Indirect History.# of Clean Up",
+              "nativeQueryRef": "# of Clean Up"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indirect History"
+                    }
+                  },
+                  "Property": "# of Flex & Stretch"
+                }
+              },
+              "queryRef": "Indirect History.# of Flex & Stretch",
+              "nativeQueryRef": "# of Flex & Stretch"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indirect History"
+                    }
+                  },
+                  "Property": "# of 2nd Flex & Stretch"
+                }
+              },
+              "queryRef": "Indirect History.# of 2nd Flex & Stretch",
+              "nativeQueryRef": "# of 2nd Flex & Stretch"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indirect History"
+                    }
+                  },
+                  "Property": "# of Help Ramp"
+                }
+              },
+              "queryRef": "Indirect History.# of Help Ramp",
+              "nativeQueryRef": "# of Help Ramp"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indirect History"
+                    }
+                  },
+                  "Property": "# of Rework"
+                }
+              },
+              "queryRef": "Indirect History.# of Rework",
+              "nativeQueryRef": "# of Rework"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indirect History"
+                    }
+                  },
+                  "Property": "# of Training"
+                }
+              },
+              "queryRef": "Indirect History.# of Training",
+              "nativeQueryRef": "# of Training"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Clock In Clock Out"
+                  }
+                },
+                "Property": "Role"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "grid": [
+        {
+          "properties": {
+            "gridHorizontalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "gridVertical": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridVerticalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "93.75321507329055D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Indirect History.# of Battery Changes Rejected"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "104.66893901046899D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Indirect History.# of Battery Changes"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filter8449e7d2057c8ba4beb4",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Clock In Clock Out"
+              }
+            },
+            "Property": "Employee Name"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "c",
+              "Entity": "Clock In Clock Out",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "c"
+                              }
+                            },
+                            "Property": "Employee Name"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "null"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,1156 @@
+table Fct_Supervisors_Hours_Pieces
+	lineageTag: dc6b18f5-59f4-4e65-9c98-5926c5019e1d
+
+	column Group
+		dataType: string
+		lineageTag: 6ff899ec-3ba6-4cce-be24-bcc5ffd49942
+		summarizeBy: none
+		sourceColumn: Group
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: aa5b908c-1803-4c9a-abde-8e1bd37b9b98
+		summarizeBy: none
+		sourceColumn: Date
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Team
+		dataType: string
+		lineageTag: d3819741-69fa-45a7-b45d-e33cea64086d
+		summarizeBy: none
+		sourceColumn: Team
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PPH_Type
+		dataType: string
+		lineageTag: 9070d9ca-e184-436c-b829-63a3796cb068
+		summarizeBy: none
+		sourceColumn: PPH_Type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Shift
+		dataType: string
+		lineageTag: 9a4ff869-adf1-4749-bbd3-d5ba739dba24
+		summarizeBy: none
+		sourceColumn: Shift
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Employee_ID
+		dataType: string
+		lineageTag: cecad4e8-c4cc-4c21-b708-a1b909bd3abd
+		summarizeBy: none
+		sourceColumn: Employee_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: f32aae65-6ba7-44af-929f-3d04eb5527a7
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Final_Hrs_All_In
+		dataType: double
+		formatString: #,0.0
+		lineageTag: 6d4b701e-29df-4e1d-9b76-3a5ed91c98b7
+		summarizeBy: sum
+		sourceColumn: Final_Hrs_All_In
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Final_Hrs_Individual
+		dataType: decimal
+		formatString: #,0.0
+		lineageTag: fac7e435-555e-4bd6-9e95-b3b0bf3cd84d
+		summarizeBy: sum
+		sourceColumn: Final_Hrs_Individual
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Position
+		dataType: string
+		lineageTag: 85d5355f-6736-4a2a-a38f-2528e762d2d3
+		summarizeBy: none
+		sourceColumn: Position
+
+		annotation SummarizationSetBy = Automatic
+
+	column Transaction_Pieces = ```
+			
+			CALCULATE(
+			    SUM('Fact_Transactions'[pieces]),
+			    FILTER(
+			        ALL('Fact_Transactions'),  -- 清除 Fact_Transactions 表的上下文
+			        'Fact_Transactions'[shift_date] = 'Fct_Supervisors_Hours_Pieces'[Date] &&
+			        'Fact_Transactions'[employee_id] = 'Fct_Supervisors_Hours_Pieces'[Employee_ID] &&
+			        'Fact_Transactions'[pph_type] = 'Fct_Supervisors_Hours_Pieces'[PPH_Type] && 
+			        'Fact_Transactions'[product_category] = 'Fct_Supervisors_Hours_Pieces'[product_category] 
+			    )
+			)
+			```
+		formatString: #,0
+		lineageTag: 721fa5a9-8864-4867-a5b9-568f0fb4fa03
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Group_Date_Team_Avg_Transaction_Pieces = ```
+			
+			VAR CurrentTeam = 'Fct_Supervisors_Hours_Pieces'[Team]
+			VAR CurrentPPHType = 'Fct_Supervisors_Hours_Pieces'[PPH_Type]
+			VAR AvgValue = 
+			    IF(
+			        NOT(ISBLANK(CurrentTeam)) && CurrentTeam <> "0" && NOT(ISBLANK(CurrentPPHType)),
+			        CALCULATE(
+			            DIVIDE(
+			                SUM('Fct_Supervisors_Hours_Pieces'[Transaction_Pieces]),
+			                COUNTROWS('Fct_Supervisors_Hours_Pieces')
+			            ),
+			            ALLEXCEPT('Fct_Supervisors_Hours_Pieces', 'Fct_Supervisors_Hours_Pieces'[Group],'Fct_Supervisors_Hours_Pieces'[Date], 'Fct_Supervisors_Hours_Pieces'[Team])
+			        ),
+			        'Fct_Supervisors_Hours_Pieces'[Transaction_Pieces]
+			    )
+			RETURN
+			    AvgValue
+			
+			```
+		formatString: #,0
+		lineageTag: 4453e471-fc63-4f9c-bc9b-359834ea5cb7
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Group_Date_Team_Avg_Hrs = ```
+			
+			VAR CurrentTeam = 'Fct_Supervisors_Hours_Pieces'[Team]
+			VAR CurrentPPHType = Fct_Supervisors_Hours_Pieces[PPH_Type]
+			VAR AvgValue = 
+			    IF(
+			        NOT(ISBLANK(CurrentTeam)) && CurrentTeam <> "0" && NOT(ISBLANK(CurrentPPHType)),
+			        CALCULATE(
+			            DIVIDE(
+			                SUM(Fct_Supervisors_Hours_Pieces[Final_Hrs_Individual]),
+			                COUNTROWS(Fct_Supervisors_Hours_Pieces)
+			            ),
+			            ALLEXCEPT(Fct_Supervisors_Hours_Pieces,'Fct_Supervisors_Hours_Pieces'[Group], Fct_Supervisors_Hours_Pieces[Date], Fct_Supervisors_Hours_Pieces[Team])
+			        ),
+			        Fct_Supervisors_Hours_Pieces[Final_Hrs_Individual]
+			    )
+			RETURN
+			    AvgValue
+			```
+		formatString: #,0.0
+		lineageTag: 2816c4d4-8d12-4b84-bce0-f48852061bcd
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Group_Date_Transaction_Pieces_Sum = ```
+			
+			CALCULATE(
+			    SUM(Fct_Supervisors_Hours_Pieces[Transaction_Pieces]),
+			    ALLEXCEPT(Fct_Supervisors_Hours_Pieces, Fct_Supervisors_Hours_Pieces[Group], Fct_Supervisors_Hours_Pieces[Date])
+			)
+			
+			```
+		formatString: #,0
+		lineageTag: 04deb2e3-c764-4cbe-aca4-da8728a94659
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Group_Date_Hrs_Sum = ```
+			
+			CALCULATE(
+			    SUM(Fct_Supervisors_Hours_Pieces[Final_Hrs_All_In]),
+			    ALLEXCEPT(Fct_Supervisors_Hours_Pieces, Fct_Supervisors_Hours_Pieces[Group], Fct_Supervisors_Hours_Pieces[Date])
+			)
+			
+			```
+		lineageTag: 5197b7fa-2fc0-4083-a2f3-63c3e953a95b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Group_Date_PPH = DIVIDE('Fct_Supervisors_Hours_Pieces'[Group_Date_Transaction_Pieces_Sum],'Fct_Supervisors_Hours_Pieces'[Group_Date_Hrs_Sum])
+		formatString: 0.0
+		lineageTag: 6e1ecffb-1170-47da-a373-40dd2faf6d00
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Group_Date_Team_by_Pieces_PPH = DIVIDE('Fct_Supervisors_Hours_Pieces'[Group_Date_Team_Avg_Transaction_Pieces],'Fct_Supervisors_Hours_Pieces'[Group_Date_Team_Avg_Hrs])
+		formatString: 0.0
+		lineageTag: 3d1a2ca3-a439-435f-8299-82a4269c3473
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column '1_All in PPH Shipping Pieces' = ```
+			
+			VAR d = Fct_Supervisors_Hours_Pieces[Date]
+			VAR s = Fct_Supervisors_Hours_Pieces[Shift]
+			RETURN
+			IF (
+			    Fct_Supervisors_Hours_Pieces[PPH_Type] IN {"Loading","Picking"},
+			    CALCULATE (
+			        SUM ( Fct_Supervisors_Hours_Pieces[Transaction_Pieces] ),
+			        FILTER (
+			            ALL ( Fct_Supervisors_Hours_Pieces ),
+			            Fct_Supervisors_Hours_Pieces[Date] = d
+			                && Fct_Supervisors_Hours_Pieces[PPH_Type] = "Loading"
+			                && Fct_Supervisors_Hours_Pieces[Shift] = s
+			        )
+			    ),
+			    0
+			)
+			
+			```
+		formatString: #,0
+		lineageTag: 146204a1-50b0-4699-b373-0e20bd4f2e3a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column '1_All in PPH Shipping Hours' = ```
+			
+			VAR d = Fct_Supervisors_Hours_Pieces[Date]
+			VAR s = Fct_Supervisors_Hours_Pieces[Shift]
+			RETURN
+			IF (
+			    Fct_Supervisors_Hours_Pieces[PPH_Type] IN {"Loading","Picking"},
+			    CALCULATE (
+			        SUM ( Fct_Supervisors_Hours_Pieces[Final_Hrs_All_In] ),
+			        FILTER (
+			            ALL ( Fct_Supervisors_Hours_Pieces ),
+			            Fct_Supervisors_Hours_Pieces[Date] = d
+			                && Fct_Supervisors_Hours_Pieces[PPH_Type] IN {"Loading","Picking"}
+			                && Fct_Supervisors_Hours_Pieces[Shift] = s
+			        )
+			    ),
+			    0
+			)
+			
+			```
+		formatString: #,0.0
+		lineageTag: ac0fad48-0068-40e4-a43e-7f36e1cbb662
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column '1_All in PPH Shipping' = DIVIDE('Fct_Supervisors_Hours_Pieces'[1_All in PPH Shipping Pieces],'Fct_Supervisors_Hours_Pieces'[1_All in PPH Shipping Hours])
+		formatString: 0.0
+		lineageTag: dc8c69a7-a35f-473c-b72f-40b7cfd2e5ee
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date2_Trx_Sum_Putaway_Unload_Hours = ```
+			
+			VAR d = Fct_Supervisors_Hours_Pieces[Date]
+			VAR s = Fct_Supervisors_Hours_Pieces[Shift]
+			VAR IsRowOK =
+			    LEFT(Fct_Supervisors_Hours_Pieces[Group], 2) = "CG"
+			        && Fct_Supervisors_Hours_Pieces[PPH_Type] IN {
+			            "Picking-SCOOP","Put away","Replenishment","Unloading"
+			        }
+			RETURN
+			IF (
+			    IsRowOK,
+			    CALCULATE (
+			        SUM ( Fct_Supervisors_Hours_Pieces[Final_Hrs_All_In] ),
+			        FILTER (
+			            ALL ( Fct_Supervisors_Hours_Pieces ),
+			            Fct_Supervisors_Hours_Pieces[Date] = d
+			                && LEFT ( Fct_Supervisors_Hours_Pieces[Group], 2 ) = "CG"
+			                && Fct_Supervisors_Hours_Pieces[PPH_Type] IN {
+			                    "Picking-SCOOP","Put away","Replenishment","Unloading"
+			                }
+			                 && Fct_Supervisors_Hours_Pieces[Shift] = s
+			        )
+			    ),
+			    0
+			)
+			
+			```
+		formatString: 0.0
+		lineageTag: e7f12952-b568-4b74-99a5-9a4481dae3d0
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date2_Trx_Sum_Unloading_Pieces = ```
+			
+			VAR d = Fct_Supervisors_Hours_Pieces[Date]
+			VAR s = Fct_Supervisors_Hours_Pieces[Shift]
+			RETURN
+			IF (
+			    //Fct_Supervisors_Hours[PPH_Type] = "Unloading" &&
+			        LEFT(Fct_Supervisors_Hours_Pieces[Group], 2) = "CG",
+			    CALCULATE (
+			        SUM ( Fct_Supervisors_Hours_Pieces[Transaction_Pieces] ),
+			        FILTER (
+			            ALL ( Fct_Supervisors_Hours_Pieces ),
+			            Fct_Supervisors_Hours_Pieces[Date] = d
+			                && Fct_Supervisors_Hours_Pieces[PPH_Type] = "Unloading"
+			                && LEFT ( Fct_Supervisors_Hours_Pieces[Group], 2 ) = "CG"
+			                && Fct_Supervisors_Hours_Pieces[Shift] = s
+			        )
+			    ),
+			    0
+			)
+			
+			```
+		formatString: #,0
+		lineageTag: 1e061d3c-919f-463e-afe6-c1c1539f05e4
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'All in PPH CG' = DIVIDE('Fct_Supervisors_Hours_Pieces'[Date2_Trx_Sum_Unloading_Pieces],'Fct_Supervisors_Hours_Pieces'[Date2_Trx_Sum_Putaway_Unload_Hours])
+		formatString: 0.0
+		lineageTag: 5d430455-b35b-4ff1-a0df-a1ce0fddff5f
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date3_Trx_Sum_Putaway_Unload_Hours = ```
+			
+			VAR d = Fct_Supervisors_Hours_Pieces[Date]
+			VAR s = Fct_Supervisors_Hours_Pieces[Shift]
+			VAR IsRowOK =
+			    LEFT(Fct_Supervisors_Hours_Pieces[Group], 3) = "UPH"
+			        // && Fct_Supervisors_Hours[PPH_Type] IN {
+			        //     "Put away","Unloading"
+			        // }
+			RETURN
+			IF (
+			    IsRowOK,
+			    CALCULATE (
+			        SUM ( Fct_Supervisors_Hours_Pieces[Final_Hrs_All_In] ),
+			        FILTER (
+			            ALL ( Fct_Supervisors_Hours_Pieces ),
+			            Fct_Supervisors_Hours_Pieces[Date] = d
+			                && LEFT ( Fct_Supervisors_Hours_Pieces[Group], 3 ) = "UPH"
+			                && Fct_Supervisors_Hours_Pieces[PPH_Type] IN {
+			                    "Put away","Unloading"
+			                }
+			                && Fct_Supervisors_Hours_Pieces[Shift] = s
+			        )
+			    ),
+			    0
+			)
+			
+			```
+		formatString: #,0.0
+		lineageTag: 1b18c94a-c7af-46b0-b3eb-c7fdab8c31e2
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date3_Trx_Sum_Unloading_Pieces = ```
+			
+			VAR d = Fct_Supervisors_Hours_Pieces[Date]
+			VAR s = Fct_Supervisors_Hours_Pieces[Shift]
+			RETURN
+			IF (
+			    //Fct_Supervisors_Hours[PPH_Type] = "Unloading" &&
+			        LEFT(Fct_Supervisors_Hours_Pieces[Group], 3) = "UPH",
+			    CALCULATE (
+			        SUM ( Fct_Supervisors_Hours_Pieces[Transaction_Pieces] ),
+			        FILTER (
+			            ALL ( Fct_Supervisors_Hours_Pieces ),
+			            Fct_Supervisors_Hours_Pieces[Date] = d
+			                && Fct_Supervisors_Hours_Pieces[PPH_Type] = "Unloading"
+			                && LEFT ( Fct_Supervisors_Hours_Pieces[Group], 3 ) = "UPH"
+			                && Fct_Supervisors_Hours_Pieces[Shift] = s
+			        )
+			    ),
+			    0
+			)
+			
+			```
+		formatString: #,0
+		lineageTag: 0780f2ea-787d-46d8-901b-159e4d825726
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_category
+		dataType: string
+		lineageTag: 9b46d900-315b-49d3-b3c8-ddb5ca23d63c
+		summarizeBy: none
+		sourceColumn: product_category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'All in PPH for UPH' = DIVIDE('Fct_Supervisors_Hours_Pieces'[Date3_Trx_Sum_Unloading_Pieces],'Fct_Supervisors_Hours_Pieces'[Date3_Trx_Sum_Putaway_Unload_Hours])
+		formatString: 0.0
+		lineageTag: 3b15a383-563a-47a3-8f85-ed326fce5891
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date8_Trx_Sum_Putaway_Unload_Hours = ```
+			
+			VAR d = Fct_Supervisors_Hours_Pieces[Date]
+			VAR s = Fct_Supervisors_Hours_Pieces[Shift]
+			VAR IsRowOK =
+			    LEFT(Fct_Supervisors_Hours_Pieces[Group], 2) = "CG"
+			        // && Fct_Supervisors_Hours[PPH_Type] IN {
+			        //     "Put away","Unloading"
+			        // }
+			RETURN
+			IF (
+			    IsRowOK,
+			    CALCULATE (
+			        SUM ( Fct_Supervisors_Hours_Pieces[Final_Hrs_All_In] ),
+			        FILTER (
+			            ALL ( Fct_Supervisors_Hours_Pieces ),
+			            Fct_Supervisors_Hours_Pieces[Date] = d
+			                && LEFT ( Fct_Supervisors_Hours_Pieces[Group], 2 ) = "CG"
+			                && Fct_Supervisors_Hours_Pieces[PPH_Type] IN {                   
+			                    "Picking-SCOOP","Put away","Replenishment","Unloading"                
+			                }
+			                && Fct_Supervisors_Hours_Pieces[Shift] = s
+			        )
+			    ),
+			    0
+			)
+			```
+		formatString: #,0.0
+		lineageTag: 9e4ea3fc-7757-49aa-97b7-cb9e35750fa0
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date8_Trx_Sum_Unloading_Pieces = ```
+			
+			VAR d = Fct_Supervisors_Hours_Pieces[Date]
+			VAR s = Fct_Supervisors_Hours_Pieces[Shift]
+			RETURN
+			IF (
+			    //Fct_Supervisors_Hours[PPH_Type] = "Unloading" &&
+			        LEFT(Fct_Supervisors_Hours_Pieces[Group], 2) = "CG",
+			    CALCULATE (
+			        SUM ( Fct_Supervisors_Hours_Pieces[Transaction_Pieces]),
+			        FILTER (
+			            ALL ( Fct_Supervisors_Hours_Pieces ),
+			            Fct_Supervisors_Hours_Pieces[Date] = d
+			                && Fct_Supervisors_Hours_Pieces[PPH_Type] = "Put away"
+			                && LEFT ( Fct_Supervisors_Hours_Pieces[Group], 2) = "CG"
+			                && Fct_Supervisors_Hours_Pieces[Shift] = s
+			        )
+			    ),
+			    0
+			)
+			
+			```
+		formatString: #,0
+		lineageTag: 09a30c54-1f0f-4211-9796-e017e13b6d7e
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'All in PPH for CG receiving' = DIVIDE('Fct_Supervisors_Hours_Pieces'[Date8_Trx_Sum_Unloading_Pieces],'Fct_Supervisors_Hours_Pieces'[Date8_Trx_Sum_Putaway_Unload_Hours])
+		formatString: 0.0
+		lineageTag: bdbb47bf-2da3-4db1-b3a2-e8bf2d2bcb59
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date10_Trx_Sum_Putaway_Unload_Hours = ```
+			
+			VAR d = Fct_Supervisors_Hours_Pieces[Date]
+			VAR s = Fct_Supervisors_Hours_Pieces[Shift]
+			VAR IsRowOK =
+			    LEFT(Fct_Supervisors_Hours_Pieces[Group], 2) = "CG"
+			        // && Fct_Supervisors_Hours[PPH_Type] IN {
+			        //     "Put away","Unloading"
+			        // }
+			RETURN
+			IF (
+			    IsRowOK,
+			    CALCULATE (
+			        SUM ( Fct_Supervisors_Hours_Pieces[Final_Hrs_All_In] ),
+			        FILTER (
+			            ALL ( Fct_Supervisors_Hours_Pieces ),
+			            Fct_Supervisors_Hours_Pieces[Date] = d
+			                && LEFT ( Fct_Supervisors_Hours_Pieces[Group], 2 ) = "CG"
+			                && Fct_Supervisors_Hours_Pieces[PPH_Type] IN {                   
+			                    "Picking-SCOOP","Put away","Replenishment"                
+			                }
+			                && Fct_Supervisors_Hours_Pieces[Shift] = s
+			        )
+			    ),
+			    0
+			)
+			```
+		formatString: #,0.00
+		lineageTag: 78e403ff-2ab3-4a0b-adee-06e8282fd21a
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date10_Trx_Sum_Unloading_Pieces =
+			
+			VAR d = Fct_Supervisors_Hours_Pieces[Date]
+			VAR s = Fct_Supervisors_Hours_Pieces[Shift]
+			RETURN
+			IF (
+			    //Fct_Supervisors_Hours[PPH_Type] = "Unloading" &&
+			        LEFT(Fct_Supervisors_Hours_Pieces[Group], 2) = "CG",
+			    CALCULATE (
+			        SUM ( Fct_Supervisors_Hours_Pieces[Transaction_Pieces]),
+			        FILTER (
+			            ALL ( Fct_Supervisors_Hours_Pieces ),
+			            Fct_Supervisors_Hours_Pieces[Date] = d
+			                && Fct_Supervisors_Hours_Pieces[PPH_Type] = "Put away"
+			                && LEFT ( Fct_Supervisors_Hours_Pieces[Group], 2) = "CG"
+			                && Fct_Supervisors_Hours_Pieces[Shift] = s
+			        )
+			    ),
+			    0
+			)
+		formatString: #,0
+		lineageTag: 9dcf4646-26eb-4f75-802b-d9dac5297105
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'All in PPH Putaway CG' = DIVIDE('Fct_Supervisors_Hours_Pieces'[Date10_Trx_Sum_Unloading_Pieces],'Fct_Supervisors_Hours_Pieces'[Date10_Trx_Sum_Putaway_Unload_Hours])
+		formatString: 0.0
+		lineageTag: 694d17cd-5d11-41e6-a22a-9723f36b34d4
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Transaction_Pallet_Qty = ```
+			
+			CALCULATE(
+			    SUM('Fact_Transactions'[Pallet_Qty]),
+			    FILTER(
+			        ALL('Fact_Transactions'),  -- 清除 Fact_Transactions 表的上下文
+			        'Fact_Transactions'[shift_date] = 'Fct_Supervisors_Hours_Pieces'[Date] &&
+			        'Fact_Transactions'[employee_id] = 'Fct_Supervisors_Hours_Pieces'[Employee_ID] &&
+			        'Fact_Transactions'[pph_type] = 'Fct_Supervisors_Hours_Pieces'[PPH_Type] && 
+			        'Fact_Transactions'[product_category] = 'Fct_Supervisors_Hours_Pieces'[product_category] 
+			    )
+			)
+			```
+		formatString: #,0
+		lineageTag: a07daaf6-e067-4895-b121-5311fbd44c52
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date11_Putaway_CG_by_Pallet_Qty = ```
+			
+			VAR d = Fct_Supervisors_Hours_Pieces[Date]
+			VAR s = Fct_Supervisors_Hours_Pieces[Shift]
+			RETURN
+			IF (
+			    //Fct_Supervisors_Hours[PPH_Type] = "Unloading" &&
+			        LEFT(Fct_Supervisors_Hours_Pieces[Group], 2) = "CG",
+			    CALCULATE (
+			        SUM ( Fct_Supervisors_Hours_Pieces[Transaction_Pallet_Qty]),
+			        FILTER (
+			            ALL ( Fct_Supervisors_Hours_Pieces ),
+			            Fct_Supervisors_Hours_Pieces[Date] = d
+			                && Fct_Supervisors_Hours_Pieces[PPH_Type] IN {                   
+			                    "Picking-SCOOP","Put away","Replenishment"                
+			                }
+			                && LEFT ( Fct_Supervisors_Hours_Pieces[Group], 2) = "CG"
+			                && Fct_Supervisors_Hours_Pieces[Shift] = s
+			        )
+			    ),
+			    0
+			)
+			```
+		formatString: #,0.00
+		lineageTag: ef0bb56f-d126-493e-b504-9e0869008d88
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date11_Putaway_CG_by_Pallet_Hours = ```
+			
+			VAR d = Fct_Supervisors_Hours_Pieces[Date]
+			VAR s = Fct_Supervisors_Hours_Pieces[Shift]
+			VAR IsRowOK =
+			    LEFT(Fct_Supervisors_Hours_Pieces[Group], 2) = "CG"
+			        // && Fct_Supervisors_Hours[PPH_Type] IN {
+			        //     "Put away","Unloading"
+			        // }
+			RETURN
+			IF (
+			    IsRowOK,
+			    CALCULATE (
+			        SUM ( Fct_Supervisors_Hours_Pieces[Final_Hrs_All_In] ),
+			        FILTER (
+			            ALL ( Fct_Supervisors_Hours_Pieces ),
+			            Fct_Supervisors_Hours_Pieces[Date] = d
+			                && LEFT ( Fct_Supervisors_Hours_Pieces[Group], 2 ) = "CG"
+			                && Fct_Supervisors_Hours_Pieces[PPH_Type] IN {                   
+			                    "Picking-SCOOP","Put away","Replenishment","Unloading"               
+			                }
+			                && Fct_Supervisors_Hours_Pieces[Shift] = s
+			        )
+			    ),
+			    0
+			)
+			```
+		formatString: 0.0
+		lineageTag: 1d640f79-63b8-4e10-8429-3fa179f61214
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'All in PPH Put away CG by Pallet' = DIVIDE('Fct_Supervisors_Hours_Pieces'[Date11_Putaway_CG_by_Pallet_Qty],'Fct_Supervisors_Hours_Pieces'[Date11_Putaway_CG_by_Pallet_Hours])
+		formatString: #,0
+		lineageTag: b559b409-1fa2-423d-81e5-c00170c9f636
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Group_Date_Transaction_Pallet_Qty_Sum =
+			
+			CALCULATE(
+			    SUM(Fct_Supervisors_Hours_Pieces[Transaction_Pallet_Qty]),
+			    ALLEXCEPT(Fct_Supervisors_Hours_Pieces, Fct_Supervisors_Hours_Pieces[Group], Fct_Supervisors_Hours_Pieces[Date])
+			)
+		formatString: 0
+		lineageTag: b33b62d9-4902-49b0-9876-dd3bac499221
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Group_Date_Team_Avg_Transaction_Pallet_Qty = ```
+			
+			VAR CurrentTeam = 'Fct_Supervisors_Hours_Pieces'[Team]
+			VAR CurrentPPHType = 'Fct_Supervisors_Hours_Pieces'[PPH_Type]
+			VAR AvgValue = 
+			    IF(
+			        NOT(ISBLANK(CurrentTeam)) && CurrentTeam <> "0" && NOT(ISBLANK(CurrentPPHType)),
+			        CALCULATE(
+			            DIVIDE(
+			                SUM('Fct_Supervisors_Hours_Pieces'[Transaction_Pallet_Qty]),
+			                COUNTROWS('Fct_Supervisors_Hours_Pieces')
+			            ),
+			            ALLEXCEPT('Fct_Supervisors_Hours_Pieces', 'Fct_Supervisors_Hours_Pieces'[Group],'Fct_Supervisors_Hours_Pieces'[Date], 'Fct_Supervisors_Hours_Pieces'[Team])
+			        ),
+			        'Fct_Supervisors_Hours_Pieces'[Transaction_Pallet_Qty]
+			    )
+			RETURN
+			    AvgValue
+			```
+		lineageTag: 524760ac-511f-45fb-9c5b-0a1ad635c4b3
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Date12_SCOOP_by_Pallet_Qty = ```
+			
+			VAR d = Fct_Supervisors_Hours_Pieces[Date]
+			VAR s = Fct_Supervisors_Hours_Pieces[Shift]
+			RETURN
+			IF (
+			    //Fct_Supervisors_Hours[PPH_Type] = "Unloading" &&
+			        LEFT(Fct_Supervisors_Hours_Pieces[Group], 2) = "CG",
+			    CALCULATE (
+			        SUM ( Fct_Supervisors_Hours_Pieces[Transaction_Pallet_Qty]),
+			        FILTER (
+			            ALL ( Fct_Supervisors_Hours_Pieces ),
+			            Fct_Supervisors_Hours_Pieces[Date] = d
+			                && Fct_Supervisors_Hours_Pieces[PPH_Type] IN {                   
+			                    "Picking-SCOOP"                
+			                }
+			                && LEFT ( Fct_Supervisors_Hours_Pieces[Group], 2) = "CG"
+			                && Fct_Supervisors_Hours_Pieces[Shift] = s
+			        )
+			    ),
+			    0
+			)
+			```
+		formatString: #,0.0
+		lineageTag: 4ea0f2c8-a18e-49b8-ac9b-11904804f354
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date12_SCOOP_by_Pallet_Hours = ```
+			
+			VAR d = Fct_Supervisors_Hours_Pieces[Date]
+			VAR s = Fct_Supervisors_Hours_Pieces[Shift]
+			VAR IsRowOK =
+			    LEFT(Fct_Supervisors_Hours_Pieces[Group], 2) = "CG"
+			        // && Fct_Supervisors_Hours[PPH_Type] IN {
+			        //     "Put away","Unloading"
+			        // }
+			RETURN
+			IF (
+			    IsRowOK,
+			    CALCULATE (
+			        SUM ( Fct_Supervisors_Hours_Pieces[Final_Hrs_All_In] ),
+			        FILTER (
+			            ALL ( Fct_Supervisors_Hours_Pieces ),
+			            Fct_Supervisors_Hours_Pieces[Date] = d
+			                && LEFT ( Fct_Supervisors_Hours_Pieces[Group], 2 ) = "CG"
+			                && Fct_Supervisors_Hours_Pieces[PPH_Type] IN {                   
+			                    "Picking-SCOOP","Put away","Replenishment","Unloading"               
+			                }
+			                && Fct_Supervisors_Hours_Pieces[Shift] = s
+			        )
+			    ),
+			    0
+			)
+			```
+		formatString: 0.0
+		lineageTag: 5cd55ea5-1d4c-4cde-ba3e-26f47f48d128
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'All in PPH SCOOP Pick by Pallet' = DIVIDE('Fct_Supervisors_Hours_Pieces'[Date12_SCOOP_by_Pallet_Qty],'Fct_Supervisors_Hours_Pieces'[Date12_SCOOP_by_Pallet_Hours])
+		lineageTag: e89e44e5-150b-46b2-a366-4665b2130e16
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Group_Date_Team_by_Pallet_PPH = DIVIDE('Fct_Supervisors_Hours_Pieces'[Group_Date_Team_Avg_Transaction_Pallet_Qty],'Fct_Supervisors_Hours_Pieces'[Group_Date_Team_Avg_Hrs])
+		formatString: #,0
+		lineageTag: ec62b5d0-4910-416a-8bf9-ee8745547e94
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column I04_Date_Replenish_Avg_Trx_Pieces = ```
+			
+			VAR d  = Fct_Supervisors_Hours_Pieces[Date]
+			VAR s  = Fct_Supervisors_Hours_Pieces[Shift]
+			VAR t  = Fct_Supervisors_Hours_Pieces[Team]
+			VAR isReplenishment =  Fct_Supervisors_Hours_Pieces[PPH_Type] = "Replenishment"
+			RETURN
+			IF (
+			    isReplenishment,
+			    CALCULATE (
+			        AVERAGE ( Fct_Supervisors_Hours_Pieces[Transaction_Pieces] ),
+			        FILTER (
+			            ALL ( Fct_Supervisors_Hours_Pieces ),
+			            Fct_Supervisors_Hours_Pieces[Date] = d
+			                && Fct_Supervisors_Hours_Pieces[Team] = t
+			                && Fct_Supervisors_Hours_Pieces[Shift] = s
+			                && Fct_Supervisors_Hours_Pieces[PPH_Type] = "Replenishment"
+			                && LEFT ( Fct_Supervisors_Hours_Pieces[Group], 2 ) = "CG"
+			        )
+			    ),
+			    BLANK ()
+			)
+			
+			```
+		lineageTag: a3cee0be-c654-4e43-b9b4-cd82314c117c
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column I04_Date_Replenish_Avg_Trx_Hours = ```
+			
+			VAR d  = Fct_Supervisors_Hours_Pieces[Date]
+			VAR s  = Fct_Supervisors_Hours_Pieces[Shift]
+			VAR t  = Fct_Supervisors_Hours_Pieces[Team]
+			VAR isReplenishment =  Fct_Supervisors_Hours_Pieces[PPH_Type] = "Replenishment"
+			RETURN
+			IF (
+			    isReplenishment,
+			    CALCULATE (
+			        AVERAGE ( Fct_Supervisors_Hours_Pieces[Final_Hrs_Individual] ),
+			        FILTER (
+			            ALL ( Fct_Supervisors_Hours_Pieces ),
+			            Fct_Supervisors_Hours_Pieces[Date] = d
+			                && Fct_Supervisors_Hours_Pieces[Team] = t
+			                && Fct_Supervisors_Hours_Pieces[Shift] = s
+			                && Fct_Supervisors_Hours_Pieces[PPH_Type] = "Replenishment"
+			                && LEFT ( Fct_Supervisors_Hours_Pieces[Group], 2 ) = "CG"
+			        )
+			    ),
+			    BLANK ()
+			)
+			
+			```
+		formatString: #,0.0
+		lineageTag: 75d12aa2-190d-46e7-bfdc-9b775766f308
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'I04_Replenishment PPH' = DIVIDE('Fct_Supervisors_Hours_Pieces'[I04_Date_Replenish_Avg_Trx_Pieces],'Fct_Supervisors_Hours_Pieces'[I04_Date_Replenish_Avg_Trx_Hours])
+		formatString: 0.0
+		lineageTag: 4f20accc-31bb-4c26-9eb0-826c1f1590ad
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column I08_Date_CG_Putaway_Avg_Trx_Pallets = ```
+			
+			VAR d  = Fct_Supervisors_Hours_Pieces[Date]
+			VAR s  = Fct_Supervisors_Hours_Pieces[Shift]
+			VAR t  = Fct_Supervisors_Hours_Pieces[Team]
+			VAR isCG = LEFT ( Fct_Supervisors_Hours_Pieces[Group], 2 ) = "CG"
+			VAR isPutaway = Fct_Supervisors_Hours_Pieces[PPH_Type] = "Put away"
+			RETURN
+			IF (
+			    isCG && isPutaway,                              -- 先决条件：当前行必须是 CG 且 PPH_Type=Put away
+			    CALCULATE (
+			        AVERAGE ( Fct_Supervisors_Hours_Pieces[Transaction_Pallet_Qty] ),
+			        FILTER (
+			            ALL ( Fct_Supervisors_Hours_Pieces ),
+			            Fct_Supervisors_Hours_Pieces[Date]  = d &&
+			            Fct_Supervisors_Hours_Pieces[Team]  = t &&
+			            Fct_Supervisors_Hours_Pieces[Shift] = s &&
+			            Fct_Supervisors_Hours_Pieces[PPH_Type] = "Put away" &&
+			            LEFT ( Fct_Supervisors_Hours_Pieces[Group], 2 ) = "CG"
+			        )
+			    ),
+			    BLANK ()
+			)
+			
+			```
+		lineageTag: 818aa053-447c-4447-b2ab-140eb7e03d37
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column I08_Date_CG_Putaway_Avg_Trx_Hours = ```
+			
+			VAR d  = Fct_Supervisors_Hours_Pieces[Date]
+			VAR s  = Fct_Supervisors_Hours_Pieces[Shift]
+			VAR t  = Fct_Supervisors_Hours_Pieces[Team]
+			VAR isCG = LEFT ( Fct_Supervisors_Hours_Pieces[Group], 2 ) = "CG"
+			VAR isPutaway = Fct_Supervisors_Hours_Pieces[PPH_Type] = "Put away"
+			RETURN
+			IF (
+			    isCG && isPutaway,                              -- 先决条件：当前行必须是 CG 且 PPH_Type=Put away
+			    CALCULATE (
+			        AVERAGE ( Fct_Supervisors_Hours_Pieces[Final_Hrs_Individual] ),
+			        FILTER (
+			            ALL ( Fct_Supervisors_Hours_Pieces ),
+			            Fct_Supervisors_Hours_Pieces[Date]  = d &&
+			            Fct_Supervisors_Hours_Pieces[Team]  = t &&
+			            Fct_Supervisors_Hours_Pieces[Shift] = s &&
+			            Fct_Supervisors_Hours_Pieces[PPH_Type] = "Put away" &&
+			            LEFT ( Fct_Supervisors_Hours_Pieces[Group], 2 ) = "CG"
+			        )
+			    ),
+			    BLANK ()
+			)
+			
+			
+			```
+		formatString: #,0.0
+		lineageTag: f6d9ea28-f06a-447c-b989-8c28353fd711
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'I08_CG Put away PPH by Pallet' = ```
+			DIVIDE(Fct_Supervisors_Hours_Pieces[I08_Date_CG_Putaway_Avg_Trx_Pallets],Fct_Supervisors_Hours_Pieces[I08_Date_CG_Putaway_Avg_Trx_Hours],0)
+			
+			```
+		formatString: #,0.0
+		lineageTag: 21ba43ff-c5d0-44ba-a10d-4ed5fa43af1c
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'I10_Scooppick PPH Pieces' =
+			
+			VAR d  = Fct_Supervisors_Hours_Pieces[Date]
+			VAR s  = Fct_Supervisors_Hours_Pieces[Shift]
+			VAR t  = Fct_Supervisors_Hours_Pieces[Team]
+			VAR isCG = LEFT ( Fct_Supervisors_Hours_Pieces[Group], 2 ) = "CG"
+			VAR isPutaway = Fct_Supervisors_Hours_Pieces[PPH_Type] = "Picking-SCOOP"
+			RETURN
+			IF (
+			    isCG && isPutaway,                              -- 先决条件：当前行必须是 CG 且 PPH_Type=Picking-SCOOP
+			    CALCULATE (
+			        AVERAGE ( Fct_Supervisors_Hours_Pieces[Transaction_Pieces] ),
+			        FILTER (
+			            ALL ( Fct_Supervisors_Hours_Pieces ),
+			            Fct_Supervisors_Hours_Pieces[Date]  = d &&
+			            Fct_Supervisors_Hours_Pieces[Team]  = t &&
+			            Fct_Supervisors_Hours_Pieces[Shift] = s &&
+			            Fct_Supervisors_Hours_Pieces[PPH_Type] = "Picking-SCOOP" &&
+			            LEFT ( Fct_Supervisors_Hours_Pieces[Group], 2 ) = "CG"
+			        )
+			    ),
+			    BLANK ()
+			)
+		lineageTag: 06ee85b0-90f6-4523-b0e3-16209c255a09
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'I10_Scooppick PPH Hours' =
+			
+			VAR d  = Fct_Supervisors_Hours_Pieces[Date]
+			VAR s  = Fct_Supervisors_Hours_Pieces[Shift]
+			VAR t  = Fct_Supervisors_Hours_Pieces[Team]
+			VAR isCG = LEFT ( Fct_Supervisors_Hours_Pieces[Group], 2 ) = "CG"
+			VAR isPutaway = Fct_Supervisors_Hours_Pieces[PPH_Type] = "Picking-SCOOP"
+			RETURN
+			IF (
+			    isCG && isPutaway,                              -- 先决条件：当前行必须是 CG 且 PPH_Type=Picking-SCOOP
+			    CALCULATE (
+			        AVERAGE ( Fct_Supervisors_Hours_Pieces[Final_Hrs_Individual] ),
+			        FILTER (
+			            ALL ( Fct_Supervisors_Hours_Pieces ),
+			            Fct_Supervisors_Hours_Pieces[Date]  = d &&
+			            Fct_Supervisors_Hours_Pieces[Team]  = t &&
+			            Fct_Supervisors_Hours_Pieces[Shift] = s &&
+			            Fct_Supervisors_Hours_Pieces[PPH_Type] = "Picking-SCOOP" &&
+			            LEFT ( Fct_Supervisors_Hours_Pieces[Group], 2 ) = "CG"
+			        )
+			    ),
+			    BLANK ()
+			)
+		formatString: #,0.0
+		lineageTag: d709aae0-8f8f-45c6-bc8e-52ea0a8f0a1d
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'I10_Scooppick PPH' = DIVIDE('Fct_Supervisors_Hours_Pieces'[I10_Scooppick PPH Pieces],'Fct_Supervisors_Hours_Pieces'[I10_Scooppick PPH Hours],0)
+		formatString: #,0.0
+		lineageTag: c13e5b82-8342-4c72-999a-9616a664551c
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'I11_Scookpick PPH by pallet Qty' =
+			
+			VAR d  = Fct_Supervisors_Hours_Pieces[Date]
+			VAR s  = Fct_Supervisors_Hours_Pieces[Shift]
+			VAR t  = Fct_Supervisors_Hours_Pieces[Team]
+			VAR isCG = LEFT ( Fct_Supervisors_Hours_Pieces[Group], 2 ) = "CG"
+			VAR isPutaway = Fct_Supervisors_Hours_Pieces[PPH_Type] = "Picking-SCOOP"
+			RETURN
+			IF (
+			    isCG && isPutaway,                              -- 先决条件：当前行必须是 CG 且 PPH_Type=Picking-SCOOP
+			    CALCULATE (
+			        AVERAGE ( Fct_Supervisors_Hours_Pieces[Transaction_Pallet_Qty] ),
+			        FILTER (
+			            ALL ( Fct_Supervisors_Hours_Pieces ),
+			            Fct_Supervisors_Hours_Pieces[Date]  = d &&
+			            Fct_Supervisors_Hours_Pieces[Team]  = t &&
+			            Fct_Supervisors_Hours_Pieces[Shift] = s &&
+			            Fct_Supervisors_Hours_Pieces[PPH_Type] = "Picking-SCOOP" &&
+			            LEFT ( Fct_Supervisors_Hours_Pieces[Group], 2 ) = "CG"
+			        )
+			    ),
+			    BLANK ()
+			)
+		formatString: 0
+		lineageTag: ada1b31c-02f1-456c-84ae-562eb72f30e4
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'I11_Scookpick PPH by pallet Hours' =
+			
+			VAR d  = Fct_Supervisors_Hours_Pieces[Date]
+			VAR s  = Fct_Supervisors_Hours_Pieces[Shift]
+			VAR t  = Fct_Supervisors_Hours_Pieces[Team]
+			VAR isCG = LEFT ( Fct_Supervisors_Hours_Pieces[Group], 2 ) = "CG"
+			VAR isPutaway = Fct_Supervisors_Hours_Pieces[PPH_Type] = "Picking-SCOOP"
+			RETURN
+			IF (
+			    isCG && isPutaway,                              -- 先决条件：当前行必须是 CG 且 PPH_Type=Picking-SCOOP
+			    CALCULATE (
+			        AVERAGE ( Fct_Supervisors_Hours_Pieces[Final_Hrs_Individual] ),
+			        FILTER (
+			            ALL ( Fct_Supervisors_Hours_Pieces ),
+			            Fct_Supervisors_Hours_Pieces[Date]  = d &&
+			            Fct_Supervisors_Hours_Pieces[Team]  = t &&
+			            Fct_Supervisors_Hours_Pieces[Shift] = s &&
+			            Fct_Supervisors_Hours_Pieces[PPH_Type] = "Picking-SCOOP" &&
+			            LEFT ( Fct_Supervisors_Hours_Pieces[Group], 2 ) = "CG"
+			        )
+			    ),
+			    BLANK ()
+			)
+		formatString: #,0.0
+		lineageTag: 4610e30f-8baa-44af-a1f0-33e23d4c01af
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'I11_Scookpick PPH by pallet' = DIVIDE('Fct_Supervisors_Hours_Pieces'[I11_Scookpick PPH by pallet Qty],'Fct_Supervisors_Hours_Pieces'[I11_Scookpick PPH by pallet Hours],0)
+		formatString: #,0
+		lineageTag: 5a8df0ba-1273-4bc7-b209-ab160e0e6f78
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonth = RELATED(Dim_Calendar[YearMonth])
+		formatString: 0
+		lineageTag: e339d8e2-3fe0-44a1-8c54-99b0925bc2d8
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearWeek = RELATED(Dim_Calendar[YearWeek])
+		formatString: 0
+		lineageTag: 701a0ccb-1788-4afb-b12a-b18e26d7cc78
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekSaturday = RELATED(Dim_Calendar[WeekSaturday])
+		formatString: Short Date
+		lineageTag: a3eb7e71-6547-4e0b-9396-51b7f9db34eb
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: 56e8f416-294b-4c77-9357-5b2a9c27711c
+			defaultHierarchy: LocalDateTable_6d660a9b-99c3-48bc-ad8b-fb481858e6a6.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Fct_Supervisors_Hours_Pieces = m
+		mode: import
+		source = ```
+				let
+				    // 连接到 SharePoint 文件
+				    Source = SharePoint.Files("https://masterashley.sharepoint.com/sites/AsiaWarehouseOperations/", [ApiVersion = 15]),
+				    
+				    // 筛选指定文件夹及其子文件夹下的文件
+				    #"Filtered Folder" = Table.SelectRows(Source, each Text.StartsWith([Folder Path], "https://masterashley.sharepoint.com/sites/AsiaWarehouseOperations/Shared Documents/Ashton/Four Box/Ashton_PPH/")),
+				    
+				    // 仅筛选 .xlsx 文件
+				    #"Excel Files Only" = Table.SelectRows(#"Filtered Folder", each Text.EndsWith([Name], ".xlsx")),
+				    
+				    // 展开二进制内容
+				    #"Added Custom" = Table.AddColumn(#"Excel Files Only", "Excel Tables", each Excel.Workbook([Content])),
+				    
+				    // 展开 Excel 表格
+				    #"Expanded Excel Tables" = Table.ExpandTableColumn(#"Added Custom", "Excel Tables", {"Data", "Item", "Kind", "Hidden"}, {"Data", "Item", "Kind", "Hidden"}),
+				    
+				    // 仅保留名为 "DATA" 的工作表
+				    #"Filtered Sheets" = Table.SelectRows(#"Expanded Excel Tables", each [Item] = "DATA"),
+				    
+				    // 展开数据内容 - 修正参数
+				    #"Expanded Data" = Table.ExpandTableColumn(#"Filtered Sheets", "Data", Table.ColumnNames(#"Filtered Sheets"[Data]{0})),
+				    
+				    // 添加源文件信息列
+				    #"Added Source Info" = Table.AddColumn(#"Expanded Data", "Source File", each [Name], type text),
+				    #"Added Folder Info" = Table.AddColumn(#"Added Source Info", "Source Folder", each [Folder Path], type text),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Added Folder Info",{"Column1", "Column2", "Column3", "Column4", "Column5", "Column6", "Column7", "Column8", "Column9", "Column10", "Source File", "Source Folder"}),
+				
+				// Add an index column for row manipulation
+				#"Added Index" = Table.AddIndexColumn(#"Removed Other Columns", "Row Index", 1, 1),
+				// Modify the first 5 rows of File Date to be a placeholder
+				#"Modified First 1 Rows Source File" = Table.AddColumn(
+				    #"Added Index", 
+				    "Source_File", 
+				    each if [Row Index] <= 1
+				        then "Source_File" 
+				        else Text.From([Source File]), 
+				    type text
+				),
+				    #"Modified First 1 Rows Source Folder" = Table.AddColumn(
+				    #"Modified First 1 Rows Source File", 
+				    "Source_Folder", 
+				    each if [Row Index] <= 1
+				        then "Source_Folder" 
+				        else Text.From([Source Folder]), 
+				    type text
+				),
+				    #"Removed Columns" = Table.RemoveColumns(#"Modified First 1 Rows Source Folder",{"Source File", "Source Folder", "Row Index"}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Removed Columns", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Group", type text}, {"Date", type any}, {"Employee_ID", type any}, {"Name", type text}, {"Team", type any}, {"PPH_Type", type text}, {"Final_Hrs_All_In", type any}, {"Final_Hrs_Individual", type any}, {"Shift", type text}, {"Position", type text}, {"Source_Folder", type text}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each ([Date] <> null and [Date] <> "Date")),
+				    
+				    // 将Date列转换为日期类型
+				    #"Changed Date Type" = Table.TransformColumnTypes(#"Filtered Rows",{{"Date", type date}}),
+				    
+				    // 筛选最近7天的数据
+				    // #"Filtered Last 7 Days" = Table.SelectRows(#"Changed Date Type", 
+				    //     each [Date] >= Date.AddDays(Date.From(DateTime.LocalNow()), -31) and 
+				    //          [Date] <= Date.From(DateTime.LocalNow())),
+				    
+				    #"Filtered Last 7 Days" = Table.SelectRows(#"Changed Date Type", 
+				    each [Date] >= #date(2025, 1, 1) and 
+				         [Date] <= Date.From(DateTime.LocalNow())),
+				    
+				    // 将Employee_ID转换为文本类型
+				    #"Changed Employee_ID Type" = Table.TransformColumnTypes(#"Filtered Last 7 Days",{{"Employee_ID", type text}}),
+				    
+				    // 格式化Employee_ID为5位字符，不足补0
+				    #"Formatted Employee_ID" = Table.TransformColumns(#"Changed Employee_ID Type", {
+				        {"Employee_ID", each if _ = null then null else Text.PadStart(Text.From(_), 5, "0")}
+				    }),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Formatted Employee_ID",{{"Employee_ID", type text}}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Changed Type1",{"Source_File", "Source_Folder"}),
+				    
+				    // 在"Removed Columns1"步骤后添加以下步骤：
+				
+				    #"Added Product Column" = Table.AddColumn(#"Removed Columns1", "product_category", each 
+				    if Text.StartsWith([Group], "CG") then "CG"
+				    else if Text.StartsWith([Group], "UPH") then "UPH" 
+				    else "CG/UPH"
+				),
+				    #"Added Custom2" = Table.AddColumn(#"Added Product Column", "HJ_Transaction_Pieces", each GetTotalPieces([Date],[Employee_ID],[PPH_Type],[product_category])),
+				    #"Removed Columns2" = Table.RemoveColumns(#"Added Custom2",{"HJ_Transaction_Pieces"})
+				
+				in
+				    #"Removed Columns2"
+				```
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

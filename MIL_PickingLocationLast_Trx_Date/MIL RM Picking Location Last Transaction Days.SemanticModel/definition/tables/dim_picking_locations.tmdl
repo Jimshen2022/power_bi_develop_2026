@@ -1,0 +1,38 @@
+table dim_picking_locations
+	lineageTag: 307e8b83-a941-4443-b49d-4a8f6e9622c4
+
+	column LOCATION
+		dataType: string
+		lineageTag: 0025097b-d159-4b40-9ade-89bfe39daa97
+		summarizeBy: none
+		sourceColumn: LOCATION
+
+		annotation SummarizationSetBy = Automatic
+
+	column Building
+		dataType: string
+		lineageTag: e13fe9f9-0c4a-4701-ae08-995dfa0f605c
+		summarizeBy: none
+		sourceColumn: Building
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_picking_locations = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"5839814b-ec95-48ea-a07a-ec0241ac9946" = Workspaces{[workspaceId="5839814b-ec95-48ea-a07a-ec0241ac9946"]}[Data],
+				    #"019a0763-4e4b-4d36-abec-287422b65028" = #"5839814b-ec95-48ea-a07a-ec0241ac9946"{[dataflowId="019a0763-4e4b-4d36-abec-287422b65028"]}[Data],
+				    fct_picking_locations_ = #"019a0763-4e4b-4d36-abec-287422b65028"{[entity="fct_picking_locations",version=""]}[Data],
+				    #"Removed Duplicates" = Table.Distinct(fct_picking_locations_, {"LOCATION"})
+				in
+				    #"Removed Duplicates"
+
+	changedProperty = Name
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,23 @@
+table Dim_Team
+	lineageTag: a5816a2f-6882-4c7c-bba0-be2f01c7d22d
+
+	column Team
+		lineageTag: 43ab8b89-1bdf-459d-a4dd-a863a0106d73
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Fct_Supervisors_Hours_Pieces[Team]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Team = calculated
+		mode: import
+		source =
+				
+				FILTER(
+				    VALUES('Fct_Supervisors_Hours_Pieces'[Team]),
+				    NOT(ISBLANK('Fct_Supervisors_Hours_Pieces'[Team])) &&
+				    'Fct_Supervisors_Hours_Pieces'[Team] <> ""
+				)
+
+	annotation PBI_Id = 213707d2726746f8bb6f64b165baa745
+

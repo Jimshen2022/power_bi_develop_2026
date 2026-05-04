@@ -1,0 +1,3 @@
+
+UNION(SUMMARIZECOLUMNS('Fact_Transactions'[emp_date_job_string],'Fact_Transactions'[pph_type],'Fact_Transactions'[shift],"Final Hour/Individual",0,"Final Hour/All in PPH",0,"pieces",SUM(Fact_Transactions[pieces])),
+SUMMARIZECOLUMNS('Fac_PPH_Hours'[emp_date_job_string],'Fac_PPH_Hours'[Combined_PPH_Type],"Shift","","Final Hour/Individual",sum('Fac_PPH_Hours'[Final Hour/Individual]),"Final Hour/All in PPH",SUM('Fac_PPH_Hours'[Final Hour/All in PPH]),"pieces",0))

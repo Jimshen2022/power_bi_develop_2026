@@ -1,0 +1,326 @@
+table F_Ashton_Locations
+	lineageTag: 42a02935-2c56-4635-8a13-8efa9bfdbfd5
+
+	column Bay
+		dataType: int64
+		formatString: 0
+		lineageTag: 0f552022-4965-40a8-88ea-d93b7582b5d8
+		summarizeBy: sum
+		sourceColumn: Bay
+
+		annotation SummarizationSetBy = Automatic
+
+	column 67th
+		dataType: string
+		lineageTag: b4aafd32-98a3-4e26-a39b-b971915aa2d0
+		summarizeBy: none
+		sourceColumn: 67th
+
+		annotation SummarizationSetBy = Automatic
+
+	column Side
+		dataType: string
+		lineageTag: 6fb5519a-9441-4aee-9880-e870dd1ea0aa
+		summarizeBy: none
+		sourceColumn: Side
+
+		annotation SummarizationSetBy = Automatic
+
+	column 6th
+		dataType: string
+		lineageTag: 47c74d61-ed42-4028-a1bf-e576d87f89ee
+		summarizeBy: none
+		sourceColumn: 6th
+
+		annotation SummarizationSetBy = Automatic
+
+	column Aisle
+		dataType: int64
+		formatString: 0
+		lineageTag: 433dcfa1-39b2-48b5-bfd9-32baa25866cb
+		summarizeBy: sum
+		sourceColumn: Aisle
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tier
+		dataType: int64
+		formatString: 0
+		lineageTag: ea05fa4c-2f62-4ca1-a89a-393e8cd0537a
+		summarizeBy: sum
+		sourceColumn: Tier
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Warehouse ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: d017beb4-5d54-468f-ad90-e4559aca7fad
+		summarizeBy: count
+		sourceColumn: Warehouse ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Location ID'
+		dataType: string
+		lineageTag: 1482b8d9-0fc7-4861-a004-471ddf48b374
+		summarizeBy: none
+		sourceColumn: Location ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: string
+		lineageTag: bc840ffb-2882-47dd-bc52-535295c3ee79
+		summarizeBy: none
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: e73112d9-8aa7-46b1-91b4-05ed1c02661d
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Picking Flow'
+		dataType: int64
+		formatString: 0
+		lineageTag: 44395f91-d240-4c23-838b-9bbd27910cac
+		summarizeBy: sum
+		sourceColumn: Picking Flow
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Pick Area'
+		dataType: string
+		lineageTag: 174d94d2-ad28-4d1a-892e-484a7eab0d4e
+		summarizeBy: none
+		sourceColumn: Pick Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Capacity Volume'
+		dataType: int64
+		formatString: 0
+		lineageTag: 640ce5ab-604f-4821-b326-20409a1b4d99
+		summarizeBy: sum
+		sourceColumn: Capacity Volume
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item Hu Indicator'
+		dataType: string
+		lineageTag: 3e3f90e1-7cdf-4fe6-8c7d-f409994ac857
+		summarizeBy: none
+		sourceColumn: Item Hu Indicator
+
+		annotation SummarizationSetBy = Automatic
+
+	column Loc_Control_Value
+		dataType: string
+		lineageTag: 03af7239-36e9-4ab4-827d-82c62c1d473b
+		summarizeBy: none
+		sourceColumn: Loc_Control_Value
+
+		annotation SummarizationSetBy = Automatic
+
+	column Width
+		dataType: double
+		lineageTag: bfad94ed-8fc8-4bfb-ab49-fa951f15bfbb
+		summarizeBy: sum
+		sourceColumn: Width
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Height
+		dataType: double
+		lineageTag: 57f3c42b-216b-4b45-bd88-81f6d36fa3f2
+		summarizeBy: sum
+		sourceColumn: Height
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Depth
+		dataType: double
+		lineageTag: 74cc7bbd-0aa7-4e4e-81cf-1a633600ecb6
+		summarizeBy: sum
+		sourceColumn: Depth
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Loc_CBM
+		dataType: double
+		lineageTag: 046b7866-fe7b-4a83-ba76-a31f7f2d5066
+		summarizeBy: sum
+		sourceColumn: Loc_CBM
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Location Pallet Type'
+		dataType: string
+		lineageTag: 3c0fbfac-257f-44e7-9e40-c18a5a81d9a9
+		summarizeBy: none
+		sourceColumn: Location Pallet Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location_Pallets_Capacity
+		dataType: int64
+		formatString: 0
+		lineageTag: 2dae326b-5a9c-4ab8-9374-303a972bc43e
+		summarizeBy: sum
+		sourceColumn: Location_Pallets_Capacity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Avg. Pieces/Pallet'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0b8c8c71-2c37-4ae2-b526-409e51076f5e
+		summarizeBy: sum
+		sourceColumn: Avg. Pieces/Pallet
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Capacity(By Pieces)'
+		dataType: int64
+		formatString: 0
+		lineageTag: 10c26a9d-4522-49c0-a0b6-973d325d7f9e
+		summarizeBy: sum
+		sourceColumn: Capacity(By Pieces)
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sub_Area_2
+		dataType: string
+		lineageTag: f6ed5b3c-97f3-41e8-b199-cab767d53d1d
+		summarizeBy: none
+		sourceColumn: Sub_Area_2
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sub_Area_1
+		dataType: string
+		lineageTag: 25b94703-a45f-483b-b693-0e3571cb0f69
+		summarizeBy: none
+		sourceColumn: Sub_Area_1
+
+		annotation SummarizationSetBy = Automatic
+
+	column Area
+		dataType: string
+		lineageTag: 51fb26af-e639-4958-90a7-cff404647607
+		summarizeBy: none
+		sourceColumn: Area
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Area Avg.CBM/Pieces'
+		dataType: double
+		lineageTag: fca4121f-2157-4261-a545-b88f609037b3
+		summarizeBy: sum
+		sourceColumn: Area Avg.CBM/Pieces
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Switch
+		dataType: string
+		lineageTag: 5dd79e80-15bc-4a13-9d97-4569512883ca
+		summarizeBy: none
+		sourceColumn: Switch
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location_CBM
+		dataType: double
+		lineageTag: 7983035c-ebc1-42e2-9e13-72c254f96097
+		summarizeBy: sum
+		sourceColumn: Location_CBM
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Product_OnHand
+		dataType: int64
+		formatString: #,0
+		lineageTag: 6d843370-e895-451e-a227-78ad60c375a2
+		summarizeBy: sum
+		sourceColumn: Product_OnHand
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product_CBM
+		dataType: double
+		lineageTag: 7ae69b88-5f3c-4139-96b5-430eb1e97f94
+		summarizeBy: sum
+		sourceColumn: Product_CBM
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Product_Pallets_Qty
+		dataType: int64
+		formatString: 0
+		lineageTag: 703f9ba0-5d63-440a-b9b6-9241e97945f0
+		summarizeBy: sum
+		sourceColumn: Product_Pallets_Qty
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item_Multiplied_Strings
+		dataType: string
+		lineageTag: 224470a7-968a-4104-9651-8b8737e767e0
+		summarizeBy: none
+		sourceColumn: Item_Multiplied_Strings
+
+		annotation SummarizationSetBy = Automatic
+
+	partition F_Ashton_Locations = m
+		mode: import
+		source = ```
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"8edf7929-ae1a-4e4e-8b6a-f955dc7f1f4d" = Workspaces{[workspaceId="8edf7929-ae1a-4e4e-8b6a-f955dc7f1f4d"]}[Data],
+				    #"93f65813-ee08-4da2-a9a8-0e133553b720" = #"8edf7929-ae1a-4e4e-8b6a-f955dc7f1f4d"{[dataflowId="93f65813-ee08-4da2-a9a8-0e133553b720"]}[Data],
+				    F_Ashton_Locations_ = #"93f65813-ee08-4da2-a9a8-0e133553b720"{[entity="F_Ashton_Locations",version=""]}[Data],
+				    #"Merged Queries" = Table.NestedJoin(F_Ashton_Locations_, {"Location ID"}, F_STO, {"location_id"}, "F_STO", JoinKind.LeftOuter),
+				    #"Expanded F_STO" = Table.ExpandTableColumn(#"Merged Queries", "F_STO", {"item_number", "actual_qty", "CBM", "actual_pallet_Qty"}, {"item_number", "actual_qty", "CBM", "actual_pallet_Qty"}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Expanded F_STO",null,0,Replacer.ReplaceValue,{"actual_qty", "CBM", "actual_pallet_Qty"}),
+				   // #"Grouped Rows" = Table.Group(#"Replaced Value", {"Bay", "67th", "Side", "6th", "Aisle", "Tier", "Warehouse ID", "Location ID", "Type", "Status", "Picking Flow", "Pick Area", "Capacity Volume", "Item Hu Indicator", "Loc_Control_Value", "Width", "Height", "Depth", "Loc_CBM", "Location Pallet Type", "Location_Pallets_Capacity", "Avg. Pieces/Pallet", "Capacity(By Pieces)", "Sub_Area_2", "Sub_Area_1", "Area", "Area Avg.CBM/Pieces", "Switch", "Location_Pallets_CBM"}, {{"Product_OnHand", each List.Sum([actual_qty]), type nullable number}, {"Product_CBM", each List.Sum([CBM]), type nullable number}, {"Product_Pallets_Qty", each List.Sum([actual_pallet_Qty]), type nullable number}}),
+				    #"Added Product Qty String" = Table.AddColumn(#"Replaced Value", "Product_Multiplied_String", each Text.From([item_number]) & "*" & Text.From([actual_qty]) & "pcs", type text),
+				    #"Grouped Rows" = Table.Group(
+				        #"Added Product Qty String", 
+				        {"Bay", "67th", "Side", "6th", "Aisle", "Tier", "Warehouse ID", "Location ID", "Type", "Status", "Picking Flow", "Pick Area", "Capacity Volume", "Item Hu Indicator", "Loc_Control_Value", "Width", "Height", "Depth", "Loc_CBM", "Location Pallet Type", "Location_Pallets_Capacity", "Avg. Pieces/Pallet", "Capacity(By Pieces)", "Sub_Area_2", "Sub_Area_1", "Area", "Area Avg.CBM/Pieces", "Switch", "Location_Pallets_CBM"},
+				        {
+				            {"Product_OnHand", each List.Sum([actual_qty]), type nullable number}, 
+				            {"Product_CBM", each List.Sum([CBM]), type nullable number}, 
+				            {"Product_Pallets_Qty", each List.Sum([actual_pallet_Qty]), type nullable number},
+				            {"Item_Multiplied_Strings", each Text.Combine([Product_Multiplied_String], ", "), type text}
+				        }
+				    ),   
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Grouped Rows",{{"Product_OnHand", Int64.Type}, {"Product_Pallets_Qty", Int64.Type}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type2",{{"Location_Pallets_CBM", "Location_CBM"}})
+				in
+				    #"Renamed Columns"
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

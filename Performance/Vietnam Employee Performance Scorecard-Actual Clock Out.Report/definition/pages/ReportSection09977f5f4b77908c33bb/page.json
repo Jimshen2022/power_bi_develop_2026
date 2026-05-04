@@ -1,0 +1,78 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "ReportSection09977f5f4b77908c33bb",
+  "displayName": "Break Detail",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filter0ac3e24942840e052347",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Summed Process Report"
+              }
+            },
+            "Property": "Break Hours"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "Filter7cd8df2c20481d90c2b3",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Summed Process Report"
+              }
+            },
+            "Property": "Break Over Hours"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "Pod19",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "Param_Filter0ac3e24942840e052347",
+        "boundFilter": "Filter0ac3e24942840e052347",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Summed Process Report"
+              }
+            },
+            "Property": "Break Hours"
+          }
+        }
+      },
+      {
+        "name": "Param_Filter7cd8df2c20481d90c2b3",
+        "boundFilter": "Filter7cd8df2c20481d90c2b3",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Summed Process Report"
+              }
+            },
+            "Property": "Break Over Hours"
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode",
+  "type": "Drillthrough"
+}

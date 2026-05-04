@@ -1,0 +1,27 @@
+table A_Measure
+	lineageTag: dce75d22-8eb7-40e7-8225-eda6921edf31
+
+	measure 'Picking Exceptions(Major)' = CALCULATE(COUNT('ashton_picking_exception_hj_sql_server_df'[tran_qty]),FILTER('ashton_picking_exception_hj_sql_server_df','ashton_picking_exception_hj_sql_server_df'[exception_severity]="Major"))
+		formatString: #,0
+		lineageTag: 67585fab-ed88-48f0-b3f0-0817283f5f4c
+
+	measure 'Putaway Exceptions(Major)' = CALCULATE(sum('ashton_putaway_exception_hj_sql_server_df'[quantity]),FILTER('ashton_putaway_exception_hj_sql_server_df','ashton_putaway_exception_hj_sql_server_df'[exception_severity]="Major"))
+		formatString: #,0
+		lineageTag: d5fa1392-013e-4c85-88f1-3014812d5ca8
+
+	measure 'Employee PIV Check Times Counted' = sum('Employee PIV Check Performed Counted'[equipment_count])
+		formatString: 0
+		lineageTag: 81dbe6e1-2460-49c4-81ba-f34c6ec45da1
+
+	partition A_Measure = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

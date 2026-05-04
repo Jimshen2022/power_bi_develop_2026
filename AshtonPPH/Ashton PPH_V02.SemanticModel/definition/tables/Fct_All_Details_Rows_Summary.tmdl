@@ -1,0 +1,151 @@
+table Fct_All_Details_Rows_Summary
+	lineageTag: ad5b845e-5a2d-4a16-a908-05110ea5b173
+
+	column Date
+		formatString: Short Date
+		lineageTag: 761b12fb-c00e-4cd2-85b7-5495a0ecc827
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Dim_Calendar[Date]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Employee_ID
+		lineageTag: 92337eb9-633c-43f2-9f1d-344a5b976195
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Dim_Employee_[Employee_ID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Employee_Name
+		lineageTag: 8ccb9f11-73ef-4f4a-85e6-25460b978070
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Dim_Employee_[Employee_Name]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Position
+		lineageTag: 17709a61-ed4f-42d3-b6af-42feee16d6d5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Dim_Position[Position]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MetricName
+		lineageTag: da28b96a-4afa-4098-bab7-c27e96307995
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Dim_Metric[MetricName]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PPH Metric Value'
+		formatString: #,0.00
+		lineageTag: f716e397-79a6-4b87-b601-ffccfb9a2a0e
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [PPH Metric Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Goal
+		formatString: 0
+		lineageTag: 3ca3d7a4-404e-4ee7-95ab-c5686f987216
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Goal]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Achievement%
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		lineageTag: fe8ca2a7-5f10-4183-83d9-1f70246d367e
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Achievement%]
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearWeek = ```
+			
+			RELATED ( 'Dim_Calendar'[YearWeek] )
+			
+			```
+		formatString: 0
+		lineageTag: 28ec47df-e459-4e99-ac09-8dfe9eb744de
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonth =
+			
+			RELATED ( 'Dim_Calendar'[YearMonth] )
+		formatString: 0
+		lineageTag: 00021d19-3a7a-47b6-9acc-75f7aa4cba8a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearSaturday = ```
+			
+			RELATED ( 'Dim_Calendar'[WeekSaturday] )
+			
+			```
+		formatString: Short Date
+		lineageTag: 7f536370-6e58-42af-8eca-60771c6ae382
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: b1150e8c-3a18-46fd-917a-68834517e0f8
+			defaultHierarchy: LocalDateTable_b86c50ad-fe11-4891-9a77-45a29a95806f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Shift
+		lineageTag: f7c3c3b7-26bf-4dd4-bd0b-ca984c62e5eb
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Dim_Shift[Shift]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fct_All_Details_Rows_Summary = calculated
+		mode: import
+		source = ```
+				
+				VAR BaseRows =
+				    SUMMARIZECOLUMNS(
+				        'Dim_Calendar'[Date],            -- 日期
+				        'Dim_Employee_'[Employee_ID],     -- 员工ID
+				        'Dim_Employee_'[Employee_Name],   -- 员工姓名
+				        'Dim_Position'[Position],         -- 职位
+				        'Dim_Shift'[Shift],
+				        'Dim_Metric'[MetricName]          -- 指标名称
+				    )
+				VAR AddMeasures =
+				    ADDCOLUMNS(
+				        BaseRows,
+				        "PPH Metric Value", [PPH Metric Value],  
+				        "Goal",              [Goal],
+				        "Achievement%",      [Achievement%]
+				    )
+				RETURN
+				    FILTER(
+				        AddMeasures,
+				        NOT ISBLANK ( [PPH Metric Value] )   -- 只保留 metric value 有值的行
+				         && NOT CONTAINSSTRING ( 'Dim_Metric'[MetricName], "All in" )
+				    )
+				
+				
+				```
+
+	annotation PBI_Id = 9c9b412d213e41229a1341167ea7981e
+

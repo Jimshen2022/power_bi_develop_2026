@@ -1,0 +1,50 @@
+table 'Performance Goals'
+	lineageTag: 521ba96e-ecd4-4914-9ab8-c70e65150364
+
+	column Measure
+		dataType: string
+		lineageTag: 925a3731-322a-4259-8973-0fb89bb337b8
+		summarizeBy: none
+		sourceColumn: Measure
+
+		annotation SummarizationSetBy = Automatic
+
+	column Goal
+		dataType: double
+		formatString: 0.00
+		lineageTag: cb046e3a-b743-422b-881c-67b037f36957
+		summarizeBy: sum
+		sourceColumn: Goal
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Red is'
+		dataType: string
+		lineageTag: 7f0efd77-46e8-4053-a9bf-c7a4aaf0d757
+		summarizeBy: none
+		sourceColumn: Red is
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Number format'
+		dataType: double
+		formatString: 0.00
+		lineageTag: 0d3e005b-20e4-4724-8380-cfc29801266c
+		summarizeBy: sum
+		sourceColumn: Number format
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Performance Goals' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WcjNUcK1ITi0oyczPK1bSUTIFYvei1MSS1CKFkozEPIX8IoXUwtLEHIWSfLB0rA5QkzE5mszI0WRBjiZzMjS5JxYohGTmpipoeBQVawKF9Uwt0fRBBWNjAQ==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Measure = _t, Goal = _t, #"Red is" = _t, #"Number format" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Measure", type text}, {"Goal", type number}, {"Red is", type text}, {"Number format", type number}}),
+				    #"Sorted Rows" = Table.Sort(#"Changed Type",{{"Measure", Order.Ascending}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Sorted Rows",{{"Number format", type number}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_ResultType = Exception
+

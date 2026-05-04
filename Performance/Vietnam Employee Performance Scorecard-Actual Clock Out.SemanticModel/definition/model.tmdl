@@ -1,0 +1,79 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["F6 Letdowns","Calendar","Exceptions","Sup Lead List","SAM Overages","SAM Lock Values","Clock In Clock Out","Start & End of Day","Summed Process Report","pph","goals","GAP","Definition of Calculations","Performance Goals","Conditional Formatting Formulas","Indirect History","Pick Run Values","Battery Change","Start/End of Day","ashton_picking_exception_hj_sql_server_df","ashton_putaway_exception_hj_sql_server_df","dim_ashton_employee_information_hj_sql_server_df","A_Measure","Employee PIV Check Performed Counted"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_1d7a8866-2094-49c2-8e5a-0926f4a0974c
+ref table Calendar
+ref table LocalDateTable_2766e4ec-b0ba-4674-92a5-e6c22d8fb247
+ref table LocalDateTable_1ef2353f-94c5-436a-8c08-0a7a419f4a15
+ref table Exceptions
+ref table 'Clock In Clock Out'
+ref table LocalDateTable_188e1f1d-d89d-4dff-b429-91e6a7942fd0
+ref table LocalDateTable_3dff066b-5637-4655-8bad-810b583050c7
+ref table LocalDateTable_6e12f660-b642-463d-b568-7af492e1fd7e
+ref table 'Summed Process Report'
+ref table LocalDateTable_d1f44691-daf3-4621-a930-8ff3a111e6e4
+ref table LocalDateTable_8d3e7a1f-0bb8-4cc1-b0d8-0754209fdb5f
+ref table LocalDateTable_633f8970-8aa7-48e0-96d7-a94e985e9589
+ref table LocalDateTable_b8247e27-3edc-4f35-b3ac-3e5d2ae9d6c4
+ref table LocalDateTable_4aaab4c4-6928-4108-b923-c45a96a3eb93
+ref table LocalDateTable_0396acd2-c9a6-47c8-919e-b6470093ac85
+ref table LocalDateTable_027e22ec-c911-4e05-90f6-75b464d83460
+ref table LocalDateTable_bba36bd6-2329-4f60-ba58-6d212ac4fc6b
+ref table LocalDateTable_9efbd14c-dca2-4f94-bda6-4433d6d0c962
+ref table LocalDateTable_9024b111-c57f-4c7f-9f4f-e81c1441d404
+ref table GAP
+ref table LocalDateTable_ce5c8c59-39eb-44ff-949f-23d0be2fe7bc
+ref table LocalDateTable_0122b10c-88f5-458f-aec3-1e9860f2fece
+ref table LocalDateTable_6f11c1c5-ffe9-4174-acfa-1e00211308f0
+ref table LocalDateTable_54885b9d-e89e-4681-8fdf-f61381528c88
+ref table 'Performance Goals'
+ref table 'Conditional Formatting Formulas'
+ref table 'Indirect History'
+ref table LocalDateTable_6c5b1710-6a26-46e6-a040-6882be098710
+ref table LocalDateTable_9c1e4c98-eddf-431f-bae5-bf9a6d7ca8bc
+ref table LocalDateTable_9b1a9963-b893-4bde-882c-40746260bc98
+ref table LocalDateTable_28d5aee3-b4f8-4fb1-bcc2-13c84401ea68
+ref table LocalDateTable_b9596b4b-d3f2-4d9f-ac27-13b153c59c7f
+ref table LocalDateTable_3e724822-d839-4a44-a28b-f9e575e6630a
+ref table LocalDateTable_2f70afab-444c-4664-9931-766e226f5301
+ref table LocalDateTable_95744072-5140-40db-9376-030c64e95786
+ref table LocalDateTable_e8a6cb99-3895-4382-9d80-83f781f6f53b
+ref table 'Battery Change'
+ref table LocalDateTable_2f2f06d5-f8fb-4936-bfea-105a08cb136a
+ref table LocalDateTable_fa75ccf2-ef16-4ce5-b8e7-47936474ba5c
+ref table LocalDateTable_af64b35f-ecc9-4237-90da-4acf51586ba7
+ref table LocalDateTable_959aa935-97cd-42c0-aea9-43fa7284acbd
+ref table 'Definition of Calculations'
+ref table 'Start/End of Day'
+ref table LocalDateTable_79d7ef64-aa3b-48a6-870f-7bb97b65e47f
+ref table LocalDateTable_da581039-c5f4-49d7-89e4-905aea29568e
+ref table LocalDateTable_2bf48f06-208a-4c27-8f8f-64bfd31005cd
+ref table LocalDateTable_c197a1d8-91da-48ba-bd06-61f393012a30
+ref table LocalDateTable_d642b280-1d05-4ac7-804d-b4fd14edfe1a
+ref table LocalDateTable_6c1eb866-91a9-438b-92f5-62f671975009
+ref table LocalDateTable_f97887b0-00c9-4227-97c8-11f94f26c192
+ref table ashton_picking_exception_hj_sql_server_df
+ref table LocalDateTable_567824b1-581f-40df-877a-7f58bbeddce1
+ref table ashton_putaway_exception_hj_sql_server_df
+ref table LocalDateTable_65c4dbcf-344d-4f33-b69b-ed4e9ef40bd9
+ref table dim_ashton_employee_information_hj_sql_server_df
+ref table LocalDateTable_b7f7aa99-cfca-4940-835f-f1b1f72d8d40
+ref table LocalDateTable_b3b2ae16-9942-45a2-9ee5-a9354424afff
+ref table A_Measure
+ref table 'Employee PIV Check Performed Counted'
+ref table LocalDateTable_6907cb54-24eb-430b-9cb3-e9927502edf6
+ref table LocalDateTable_9e2fd9e9-fc55-40e2-a106-17021feb7f16
+
+ref cultureInfo en-US
+

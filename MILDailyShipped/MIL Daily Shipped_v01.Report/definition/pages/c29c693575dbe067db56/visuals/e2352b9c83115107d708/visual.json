@@ -1,0 +1,488 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "e2352b9c83115107d708",
+  "position": {
+    "x": 238.84648006785409,
+    "y": 106.3952502120441,
+    "z": 0,
+    "height": 613.401187446989,
+    "width": 1041.1535199321459,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_mil_loading_audit"
+                    }
+                  },
+                  "Property": "Date"
+                }
+              },
+              "queryRef": "fct_mil_loading_audit.Date",
+              "nativeQueryRef": "Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_mil_loading_audit"
+                    }
+                  },
+                  "Property": "DWFDOORNUMBER"
+                }
+              },
+              "queryRef": "Sum(fct_mil_loading_audit.DWFDOORNUMBER)",
+              "nativeQueryRef": "Door#",
+              "displayName": "Door#"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_mil_loading_audit"
+                    }
+                  },
+                  "Property": "DWFCONTAINERNUMBER"
+                }
+              },
+              "queryRef": "fct_mil_loading_audit.DWFCONTAINERNUMBER",
+              "nativeQueryRef": "Container Number",
+              "displayName": "Container Number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_mil_loading_audit"
+                    }
+                  },
+                  "Property": "DWFFINISHITEM"
+                }
+              },
+              "queryRef": "fct_mil_loading_audit.DWFFINISHITEM",
+              "nativeQueryRef": "Item Number",
+              "displayName": "Item Number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_mil_loading_audit"
+                    }
+                  },
+                  "Property": "DWFROWNUMBER"
+                }
+              },
+              "queryRef": "Sum(fct_mil_loading_audit.DWFROWNUMBER)",
+              "nativeQueryRef": "DWFROWNUMBER",
+              "displayName": "ROW#"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_mil_loading_audit"
+                        }
+                      },
+                      "Property": "CARTONS"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_mil_loading_audit.CARTONS)",
+              "nativeQueryRef": "Cartons",
+              "displayName": "Cartons"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "fct_mil_loading_audit"
+                        }
+                      },
+                      "Property": "KITS"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(fct_mil_loading_audit.KITS)",
+              "nativeQueryRef": "Kits",
+              "displayName": "Kits"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fct_mil_loading_audit"
+                    }
+                  },
+                  "Property": "WCHDESTINATION"
+                }
+              },
+              "queryRef": "fct_mil_loading_audit.WCHDESTINATION",
+              "nativeQueryRef": "Destination",
+              "displayName": "Destination"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "fct_mil_loading_audit"
+                  }
+                },
+                "Property": "Date"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {}
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fct_mil_loading_audit.Date"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fct_mil_loading_audit.DWFCONTAINERNUMBER"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Left'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fct_mil_loading_audit.DWFFINISHITEM"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(fct_mil_loading_audit.DWFROWNUMBER)"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(fct_mil_loading_audit.CARTONS)"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(fct_mil_loading_audit.KITS)"
+          }
+        },
+        {
+          "properties": {
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fct_mil_loading_audit.WCHDESTINATION"
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "173.99503722084367D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fct_mil_loading_audit.DWFCONTAINERNUMBER"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "147.1712158808933D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fct_mil_loading_audit.DWFFINISHITEM"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "110.51736695739962D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(fct_mil_loading_audit.DWFROWNUMBER)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "114.94932904291821D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(fct_mil_loading_audit.CARTONS)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "105.87925120309025D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(fct_mil_loading_audit.KITS)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "169.8800539062278D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fct_mil_loading_audit.Date"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "127.94061068001909D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "fct_mil_loading_audit.WCHDESTINATION"
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

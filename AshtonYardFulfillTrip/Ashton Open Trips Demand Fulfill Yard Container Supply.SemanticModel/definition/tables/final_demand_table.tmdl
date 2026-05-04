@@ -1,0 +1,132 @@
+table final_demand_table
+	lineageTag: f0e23a1a-d435-4046-85b6-af322426fb07
+
+	column dispatch_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6bb2e96a-ee66-491b-b735-432e693cdb61
+		summarizeBy: none
+		sourceColumn: dispatch_date
+
+		variation Variation
+			isDefault
+			relationship: 2be0e40f-0e26-4399-8c5c-ded861d57e15
+			defaultHierarchy: LocalDateTable_55b418e7-4df4-408e-a159-d122f9c15fba.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_number
+		dataType: string
+		lineageTag: 5e924990-1bd7-4a03-8c91-270332ae0e6e
+		summarizeBy: none
+		sourceColumn: item_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column trip_number
+		dataType: string
+		lineageTag: 8a52872a-74c7-4f0a-b442-bad14eea7aee
+		summarizeBy: none
+		sourceColumn: trip_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column ldm_status
+		dataType: string
+		lineageTag: 9797ab3a-3b76-4ef7-a1f5-08fb7beac7fd
+		summarizeBy: none
+		sourceColumn: ldm_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column trip_needed
+		dataType: int64
+		formatString: #,0
+		lineageTag: 093ddbd3-4a3c-4f14-9dd5-904651ea59ba
+		summarizeBy: sum
+		sourceColumn: trip_needed
+
+		annotation SummarizationSetBy = Automatic
+
+	column trip_picked
+		dataType: int64
+		formatString: 0
+		lineageTag: 73229d6b-fb81-47df-b6bd-9896ae08f13f
+		summarizeBy: sum
+		sourceColumn: trip_picked
+
+		annotation SummarizationSetBy = Automatic
+
+	column trip_demand_qty
+		dataType: int64
+		formatString: 0
+		lineageTag: 2188e053-0848-423b-b7d8-912a0a05674d
+		summarizeBy: sum
+		sourceColumn: trip_demand_qty
+
+		annotation SummarizationSetBy = Automatic
+
+	column Allocated_Supply_Qty
+		dataType: int64
+		formatString: #,0
+		lineageTag: a8b745c6-254f-48e4-8a02-06a88efecff0
+		summarizeBy: sum
+		sourceColumn: Allocated_Supply_Qty
+
+		annotation SummarizationSetBy = Automatic
+
+	column Allocated_Supply_Details
+		dataType: string
+		lineageTag: a37a20b7-9a79-4649-8882-53281acc166e
+		summarizeBy: none
+		sourceColumn: Allocated_Supply_Details
+
+		annotation SummarizationSetBy = Automatic
+
+	column Allocated_Status
+		dataType: string
+		lineageTag: 12855cb8-76ca-4db1-8e47-6eb9185ae878
+		summarizeBy: none
+		sourceColumn: Allocated_Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fulfill_Rate
+		dataType: double
+		formatString: 0%;-0%;0%
+		lineageTag: da5309fa-9bc3-4884-9b22-63ae48931f92
+		summarizeBy: sum
+		sourceColumn: Fulfill_Rate
+
+		annotation SummarizationSetBy = Automatic
+
+	column Allocated_Container_Count
+		dataType: string
+		lineageTag: e4cbcec1-91f1-4c50-b37c-635184124d99
+		summarizeBy: none
+		sourceColumn: Allocated_Container_Count
+
+		annotation SummarizationSetBy = Automatic
+
+	column SKUs
+		dataType: string
+		lineageTag: aa99fd9c-c615-4007-8437-ecc6a7409b1c
+		summarizeBy: none
+		sourceColumn: SKUs
+
+		annotation SummarizationSetBy = Automatic
+
+	partition final_demand_table = m
+		mode: import
+		source =
+				let
+				    Source = Python.Execute("import pandas as pd#(lf)import pyodbc#(lf)from datetime import datetime#(lf)import os#(lf)#(lf)# ==========================================#(lf)# 1. 数据库连接配置#(lf)# ==========================================#(lf)SERVER = 'AshtonWHJSQLprod'#(lf)DATABASE = 'AAD'#(lf)#(lf)def get_connection_string():#(lf)    driver = '{ODBC Driver 17 for SQL Server}'#(lf)    return (#(lf)        f""DRIVER={driver};""#(lf)        f""SERVER={SERVER};""#(lf)        f""DATABASE={DATABASE};""#(lf)        f""Trusted_Connection=yes;""#(lf)        f""Encrypt=yes;""#(lf)        f""TrustServerCertificate=yes;""#(lf)    )#(lf)#(lf)def get_db_connection():#(lf)    try:#(lf)        conn_str = get_connection_string()#(lf)        return pyodbc.connect(conn_str)#(lf)    except Exception:#(lf)        return None#(lf)#(lf)# ==========================================#(lf)# 2. 数据获取函数#(lf)# ==========================================#(lf)def get_demand_data(conn):#(lf)    demand_sql = """"""#(lf)                 WITH TripDemand AS (SELECT DATEADD(SECOND, DATEDIFF(SECOND, 0, ldm.dispatch_time), \#(lf)                                                    ldm.dispatch_date) AS dispatch_date, \#(lf)                                            orb.item_number, \#(lf)                                            ldm.load_id                AS trip_number, \#(lf)                                            ldm.status                 AS ldm_status, \#(lf)                                            SUM(orb.qty)               AS trip_needed, \#(lf)                                            ISNULL(pkd.picked_qty, 0)  AS trip_picked \#(lf)                                     FROM t_load_master ldm WITH (NOLOCK) \#(lf)                                              JOIN t_order orm WITH (NOLOCK) \#(lf)                                                   ON ldm.load_id = orm.load_id \#(lf)                                                       AND ldm.wh_id = orm.wh_id \#(lf)                                              JOIN t_order_detail_breakdown orb WITH (NOLOCK) \#(lf)                                                   ON orm.order_number = orb.order_number \#(lf)                                                       AND orm.wh_id = orb.wh_id \#(lf)                                              LEFT JOIN (SELECT load_id, \#(lf)                                                                item_number, \#(lf)                                                                SUM(picked_quantity) AS picked_qty \#(lf)                                                         FROM t_pick_detail WITH (NOLOCK) \#(lf)                                                         WHERE picked_quantity > 0 \#(lf)                                                           AND load_id IS NOT NULL \#(lf)                                                         GROUP BY load_id, \#(lf)                                                                  item_number) pkd \#(lf)                                                        ON ldm.load_id = pkd.load_id \#(lf)                                                            AND orb.item_number = pkd.item_number \#(lf)                                     WHERE ldm.wh_id = '335' \#(lf)                                       AND DATEADD(SECOND, DATEDIFF(SECOND, 0, ldm.dispatch_time), ldm.dispatch_date) \#(lf)                                         >= DATEADD(MONTH, -1, GETDATE()) \#(lf)                                       AND DATEADD(SECOND, DATEDIFF(SECOND, 0, ldm.dispatch_time), ldm.dispatch_date) \#(lf)                                         < DATEADD(DAY, 1, CAST(DATEADD(MONTH, 1, GETDATE()) AS DATE)) \#(lf)                                       AND ldm.status NOT IN ('S', 'X', 'C') \#(lf)                                       AND ldm.load_type = 'B' \#(lf)                                     GROUP BY DATEADD(SECOND, DATEDIFF(SECOND, 0, ldm.dispatch_time), \#(lf)                                                      ldm.dispatch_date), \#(lf)                                              orb.item_number, \#(lf)                                              ldm.load_id, \#(lf)                                              ldm.status, \#(lf)                                              pkd.picked_qty)#(lf)                 SELECT dispatch_date, item_number, trip_number, ldm_status, trip_needed, trip_picked, (trip_needed - trip_picked) AS trip_demand_qty#(lf)                 FROM TripDemand#(lf)                 WHERE (trip_needed - trip_picked) > 0;#(lf)                 """"""#(lf)    return pd.read_sql(demand_sql, conn)#(lf)#(lf)def get_supply_data(conn):#(lf)    supply_sql = """"""#(lf)                 SELECT trl.equipment_id                           AS container_number, \#(lf)                        ad.item_number, \#(lf)                        SUM(ad.quantity_shipped - ad.quantity_received) AS unreceived_qty, \#(lf)                        trl.entered_yard                           AS check_into_yard_time#(lf)                 FROM t_trailer trl WITH (NOLOCK)#(lf)                          JOIN t_trailer_asn tasn WITH (NOLOCK)#(lf)                               ON trl.trailer_id = tasn.trailer_id#(lf)                          JOIN t_asn a WITH (NOLOCK)#(lf)                               ON tasn.asn_id = a.asn_id#(lf)                          JOIN t_asn_detail ad WITH (NOLOCK)#(lf)                               ON a.asn_id = ad.asn_id#(lf)                 WHERE a.status IN ('CHECKED IN')#(lf)                 GROUP BY trl.equipment_id, ad.item_number, trl.entered_yard;#(lf)                 """"""#(lf)    return pd.read_sql(supply_sql, conn)#(lf)#(lf)# ==========================================#(lf)# 3. 分配逻辑#(lf)# ==========================================#(lf)def run_allocation(demand_df, supply_df):#(lf)    if demand_df.empty or supply_df.empty:#(lf)        return []#(lf)    allocations = []#(lf)    supply_available = supply_df.copy()#(lf)    supply_available['allocated_qty'] = 0#(lf)    supply_grouped = supply_available.groupby('item_number')#(lf)#(lf)    for _, demand_row in demand_df.iterrows():#(lf)        item_needed = demand_row['item_number']#(lf)        demand_qty = demand_row['trip_demand_qty']#(lf)        if demand_qty <= 0:#(lf)            continue#(lf)        if item_needed in supply_grouped.groups:#(lf)            supply_indices = supply_grouped.get_group(item_needed).index#(lf)            for sup_idx in supply_indices:#(lf)                available_qty = supply_available.loc[sup_idx, 'unreceived_qty'] - supply_available.loc[sup_idx, 'allocated_qty']#(lf)                if available_qty > 0:#(lf)                    qty_to_allocate = min(demand_qty, available_qty)#(lf)                    allocations.append({#(lf)                        'trip_number': demand_row['trip_number'],#(lf)                        'dispatch_date': demand_row['dispatch_date'],#(lf)                        'item_number': item_needed,#(lf)                        'container_number': supply_available.loc[sup_idx, 'container_number'],#(lf)                        'allocated_qty': qty_to_allocate#(lf)                    })#(lf)                    supply_available.loc[sup_idx, 'allocated_qty'] += qty_to_allocate#(lf)                    demand_qty -= qty_to_allocate#(lf)                    if demand_qty == 0:#(lf)                        break#(lf)    return allocations#(lf)#(lf)# ==========================================#(lf)# 4. Sheet 处理函数#(lf)# ==========================================#(lf)def process_demand_sheet(demand_df, allocations_df):#(lf)    # 计算每个 trip 的 SKU 数量#(lf)    trip_sku_count = demand_df.groupby('trip_number')['item_number'].nunique().reset_index(name='SKUs')#(lf)#(lf)    if allocations_df.empty:#(lf)        result = demand_df.copy()#(lf)        result['Allocated_Supply_Qty'] = 0#(lf)        result['Allocated_Supply_Details'] = None#(lf)        result['Allocated_Status'] = 'trip no item in yard'#(lf)        result['Fulfill_Rate'] = 0.0#(lf)        result['Allocated_Container_Count'] = 0#(lf)        result = pd.merge(result, trip_sku_count, on='trip_number', how='left')#(lf)        return result#(lf)#(lf)    alloc_details = allocations_df.copy()#(lf)    alloc_details['detail_str'] = alloc_details.apply(#(lf)        lambda row: f""{row['container_number']} * {int(row['allocated_qty'])}"", axis=1#(lf)    )#(lf)#(lf)    details_summary = alloc_details.groupby(['trip_number', 'item_number'])['detail_str'] \#(lf)        .apply(lambda x: '; '.join(x)).reset_index(name='Allocated_Supply_Details')#(lf)    qty_summary = alloc_details.groupby(['trip_number', 'item_number'])['allocated_qty'] \#(lf)        .sum().reset_index(name='Allocated_Supply_Qty')#(lf)#(lf)    # 每个 trip-item 分配到的容器数量#(lf)    container_count = alloc_details.groupby(['trip_number', 'item_number'])['container_number'] \#(lf)        .nunique().reset_index(name='Allocated_Container_Count')#(lf)#(lf)    alloc_summary = pd.merge(qty_summary, details_summary, on=['trip_number', 'item_number'], how='left')#(lf)    alloc_summary = pd.merge(alloc_summary, container_count, on=['trip_number', 'item_number'], how='left')#(lf)#(lf)    demand_result = pd.merge(demand_df, alloc_summary, on=['trip_number', 'item_number'], how='left')#(lf)    demand_result['Allocated_Supply_Qty'] = demand_result['Allocated_Supply_Qty'].fillna(0)#(lf)    demand_result['Allocated_Container_Count'] = demand_result['Allocated_Container_Count'].fillna(0).astype(int)#(lf)#(lf)    trip_summary = demand_result.groupby('trip_number').agg(#(lf)        total_demand=('trip_demand_qty', 'sum'),#(lf)        total_allocated=('Allocated_Supply_Qty', 'sum')#(lf)    ).reset_index()#(lf)    trip_summary['Fulfill_Rate'] = (trip_summary['total_allocated'] / trip_summary['total_demand']).fillna(0)#(lf)#(lf)    def get_trip_status(row):#(lf)        if row['total_allocated'] == 0:#(lf)            return 'trip no item in yard'#(lf)        elif row['total_allocated'] >= row['total_demand']:#(lf)            return 'Trip is ready by yard container'#(lf)        else:#(lf)            return 'trip cannot fulfill by yard container'#(lf)#(lf)    trip_summary['Allocated_Status'] = trip_summary.apply(get_trip_status, axis=1)#(lf)#(lf)    demand_result = pd.merge(#(lf)        demand_result,#(lf)        trip_summary[['trip_number', 'Allocated_Status', 'Fulfill_Rate']],#(lf)        on='trip_number', how='left'#(lf)    )#(lf)#(lf)    # 合并 SKU 数量#(lf)    demand_result = pd.merge(demand_result, trip_sku_count, on='trip_number', how='left')#(lf)#(lf)    # 将 Allocated_Supply_Details 移到最后一列#(lf)    cols = [c for c in demand_result.columns if c != 'Allocated_Supply_Details'] + ['Allocated_Supply_Details']#(lf)    demand_result = demand_result[cols]#(lf)#(lf)    return demand_result#(lf)#(lf)#(lf)def process_supply_sheet(supply_df, allocations_df):#(lf)    # 计算每个容器的 SKU 数量#(lf)    container_sku_count = supply_df.groupby('container_number')['item_number'].nunique().reset_index(name='SKUs')#(lf)#(lf)    if allocations_df.empty:#(lf)        result = supply_df.copy()#(lf)        result['Allocated_Demand_Qty'] = 0#(lf)        result['Allocated_Demand_Details'] = None#(lf)        result['Allocated_Status'] = 'yard container items no demand'#(lf)        result['Fulfill_Rate'] = 0.0#(lf)        result['Trip_Counted'] = 0#(lf)        result['max_trip_dispatch_date'] = None#(lf)        result = pd.merge(result, container_sku_count, on='container_number', how='left')#(lf)        return result#(lf)#(lf)    alloc_details = allocations_df.copy()#(lf)    alloc_details['dispatch_date_str'] = pd.to_datetime(alloc_details['dispatch_date']).dt.strftime('%Y-%m-%d')#(lf)    alloc_details['detail_str'] = alloc_details.apply(#(lf)        lambda row: f""{row['trip_number']} * {int(row['allocated_qty'])} * {row['dispatch_date_str']}"", axis=1#(lf)    )#(lf)#(lf)    details_summary = alloc_details.groupby(['container_number', 'item_number'])['detail_str'] \#(lf)        .apply(lambda x: '; '.join(x)).reset_index(name='Allocated_Demand_Details')#(lf)    qty_summary = alloc_details.groupby(['container_number', 'item_number'])['allocated_qty'] \#(lf)        .sum().reset_index(name='Allocated_Demand_Qty')#(lf)#(lf)    alloc_summary = pd.merge(qty_summary, details_summary, on=['container_number', 'item_number'], how='left')#(lf)    supply_result = pd.merge(supply_df, alloc_summary, on=['container_number', 'item_number'], how='left')#(lf)#(lf)    # 容器级别聚合：总 unreceived、总分配量、trip 数量、最晚发车时间#(lf)    container_trip_stats = alloc_details.groupby('container_number').agg(#(lf)        Trip_Counted=('trip_number', 'nunique'),#(lf)        max_trip_dispatch_date=('dispatch_date', 'max')#(lf)    ).reset_index()#(lf)#(lf)    container_summary = supply_result.groupby('container_number').agg(#(lf)        total_unreceived=('unreceived_qty', 'sum'),#(lf)        total_allocated=('Allocated_Demand_Qty', 'sum')#(lf)    ).reset_index()#(lf)    container_summary['total_allocated'] = container_summary['total_allocated'].fillna(0)#(lf)    container_summary['Fulfill_Rate'] = (#(lf)        container_summary['total_allocated'] / container_summary['total_unreceived']#(lf)    ).fillna(0)#(lf)#(lf)    def get_container_status(row):#(lf)        if row['total_allocated'] == 0:#(lf)            return 'yard container items no demand'#(lf)        elif row['total_allocated'] >= row['total_unreceived']:#(lf)            return 'whole container ready for trips'#(lf)        else:#(lf)            return 'Partial container ready for trips'#(lf)#(lf)    container_summary['Allocated_Status'] = container_summary.apply(get_container_status, axis=1)#(lf)#(lf)    supply_result = pd.merge(#(lf)        supply_result,#(lf)        container_summary[['container_number', 'Allocated_Status', 'Fulfill_Rate']],#(lf)        on='container_number', how='left'#(lf)    )#(lf)    supply_result = pd.merge(supply_result, container_trip_stats, on='container_number', how='left')#(lf)    supply_result['Trip_Counted'] = supply_result['Trip_Counted'].fillna(0).astype(int)#(lf)#(lf)    # 合并 SKU 数量#(lf)    supply_result = pd.merge(supply_result, container_sku_count, on='container_number', how='left')#(lf)#(lf)    # 将 Allocated_Demand_Details 移到最后一列#(lf)    cols = [c for c in supply_result.columns if c != 'Allocated_Demand_Details'] + ['Allocated_Demand_Details']#(lf)    supply_result = supply_result[cols]#(lf)#(lf)    return supply_result#(lf)#(lf)# ==========================================#(lf)# 5. 执行入口#(lf)# ==========================================#(lf)conn = get_db_connection()#(lf)if conn:#(lf)    df_demand_raw = get_demand_data(conn)#(lf)    df_supply_raw = get_supply_data(conn)#(lf)    conn.close()#(lf)#(lf)    alloc_list = run_allocation(df_demand_raw, df_supply_raw)#(lf)    df_allocations = pd.DataFrame(alloc_list)#(lf)#(lf)    final_demand_table = process_demand_sheet(df_demand_raw, df_allocations)#(lf)    final_supply_table = process_supply_sheet(df_supply_raw, df_allocations)#(lf)else:#(lf)    final_demand_table = pd.DataFrame([{""Error"": ""DB Connection Failed""}])#(lf)    final_supply_table = pd.DataFrame([{""Error"": ""DB Connection Failed""}])#(lf)"),
+				    final_demand_table1 = Source{[Name="final_demand_table"]}[Value],
+				    #"Changed Type" = Table.TransformColumnTypes(final_demand_table1,{{"dispatch_date", type datetime}, {"item_number", type text}, {"trip_number", type text}, {"ldm_status", type text}, {"trip_needed", Int64.Type}, {"trip_picked", Int64.Type}, {"trip_demand_qty", Int64.Type}, {"Allocated_Supply_Qty", Int64.Type}, {"Allocated_Supply_Details", type text}, {"Allocated_Status", type text}, {"Fulfill_Rate", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

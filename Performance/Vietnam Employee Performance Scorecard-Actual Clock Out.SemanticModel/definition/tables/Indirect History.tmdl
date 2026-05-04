@@ -1,0 +1,323 @@
+table 'Indirect History'
+	lineageTag: fe6a32b1-403e-4167-9fe2-2f0186b66b86
+
+	measure '# of Battery Changes Approved' = CALCULATE(COUNT('Indirect History'[Activity Code]),FILTER('Indirect History','Indirect History'[Activity Code]="I104"),FILTER('Indirect History','Indirect History'[Approved or Rejected]="Approved"))
+		formatString: 0
+		lineageTag: 05d5d195-387f-4ebf-9fba-919ff6bc53dc
+
+	measure '# of Meeting' = CALCULATE(COUNT('Indirect History'[Activity Code]),FILTER('Indirect History','Indirect History'[Activity Code]="I101"))
+		formatString: 0
+		lineageTag: deeb0a11-3619-46d2-82bc-a9118bd65fba
+
+	measure '# of Clean Up' = CALCULATE(COUNT('Indirect History'[Activity Code]),FILTER('Indirect History','Indirect History'[Activity Code]="I102"))
+		formatString: 0
+		lineageTag: 5ef646a1-6cd8-44d1-9aa2-6ebf90798a43
+
+	measure '# of Flex & Stretch' = CALCULATE(COUNT('Indirect History'[Activity Code]),FILTER('Indirect History','Indirect History'[Activity Code]="I103"))
+		formatString: 0
+		lineageTag: bae32354-3039-4e86-8b55-7d3e463e9781
+
+	measure '# of Training' = CALCULATE(COUNT('Indirect History'[Activity Code]),FILTER('Indirect History','Indirect History'[Activity Code]="I109"))
+		formatString: 0
+		lineageTag: fc9d1f24-02f9-494b-ada4-dfb4d0a3f1b7
+
+	measure '# of Rework' = CALCULATE(COUNT('Indirect History'[Activity Code]),FILTER('Indirect History','Indirect History'[Activity Code]="I112"))
+		formatString: 0
+		lineageTag: 1d481e94-f1f2-4a46-a8ed-f4373ca9882f
+
+	measure '# of 2nd Flex & Stretch' = CALCULATE(COUNT('Indirect History'[Activity Code]),FILTER('Indirect History','Indirect History'[Activity Code]="I113"))
+		formatString: 0
+		lineageTag: c507fd8d-f028-4d68-aa5f-0f4556f237f4
+
+	measure '# of Help Ramp' = CALCULATE(COUNT('Indirect History'[Activity Code]),FILTER('Indirect History','Indirect History'[Activity Code]="I117"))
+		formatString: 0
+		lineageTag: 13953256-7931-477a-b8ea-d220a8a52c7e
+
+	measure 'Battery Change Time Approved' =
+			
+			
+			VAR BatteryChangeTimeApproved=
+			CALCULATE(AVERAGE('Indirect History'[Duration]),FILTER('Indirect History','Indirect History'[Activity Code]="I104"),FILTER('Indirect History','Indirect History'[Approved or Rejected]="Approved"))
+			
+			VAR Batterychangebyee = AVERAGEX(VALUES('Clock In Clock Out'[Employee Name]),BatteryChangeTimeApproved)
+			
+			VAR Batterychangebyworkday = AVERAGEX(VALUES('Clock In Clock Out'[Work Day]),Batterychangebyee)
+			
+			Return
+			Batterychangebyworkday
+		formatString: 0.00
+		lineageTag: f538dff1-418a-482e-a4d8-eb0186117728
+
+	measure 'Battery Change Time Rejected' =
+			
+			
+			VAR BatteryChangeTimeRejected=
+			CALCULATE(AVERAGE('Indirect History'[Duration]),FILTER('Indirect History','Indirect History'[Activity Code]="I104"),FILTER('Indirect History','Indirect History'[Approved or Rejected]="Rejected"))
+			
+			VAR Batterychangebyee = AVERAGEX(VALUES('Clock In Clock Out'[Employee Name]),BatteryChangeTimeRejected)
+			
+			VAR Batterychangebyworkday = AVERAGEX(VALUES('Clock In Clock Out'[Work Day]),Batterychangebyee)
+			
+			Return
+			Batterychangebyworkday
+		formatString: 0.00
+		lineageTag: ecd0ea9b-9a12-4032-ae51-c798ec07b518
+
+	measure '# of Battery Changes Rejected' = CALCULATE(COUNT('Indirect History'[Activity Code]),FILTER('Indirect History','Indirect History'[Activity Code]="I104"),FILTER('Indirect History','Indirect History'[Approved or Rejected]="Rejected"))
+		formatString: 0
+		lineageTag: 192243d1-efb0-4185-bcd5-a481ce5aefb2
+
+	measure 'Meeting Time' =
+			
+			
+			VAR Meetingtime=
+			CALCULATE(sum('Indirect History'[Duration]),FILTER('Indirect History','Indirect History'[Activity Code]="I101"))
+			
+			VAR meetingtimebyee = AVERAGEX(VALUES('Clock In Clock Out'[Employee Name]),Meetingtime)
+			
+			VAR meetingtimebyworkday = AVERAGEX(VALUES('Clock In Clock Out'[Work Day]),meetingtimebyee)
+			
+			Return
+			meetingtimebyworkday
+		lineageTag: 0ce75e34-9ed9-4174-9621-a11abff98086
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Training Time' =
+			
+			
+			VAR Trainingtime=
+			CALCULATE(sum('Indirect History'[Duration]),FILTER('Indirect History','Indirect History'[Activity Code]="I109"))
+			
+			VAR trainingtimebyee = AVERAGEX(VALUES('Clock In Clock Out'[Employee Name]),Trainingtime)
+			
+			VAR Trainingtimebyworkday = AVERAGEX(VALUES('Clock In Clock Out'[Work Day]),trainingtimebyee)
+			
+			Return
+			Trainingtimebyworkday
+		lineageTag: ec47c956-9d7a-4c2c-81c7-3332fecfd807
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Clean up Time' =
+			
+			
+			VAR Cleanuptime=
+			CALCULATE(sum('Indirect History'[Duration]),FILTER('Indirect History','Indirect History'[Activity Code]="I102"))
+			
+			VAR cleanuptimebyee = AVERAGEX(VALUES('Clock In Clock Out'[Employee Name]),Cleanuptime)
+			
+			VAR cleanuptimebyworkday = AVERAGEX(VALUES('Clock In Clock Out'[Work Day]),cleanuptimebyee)
+			
+			Return
+			cleanuptimebyworkday
+		lineageTag: cb1bcce4-c808-44ca-b3b6-4280c87d154d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Battery Change Time Both' =
+			
+			
+			VAR BatteryChangeTimeApproved=
+			CALCULATE(AVERAGE('Indirect History'[Duration]),FILTER('Indirect History','Indirect History'[Activity Code]="I104"))
+			
+			VAR Batterychangebyee = AVERAGEX(VALUES('Clock In Clock Out'[Employee Name]),BatteryChangeTimeApproved)
+			
+			VAR Batterychangebyworkday = AVERAGEX(VALUES('Clock In Clock Out'[Work Day]),Batterychangebyee)
+			
+			Return
+			Batterychangebyworkday
+		formatString: 0.00
+		lineageTag: 6b185729-79c3-49b6-92b6-c73c2f4d745a
+
+	column Name
+		dataType: string
+		lineageTag: f59df0e4-778b-4ce3-b56b-639c4ef2dd7c
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmployeeID
+		dataType: int64
+		formatString: 0
+		lineageTag: c09286ea-e735-4b23-b2fe-cfa545c95741
+		summarizeBy: count
+		sourceColumn: EmployeeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmployeeNumber
+		dataType: string
+		lineageTag: d881a308-2e60-496c-8358-47db3ffa355f
+		summarizeBy: none
+		sourceColumn: EmployeeNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column WarehouseID
+		dataType: string
+		lineageTag: e94c95a8-96f3-43af-9e89-ce1f2f2465da
+		summarizeBy: none
+		sourceColumn: WarehouseID
+
+		annotation SummarizationSetBy = Automatic
+
+	column WorkDay
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: e82c3b5b-3075-4fb1-9c14-4f4834f570b5
+		summarizeBy: none
+		sourceColumn: WorkDay
+
+		variation Variation
+			isDefault
+			relationship: 5ee57165-6a28-4c19-9ecc-a745ec527fc6
+			defaultHierarchy: LocalDateTable_6c5b1710-6a26-46e6-a040-6882be098710.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ActivityDescription
+		dataType: string
+		lineageTag: d00a9ac2-57f2-485b-93af-5229760a5ce4
+		summarizeBy: none
+		sourceColumn: ActivityDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column Duration
+		dataType: double
+		formatString: 0.00
+		lineageTag: fb1f661f-b3f0-4a75-a118-93cb2817d21a
+		summarizeBy: sum
+		sourceColumn: Duration
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProcessStart
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: be4c3822-44d1-474c-9bab-ec7c337280a3
+		summarizeBy: none
+		sourceColumn: ProcessStart
+
+		variation Variation
+			isDefault
+			relationship: 560ecfd7-3186-43e1-9f54-e24dd29fb209
+			defaultHierarchy: LocalDateTable_9c1e4c98-eddf-431f-bae5-bf9a6d7ca8bc.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProcessEnd
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4e3e9026-5328-47d7-a584-a6bdc7e926bb
+		summarizeBy: none
+		sourceColumn: ProcessEnd
+
+		variation Variation
+			isDefault
+			relationship: 51e51e33-c1b3-4da4-a6ea-3564c6c5a39b
+			defaultHierarchy: LocalDateTable_9b1a9963-b893-4bde-882c-40746260bc98.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClockIn
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7ac2c7bd-6fe5-4544-83fa-28e02d1d0c9a
+		summarizeBy: none
+		sourceColumn: ClockIn
+
+		variation Variation
+			isDefault
+			relationship: d021572c-7aea-41b6-b5b5-33873e4c39bb
+			defaultHierarchy: LocalDateTable_28d5aee3-b4f8-4fb1-bcc2-13c84401ea68.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClockOut
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ccd8c5ab-43b2-4179-bcd3-68700c2a954e
+		summarizeBy: none
+		sourceColumn: ClockOut
+
+		variation Variation
+			isDefault
+			relationship: 26445590-7367-4e66-858c-593edb802ed8
+			defaultHierarchy: LocalDateTable_b9596b4b-d3f2-4d9f-ac27-13b153c59c7f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Supervisor
+		dataType: string
+		lineageTag: 4182e5f9-78f2-425f-b65a-1742f320164e
+		summarizeBy: none
+		sourceColumn: Supervisor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Key
+		dataType: string
+		lineageTag: f97a6a36-a1f4-4c2e-bccc-c95b8ec7ac7b
+		summarizeBy: none
+		sourceColumn: Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column Source
+		dataType: string
+		lineageTag: b0f95474-f589-444a-9ab1-42d74538d804
+		summarizeBy: none
+		sourceColumn: Source
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProcessCode
+		dataType: string
+		lineageTag: 5ae54942-64f1-4f87-a2e8-c14559f0a6bd
+		summarizeBy: none
+		sourceColumn: ProcessCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Approved or Rejected'
+		dataType: string
+		lineageTag: 691a1f57-89d1-4b4d-ac53-b11d19a6c23d
+		summarizeBy: none
+		sourceColumn: Approved or Rejected
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Activity Code'
+		dataType: string
+		lineageTag: e0440806-7cc8-41ed-9ad7-c5789a66dc2c
+		summarizeBy: none
+		sourceColumn: Activity Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Approver = IF('Indirect History'[Source] IN {"WA MESSAGE","YA MESSAGE"}, 'Indirect History'[Supervisor],'Indirect History'[Source])
+		lineageTag: 90f4d465-dfe9-4840-b06b-a01b6d3d60da
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Indirect History' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("ashley-edw.database.windows.net", "ASHLEY_EDW", [Query="SELECT  [Name]#(lf)      ,[EmployeeID]#(lf)      ,[EmployeeNumber]#(lf)      ,[WarehouseID]#(lf)      ,[WorkDay]#(lf)      ,[ActivityDescription]#(lf)      ,[Duration]#(lf)      ,[ProcessStart]#(lf)      ,[ProcessEnd]#(lf)      ,[ClockIn]#(lf)      ,[ClockOut]#(lf)      ,[Supervisor]#(lf)      ,[Source]#(lf)      ,[ProcessCode]#(lf)  FROM [PowerBI_Distribution].[IndirectHistory]#(lf)  where cast ([workday] as date)>DATEADD(DAY, -15, GETDATE())#(lf)  and [WarehouseID] IN ('335','35')", CreateNavigationProperties=false, CommandTimeout=#duration(0, 2, 40, 0)]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"WorkDay", type date}}),
+				    #"Inserted Merged Column" = Table.AddColumn(#"Changed Type", "Key", each Text.Combine({[WarehouseID], [EmployeeNumber], Text.From([WorkDay], "en-US")}, "-"), type text),
+				    #"Added Conditional Column" = Table.AddColumn(#"Inserted Merged Column", "Approved or Rejected", each if [ProcessCode] = "REJECTED" then "REJECTED" else "APPROVED"),
+				    #"Inserted First Characters" = Table.AddColumn(#"Added Conditional Column", "First Characters", each Text.Start([ActivityDescription], 4), type text),
+				    #"Renamed Columns" = Table.RenameColumns(#"Inserted First Characters",{{"First Characters", "Activity Code"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Exception
+

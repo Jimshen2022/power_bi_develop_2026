@@ -1,0 +1,193 @@
+table 'Start/End of Day'
+	lineageTag: 3895f027-4cb9-4c03-af38-ae35c6dc4079
+
+	measure 'Start of Day' =
+			
+			
+			VAR StartofDay=
+			CALCULATE(AVERAGE('Start/End of Day'[Start of Day time]))
+			
+			VAR Startofdaybyee = AVERAGEX(VALUES('Clock In Clock Out'[Employee Name]),StartofDay)
+			
+			VAR startofdaybyworkday = AVERAGEX(VALUES('Clock In Clock Out'[Work Day]),Startofdaybyee)
+			
+			Return
+			startofdaybyworkday
+		formatString: 0
+		lineageTag: 9a30d2a7-56f4-4457-97eb-3300cd64a928
+
+	measure 'End of Day' =
+			
+			
+			VAR EndofDay=
+			CALCULATE(AVERAGE('Start/End of Day'[End of Day time]))
+			
+			VAR Endofdaybyee = AVERAGEX(VALUES('Clock In Clock Out'[EE Number]),EndofDay)
+			
+			VAR endofdaybyworkday = AVERAGEX(VALUES('Clock In Clock Out'[Work Day]),Endofdaybyee)
+			
+			Return
+			endofdaybyworkday
+		formatString: #,0
+		lineageTag: aab0641f-b174-4a77-b0f0-e82a3255347d
+
+	column wh_id
+		dataType: string
+		lineageTag: edfed934-0632-473f-997e-401a9f3a1add
+		summarizeBy: none
+		sourceColumn: wh_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_id
+		dataType: string
+		lineageTag: 1700c434-73f4-4799-a157-9921dbab9302
+		summarizeBy: none
+		sourceColumn: employee_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column work_day
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 60c779d8-94b8-4b9e-9cef-8c55dd3f6be3
+		summarizeBy: none
+		sourceColumn: work_day
+
+		variation Variation
+			isDefault
+			relationship: 67069b40-5671-4f04-a961-83c7625635b1
+			defaultHierarchy: LocalDateTable_79d7ef64-aa3b-48a6-870f-7bb97b65e47f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Start of Day Tran Date/Time'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1cbe33d6-1a1b-4374-ad2d-c56cb059d3dd
+		summarizeBy: none
+		sourceColumn: Start of Day Tran Date/Time
+
+		variation Variation
+			isDefault
+			relationship: 7faad347-abf4-460e-a466-4cb5544a19e1
+			defaultHierarchy: LocalDateTable_c197a1d8-91da-48ba-bd06-61f393012a30.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'End of Day Tran Date/Time'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e69f6128-010c-4c67-935e-f3b19a0430ba
+		summarizeBy: none
+		sourceColumn: End of Day Tran Date/Time
+
+		variation Variation
+			isDefault
+			relationship: 89870ddd-ba04-411a-9962-43fc175bb47f
+			defaultHierarchy: LocalDateTable_d642b280-1d05-4ac7-804d-b4fd14edfe1a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start of Day Tran Type'
+		dataType: string
+		lineageTag: c75b2e19-bfd4-424a-975d-1621bb165f89
+		summarizeBy: none
+		sourceColumn: Start of Day Tran Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start of Day Tran Description'
+		dataType: string
+		lineageTag: d448b3a8-2911-4ea8-8166-46e62bb7288f
+		summarizeBy: none
+		sourceColumn: Start of Day Tran Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'End of Day Tran Type'
+		dataType: string
+		lineageTag: 103bdce7-a228-4f67-a6a5-64ca797eb998
+		summarizeBy: none
+		sourceColumn: End of Day Tran Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'End of Day Tran Description'
+		dataType: string
+		lineageTag: 38e14ca5-142f-4a60-a415-357e8cd898a6
+		summarizeBy: none
+		sourceColumn: End of Day Tran Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start of Day time'
+		dataType: int64
+		formatString: 0
+		lineageTag: 50a12fae-eb7a-4ec4-9064-dfe5f9c6202c
+		summarizeBy: sum
+		sourceColumn: Start of Day time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'End of Day time'
+		dataType: int64
+		formatString: 0
+		lineageTag: 40856cfc-8cbe-439f-862b-80d6a2bcf3cc
+		summarizeBy: sum
+		sourceColumn: End of Day time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Master Key'
+		dataType: string
+		lineageTag: c115f01a-9a82-4851-a303-0a09a2c862c4
+		summarizeBy: none
+		sourceColumn: Master Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column clock_in
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f773a0b9-c0d3-434c-9afe-5e7ea8a83c98
+		summarizeBy: none
+		sourceColumn: clock_in
+
+		variation Variation
+			isDefault
+			relationship: befe5854-8961-4224-a26f-41747aa00ce5
+			defaultHierarchy: LocalDateTable_da581039-c5f4-49d7-89e4-905aea29568e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column clock_out
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f4378725-629f-4d06-a5ea-718bb4c5e463
+		summarizeBy: none
+		sourceColumn: clock_out
+
+		variation Variation
+			isDefault
+			relationship: c6429c06-9709-4f53-9179-0f0acde55b06
+			defaultHierarchy: LocalDateTable_2bf48f06-208a-4c27-8f8f-64bfd31005cd.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Start/End of Day' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("ashley-edw.database.windows.net", "ASHLEY_EDW", [Query="DECLARE @wh_id_list AS VARCHAR(500);#(lf)#(lf)SET @wh_id_list = '335, 35'; --both warehoueses are Vietnam, local time is 12 hours ahead #(lf)#(lf)SELECT #(lf)t3.wh_id#(lf),t3.employee_id#(lf),t3.work_day#(lf),t3.clock_in#(lf),t3.clock_out#(lf),t3.first_tran_date_time#(lf),t3.last_tran_date_time#(lf),t3.first_tran_type#(lf),t3.first_tran_description#(lf),t3.last_tran_type#(lf),t3.last_tran_description#(lf),t3.time_before_first_tran_minutes#(lf),t3.time_after_last_tran_minutes#(lf)#(lf)FROM#(lf)(#(lf)SELECT t2.*, tranlog_start.tran_type first_tran_type, tranlog_start.description first_tran_description, #(lf)tranlog_end.tran_type last_tran_type, tranlog_end.description last_tran_description, #(lf)#(lf)DATEDIFF(MINUTE, clock_in, first_tran_date_time) AS time_before_first_tran_minutes, #(lf)DATEDIFF(MINUTE, last_tran_date_time, clock_out) AS time_after_last_tran_minutes#(lf), ROW_NUMBER() OVER (PARTITION BY t2.employee_id, t2.wh_id, t2.work_day ORDER BY t2.employee_id) row_number_rank#(lf)FROM#(lf)(#(lf)#(lf)SELECT T1.wh_id#(lf)     , employee_id#(lf)     , l.[work_day]#(lf)     , l.clock_in#(lf)     , l.clock_out#(lf)#(tab) , MIN(start_tran_date_time) first_tran_date_time #(lf)#(tab) , MAX(end_tran_date_time) last_tran_date_time#(lf)#(tab) #(lf)#(tab) #(lf)FROM#(lf)(#(lf)        SELECT wh_id#(lf)             , employee_id#(lf)             , item_number#(lf)             , start_tran_date#(lf)             , start_tran_time#(lf)             , end_tran_date#(lf)             , end_tran_time#(lf)             , hu_id#(lf)             , tran_qty#(lf)             , tran_type#(lf)             , description#(lf)             , CONCAT(CAST([start_tran_date] AS DATE), ' ', CAST([start_tran_time] AS TIME)) AS start_tran_date_time#(lf)             , CONCAT(CAST([end_tran_date] AS DATE), ' ', CAST([end_tran_time] AS TIME))     AS end_tran_date_time#(lf)        FROM [PowerBI_Distribution].[TranLog]#(lf)        WHERE CAST([start_tran_date] AS DATE)#(lf)              BETWEEN DATEADD(   DAY, -15, #(lf)                                               #(lf)                                                   CAST(DATEADD(HOUR, 7, GETUTCDATE()) AS DATE)#(lf)                                           #(lf)                             ) AND DATEADD(   DAY, 1, #(lf)                                                              CAST(DATEADD(HOUR, 7, GETUTCDATE()) AS DATE)#(lf)                                                      #(lf)                                          )#(lf)              AND [wh_id] IN#(lf)                  (#(lf)                      SELECT trim(value)FROM string_split(@wh_id_list, ',')#(lf)              #(lf)                  )#(lf)        AND [tran_type] <> '100'#(lf))     t1#(lf)    LEFT JOIN#(lf)    (#(lf)        SELECT DISTINCT#(lf)               t.[work_day]#(lf)             , t.WhseEmpNumber#(lf)             , t.EmployeeNumber#(lf)             , t.EmployeeName#(lf)             , t.[home_department]#(lf)             , t.home_wh_id#(lf)             , MIN(t.clock_in)  clock_in#(lf)             , MAX(t.clock_out) clock_out#(lf)             , MAX(t.[End Time])       [End Time]#(lf)        FROM#(lf)        (#(lf)            SELECT [cico_key]#(lf)                 , [wh_id]#(lf)                 , b.WarehouseID#(lf)                 , a.home_wh_id#(lf)                 , [work_day]#(lf)                 , [work_shift_id]#(lf)                 , [employee_id]#(lf)                 , b.WhseEmpNumber#(lf)                 , b.EmployeeNumber#(lf)                 , b.EmployeeName#(lf)                 , [clock_in]#(lf)                 , [actual_clock_out] AS [_clock_out] -- by crystal#(lf)                , DATEADD(MINUTE, #(lf)                    DATEDIFF(MINUTE, '00:00:00', CAST([actual_clock_out] AS TIME)) / 15 * 15,#(lf)                    CAST(CAST([actual_clock_out] AS DATE) AS DATETIME)#(lf)                     ) AS [clock_out] -- Aug.24.2024 - to round the clock out time to the nearest 15 minutes by Jim,Shen #(lf)                 , CASE#(lf)                       WHEN a.clock_out <> '' THEN#(lf)                           a.actual_clock_out#(lf)                       ELSE#(lf)                           DATEADD(HOUR, 7, GETUTCDATE())#(lf)                   END                                    AS [End Time]#(lf)                 , [supervisor_nbr]#(lf)                 , [home_supervisor_nbr]#(lf)                 , [group_nbr]#(lf)                 , [home_group_nbr]#(lf)                 , [department]#(lf)                 , [home_department]#(lf)            FROM [PowerBI_Distribution].[EmployeeClockInOut] a#(lf)                LEFT JOIN [PowerBI_Distribution].[DimEmployee]                        b#(lf)                    ON a.employee_id = b.EmployeeID#(lf)                       AND a.home_wh_id = b.WarehouseID#(lf)            WHERE CAST([work_day] AS DATE)#(lf)                  BETWEEN DATEADD(   DAY, -15, #(lf)                                                       CAST(DATEADD(HOUR, 7, GETUTCDATE()) AS DATE)#(lf)                                               #(lf)                                 ) AND #(lf)                                               CAST(DATEADD(HOUR, 7, GETUTCDATE()) AS DATE)#(lf)                                       #(lf)#(lf)                  AND [home_wh_id] IN#(lf)                      (#(lf)                          SELECT trim(value)FROM string_split(@wh_id_list, ',')#(lf)                      )#(lf)        ) t#(lf)        GROUP BY t.work_day#(lf)               , t.WhseEmpNumber#(lf)               , t.EmployeeNumber#(lf)               , t.EmployeeName#(lf)               , t.home_department#(lf)               , t.home_wh_id#(lf)#(lf)    ) l#(lf)        ON T1.[employee_id] = l.EmployeeNumber#(lf)           AND T1.[wh_id] = l.home_wh_id#(lf)WHERE#(lf)#(lf)    T1.end_tran_date_time >= l.clock_in#(lf)    AND T1.end_tran_date_time <= CASE WHEN l.clock_out <> '' THEN l.clock_out ELSE [End Time] END#(lf)    AND T1.start_tran_date_time >= l.clock_in#(lf)    AND T1.start_tran_date_time <= CASE WHEN l.clock_out <> '' THEN l.clock_out ELSE [End Time] END#(lf)    AND l.clock_in IS NOT NULL#(lf)    AND l.clock_out IS NOT NULL#(lf)#(tab)AND DATEDIFF(Hour, l.clock_in, l.clock_out) < 24#(lf)GROUP BY#(lf)        t1.wh_id,#(lf)        t1.employee_id#(lf)       , l.work_day#(lf)       , l.clock_in#(lf)       , l.clock_out#(lf)#(tab)   ) t2#(lf)#(lf)#(tab)   LEFT JOIN [PowerBI_Distribution].[TranLog] tranlog_start#(lf)#(tab)   ON t2.first_tran_date_time =  CONCAT(CAST(tranlog_start.[start_tran_date] AS DATE), ' ', CAST(tranlog_start.[start_tran_time] AS TIME))#(lf)#(tab)   and t2.employee_id = tranlog_start.employee_id#(lf)#(tab)   AND t2.wh_id = tranlog_start.wh_id#(lf)#(lf)#(tab)   LEFT JOIN [PowerBI_Distribution].[TranLog] tranlog_end#(lf)#(tab)   ON t2.last_tran_date_time =   CONCAT(CAST(tranlog_end.[end_tran_date] AS DATE), ' ', CAST(tranlog_end.[end_tran_time] AS TIME))#(lf)#(tab)    and t2.employee_id = tranlog_end.employee_id#(lf)#(tab)#(tab)AND t2.wh_id = tranlog_end.wh_id#(lf)) t3#(lf)#(lf)WHERE row_number_rank = 1", CreateNavigationProperties=false, CommandTimeout=#duration(0, 2, 40, 0)]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"work_day", type date}}),
+				    #"Inserted Merged Column" = Table.AddColumn(#"Changed Type", "Master Key", each Text.Combine({[wh_id], [employee_id], Text.From([work_day], "en-US")}, "-"), type text),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Inserted Merged Column",{{"first_tran_date_time", type datetime}, {"last_tran_date_time", type datetime}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type1",{{"first_tran_date_time", "Start of Day Tran Date/Time"}, {"last_tran_date_time", "End of Day Tran Date/Time"}, {"first_tran_type", "Start of Day Tran Type"}, {"first_tran_description", "Start of Day Tran Description"}, {"last_tran_type", "End of Day Tran Type"}, {"last_tran_description", "End of Day Tran Description"}, {"time_before_first_tran_minutes", "Start of Day time"}, {"time_after_last_tran_minutes", "End of Day time"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_ResultType = Exception
+

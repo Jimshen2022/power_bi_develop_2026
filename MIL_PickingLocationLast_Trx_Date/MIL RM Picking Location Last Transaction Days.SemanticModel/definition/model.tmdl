@@ -1,0 +1,25 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["fct_Item_last_trx_date","dim_picking_locations","A_Measure","fct_item_category"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table fct_Item_last_trx_date
+ref table DateTableTemplate_c4cbd035-adc1-4589-95a1-1f9f6793298b
+ref table LocalDateTable_e86aacb7-2d1d-4f18-8a10-f0aee6920774
+ref table dim_picking_locations
+ref table A_Measure
+ref table Dim_Category
+ref table fct_item_category
+ref table Dim_Days_Range
+
+ref cultureInfo en-US
+

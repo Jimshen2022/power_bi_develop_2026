@@ -1,0 +1,362 @@
+table ashton_putaway_exception_hj_sql_server_df
+	lineageTag: 760d10c1-133b-4eb4-8f65-e37c5b60d2a7
+
+	column item_number
+		dataType: string
+		lineageTag: 41425b41-3760-43e7-a688-4e9ef99d87ab
+		summarizeBy: none
+		sourceColumn: item_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column commodity_code
+		dataType: string
+		lineageTag: 802814e2-c119-4a32-a8ab-669370536e17
+		summarizeBy: none
+		sourceColumn: commodity_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column pick_put_id
+		dataType: string
+		lineageTag: 446029ba-f130-4252-bf2d-fe0eec137ed4
+		summarizeBy: none
+		sourceColumn: pick_put_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column conversion_factor
+		dataType: double
+		lineageTag: b12e36b7-0c65-4eff-9c47-07dae1048d9f
+		summarizeBy: sum
+		sourceColumn: conversion_factor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column lot_number
+		dataType: string
+		lineageTag: 39c7e282-02da-4435-9f08-c3ad6aa47667
+		summarizeBy: none
+		sourceColumn: lot_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column wh_id
+		dataType: string
+		lineageTag: 81725cd2-0527-4b14-937e-7487ecbe84c3
+		summarizeBy: none
+		sourceColumn: wh_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column location_id
+		dataType: string
+		lineageTag: a8351cc5-6ad3-4000-ac49-961c8fc2b4d6
+		summarizeBy: none
+		sourceColumn: location_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column loc_type
+		dataType: string
+		lineageTag: e39493d1-4696-4a74-b19c-0d97aa91fb80
+		summarizeBy: none
+		sourceColumn: loc_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column location_id_2
+		dataType: string
+		lineageTag: 8acc82c2-ebec-4d6a-b989-a02142e50303
+		summarizeBy: none
+		sourceColumn: location_id_2
+
+		annotation SummarizationSetBy = Automatic
+
+	column loc_type_2
+		dataType: string
+		lineageTag: ade7ea0f-50d6-4f7a-a058-43e9f946546e
+		summarizeBy: none
+		sourceColumn: loc_type_2
+
+		annotation SummarizationSetBy = Automatic
+
+	column reference
+		dataType: string
+		lineageTag: e0c54d0f-4f90-4ef7-ae90-52acc1ba0146
+		summarizeBy: none
+		sourceColumn: reference
+
+		annotation SummarizationSetBy = Automatic
+
+	column load_id
+		dataType: string
+		lineageTag: 8addc304-1c7c-4509-b026-e1cab3910f41
+		summarizeBy: none
+		sourceColumn: load_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity
+		dataType: double
+		lineageTag: d831e571-c785-435e-afcc-5eda56b08c84
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column tran_type
+		dataType: string
+		lineageTag: 952c7599-dcba-47bc-8872-14ca38ea9036
+		summarizeBy: none
+		sourceColumn: tran_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: ff7a3e01-8749-48fd-8c83-d05a39efc158
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_id
+		dataType: string
+		lineageTag: 9b738278-b473-4c38-8077-796f2434d9fa
+		summarizeBy: none
+		sourceColumn: employee_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_name
+		dataType: string
+		lineageTag: bd273a8b-41fb-4838-9a6e-5524eb32ad82
+		summarizeBy: none
+		sourceColumn: employee_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column supervisor
+		dataType: string
+		lineageTag: e7b3daaa-c738-451a-aa8a-47000b136132
+		summarizeBy: none
+		sourceColumn: supervisor
+
+		annotation SummarizationSetBy = Automatic
+
+	column department_code
+		dataType: string
+		lineageTag: ca34792d-011f-488a-b29c-1e008cbbeaf5
+		summarizeBy: none
+		sourceColumn: department_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column department
+		dataType: string
+		lineageTag: cafd22dc-3b7e-4bb2-9583-cf0e0373444a
+		summarizeBy: none
+		sourceColumn: department
+
+		annotation SummarizationSetBy = Automatic
+
+	column exception_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 9c1995ed-af44-444f-b8de-c7992a312bf7
+		summarizeBy: none
+		sourceColumn: exception_date
+
+		variation Variation
+			isDefault
+			relationship: ef1076a7-a3d7-4374-93df-51031b62489d
+			defaultHierarchy: LocalDateTable_65c4dbcf-344d-4f33-b69b-ed4e9ef40bd9.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column exception_time
+		dataType: string
+		lineageTag: c5b111ef-43af-45cf-a0d0-73f504c993da
+		summarizeBy: none
+		sourceColumn: exception_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column shift_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 28ca882a-1453-4888-9589-10b57af8b5b5
+		summarizeBy: none
+		sourceColumn: shift_date
+
+		variation Variation
+			isDefault
+			relationship: fdffa1da-d1e3-40bc-8b18-82546525c63b
+			defaultHierarchy: LocalDateTable_b3b2ae16-9942-45a2-9ee5-a9354424afff.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column shift
+		dataType: string
+		lineageTag: f39874e1-639f-4f9b-bcb3-b3d96e6b7bfe
+		summarizeBy: none
+		sourceColumn: shift
+
+		annotation SummarizationSetBy = Automatic
+
+	column suggested_value
+		dataType: string
+		lineageTag: d7fa3fde-a420-47d6-bab0-d9b82e3f7c4e
+		summarizeBy: none
+		sourceColumn: suggested_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column suggested_type
+		dataType: string
+		lineageTag: f41e9116-e9ef-4e88-8bc8-362d7662ab6c
+		summarizeBy: none
+		sourceColumn: suggested_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column suggested_loc_class
+		dataType: string
+		lineageTag: 0b5c277d-4e1d-4111-ae42-d081e458f9c6
+		summarizeBy: none
+		sourceColumn: suggested_loc_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column entered_value
+		dataType: string
+		lineageTag: eb426d66-bb63-4d52-a26b-e449911313a9
+		summarizeBy: none
+		sourceColumn: entered_value
+
+		annotation SummarizationSetBy = Automatic
+
+	column entered_type
+		dataType: string
+		lineageTag: 5c29e5c9-06e2-4270-8d58-14b838d3de35
+		summarizeBy: none
+		sourceColumn: entered_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column entered_loc_class
+		dataType: string
+		lineageTag: ddf92d7f-a212-4fe5-99ca-4f7f5954be79
+		summarizeBy: none
+		sourceColumn: entered_loc_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column pick_run_id
+		dataType: string
+		lineageTag: 563c37b1-d076-43ab-ad35-f617c0dd0f2a
+		summarizeBy: none
+		sourceColumn: pick_run_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column mo_number
+		dataType: string
+		lineageTag: e2602fd6-6373-415b-bf13-dc3605e625d9
+		summarizeBy: none
+		sourceColumn: mo_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column asn_no
+		dataType: string
+		lineageTag: a8f2c600-dcc9-4656-b5a5-44cd13d24af4
+		summarizeBy: none
+		sourceColumn: asn_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column trailer_no
+		dataType: string
+		lineageTag: 75b149d4-5504-473d-bbcb-46b1eb34b851
+		summarizeBy: none
+		sourceColumn: trailer_no
+
+		annotation SummarizationSetBy = Automatic
+
+	column equipment_zone
+		dataType: string
+		lineageTag: a0e7076d-a175-4941-8cb7-91f9053dabb5
+		summarizeBy: none
+		sourceColumn: equipment_zone
+
+		annotation SummarizationSetBy = Automatic
+
+	column Reason
+		dataType: string
+		lineageTag: 81f9d83b-3320-41cc-9af8-4eae8a813bd5
+		summarizeBy: none
+		sourceColumn: Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column exception_severity
+		dataType: string
+		lineageTag: 5533db47-91f0-4ff1-9642-e18e0425ae4c
+		summarizeBy: none
+		sourceColumn: exception_severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column rule
+		dataType: string
+		lineageTag: bed800c2-0f42-492e-a900-b6d37409e30f
+		summarizeBy: none
+		sourceColumn: rule
+
+		annotation SummarizationSetBy = Automatic
+
+	column WhseEmployee#
+		dataType: string
+		lineageTag: 99447669-7d9b-4396-a2b9-d65a301596aa
+		summarizeBy: none
+		sourceColumn: WhseEmployee#
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'master key' = 'ashton_putaway_exception_hj_sql_server_df'[WhseEmployee#]&"-"&'ashton_putaway_exception_hj_sql_server_df'[shift_date]
+		lineageTag: 04979248-3425-43fa-93a5-517ad76b1989
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ashton_putaway_exception_hj_sql_server_df = m
+		mode: import
+		source =
+				let
+				    Source = PowerBI.Dataflows(null),
+				    #"5839814b-ec95-48ea-a07a-ec0241ac9946" = Source{[workspaceId="5839814b-ec95-48ea-a07a-ec0241ac9946"]}[Data],
+				    #"3a7f43fb-7a71-4e95-b4cb-7b7a2725b184" = #"5839814b-ec95-48ea-a07a-ec0241ac9946"{[dataflowId="3a7f43fb-7a71-4e95-b4cb-7b7a2725b184"]}[Data],
+				    ashton_putaway_exception_hj_sql_server_df1 = #"3a7f43fb-7a71-4e95-b4cb-7b7a2725b184"{[entity="ashton_putaway_exception_hj_sql_server_df"]}[Data],
+				    #"Added Custom" = Table.AddColumn(ashton_putaway_exception_hj_sql_server_df1, "WhseEmployee#", each "335" &"-"&[employee_id]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"WhseEmployee#", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

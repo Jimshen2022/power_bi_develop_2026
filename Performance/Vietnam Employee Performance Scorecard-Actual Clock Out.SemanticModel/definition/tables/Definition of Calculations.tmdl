@@ -1,0 +1,55 @@
+table 'Definition of Calculations'
+	lineageTag: 6dddade1-3727-44ae-9ffc-fac1b1e1b2e8
+
+	column Measure
+		dataType: string
+		lineageTag: 157cbf8c-d8b1-4996-b102-b2d3d110c7d3
+		summarizeBy: none
+		sourceColumn: Measure
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Definition of Calculation'
+		dataType: string
+		lineageTag: 1933ea46-6355-4716-88ab-e15e478bbc1b
+		summarizeBy: none
+		sourceColumn: Definition of Calculation
+
+		annotation SummarizationSetBy = Automatic
+
+	column SortOrder
+		dataType: string
+		lineageTag: 8db88063-d084-4b50-b78a-a287c3123e95
+		summarizeBy: none
+		sourceColumn: SortOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Definition of Calculations' = m
+		mode: import
+		source = ```
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("lVPBbhoxEP2V0fbSShQtRSVRbgRCiZSqlVgpB8ph4h12LXY9yPbS7N/XHkcQkqoVN2v83pv3xuP1OvsAvIXConGovGbjskG26tq3VdhabqUyhAeu4KmHR7Y7mGOfbQbrTLBD2JOFJXf2YhEo9UGXVMZaUdw/iug33EOhW4KPS+s+nTR9rInWnSkTIlRH4E+9wDP4mmDl0fojJFYMPftzZG25q2q5/B3tlO/tQKtN5wCbBn5aVuQczLikG7i1hDv41eX5lwk8dEbV4FTQTkOJQQZZcbRLGO5nDasd3IvFdP7ReXBUtWQ8bNmeOfk8DT33UZhcuEAPqBR3L0g0fZoGb1M6JYJoQ8MQj22IoMO0YVqWOqYNCfqB0M5zvLIOrnsK81E+ig4lyGIEd8+K9m8W5FSDhqsq9Iqe5rPFKLHGl7HGiXV1AWucjxdXiXZ9WbPrxJpcxpoIK+yri7AV2YNWFJ+Y49KkJZmjl2VbaksCXxKW8mSnBugcKx2ALr2YPJOA5T/eovdke5jVaCr6+5e8ga95LpTpoYLvoXVUe0cO3OmBLFYk9iLmJZI2r7+ByMV1P1pLK8wem3+qJ8T/tbPN5g8=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Measure = _t, #"Definition of Calculation" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Measure", type text}, {"Definition of Calculation", type text}}),
+				    
+				    // 假设 End of Day 和 Start of Day 都是你手动追加的行
+				    #"Added Custom Rows" = Table.InsertRows(#"Changed Type", Table.RowCount(#"Changed Type"), {
+				        [Measure = "End of Day", #"Definition of Calculation" = "If < 30 mins: Green, If 30-60 mins: Yellow, If > 60 mins: Red"],
+				        [Measure = "Start of Day", #"Definition of Calculation" = "If < 30 mins: Green, If 30-60 mins: Yellow, If > 60 mins: Red"]
+				    }),
+				    
+				    // --- 下面是实现“强制置底”的魔法 ---
+				    
+				    // 1. 添加临时排序列：遇到 Start/End of Day 赋值 2，其他赋值 1
+				    #"Added Sort Helper" = Table.AddColumn(#"Added Custom Rows", "SortOrder", each if [Measure] = "Start of Day" or [Measure] = "End of Day" then 2 else 1),
+				    
+				    // 2. 双重排序：先按临时列排序 (1在上，2垫底)，然后再按 Measure 字母排序
+				    #"Sorted Rows" = Table.Sort(#"Added Sort Helper",{{"SortOrder", Order.Ascending}, {"Measure", Order.Ascending}})
+				in
+				    #"Sorted Rows"
+				```
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,420 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "061a8d4ce429dad46527",
+  "position": {
+    "x": 1044.8162627052384,
+    "y": 162.12666145426113,
+    "z": 14000,
+    "height": 557.43549648162627,
+    "width": 235.18373729476153,
+    "tabOrder": 14000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indirect History"
+                    }
+                  },
+                  "Property": "Battery Change Time Both"
+                }
+              },
+              "queryRef": "Indirect History.Battery Change Time Both",
+              "nativeQueryRef": "Battery Change Time Both"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indirect History"
+                    }
+                  },
+                  "Property": "# of Battery Changes Approved"
+                }
+              },
+              "queryRef": "Indirect History.# of Battery Changes",
+              "nativeQueryRef": "Approved Battery Changes",
+              "displayName": "Approved Battery Changes"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indirect History"
+                    }
+                  },
+                  "Property": "Battery Change Time Approved"
+                }
+              },
+              "queryRef": "Indirect History.Battery Change Time Approved",
+              "nativeQueryRef": "Approved Battery Time (Avg)",
+              "displayName": "Approved Battery Time (Avg)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indirect History"
+                    }
+                  },
+                  "Property": "# of Battery Changes Rejected"
+                }
+              },
+              "queryRef": "Indirect History.# of Battery Changes Rejected",
+              "nativeQueryRef": "Rejected Battery Changes",
+              "displayName": "Rejected Battery Changes"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indirect History"
+                    }
+                  },
+                  "Property": "Battery Change Time Rejected"
+                }
+              },
+              "queryRef": "Indirect History.Battery Change Time Rejected",
+              "nativeQueryRef": "Rejected Battery Time (Avg)",
+              "displayName": "Rejected Battery Time (Avg)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indirect History"
+                    }
+                  },
+                  "Property": "# of Meeting"
+                }
+              },
+              "queryRef": "Indirect History.# of Meeting",
+              "nativeQueryRef": "Meeting Trans.",
+              "displayName": "Meeting Trans."
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indirect History"
+                    }
+                  },
+                  "Property": "# of Clean Up"
+                }
+              },
+              "queryRef": "Indirect History.# of Clean Up",
+              "nativeQueryRef": "Clean Up Trans.",
+              "displayName": "Clean Up Trans."
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Indirect History"
+                    }
+                  },
+                  "Property": "# of Training"
+                }
+              },
+              "queryRef": "Indirect History.# of Training",
+              "nativeQueryRef": "Training Trans.",
+              "displayName": "Training Trans."
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Indirect History"
+                  }
+                },
+                "Property": "Battery Change Time Both"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "layout": [
+        {
+          "properties": {
+            "orientation": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "cellPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "3L"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "value": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "17D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "horizontalAlignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            },
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
+            },
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        },
+        {
+          "properties": {
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "2L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Indirect History.Battery Change Time Approved"
+          }
+        },
+        {
+          "properties": {
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "2L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Indirect History.Battery Change Time Rejected"
+          }
+        },
+        {
+          "properties": {
+            "labelPrecision": {
+              "expr": {
+                "Literal": {
+                  "Value": "2L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Indirect History.Battery Change Time Both"
+          }
+        }
+      ],
+      "label": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'''Lucida Sans Unicode'''"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "spacing": [
+        {
+          "properties": {
+            "verticalSpacing": {
+              "expr": {
+                "Literal": {
+                  "Value": "5L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "fillCustom": [
+        {
+          "properties": {},
+          "selector": {
+            "id": "default"
+          }
+        },
+        {
+          "properties": {
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Conditional Formatting Formulas"
+                        }
+                      },
+                      "Property": "Approved Battery Changes formatting overall"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Indirect History.# of Battery Changes"
+          }
+        },
+        {
+          "properties": {
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Conditional Formatting Formulas"
+                        }
+                      },
+                      "Property": "Mins in Approved Battery Change formatting"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Indirect History.Battery Change Time Approved"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Indirect History.Battery Change Time Both"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "metadata": "Indirect History.Battery Change Time Rejected"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

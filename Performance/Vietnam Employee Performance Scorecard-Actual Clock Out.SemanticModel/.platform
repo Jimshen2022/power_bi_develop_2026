@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Vietnam Employee Performance Scorecard-Actual Clock Out"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "6d8c1ade-70f8-4c8e-9388-61e77e20fdf6"
+  }
+}

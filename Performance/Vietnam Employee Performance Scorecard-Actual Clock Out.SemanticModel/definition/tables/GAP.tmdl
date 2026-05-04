@@ -1,0 +1,358 @@
+table GAP
+	lineageTag: e4b20c5b-9863-4ad6-897b-4578f4e24697
+
+	measure 'Gap Time Hours' =
+			
+			VAR GapTimeMins =
+			    CALCULATE (
+			        SUM ( 'GAP'[Gap_Time] )
+			    )                                                                                                                                                                                                                          VAR Breakmins =
+			    CALCULATE (
+			        SUM ( 'Summed Process Report'[total_mins] ),
+			        'Summed Process Report'[process_code] ="BREAK"
+			    )                                                                                                                                                                                                                          VAR Lunchmins =
+			     CALCULATE(
+			        SUM( 'Summed Process Report'[total_mins] ),
+			        'Summed Process Report'[labor_type] ="UNP"
+			)                                                                                                                                                                                                                VAR Gapminuslunchbreak =
+			   GapTimeMins-Breakmins-LunchMins
+			RETURN
+			   IF(DIVIDE(Gapminuslunchbreak,60,0)<=0,BLANK(),DIVIDE(Gapminuslunchbreak,60,0))
+		lineageTag: 8b197085-993a-4b22-94a3-acf8e76f1962
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Trans. per Hour' = DIVIDE([transactions],[ttiw hours],BLANK())
+		lineageTag: 2ec882d7-e1a0-4654-b6de-5b9edb94e768
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gap Time (Hrs)' = AVERAGEX(VALUES('Clock In Clock Out'[Work Day]),GAP[Gap Time Hours])
+		formatString: 0.00
+		lineageTag: 8d9564c5-9436-466b-876f-f45c7e5a2d56
+
+	measure 'average gap' = AVERAGEX(VALUES('Clock In Clock Out'[Employee Name]),GAP[Gap Time (Hrs)])
+		lineageTag: 80877c45-1565-4452-a116-92e9f986cc41
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gap per EE' = GAP[Gap Time (Hrs)]/[Headcount v1]
+		lineageTag: 53589db2-131b-4442-9883-813cfe3aa4bd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gap Time (Hrs) Final' = AVERAGEX(VALUES('Clock In Clock Out'[Employee Name]),GAP[Gap Time (Hrs)])
+		lineageTag: 306ef126-820e-4ce6-ad53-d1cdc6c34863
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '# of Trans.' = SUM(GAP[Count])
+		formatString: 0
+		lineageTag: c350efb2-9278-4dc0-818e-bf2e89f39efc
+
+	measure '# of Trans. Final' = AVERAGEX(VALUES('Clock In Clock Out'[Employee Name]),'GAP'[# of Trans.])
+		formatString: 0
+		lineageTag: 99abc76c-2113-497f-bded-d27719bc2765
+
+	measure 'Trans. per Hour Final' = AVERAGEX(VALUES('Clock In Clock Out'[Employee Name]),GAP[Trans. per Hour])
+		formatString: 0
+		lineageTag: 4bdf23b6-116c-4e6e-985f-d36bbd9d84ac
+
+	measure 'Trans. per Hour Weekly' = AVERAGEX(VALUES('Clock In Clock Out'[Work Day]),[Trans. per Hour Final])
+		formatString: 0
+		lineageTag: e8def6dd-4b2a-45f9-8020-36bc1003c413
+
+	measure 'Gap time for detail' =
+			
+			VAR gaphours=
+			SUM('GAP'[Gap_Time])/60
+			
+			VAR gaptotal=
+			IF(gaphours<=0,BLANK(),gaphours)
+			
+			Return
+			AVERAGEX(VALUES('Clock In Clock Out'[Work Day]),gaptotal)
+		lineageTag: 5940bf59-206d-4bf4-b1e1-ba2bc52c864a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure subtract = "-"
+		lineageTag: fffc3199-21d9-4a98-9b0c-b68b85265a70
+
+	measure equal = "="
+		lineageTag: 37db6112-1857-4abc-9930-dbe732c11934
+
+	measure 'subtract 2' = "-"
+		lineageTag: c3351a8e-c2da-44bb-bf36-9c037978ea64
+
+	measure transactions = SUM(GAP[COUNT])
+		formatString: 0
+		lineageTag: 2ccc92af-873c-4490-b432-2301ebacd48a
+
+	measure 'ttiw hours' = DIVIDE([TTIW minutes],60,BLANK())
+		lineageTag: 8135a0a3-05f9-4a0c-8349-1e6d5b7159a1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Tran Type'
+		dataType: string
+		lineageTag: b113b893-406f-4097-be79-f04500f78d8e
+		summarizeBy: none
+		sourceColumn: Tran Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tran Descript'
+		dataType: string
+		lineageTag: 1cf7d8fe-0ac1-4942-9210-1366ba37b6d4
+		summarizeBy: none
+		sourceColumn: Tran Descript
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start Trans Datetime'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0caaed72-d24f-4b7a-8347-c010d7c90263
+		summarizeBy: none
+		sourceColumn: Start Trans Datetime
+
+		variation Variation
+			isDefault
+			relationship: a1de0a13-edfb-46d0-bcdf-8ee56bb80a43
+			defaultHierarchy: LocalDateTable_ce5c8c59-39eb-44ff-949f-23d0be2fe7bc.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'End Trans Datetime'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3e4748f9-76f5-4efb-81ab-9933be878ed5
+		summarizeBy: none
+		sourceColumn: End Trans Datetime
+
+		variation Variation
+			isDefault
+			relationship: b8ad0b0b-6de4-49f7-aafc-a189488baa84
+			defaultHierarchy: LocalDateTable_0122b10c-88f5-458f-aec3-1e9860f2fece.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EE Number'
+		dataType: string
+		lineageTag: 075d3cd7-b59c-45ff-880b-e505487d8943
+		summarizeBy: none
+		sourceColumn: EE Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EE Name'
+		dataType: string
+		lineageTag: 76399ce1-18ce-4a34-b634-d5416030116e
+		summarizeBy: none
+		sourceColumn: EE Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Department
+		dataType: string
+		lineageTag: 05f11ff9-a6cc-4592-bab1-660fe16c2ae4
+		summarizeBy: none
+		sourceColumn: Department
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Warehouse #'
+		dataType: string
+		lineageTag: 857d22d4-a36f-4cd1-b23c-57f627f79a3d
+		summarizeBy: none
+		sourceColumn: Warehouse #
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 9652f3f7-5bba-413e-a3a8-178d83a9a04d
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: a7910ef9-3845-4cb3-9615-1b6209ec5498
+			defaultHierarchy: LocalDateTable_6f11c1c5-ffe9-4174-acfa-1e00211308f0.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Transaction Qty'
+		dataType: double
+		lineageTag: 9bfd8072-ca5e-4197-8930-743cbce15bd2
+		summarizeBy: sum
+		sourceColumn: Transaction Qty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column work_day
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 3024ef73-870c-49f2-b0a8-8202b293b644
+		summarizeBy: none
+		sourceColumn: work_day
+
+		variation Variation
+			isDefault
+			relationship: d3a9be8e-6486-4751-b6d6-31b0c55aca5c
+			defaultHierarchy: LocalDateTable_54885b9d-e89e-4681-8fdf-f61381528c88.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Today
+		dataType: string
+		lineageTag: eda4ea72-e2f7-46a5-9852-d62d02ed63e3
+		summarizeBy: none
+		sourceColumn: Today
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'EE Key GapTime'
+		dataType: string
+		lineageTag: 28de8706-808d-47a5-9281-3dc1ecbb87a0
+		summarizeBy: none
+		sourceColumn: EE Key GapTime
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Master Key'
+		dataType: string
+		lineageTag: ce02d376-d45c-4c3b-bb35-9b5d8fa10f88
+		summarizeBy: none
+		sourceColumn: Master Key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Supervisor Name'
+		dataType: string
+		lineageTag: 0da64d34-f635-45fa-82ab-37e5bed9fbd8
+		summarizeBy: none
+		sourceColumn: Supervisor Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_tran_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: afc38c6a-5073-48a5-b642-4414f242d280
+		summarizeBy: none
+		sourceColumn: start_tran_date
+
+		variation Variation
+			isDefault
+			relationship: 6965cada-2aa2-4f39-8b55-6fab720551fa
+			defaultHierarchy: LocalDateTable_3e724822-d839-4a44-a28b-f9e575e6630a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_tran_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6204e3f0-c0d9-48e9-906c-422be2ccdae8
+		summarizeBy: none
+		sourceColumn: start_tran_time
+
+		variation Variation
+			isDefault
+			relationship: 09d51699-0167-4592-bf2f-00517d00095a
+			defaultHierarchy: LocalDateTable_2f70afab-444c-4664-9931-766e226f5301.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column end_tran_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 26fd8f9b-aebc-42ee-a4b4-388ceae51ca9
+		summarizeBy: none
+		sourceColumn: end_tran_date
+
+		variation Variation
+			isDefault
+			relationship: 825aa482-6606-483a-8f8b-da4a8c2362d2
+			defaultHierarchy: LocalDateTable_95744072-5140-40db-9376-030c64e95786.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column end_tran_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: df695685-bd31-488d-956b-b06eaec8b220
+		summarizeBy: none
+		sourceColumn: end_tran_time
+
+		variation Variation
+			isDefault
+			relationship: d8002a34-0eea-4023-852f-20446ed0673c
+			defaultHierarchy: LocalDateTable_e8a6cb99-3895-4382-9d80-83f781f6f53b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column COUNT
+		dataType: int64
+		formatString: 0
+		lineageTag: 6c7d97ba-5b5a-40f0-94af-3727c4dd9050
+		summarizeBy: sum
+		sourceColumn: COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gap_Time
+		dataType: double
+		lineageTag: 96800d3a-b262-4900-a98b-b862a7840e24
+		summarizeBy: sum
+		sourceColumn: Gap_Time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Elapsed_Time
+		dataType: double
+		lineageTag: 78042ba8-4842-4a1b-80ef-7713f0e1d167
+		summarizeBy: sum
+		sourceColumn: Elapsed_Time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column WorkTypeKey
+		dataType: string
+		lineageTag: a80598a4-6822-4790-b443-6b77e765aece
+		summarizeBy: none
+		sourceColumn: WorkTypeKey
+
+		annotation SummarizationSetBy = Automatic
+
+	partition GAP = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("ashley-edw.database.windows.net", "ASHLEY_EDW", [Query="  SELECT [Tran Type]#(lf)      ,[Tran Descript]#(lf)      ,[EE Name]#(lf)      ,[EE Number]#(lf)      ,[Start Trans Datetime]#(lf)      ,[End Trans Datetime]#(lf)      ,[Supervisor Name]#(lf)      ,[Department]#(lf)      ,[Warehouse #]#(lf)      ,[Date]#(lf)      ,[Transaction Qty]#(lf)      ,[WorkDay] AS [work_day]#(lf)      ,[Start Tran Date] AS [start_tran_date] #(lf)      ,[Start Tran Time] AS [start_tran_time] #(lf)      ,[End Tran Date] AS [end_tran_date]#(lf)      ,[End Tran Time] AS [end_tran_time]#(lf)      ,[COUNT]#(lf)      ,[GapTime] AS [Gap_Time]#(lf)      ,[ElapsedTime] AS [Elapsed_Time]#(lf)      ,[WorkTypeKey]#(lf)  FROM [PowerBI_Distribution].[GapTimeReport_EmployeeDetail]#(lf)  where [Warehouse #] IN ('335','35')", CreateNavigationProperties=false, CommandTimeout=#duration(0, 2, 40, 0)]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Start Trans Datetime", type datetime}, {"End Trans Datetime", type datetime}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type", "Today", each DateTime.FixedLocalNow()),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom",{{"Date", type date}}),
+				    #"Inserted Merged Column" = Table.AddColumn(#"Changed Type1", "EE Key GapTime", each Text.Combine({Text.From([Date], "en-US"), [#"Warehouse #"], [EE Number]}, " "), type text),
+				    #"Extracted Text Before Delimiter" = Table.TransformColumns(#"Inserted Merged Column", {{"Department", each Text.BeforeDelimiter(_, "*"), type text}}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Extracted Text Before Delimiter",{{"work_day", type date}}),
+				    #"Inserted Merged Column1" = Table.AddColumn(#"Changed Type2", "Master Key", each Text.Combine({[#"Warehouse #"], [EE Number], Text.From([work_day], "en-US")}, "-"), type text)
+				in
+				    #"Inserted Merged Column1"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
