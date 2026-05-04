@@ -1,0 +1,19 @@
+relationship d33942b8-f415-44cb-93e9-c47434a4433d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: F_AshtonShippedDetails.INIVDT
+	toColumn: LocalDateTable_3faf71ab-69ce-4576-b0ec-9e34070deb03.Date
+
+relationship 0afc6483-a31b-4793-a37d-a5096b7c1abd
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Calendar.Date
+	toColumn: LocalDateTable_f749aa14-b5cd-414c-9c75-4d16c4da45a6.Date
+
+relationship d5dcb195-ea0a-4a01-ad33-870966b8e2c7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Calendar.SaturdayDate
+	toColumn: LocalDateTable_18797ff9-1689-48da-85ba-51dd140d4fc7.Date
+
+relationship ede28199-6d51-fe7a-0a7b-52feab72c4cb
+	fromColumn: F_AshtonShippedDetails.Date
+	toColumn: Dim_Calendar.Date
+

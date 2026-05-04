@@ -1,0 +1,24 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["D_Measure","F_AshtonShippedDetails","Dim_Calendar"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_118a4264-d183-4c1d-9ddd-ff69643a70d3
+ref table D_Measure
+ref table F_AshtonShippedDetails
+ref table LocalDateTable_3faf71ab-69ce-4576-b0ec-9e34070deb03
+ref table Dim_Calendar
+ref table LocalDateTable_f749aa14-b5cd-414c-9c75-4d16c4da45a6
+ref table LocalDateTable_18797ff9-1689-48da-85ba-51dd140d4fc7
+
+ref cultureInfo en-US
+

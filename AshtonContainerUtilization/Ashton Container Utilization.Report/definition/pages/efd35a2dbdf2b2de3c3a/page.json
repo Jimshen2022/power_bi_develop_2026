@@ -1,0 +1,311 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "efd35a2dbdf2b2de3c3a",
+  "displayName": "Container Details",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "4c9cc7aec853fc4d59d3",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "F_AshtonShippedDetails"
+              }
+            },
+            "Property": "Container#"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "f",
+              "Entity": "F_AshtonShippedDetails",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "f"
+                          }
+                        },
+                        "Property": "Container#"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'TRHU513533'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "f7190a922983cff56c12",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Calendar"
+              }
+            },
+            "Property": "Date"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "Dim_Calendar",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "d"
+                          }
+                        },
+                        "Property": "Date"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "datetime'2025-02-19T00:00:00'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "8b887bc00c32d7105719",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "F_AshtonShippedDetails"
+              }
+            },
+            "Property": "TRIP#"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "eff391456bc5c8f52e46",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "F_AshtonShippedDetails"
+              }
+            },
+            "Property": "INIVDT"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "8abb6896cfe5f940b2b5",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "F_AshtonShippedDetails"
+              }
+            },
+            "Property": "INWHSE"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "f",
+              "Entity": "F_AshtonShippedDetails",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "f"
+                          }
+                        },
+                        "Property": "INWHSE"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'335'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "Drillthrough"
+      },
+      {
+        "name": "4a3170d42bce6d7f8f36",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "F_AshtonShippedDetails"
+              }
+            },
+            "Property": "Utilization"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "daedd75f217ba0cd5d89",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "ab638b08b3d8fb24d338",
+        "boundFilter": "4c9cc7aec853fc4d59d3",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "F_AshtonShippedDetails"
+              }
+            },
+            "Property": "Container#"
+          }
+        }
+      },
+      {
+        "name": "09d976fcf047a10ceff1",
+        "boundFilter": "f7190a922983cff56c12",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_Calendar"
+              }
+            },
+            "Property": "Date"
+          }
+        }
+      },
+      {
+        "name": "ff7a01a7f5637113b07d",
+        "boundFilter": "8b887bc00c32d7105719",
+        "asAggregation": true,
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "F_AshtonShippedDetails"
+              }
+            },
+            "Property": "TRIP#"
+          }
+        }
+      },
+      {
+        "name": "b364af1dfc344fb38641",
+        "boundFilter": "eff391456bc5c8f52e46",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "F_AshtonShippedDetails"
+              }
+            },
+            "Property": "INIVDT"
+          }
+        }
+      },
+      {
+        "name": "82cf8e211c35a40e1648",
+        "boundFilter": "8abb6896cfe5f940b2b5",
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "F_AshtonShippedDetails"
+              }
+            },
+            "Property": "INWHSE"
+          }
+        }
+      },
+      {
+        "name": "a17b70192cbacacc7bc9",
+        "boundFilter": "4a3170d42bce6d7f8f36",
+        "asAggregation": true,
+        "fieldExpr": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "F_AshtonShippedDetails"
+              }
+            },
+            "Property": "Utilization"
+          }
+        }
+      }
+    ]
+  }
+}

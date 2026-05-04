@@ -1,0 +1,513 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "9973e1a5cb984e4cb42f",
+  "position": {
+    "x": 0,
+    "y": 45.214465937762824,
+    "z": 0,
+    "height": 674.98738435660221,
+    "width": 1280
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Calendar"
+                    }
+                  },
+                  "Property": "Date"
+                }
+              },
+              "queryRef": "Dim_Calendar.Date",
+              "nativeQueryRef": "Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_AshtonShippedDetails"
+                    }
+                  },
+                  "Property": "TRIP#"
+                }
+              },
+              "queryRef": "F_AshtonShippedDetails.TRIP#",
+              "nativeQueryRef": "TRIP#"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_AshtonShippedDetails"
+                    }
+                  },
+                  "Property": "Container#"
+                }
+              },
+              "queryRef": "F_AshtonShippedDetails.CONTAINER#",
+              "nativeQueryRef": "Container#"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_AshtonShippedDetails"
+                    }
+                  },
+                  "Property": "Item#"
+                }
+              },
+              "queryRef": "AshtonShippedDetails.ITITNO",
+              "nativeQueryRef": "Item#"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_AshtonShippedDetails"
+                        }
+                      },
+                      "Property": "Unit_Cube"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(F_AshtonShippedDetails.Unit_Cube)",
+              "nativeQueryRef": "Unit_Cube"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_AshtonShippedDetails"
+                        }
+                      },
+                      "Property": "ShippedQty"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(AshtonShippedDetails.ITSHQT)",
+              "nativeQueryRef": "ShippedQty"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_AshtonShippedDetails"
+                        }
+                      },
+                      "Property": "Cubes"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(AshtonShippedDetails.CUBES)",
+              "nativeQueryRef": "Cubes"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_AshtonShippedDetails"
+                        }
+                      },
+                      "Property": "Utilization"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(F_AshtonShippedDetails.Utilization)",
+              "nativeQueryRef": "Utilization"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_AshtonShippedDetails"
+                    }
+                  },
+                  "Property": "Container_Size"
+                }
+              },
+              "queryRef": "F_AshtonShippedDetails.Container_Size",
+              "nativeQueryRef": "Container_Size"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_AshtonShippedDetails"
+                    }
+                  },
+                  "Property": "Cont_Categories"
+                }
+              },
+              "queryRef": "F_AshtonShippedDetails.Cont_Categories",
+              "nativeQueryRef": "Cont_Categories"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_AshtonShippedDetails"
+                        }
+                      },
+                      "Property": "ContainerAccumulatedCubes"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(F_AshtonShippedDetails.ContainerAccumulatedCubes)",
+              "nativeQueryRef": "ContainerAccumulatedCubes"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_AshtonShippedDetails"
+                    }
+                  },
+                  "Property": "tran_type"
+                }
+              },
+              "queryRef": "F_AshtonShippedDetails.tran_type",
+              "nativeQueryRef": "tran_type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_AshtonShippedDetails"
+                    }
+                  },
+                  "Property": "UtilizationRange"
+                }
+              },
+              "queryRef": "F_AshtonShippedDetails.UtilizationRange",
+              "nativeQueryRef": "UtilizationRange"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "D_Measure"
+                    }
+                  },
+                  "Property": "cnt_utilization%"
+                }
+              },
+              "queryRef": "D_Measure.cnt_utilization%",
+              "nativeQueryRef": "cnt_utilization%"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "88.5215511501345D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "AshtonShippedDetails.ITITNO"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "112.38267583855608D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "F_AshtonShippedDetails.Cont_Categories"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "75.38267199014028D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(F_AshtonShippedDetails.Utilization)"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_Calendar.Date"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "D_Measure.cnt_utilization%"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "F_AshtonShippedDetails.UtilizationRange"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "F_AshtonShippedDetails.tran_type"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(F_AshtonShippedDetails.ContainerAccumulatedCubes)"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "F_AshtonShippedDetails.Cont_Categories"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "F_AshtonShippedDetails.Container_Size"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(F_AshtonShippedDetails.Utilization)"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(AshtonShippedDetails.CUBES)"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(AshtonShippedDetails.ITSHQT)"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(F_AshtonShippedDetails.Unit_Cube)"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'AlternatingRows'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Ashton Container Utilization Details'"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
