@@ -57,21 +57,6 @@
                       "Entity": "A_Measure"
                     }
                   },
-                  "Property": "1_WN3 All in PPH Shipping CL (Dynamic)"
-                }
-              },
-              "queryRef": "A_Measure.1_WN3 All in PPH Shipping CL (LastWeek)",
-              "nativeQueryRef": "Average1",
-              "displayName": "Average"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "A_Measure"
-                    }
-                  },
                   "Property": "1_WN3 All in PPH Shipping UCL (Dynamic)"
                 }
               },
@@ -93,6 +78,36 @@
               "queryRef": "A_Measure.1_WN3 All in PPH Shipping LCL (LastWeek)",
               "nativeQueryRef": "LCL1",
               "displayName": "LCL"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "A_Measure"
+                    }
+                  },
+                  "Property": "1_WN3 All in PPH Shipping Target Line"
+                }
+              },
+              "queryRef": "A_Measure.1_WN3 All in PPH Shipping Target Line",
+              "nativeQueryRef": "Target",
+              "displayName": "Target"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "A_Measure"
+                    }
+                  },
+                  "Property": "1_WN3 All in PPH Shipping CL (Dynamic)"
+                }
+              },
+              "queryRef": "A_Measure.1_WN3 All in PPH Shipping CL (LastWeek)",
+              "nativeQueryRef": "Average1",
+              "displayName": "Average"
             }
           ]
         }
@@ -140,6 +155,121 @@
                 }
               }
             }
+          }
+        },
+        {
+          "properties": {
+            "showMarker": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "markerColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "A_Measure.1_WN3 All in PPH Shipping (Daily, NoDims)"
+          }
+        },
+        {
+          "properties": {
+            "lineStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "'dashed'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "A_Measure.1_WN3 All in PPH Shipping Target Line"
+          }
+        }
+      ],
+      "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "A_Measure.1_WN3 All in PPH Shipping (Daily, NoDims)"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E60101'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "A_Measure.1_WN3 All in PPH Shipping UCL (LastWeek)"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E60101'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "A_Measure.1_WN3 All in PPH Shipping LCL (LastWeek)"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#04A611'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "A_Measure.1_WN3 All in PPH Shipping Target Line"
           }
         }
       ]
@@ -494,7 +624,8 @@
             "Property": "1_WN3 All in PPH Shipping CL (Dynamic)"
           }
         },
-        "type": "Advanced"
+        "type": "Advanced",
+        "howCreated": "User"
       },
       {
         "name": "98ce5d9f4662e935a207",

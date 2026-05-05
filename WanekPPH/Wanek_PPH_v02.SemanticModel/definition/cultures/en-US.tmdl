@@ -6440,6 +6440,16 @@ cultureInfo en-US
 			          "1_WN3 all in PPH shipping target line": {
 			            "State": "Generated"
 			          }
+			        },
+			        {
+			          "Target": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -6576,7 +6586,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Average": {
+			          "WN3 All in PPH Line Clearing CL (LastWeek)": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -6586,7 +6596,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "WN3 All in PPH Line Clearing CL (LastWeek)": {
+			          "Average": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -7038,7 +7048,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Average": {
+			          "WN2 All in PPH Line Clearing CL (LastWeek)": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -7048,7 +7058,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "WN2 All in PPH Line Clearing CL (LastWeek)": {
+			          "Average": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -7190,7 +7200,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "DC All in PPH Unload+Load": {
+			          "DC All in PPH Unload + Load": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -7200,7 +7210,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "DC All in PPH Unload + Load": {
+			          "DC All in PPH Unload+Load": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -7492,7 +7502,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Average": {
+			          "DC All in PPH Load CL (LastWeek)": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -7502,7 +7512,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "DC All in PPH Load CL (LastWeek)": {
+			          "Average": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -7910,7 +7920,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "Average": {
+			          "WN2 Individual PPH Shipping CL (LastWeek)": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -7920,7 +7930,7 @@ cultureInfo en-US
 			          }
 			        },
 			        {
-			          "WN2 Individual PPH Shipping CL (LastWeek)": {
+			          "Average": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",

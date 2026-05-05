@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "e889a2315a2045d18077",
   "position": {
-    "x": 69.967845659163984,
+    "x": 43.215434083601281,
     "y": 0,
     "z": 0,
     "height": 88.488745980707392,
-    "width": 245.91639871382637,
+    "width": 269.58199356913184,
     "tabOrder": 0
   },
   "visual": {
@@ -72,14 +72,14 @@
             "relativeDuration": {
               "expr": {
                 "Literal": {
-                  "Value": "1D"
+                  "Value": "3D"
                 }
               }
             },
             "relativePeriod": {
               "expr": {
                 "Literal": {
-                  "Value": "'Calendar Weeks'"
+                  "Value": "'Weeks'"
                 }
               }
             }
@@ -130,27 +130,27 @@
                             "Expression": {
                               "DateAdd": {
                                 "Expression": {
-                                  "Now": {}
+                                  "DateAdd": {
+                                    "Expression": {
+                                      "Now": {}
+                                    },
+                                    "Amount": 1,
+                                    "TimeUnit": 0
+                                  }
                                 },
-                                "Amount": -1,
+                                "Amount": -3,
                                 "TimeUnit": 1
                               }
                             },
-                            "TimeUnit": 1
+                            "TimeUnit": 0
                           }
                         },
                         "UpperBound": {
                           "DateSpan": {
                             "Expression": {
-                              "DateAdd": {
-                                "Expression": {
-                                  "Now": {}
-                                },
-                                "Amount": -1,
-                                "TimeUnit": 1
-                              }
+                              "Now": {}
                             },
-                            "TimeUnit": 1
+                            "TimeUnit": 0
                           }
                         }
                       }

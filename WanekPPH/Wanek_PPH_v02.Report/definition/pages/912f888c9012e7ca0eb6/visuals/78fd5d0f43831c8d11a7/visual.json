@@ -91,31 +91,14 @@
                       "Entity": "A_Measure"
                     }
                   },
-                  "Property": "1_WN3 All in PPH Shipping"
+                  "Property": "1_WN3 All in PPH Shipping (Daily, NoDims)"
                 }
               },
-              "queryRef": "A_Measure.1_WN3 All in PPH Shipping",
-              "nativeQueryRef": "1_WN3 All in PPH Shipping"
+              "queryRef": "A_Measure.1_WN3 All in PPH Shipping (Daily, NoDims)",
+              "nativeQueryRef": "1_WN3 All in PPH Shipping (Daily, NoDims)"
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "A_Measure"
-                  }
-                },
-                "Property": "1_WN3 All in PPH Shipping"
-              }
-            },
-            "direction": "Descending"
-          }
-        ]
       }
     },
     "expansionStates": [
@@ -286,6 +269,13 @@
                   "Value": "true"
                 }
               }
+            },
+            "columnSubtotals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         },
@@ -342,6 +332,36 @@
                 }
               }
             }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "136.04226841689268D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fct_Supervisors_Hours.Name"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "113.78134946794944D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fct_Supervisors_Hours.Position"
           }
         }
       ]
@@ -516,79 +536,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "2b291d778dc7634d8bc3",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fct_Supervisors_Hours"
-              }
-            },
-            "Property": "Employee_ID"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "1d4ca47098c06859a380",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fct_Supervisors_Hours"
-              }
-            },
-            "Property": "Name"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "1f54528078342d905b6a",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fct_Supervisors_Hours"
-              }
-            },
-            "Property": "Date"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "9785209a4e67479c14b9",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "A_Measure"
-              }
-            },
-            "Property": "1_WN3 All in PPH Shipping"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "8bc05340d4bd15ac3049",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Fct_Supervisors_Hours"
-              }
-            },
-            "Property": "Position"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }
