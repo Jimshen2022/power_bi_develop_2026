@@ -151,7 +151,6 @@ table A_Measure
 		displayFolder: 1_WN3 All in PPH Shipping
 		lineageTag: 971b366c-6315-4648-9735-e2ec8f68ca5a
 
-
 	measure '2_WN3 All in PPH Line Clearing CL (Dynamic)' =
 			
 			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )

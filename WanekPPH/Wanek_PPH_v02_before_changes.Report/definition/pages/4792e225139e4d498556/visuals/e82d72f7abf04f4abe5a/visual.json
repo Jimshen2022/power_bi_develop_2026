@@ -3,9 +3,9 @@
   "name": "e82d72f7abf04f4abe5a",
   "position": {
     "x": 0,
-    "y": 66.88102893890675,
+    "y": 66.881028938906752,
     "z": 0,
-    "height": 653.3762057877814,
+    "height": 653.37620578778137,
     "width": 1280,
     "tabOrder": 0
   },
@@ -99,6 +99,23 @@
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fct_Supervisors_Hours"
+                  }
+                },
+                "Property": "Employee_ID"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
       }
     },
     "expansionStates": [
