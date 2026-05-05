@@ -476,7 +476,7 @@
                 "Entity": "A_Measure"
               }
             },
-            "Property": "1_WN3 All in PPH Shipping (Daily, NoDims)"
+            "Property": "6_DC All in PPH Load (Daily, NoDims)"
           }
         },
         "type": "Advanced",
@@ -492,7 +492,7 @@
                 "Entity": "A_Measure"
               }
             },
-            "Property": "1_WN3 All in PPH Shipping CL (Dynamic)"
+            "Property": "6_DC All in PPH Load CL (Dynamic)"
           }
         },
         "type": "Advanced",
@@ -508,7 +508,7 @@
                 "Entity": "A_Measure"
               }
             },
-            "Property": "1_WN3 All in PPH Shipping UCL (Dynamic)"
+            "Property": "6_DC All in PPH Load UCL (Dynamic)"
           }
         },
         "type": "Advanced",
@@ -524,7 +524,7 @@
                 "Entity": "A_Measure"
               }
             },
-            "Property": "1_WN3 All in PPH Shipping LCL (Dynamic)"
+            "Property": "6_DC All in PPH Load LCL (Dynamic)"
           }
         },
         "type": "Advanced",
