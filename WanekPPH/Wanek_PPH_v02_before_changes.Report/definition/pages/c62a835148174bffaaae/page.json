@@ -1,0 +1,48 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "c62a835148174bffaaae",
+  "displayName": "WN2 Individual PPH Shipping Details",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "25c4710fc744487d8646",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "I01_WN2 Individual PPH Shipping"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "1b38d76532c240a8a163",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "355539c572774e51ab30",
+        "boundFilter": "25c4710fc744487d8646",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "I01_WN2 Individual PPH Shipping"
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode"
+}

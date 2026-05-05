@@ -1,0 +1,25 @@
+table Dim_PPH_Type
+	lineageTag: c063f278-79be-493f-9b56-a1fd2d44eb77
+
+	column PPH_Type
+		lineageTag: 3fc46256-d02e-473b-82f9-d636d4f1d525
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Fct_Supervisors_Hours[PPH_Type]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_PPH_Type = calculated
+		mode: import
+		source = ```
+				
+				FILTER(
+				    VALUES('Fct_Supervisors_Hours'[PPH_Type]),
+				    NOT(ISBLANK('Fct_Supervisors_Hours'[PPH_Type])) &&
+				    'Fct_Supervisors_Hours'[PPH_Type]<> ""
+				)
+				
+				```
+
+	annotation PBI_Id = ea21fa946b5a40c29edba37a62cc1e1e
+

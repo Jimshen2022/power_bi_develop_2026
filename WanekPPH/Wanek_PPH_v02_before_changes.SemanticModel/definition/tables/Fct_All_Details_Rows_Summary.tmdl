@@ -1,0 +1,108 @@
+table Fct_All_Details_Rows_Summary
+	lineageTag: ce14b7d2-1597-4784-abcd-a0c4bccbeded
+
+	column Date
+		formatString: General Date
+		lineageTag: db35d48f-566c-4969-ae85-a674ee4521cb
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Dim_Calendar[Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Employee_ID
+		lineageTag: 850461bb-07f2-4f26-882c-7d1f522b3ce5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Dim_Employee[Employee_ID]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Shift
+		lineageTag: 307767e7-220f-4a4c-8865-3eb99fe4f073
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Dim_Shift[Shift]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MetricName
+		lineageTag: 27d39478-c509-4444-8656-fd9416e00939
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Dim_Metric[MetricName]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'PPH Metric Value'
+		formatString: 0.0
+		lineageTag: a0f1b362-afef-438c-97e4-a171d9c59b7c
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [PPH Metric Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Goal
+		formatString: 0
+		lineageTag: f6a04e51-8763-4928-a89f-da907eb62afe
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Goal]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Achievement%
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 92f4ff8e-e1bd-47d7-9be3-d68e222a72c9
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Achievement%]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Site
+		lineageTag: d250a41b-4c0d-4001-a0fb-fde7fae43879
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Dim_Site[Site]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Position
+		lineageTag: df8c3e15-5cca-4012-abe9-0095865d8b09
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Dim_Position[Position]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fct_All_Details_Rows_Summary = calculated
+		mode: import
+		source = ```
+				
+				VAR _T =
+				    SUMMARIZECOLUMNS(
+				        'Dim_Calendar'[Date],
+				        'Dim_Employee'[Employee_ID],
+				        'Dim_Shift'[Shift],
+				        'Dim_Site'[Site],
+				        'Dim_Position'[Position],
+				        'Dim_Metric'[MetricName],
+				
+				        "PPH Metric Value", [PPH Metric Value],
+				        "Goal",            [Goal],
+				        "Achievement%",    [Achievement%]
+				    )
+				RETURN
+				    FILTER(
+				        _T,
+				        NOT ISBLANK ( [PPH Metric Value] )
+				            && NOT CONTAINSSTRING ( 'Dim_Metric'[MetricName], "All in" )
+				    )
+				
+				
+				```
+
+	annotation PBI_Id = c18a56e0c22e4f9591f3c6345f7e3c9c
+

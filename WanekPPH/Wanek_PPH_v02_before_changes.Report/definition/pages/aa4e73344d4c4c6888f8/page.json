@@ -1,0 +1,48 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "aa4e73344d4c4c6888f8",
+  "displayName": "WN2 All in PPH Line Clearing Details",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "aa35f5f259c84bacb55e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "4_WN2 All in PPH Line Clearing"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "8e2fe2e85aba4ba58553",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "08945f8dadc24b0b927c",
+        "boundFilter": "aa35f5f259c84bacb55e",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "4_WN2 All in PPH Line Clearing"
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode"
+}

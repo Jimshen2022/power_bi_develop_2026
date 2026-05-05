@@ -1,0 +1,48 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "a167b8a6947440f79af5",
+  "displayName": "WN3 Individual PPH Runner Details",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ebf19ab06d9b464ba559",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "I05_WN3 Individual PPH Runner"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "a7284bdb50624bb3bbc6",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "8580cf3b201749558292",
+        "boundFilter": "ebf19ab06d9b464ba559",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "I05_WN3 Individual PPH Runner"
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode"
+}

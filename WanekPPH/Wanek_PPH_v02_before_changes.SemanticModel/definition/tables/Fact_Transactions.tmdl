@@ -1,0 +1,200 @@
+table Fact_Transactions
+	lineageTag: 877a7203-6e2f-4a94-a027-47dec1b96d1c
+
+	column item_number
+		dataType: string
+		lineageTag: 4eff365b-c324-4d51-9286-b8454cf08713
+		summarizeBy: none
+		sourceColumn: item_number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column commodity_code
+		dataType: string
+		lineageTag: be0fb1df-169a-4550-a84a-9260e16a09e4
+		summarizeBy: none
+		sourceColumn: commodity_code
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column pick_put_id
+		dataType: string
+		lineageTag: b0f46674-cd6c-41cf-b8fe-e60adb978c43
+		summarizeBy: none
+		sourceColumn: pick_put_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column tran_qty
+		dataType: double
+		lineageTag: a5045348-66b6-490c-ac76-b9a56857f98f
+		summarizeBy: sum
+		sourceColumn: tran_qty
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column tran_type
+		dataType: string
+		lineageTag: ae69e130-c657-40e5-b049-e5b2ba385db2
+		summarizeBy: none
+		sourceColumn: tran_type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_id
+		dataType: string
+		lineageTag: bc2958e1-6cf0-48ca-aebd-8f3600486eb9
+		summarizeBy: none
+		sourceColumn: employee_id
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column emp_name
+		dataType: string
+		lineageTag: 3fc6121d-dd25-4360-84da-1037bbb63c47
+		summarizeBy: none
+		sourceColumn: emp_name
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column dept_nbr
+		dataType: string
+		lineageTag: 66b42501-1be9-4ce7-8fc9-12aad6cbd48e
+		summarizeBy: none
+		sourceColumn: dept_nbr
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column shift_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 5713afc1-64e5-4429-95dc-abbb4d3f7a6a
+		summarizeBy: none
+		sourceColumn: shift_date
+
+		changedProperty = IsHidden
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column shift
+		dataType: string
+		lineageTag: 11103c5c-5c2f-4810-9a75-3e4c85e46a6b
+		summarizeBy: none
+		sourceColumn: shift
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column pph_type
+		dataType: string
+		lineageTag: 910b2a8b-8f0f-48d2-ae70-66d1f5bbe195
+		summarizeBy: none
+		sourceColumn: pph_type
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column control_number
+		dataType: string
+		lineageTag: be761d91-a755-4adb-9642-8da4c1bcf3c2
+		summarizeBy: none
+		sourceColumn: control_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column control_number_2
+		dataType: string
+		lineageTag: 95558732-e9ac-487d-be10-cdf9036c14bf
+		summarizeBy: none
+		sourceColumn: control_number_2
+
+		annotation SummarizationSetBy = Automatic
+
+	column wh_id
+		dataType: string
+		lineageTag: 903cfc18-0084-453f-8593-16f646d4f7db
+		summarizeBy: none
+		sourceColumn: wh_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column location_id
+		dataType: string
+		lineageTag: aea63d80-983f-4c33-9940-9e3a98f59fa1
+		summarizeBy: none
+		sourceColumn: location_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column hu_id
+		dataType: string
+		lineageTag: 2d217ea7-22a6-4352-9f8a-bc8015f14c1c
+		summarizeBy: none
+		sourceColumn: hu_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column location_id_2
+		dataType: string
+		lineageTag: dd78abde-3944-41bd-862d-e33db7a266b7
+		summarizeBy: none
+		sourceColumn: location_id_2
+
+		annotation SummarizationSetBy = Automatic
+
+	column site
+		dataType: string
+		lineageTag: 69cf349e-c5db-4d93-a699-0e5bf648de61
+		summarizeBy: none
+		sourceColumn: site
+
+		annotation SummarizationSetBy = Automatic
+
+	column backorder_reason
+		dataType: string
+		lineageTag: 98e81d1b-ab72-4fd0-8674-9e1c5ff775d9
+		summarizeBy: none
+		sourceColumn: backorder_reason
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Transactions = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"5839814b-ec95-48ea-a07a-ec0241ac9946" = Workspaces{[workspaceId="5839814b-ec95-48ea-a07a-ec0241ac9946"]}[Data],
+				    #"2f307dc5-9e58-4c59-9a8c-96cf274e9a2a" = #"5839814b-ec95-48ea-a07a-ec0241ac9946"{[dataflowId="2f307dc5-9e58-4c59-9a8c-96cf274e9a2a"]}[Data],
+				    Wanek_PPH_Pieces_ = #"2f307dc5-9e58-4c59-9a8c-96cf274e9a2a"{[entity="Wanek_PPH_Pieces",version=""]}[Data]
+				in
+				    Wanek_PPH_Pieces_
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

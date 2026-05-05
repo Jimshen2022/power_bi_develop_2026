@@ -1,0 +1,49 @@
+expression GetTotalPieces =
+		// let
+		//     GetTransactionPieces = (ShiftDate as any, EmployeeID as text, PPHType as text) as nullable number =>
+		//     let
+		//         // 确保 ShiftDate 是日期类型
+		//         ShiftDateConverted = if Value.Is(ShiftDate, type date) then ShiftDate else Date.FromText(ShiftDate),
+		//         // 筛选符合条件的行
+		//         FilteredRows = Table.SelectRows(Fact_Transactions, each [shift_date] = ShiftDateConverted and [employee_id] = EmployeeID and [pph_type] = PPHType),
+		//         // 计算 pieces 字段的总和
+		//         TotalPieces = if Table.IsEmpty(FilteredRows) then 0 else List.Sum(FilteredRows[pieces])
+		//     in
+		//         TotalPieces
+		// in
+		//     GetTransactionPieces
+		
+		
+		    let
+		    GroupedTransactions = Table.Group(
+		        Fact_Transactions,
+		        {"shift_date", "employee_id", "pph_type"},
+		        {"TotalPieces", each List.Sum([pieces]), type nullable number}
+		    ),
+		    GetTransactionPieces = (ShiftDate as date, EmployeeID as text, PPHType as text) as nullable number =>
+		        let
+		            Lookup = Table.SelectRows(GroupedTransactions, each [shift_date] = ShiftDate and [employee_id] = EmployeeID and [pph_type] = PPHType),
+		            Result = if Table.IsEmpty(Lookup) then 0 else Record.Field(Table.First(Lookup), "TotalPieces")
+		        in
+		            Result
+		in
+		    GetTransactionPieces
+	lineageTag: 535a84e7-f3ff-4dea-a499-fd875ee85de8
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+expression A_Measures =
+		let
+		    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+		    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+		    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+		in
+		    #"Removed Columns"
+	lineageTag: cd640b28-3d74-45a3-b930-e70996b314c4
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
