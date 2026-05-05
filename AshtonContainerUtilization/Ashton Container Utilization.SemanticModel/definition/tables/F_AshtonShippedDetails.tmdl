@@ -1,0 +1,239 @@
+table F_AshtonShippedDetails
+	lineageTag: b6951b3e-46ea-46ba-b676-98eb855ed83c
+
+	column Item#
+		dataType: string
+		lineageTag: 051aee6a-f2d1-48af-81ff-6395a5e0b5d7
+		summarizeBy: none
+		sourceColumn: Item#
+
+		annotation SummarizationSetBy = Automatic
+
+	column INWHSE
+		dataType: string
+		lineageTag: 431fb737-38e9-425e-a893-ff3c3e7b12ac
+		summarizeBy: none
+		sourceColumn: INWHSE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippedQty
+		dataType: double
+		formatString: #,0
+		lineageTag: cb953e08-53e8-4866-896f-419790713819
+		summarizeBy: sum
+		sourceColumn: ShippedQty
+
+		annotation SummarizationSetBy = Automatic
+
+	column TRIP#
+		dataType: int64
+		formatString: 0
+		lineageTag: be5d3ddd-0620-4a6a-9914-c36009157c81
+		summarizeBy: sum
+		sourceColumn: TRIP#
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cubes
+		dataType: double
+		formatString: #,0
+		lineageTag: 1489dcef-a900-48fc-8c68-65016892aca9
+		summarizeBy: sum
+		sourceColumn: Cubes
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product
+		dataType: string
+		lineageTag: 158e57de-2ade-4e5e-833d-a2d0253062d7
+		summarizeBy: none
+		sourceColumn: Product
+
+		annotation SummarizationSetBy = Automatic
+
+	column INIVDT
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 319a12d4-49b9-4342-8569-3d2f22880701
+		summarizeBy: none
+		sourceColumn: INIVDT
+
+		variation Variation
+			isDefault
+			relationship: d33942b8-f415-44cb-93e9-c47434a4433d
+			defaultHierarchy: LocalDateTable_3faf71ab-69ce-4576-b0ec-9e34070deb03.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Utilization =
+			SWITCH(TRUE(),
+			MID('F_AshtonShippedDetails'[ContainerSize],1,2) = "53", 'F_AshtonShippedDetails'[Cubes]/3831,
+			MID('F_AshtonShippedDetails'[ContainerSize],1,2) = "50", 'F_AshtonShippedDetails'[Cubes]/3333,
+			MID('F_AshtonShippedDetails'[ContainerSize],1,3) = "40H", 'F_AshtonShippedDetails'[Cubes]/2650,
+			MID('F_AshtonShippedDetails'[ContainerSize],1,3) = "40", 'F_AshtonShippedDetails'[Cubes]/2383,
+			MID('F_AshtonShippedDetails'[ContainerSize],1,1) = "2", 'F_AshtonShippedDetails'[Cubes]/1191,
+			MID('F_AshtonShippedDetails'[ContainerSize],1,1) = "" && 'F_AshtonShippedDetails'[ContainerAccumulatedCubes]<=1191, 'F_AshtonShippedDetails'[Cubes]/1191,
+			'F_AshtonShippedDetails'[Cubes]/2650)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: e307f939-26e7-4a9c-88b8-50ad8d2e9eb8
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column ContainerAccumulatedUlitization = CALCULATE(SUM(F_AshtonShippedDetails[Utilization]),ALLEXCEPT('F_AshtonShippedDetails','F_AshtonShippedDetails'[TRIP#],'F_AshtonShippedDetails'[Container#]))
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 15a99665-cc29-4fee-a288-ddbcc6bda6a7
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column UtilizationRange =
+			SWITCH(true(),
+			'F_AshtonShippedDetails'[ContainerAccumulatedUlitization]<0.7,"a. 0~70%",
+			'F_AshtonShippedDetails'[ContainerAccumulatedUlitization]<0.8,"b. 70%~80%",
+			'F_AshtonShippedDetails'[ContainerAccumulatedUlitization]<0.85,"c. 80%~85%",
+			'F_AshtonShippedDetails'[ContainerAccumulatedUlitization]<0.9,"d. 85%~90%",
+			'F_AshtonShippedDetails'[ContainerAccumulatedUlitization]<0.95,"e. 90%~95%",
+			'F_AshtonShippedDetails'[ContainerAccumulatedUlitization]<1,"f. 95%~100%",
+			"j. Over 100%"
+			)
+		lineageTag: 7e2e02c0-726a-4355-9208-ec5090aebdbf
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column ContainerAccumulatedCubes = CALCULATE(SUM(F_AshtonShippedDetails[Cubes]),ALLEXCEPT('F_AshtonShippedDetails','F_AshtonShippedDetails'[TRIP#],'F_AshtonShippedDetails'[Container#]))
+		lineageTag: c1b5c1f1-0618-43ea-a621-832aa971c2ae
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column tran_type
+		dataType: string
+		lineageTag: 969bcd0e-1765-4c05-b004-07565fa8a002
+		summarizeBy: none
+		sourceColumn: tran_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Container#
+		dataType: string
+		lineageTag: 262e7ef2-04ad-4f01-9837-f41ae4ce4a42
+		summarizeBy: none
+		sourceColumn: Container#
+
+		annotation SummarizationSetBy = Automatic
+
+	column Container_Size
+		dataType: string
+		lineageTag: 19484e85-84e4-4f6d-820c-00422a4d8f51
+		summarizeBy: none
+		sourceColumn: Container_Size
+
+		annotation SummarizationSetBy = Automatic
+
+	column ContainerSize
+		dataType: string
+		lineageTag: a685bc91-f586-4dbf-b14f-4e0b91a2a96d
+		summarizeBy: none
+		sourceColumn: ContainerSize
+
+		annotation SummarizationSetBy = Automatic
+
+	column ContainerType
+		dataType: string
+		lineageTag: a59a1556-ad57-48b7-a0d8-76858fdbcd68
+		summarizeBy: none
+		sourceColumn: ContainerType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cont_Categories
+		dataType: string
+		lineageTag: bb7076f8-b453-442d-9e81-ac4ea5d91074
+		summarizeBy: none
+		sourceColumn: Cont_Categories
+
+		annotation SummarizationSetBy = Automatic
+
+	column Unit_Cube
+		dataType: double
+		lineageTag: b67d746a-02cf-400d-8602-1448b6b423c8
+		summarizeBy: sum
+		sourceColumn: Unit_Cube
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: a251dd5b-0d1b-4068-b624-64330bc5f388
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column container_qty_flag = ```
+			
+			VAR currContainer = 'F_AshtonShippedDetails'[Container#] & "||" & 'F_AshtonShippedDetails'[TRIP#]
+			VAR currIndex = 'F_AshtonShippedDetails'[Index]
+			VAR minIndex =
+			    CALCULATE (
+			        MIN ( 'F_AshtonShippedDetails'[Index] ),
+			        FILTER (
+			            'F_AshtonShippedDetails',
+			            'F_AshtonShippedDetails'[Container#] & "||" & 'F_AshtonShippedDetails'[TRIP#] = currContainer
+			        )
+			    )
+			RETURN
+			    IF ( currIndex = minIndex, 1, 0 )
+			
+			```
+		formatString: 0
+		lineageTag: 87293e6a-0021-46e1-88be-f87023ec6f1e
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Index
+		dataType: int64
+		formatString: 0
+		lineageTag: 0e73f2c3-5efe-4533-9780-54f620d5bc6b
+		summarizeBy: sum
+		sourceColumn: Index
+
+		annotation SummarizationSetBy = Automatic
+
+	partition F_AshtonShippedDetails-7f497a04-8da1-4c46-a611-84b599b4b0d7 = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"5839814b-ec95-48ea-a07a-ec0241ac9946" = Workspaces{[workspaceId="5839814b-ec95-48ea-a07a-ec0241ac9946"]}[Data],
+				    #"c165c239-6c55-4b49-bd8e-9d6cccf70e6f" = #"5839814b-ec95-48ea-a07a-ec0241ac9946"{[dataflowId="c165c239-6c55-4b49-bd8e-9d6cccf70e6f"]}[Data],
+				    ashton_container_utilization_df_ = #"c165c239-6c55-4b49-bd8e-9d6cccf70e6f"{[entity="ashton_container_utilization_df",version=""]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(ashton_container_utilization_df_, each ([INWHSE] = "335")),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Filtered Rows", "INIVDT", "INIVDT - Copy"),
+				    #"Renamed Columns" = Table.RenameColumns(#"Duplicated Column",{{"INIVDT - Copy", "Date"}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"Date", type date}}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Changed Type",{{"Ctn_size", "Container_Size"}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Renamed Columns1",{{"INIVDT", type date}}),
+				    #"Renamed Columns2" = Table.RenameColumns(#"Changed Type1",{{"CONTAINER#", "Container#"}, {"PRODUCT", "Product"}, {"CUBES", "Cubes"}, {"ITITNO", "Item#"}, {"ITSHQT", "ShippedQty"}, {"Container_size_final", "ContainerSize"}}),
+				    #"Added Index" = Table.AddIndexColumn(#"Renamed Columns2", "Index", 1, 1, Int64.Type)
+				in
+				    #"Added Index"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

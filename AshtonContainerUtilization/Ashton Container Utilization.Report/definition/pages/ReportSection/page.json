@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "ReportSection",
+  "displayName": "Ashton Container Utilization",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "pageBinding": {
+    "name": "Pod",
+    "type": "Default",
+    "parameters": [],
+    "referenceScope": "CrossReport"
+  },
+  "visualInteractions": [
+    {
+      "source": "9c0e8cff29a2020ae519",
+      "target": "a99483deaf2d04368a7b",
+      "type": "NoFilter"
+    },
+    {
+      "source": "9c0e8cff29a2020ae519",
+      "target": "5ab76bde685ed5774f05",
+      "type": "NoFilter"
+    },
+    {
+      "source": "cf8576730bba0c42b0b4",
+      "target": "5ab76bde685ed5774f05",
+      "type": "NoFilter"
+    },
+    {
+      "source": "cf8576730bba0c42b0b4",
+      "target": "a99483deaf2d04368a7b",
+      "type": "NoFilter"
+    },
+    {
+      "source": "cf8576730bba0c42b0b4",
+      "target": "634b04a0a0e46b000c87",
+      "type": "NoFilter"
+    },
+    {
+      "source": "5ab76bde685ed5774f05",
+      "target": "a99483deaf2d04368a7b",
+      "type": "NoFilter"
+    }
+  ]
+}

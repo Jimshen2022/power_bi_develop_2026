@@ -1,0 +1,145 @@
+table Dim_Calendar
+	lineageTag: 4a11e27d-c6df-4666-a082-4cee4843846f
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 78b0c6c9-b918-4cb7-a370-5fe0fd87a44b
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 0afc6483-a31b-4793-a37d-a5096b7c1abd
+			defaultHierarchy: LocalDateTable_f749aa14-b5cd-414c-9c75-4d16c4da45a6.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Weekday
+		dataType: string
+		lineageTag: 2fd2c0f7-0f8c-4677-9f10-dabfe197b4ab
+		summarizeBy: none
+		sourceColumn: Weekday
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: e869bd09-6430-49ed-ae86-2a4c527a45db
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthWithYear
+		dataType: string
+		lineageTag: c55fff37-4de5-408d-9ade-592d4d871a35
+		summarizeBy: none
+		sourceColumn: MonthWithYear
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthShort
+		dataType: string
+		lineageTag: 09b4a805-6cc2-4600-9402-faebecc5ea52
+		summarizeBy: none
+		sourceColumn: MonthShort
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonth
+		dataType: int64
+		formatString: 0
+		lineageTag: adcdeb78-8528-4627-bc7c-5faf86cc2260
+		summarizeBy: sum
+		sourceColumn: YearMonth
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weeknum
+		dataType: int64
+		formatString: 0
+		lineageTag: 38a68028-20e2-46ef-b253-5129886d1683
+		summarizeBy: sum
+		sourceColumn: Weeknum
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearWeek
+		dataType: int64
+		formatString: 0
+		lineageTag: bf01be5c-7ee2-4b32-8476-61c8daadd5cd
+		summarizeBy: sum
+		sourceColumn: YearWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column Week
+		dataType: int64
+		formatString: 0
+		lineageTag: b2c1d4c7-9425-49ad-865a-d0b7bfdbbe63
+		summarizeBy: sum
+		sourceColumn: Week
+
+		annotation SummarizationSetBy = Automatic
+
+	column SaturdayDate
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 679942c5-ef71-4e29-ac22-a5c84cfd0bab
+		summarizeBy: none
+		sourceColumn: SaturdayDate
+
+		variation Variation
+			isDefault
+			relationship: d5dcb195-ea0a-4a01-ad33-870966b8e2c7
+			defaultHierarchy: LocalDateTable_18797ff9-1689-48da-85ba-51dd140d4fc7.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Dim_Calendar = m
+		mode: import
+		source =
+				let
+				  //StartDate = Date.From(DateTime.LocalNow()) - #duration(90, 0, 0, 0),  // 90 days before today
+				    StartDate = #date(2025, 1, 1),
+				    EndDate = Date.From(DateTime.LocalNow()) + #duration(0, 0, 0, 0),  // 14 days after today
+				    NumDays = Duration.Days(EndDate - StartDate) + 1,  // Calculate number of days
+				    DateList = List.Generate(
+				        () => StartDate,
+				        each _ <= EndDate,
+				        each _ + #duration(1, 0, 0, 0)
+				    ),
+				    CalendarTable = Table.FromList(DateList, Splitter.SplitByNothing(), {"Date"}),
+				    AddWeekday = Table.AddColumn(CalendarTable, "Weekday", each Date.DayOfWeekName([Date])),
+				    AddYear = Table.AddColumn(AddWeekday, "Year", each Date.Year([Date])),
+				
+				    // 添加月份和年份的列，如 Jan.2024
+				    AddMonthWithYear = Table.AddColumn(AddYear, "MonthWithYear", each Date.ToText([Date], "MMM.yyyy")),  // Month with year (Jan.2024)
+				
+				    // 添加仅包含月份缩写的列，如 Jan, Feb
+				    AddMonthShort = Table.AddColumn(AddMonthWithYear, "MonthShort", each Date.ToText([Date], "MMM")),  // Only month (Jan, Feb)
+				
+				    // 新增一列，用 YYYYMM 格式表示年月，并转换为整数格式
+				    AddYearMonth = Table.AddColumn(AddMonthShort, "YearMonth", each Number.FromText(Text.From([Year]) & Text.PadStart(Text.From(Date.Month([Date])), 2, "0"))),  // YearMonth as integer (202401)
+				
+				    AddWeeknum = Table.AddColumn(AddYearMonth, "Weeknum", each Date.WeekOfYear([Date])),
+				    AddYearWeek = Table.AddColumn(AddWeeknum, "YearWeek", each [Year] * 100 + [Weeknum]),
+				    Custom1 = Table.AddColumn(AddYearWeek, "Week", each Date.DayOfWeek([Date])),
+				
+				    // 新增一列表示每周六的日期
+				    WeekEnding = Table.AddColumn(Custom1, "SaturdayDate", each Date.AddDays([Date], 6 - Date.DayOfWeek([Date]))),
+				
+				    #"Changed Type" = Table.TransformColumnTypes(WeekEnding,{{"Date", type date}, {"Weekday", type text}, {"Year", Int64.Type}, {"MonthWithYear", type text}, {"MonthShort", type text}, {"YearMonth", Int64.Type}, {"Weeknum", Int64.Type}, {"YearWeek", Int64.Type}, {"Week", Int64.Type}, {"SaturdayDate", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

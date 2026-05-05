@@ -1,0 +1,72 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 707.752995670524,
+            "y": 269.96640092031311
+          },
+          "nodeIndex": "D_Measure",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 32.414662386494626,
+            "y": 335.084654012245
+          },
+          "nodeIndex": "F_AshtonShippedDetails",
+          "nodeLineageTag": "b6951b3e-46ea-46ba-b676-98eb855ed83c",
+          "size": {
+            "height": 772.19309714230053,
+            "width": 555.32795757046847
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 58.182087092196582
+          },
+          "nodeIndex": "D_Date",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 438.71759367728635,
+            "y": 0
+          },
+          "nodeIndex": "Dim_Calendar",
+          "nodeLineageTag": "4a11e27d-c6df-4666-a082-4cee4843846f",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 4
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 63.287087723233981,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

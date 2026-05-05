@@ -1,0 +1,231 @@
+table D_Measure
+	lineageTag: 0fb783e2-a74d-443b-a2af-9f26578563a2
+
+	measure Utilization = SUM('F_AshtonShippedDetails'[Utilization])
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 57f91a35-d16d-477f-92fc-28ef2aafd4dc
+
+	measure Cont_string =
+			CONCATENATEX(
+			    VALUES('F_AshtonShippedDetails'[Product]),
+			    'F_AshtonShippedDetails'[Product],
+			    ", ",
+			    'F_AshtonShippedDetails'[Product],
+			    ASC
+			)
+		lineageTag: 4d287b63-99af-4061-8496-930cc9693914
+
+	measure 'SKU Count Base' = ```
+			
+			COUNTROWS (
+			    SUMMARIZE (
+			        'F_AshtonShippedDetails',
+			        'F_AshtonShippedDetails'[Container#],
+			        'F_AshtonShippedDetails'[Item#]
+			        
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: e95c4211-45ae-4b95-8254-a785bc2aacd3
+
+	measure 'SKU Count' = ```
+			
+			VAR _rowValue =
+			    [SKU Count Base]
+			RETURN
+			IF (
+			    -- 还在按日期、ContainerType 分组的行里：正常显示 SKU 数
+			    ISINSCOPE ( 'Dim_Calendar'[Date] )
+			        || ISINSCOPE ( 'F_AshtonShippedDetails'[Cont_Categories] ),
+			    _rowValue,
+			    -- Total 行（没有 Date / ContainerType 在 scope）→ 显示平均 SKU
+			    [Avg SKUs per Container]
+			)
+			
+			```
+		formatString: #,0
+		lineageTag: b6686cfd-2306-436e-9a22-060b3222df5f
+
+	measure 'Avg SKUs per Container' = ```
+			
+			DIVIDE ( [SKU Count Base], [Container Qty] )
+			
+			
+			```
+		formatString: 0
+		lineageTag: 85ac41f7-fe8d-4cab-8259-4d847c15ed43
+
+	measure 'Container Qty' = ```
+			
+			SUM('F_AshtonShippedDetails'[container_qty_flag])
+			
+			```
+		formatString: #,0
+		lineageTag: 2aa76ed2-0d44-4538-882a-4860244e6877
+
+	measure 'Shipped Qty' = SUM(F_AshtonShippedDetails[ShippedQty])
+		formatString: #,0
+		lineageTag: 340b1557-7a83-4f59-8f86-1205fc6f227f
+
+	measure cnt_utilization% = ```
+			
+			VAR ContainerUtilTable =
+			    SUMMARIZE (
+			        'F_AshtonShippedDetails',
+			        'F_AshtonShippedDetails'[CONTAINER#],   -- Group By Container
+			        "ctn_util", MAX('F_AshtonShippedDetails'[ContainerAccumulatedUlitization])  
+			            -- 每柜可能有多行，只取一个（通常都一样，用 MAX() 最安全）
+			    )
+			RETURN 
+			    AVERAGEX( ContainerUtilTable, [ctn_util] )
+			
+			```
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		lineageTag: fe4e2361-6c43-4b21-b5b1-9b5bde6e08aa
+
+	measure Cubes = SUM('F_AshtonShippedDetails'[Cubes])
+		formatString: #,0
+		lineageTag: 55a0a315-62bc-4196-9db9-f51aed42cdcb
+
+	measure 'Avg. Cubes per Cont' = DIVIDE('D_Measure'[Cubes],'D_Measure'[Container Qty])
+		formatString: #,0
+		lineageTag: e5e1a294-2b0b-4559-867c-4a6bf5e6c2b0
+
+	measure 'Cnt_Utili(%) CL Last Week' =
+			
+			VAR TodayDate      = TODAY()
+			VAR ThisWeekSunday = TodayDate - WEEKDAY ( TodayDate, 1 ) + 1
+			VAR LastWeekStart  = ThisWeekSunday - 7
+			VAR LastWeekEnd    = ThisWeekSunday - 1
+			
+			VAR LastWeekDates =
+			    FILTER (
+			        ALL ( 'Dim_calendar'[Date] ),
+			        'Dim_calendar'[Date] >= LastWeekStart
+			            && 'Dim_calendar'[Date] <= LastWeekEnd
+			    )
+			RETURN
+			AVERAGEX (
+			    LastWeekDates,
+			    CALCULATE ( [cnt_utilization%] )
+			)
+		formatString: #,0.0%;-#,0.0%;#,0.0%
+		lineageTag: de8c0938-e1f5-4913-bfb1-bb1750fc3c51
+
+	measure 'Cnt_Utili(%) Last Week (Sun-Sat)' =
+			
+			VAR TodayDate       = TODAY()
+			VAR ThisWeekSunday  = TodayDate - WEEKDAY ( TodayDate, 1 ) + 1   -- 本周周日
+			VAR LastWeekStart   = ThisWeekSunday - 7                         -- 上周周日
+			VAR LastWeekEnd     = ThisWeekSunday - 1                         -- 上周周六
+			VAR CurrDate        = MAX ( 'Dim_calendar'[Date] )
+			RETURN
+			IF (
+			    CurrDate >= LastWeekStart
+			        && CurrDate <= LastWeekEnd,
+			    [cnt_utilization%],        -- 现有的利用率度量
+			    BLANK ()
+			)
+		lineageTag: 38b9cbdd-7125-4e76-b2f7-77355cb1c7c5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Cnt_Utili(%) LCL Last Week' = ```
+			
+			VAR TodayDate      = TODAY()
+			VAR ThisWeekSunday = TodayDate - WEEKDAY ( TodayDate, 1 ) + 1
+			VAR LastWeekStart  = ThisWeekSunday - 7
+			VAR LastWeekEnd    = ThisWeekSunday - 1
+			
+			VAR LastWeekDates =
+			    FILTER (
+			        ALL ( 'Dim_calendar'[Date] ),
+			        'Dim_calendar'[Date] >= LastWeekStart
+			            && 'Dim_calendar'[Date] <= LastWeekEnd
+			    )
+			
+			VAR MeanUtili =
+			    AVERAGEX (
+			        LastWeekDates,
+			        CALCULATE ( [cnt_utilization%] )
+			    )
+			
+			VAR SdUtili =
+			    STDEVX.P (
+			        LastWeekDates,
+			        CALCULATE ( [cnt_utilization%] )
+			    )
+			
+			VAR RawLCL = MeanUtili - 3 * SdUtili
+			RETURN
+			MAX ( 0, RawLCL )
+			
+			```
+		lineageTag: e056b6ab-cd7c-47bb-b399-a44200fd6cdc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Cnt_Utili(%) UCL Last Week' =
+			
+			VAR TodayDate      = TODAY()
+			VAR ThisWeekSunday = TodayDate - WEEKDAY ( TodayDate, 1 ) + 1
+			VAR LastWeekStart  = ThisWeekSunday - 7
+			VAR LastWeekEnd    = ThisWeekSunday - 1
+			
+			VAR LastWeekDates =
+			    FILTER (
+			        ALL ( 'Dim_calendar'[Date] ),
+			        'Dim_calendar'[Date] >= LastWeekStart
+			            && 'Dim_calendar'[Date] <= LastWeekEnd
+			    )
+			
+			VAR MeanUtili =
+			    AVERAGEX (
+			        LastWeekDates,
+			        CALCULATE ( [cnt_utilization%] )
+			    )
+			
+			VAR SdUtili =
+			    STDEVX.P (
+			        LastWeekDates,
+			        CALCULATE ( [cnt_utilization%] )
+			    )
+			RETURN
+			MeanUtili + 3 * SdUtili
+		lineageTag: 1b9becfd-d4bc-49eb-bbb1-588344fce5b3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Is Last Week (Sun-Sat)' =
+			
+			VAR TodayDate      = TODAY()
+			VAR ThisWeekSunday = TodayDate - WEEKDAY ( TodayDate, 1 ) + 1
+			VAR LastWeekStart  = ThisWeekSunday - 7
+			VAR LastWeekEnd    = ThisWeekSunday - 1
+			VAR CurrDate       = MAX ( 'Dim_calendar'[Date] )
+			RETURN
+			IF (
+			    CurrDate >= LastWeekStart &&
+			    CurrDate <= LastWeekEnd,
+			    1,
+			    0
+			)
+		formatString: 0
+		lineageTag: fca54da9-277a-4ad8-9bcb-e3bb4d0f1f61
+
+	partition D_Measure-5af53fa2-0fcf-476c-8a6a-f57dc3ffb3a4 = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Ashton Container Utilization"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "935d2c9f-0048-4996-9101-6f9acc737034"
+  }
+}
