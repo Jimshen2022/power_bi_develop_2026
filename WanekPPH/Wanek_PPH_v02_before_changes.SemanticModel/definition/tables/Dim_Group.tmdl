@@ -1,0 +1,25 @@
+table Dim_Group
+	lineageTag: 70663725-3765-4f7a-be40-4a0148470581
+
+	column Group
+		lineageTag: d64ef118-339b-43c5-baff-574a5ebe75a2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Fct_Supervisors_Hours[Group]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Group = calculated
+		mode: import
+		source = ```
+				
+				FILTER(
+				    VALUES('Fct_Supervisors_Hours'[Group]),
+				    NOT(ISBLANK('Fct_Supervisors_Hours'[Group])) &&
+				    'Fct_Supervisors_Hours'[Group] <> ""
+				)
+				
+				```
+
+	annotation PBI_Id = 9e6054614dee44639cbd342e0e5b1fa7
+

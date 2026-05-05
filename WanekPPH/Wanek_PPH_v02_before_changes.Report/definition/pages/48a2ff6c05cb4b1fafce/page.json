@@ -1,0 +1,48 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "48a2ff6c05cb4b1fafce",
+  "displayName": "DC Individual PPH Unload + Load Details",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "903190ddaa0b48e2a2b7",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "I06_DC Individual PPH Unload + Load"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "d849e7e5930340e9a39c",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "4a81890f8cd14e53bc51",
+        "boundFilter": "903190ddaa0b48e2a2b7",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "I06_DC Individual PPH Unload + Load"
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode"
+}

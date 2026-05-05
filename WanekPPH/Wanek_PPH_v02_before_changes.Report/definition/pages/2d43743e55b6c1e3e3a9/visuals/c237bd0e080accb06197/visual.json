@@ -1,0 +1,160 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "c237bd0e080accb06197",
+  "position": {
+    "x": 610.74954296160877,
+    "y": 352.17550274223032,
+    "z": 12000,
+    "height": 367.38574040219379,
+    "width": 669.25045703839123,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "paretoEDD8E69761BA4B7BB3AA6D813990D7BF",
+    "query": {
+      "queryState": {
+        "categories": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Employee"
+                    }
+                  },
+                  "Property": "Employee_Name"
+                }
+              },
+              "queryRef": "Dim_Employee_.Employee_Name",
+              "nativeQueryRef": "Employee_Name",
+              "active": true
+            }
+          ]
+        },
+        "values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "A_Measure"
+                    }
+                  },
+                  "Property": "I07_DC Individual PPH Putaway"
+                }
+              },
+              "queryRef": "A_Measure.I07_DC Individual PPH Putaway",
+              "nativeQueryRef": "I07_DC Individual PPH Putaway"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "axes": [
+        {
+          "properties": {
+            "xShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "xPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "'words'"
+                }
+              }
+            },
+            "xRotate": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "xShortLbl1": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "xShortLbl2": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "xShortLbl3": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "xShortLbl4": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "hidden": [
+        {
+          "properties": {
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "51.099998474121094D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "view": [
+        {
+          "properties": {
+            "barFit": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

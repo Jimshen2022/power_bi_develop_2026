@@ -1,0 +1,48 @@
+table Dim_Metric
+	lineageTag: 53dfdeaf-b7f4-4651-86c0-56e42fd5a0ee
+
+	column MetricName
+		lineageTag: f6b71876-1aa7-465d-bc25-eecea0b334e2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MetricName]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Order
+		formatString: 0
+		lineageTag: 6726c7e5-e47e-4eb1-b803-6256b7568d83
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Order]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Metric = calculated
+		mode: import
+		source = ```
+				
+				DATATABLE(
+				    "MetricName", STRING,
+				    "Order", INTEGER,
+				    {
+				        {"1_WN3 All in PPH Shipping", 1},
+				        {"2_WN3 All in PPH Line Clearing", 2},
+				        {"3_WN2_All in PPH Shipping", 3},
+				        {"4_WN2 All in PPH Line Clearing", 4},
+				        {"5_DC All in PPH Unload + Load", 5},
+				        {"6_DC All in PPH Load", 6},
+				        {"I01_WN2 Individual PPH Shipping", 7},
+				        {"I02_WN2 Individual PPH Line Clearing", 8},
+				        {"I03_WN3 Individual PPH Shipping", 9},
+				        {"I04_WN3 Individual PPH Line Clearing", 10},
+				        {"I05_WN3 Individual PPH Runner", 11},
+				        {"I06_DC Individual PPH Unload+Load", 12},
+				        {"I07_DC Individual PPH Put away", 13}
+				    }
+				)
+				
+				```
+
+	annotation PBI_Id = cca4d802138e4bd4999be171f6e36edc
+
