@@ -151,6 +151,691 @@ table A_Measure
 		displayFolder: 1_WN3 All in PPH Shipping
 		lineageTag: 971b366c-6315-4648-9735-e2ec8f68ca5a
 
+
+	measure '2_WN3 All in PPH Line Clearing CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [2_WN3 All in PPH Line Clearing (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 2_WN3 All in PPH Line Clearing
+		lineageTag: 96f92b5c-07fe-4523-9af4-ede20e9dfbde
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '2_WN3 All in PPH Line Clearing Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [2_WN3 All in PPH Line Clearing (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 2_WN3 All in PPH Line Clearing
+		lineageTag: 6fd11da8-47b0-46e5-be77-eb2a18c0fd5d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '2_WN3 All in PPH Line Clearing UCL (Dynamic)' =
+			
+			VAR _CL = [2_WN3 All in PPH Line Clearing CL (Dynamic)]
+			VAR _Sigma = [2_WN3 All in PPH Line Clearing Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: 2_WN3 All in PPH Line Clearing
+		lineageTag: 9a1bb3e5-24d7-4492-b09d-44105467b6dd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '2_WN3 All in PPH Line Clearing LCL (Dynamic)' =
+			
+			VAR _CL = [2_WN3 All in PPH Line Clearing CL (Dynamic)]
+			VAR _Sigma = [2_WN3 All in PPH Line Clearing Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: 2_WN3 All in PPH Line Clearing
+		lineageTag: 0c80a291-d704-4b9b-a67b-4ffa2235ebf9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3_WN2 All in PPH Shipping CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [3_WN2 All in PPH Shipping (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 3_WN2 All in PPH Shipping
+		lineageTag: eedfac4c-e03f-4ef9-84af-60e8f4dd4d4c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3_WN2 All in PPH Shipping Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [3_WN2 All in PPH Shipping (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 3_WN2 All in PPH Shipping
+		lineageTag: 2b20312d-b7be-4ced-8dfb-fac8b12d8313
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3_WN2 All in PPH Shipping UCL (Dynamic)' =
+			
+			VAR _CL = [3_WN2 All in PPH Shipping CL (Dynamic)]
+			VAR _Sigma = [3_WN2 All in PPH Shipping Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: 3_WN2 All in PPH Shipping
+		lineageTag: f033c7ab-2877-4f8f-8e18-c7bc5aaedf72
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3_WN2 All in PPH Shipping LCL (Dynamic)' =
+			
+			VAR _CL = [3_WN2 All in PPH Shipping CL (Dynamic)]
+			VAR _Sigma = [3_WN2 All in PPH Shipping Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: 3_WN2 All in PPH Shipping
+		lineageTag: 9f4cc8b7-d06e-4071-b070-41ded8c1bb4b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '4_WN2 All in PPH Line Clearing CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [4_WN2 All in PPH Line Clearing (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 4_WN2 All in PPH Line Clearing
+		lineageTag: e09e3b31-b154-4e2c-888a-3b8244bc4405
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '4_WN2 All in PPH Line Clearing Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [4_WN2 All in PPH Line Clearing (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 4_WN2 All in PPH Line Clearing
+		lineageTag: 6858059f-b4cf-4262-aa2e-9a5bcd5102c5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '4_WN2 All in PPH Line Clearing UCL (Dynamic)' =
+			
+			VAR _CL = [4_WN2 All in PPH Line Clearing CL (Dynamic)]
+			VAR _Sigma = [4_WN2 All in PPH Line Clearing Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: 4_WN2 All in PPH Line Clearing
+		lineageTag: 5957accd-b953-46f1-9dbf-d6580f545d38
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '4_WN2 All in PPH Line Clearing LCL (Dynamic)' =
+			
+			VAR _CL = [4_WN2 All in PPH Line Clearing CL (Dynamic)]
+			VAR _Sigma = [4_WN2 All in PPH Line Clearing Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: 4_WN2 All in PPH Line Clearing
+		lineageTag: 2f5ea732-8b9d-4ec8-8acc-5def1bf55f89
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '5_DC All in PPH Unload + Load CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [5_DC All in PPH Unload + Load (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 5_DC All in PPH Unload + Load
+		lineageTag: 9037cdb4-1ce8-4dbe-a231-edadc492a0da
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '5_DC All in PPH Unload + Load Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [5_DC All in PPH Unload + Load (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 5_DC All in PPH Unload + Load
+		lineageTag: 2f40b0f0-cb97-4e2d-8d2c-a1d7b51e379c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '5_DC All in PPH Unload + Load UCL (Dynamic)' =
+			
+			VAR _CL = [5_DC All in PPH Unload + Load CL (Dynamic)]
+			VAR _Sigma = [5_DC All in PPH Unload + Load Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: 5_DC All in PPH Unload + Load
+		lineageTag: cd1386eb-499b-4236-9e81-02a90eaf6ee2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '5_DC All in PPH Unload + Load LCL (Dynamic)' =
+			
+			VAR _CL = [5_DC All in PPH Unload + Load CL (Dynamic)]
+			VAR _Sigma = [5_DC All in PPH Unload + Load Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: 5_DC All in PPH Unload + Load
+		lineageTag: 9cc585ec-14da-49ec-b926-459e8aef4d23
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '6_DC All in PPH Load CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [6_DC All in PPH Load (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 6_DC All in PPH Load
+		lineageTag: d7485bc7-fe1d-4eb0-9a37-925bbf186cfc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '6_DC All in PPH Load Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [6_DC All in PPH Load (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 6_DC All in PPH Load
+		lineageTag: 0a4b821e-7ad7-4611-bdbc-792cca03a859
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '6_DC All in PPH Load UCL (Dynamic)' =
+			
+			VAR _CL = [6_DC All in PPH Load CL (Dynamic)]
+			VAR _Sigma = [6_DC All in PPH Load Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: 6_DC All in PPH Load
+		lineageTag: 4cd5962b-36c7-40d2-ad33-cb0714059342
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '6_DC All in PPH Load LCL (Dynamic)' =
+			
+			VAR _CL = [6_DC All in PPH Load CL (Dynamic)]
+			VAR _Sigma = [6_DC All in PPH Load Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: 6_DC All in PPH Load
+		lineageTag: 97be74d0-ebba-43b1-8faf-e7634e6fbacd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I01_WN2 Individual PPH Shipping CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I01_WN2 Individual PPH Shipping (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I01_WN2 Individual PPH Shipping
+		lineageTag: 2034f36d-8b82-484a-9412-d503b3c1fa24
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I01_WN2 Individual PPH Shipping Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I01_WN2 Individual PPH Shipping (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I01_WN2 Individual PPH Shipping
+		lineageTag: ce788d06-a00b-4de5-97ac-17b8cca2f4b5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I01_WN2 Individual PPH Shipping UCL (Dynamic)' =
+			
+			VAR _CL = [I01_WN2 Individual PPH Shipping CL (Dynamic)]
+			VAR _Sigma = [I01_WN2 Individual PPH Shipping Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: I01_WN2 Individual PPH Shipping
+		lineageTag: 4e5b9641-cfcb-4ef6-ab4c-db6de89610b8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I01_WN2 Individual PPH Shipping LCL (Dynamic)' =
+			
+			VAR _CL = [I01_WN2 Individual PPH Shipping CL (Dynamic)]
+			VAR _Sigma = [I01_WN2 Individual PPH Shipping Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: I01_WN2 Individual PPH Shipping
+		lineageTag: 6eebc11b-c6ea-401a-ae0e-e27b222a07f6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I02_WN2 Individual PPH Line Clearing CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I02_WN2 Individual PPH Line Clearing (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I02_WN2 Individual PPH Line Clearing
+		lineageTag: c0cf7ee0-dd35-48c0-81a0-921936c47e58
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I02_WN2 Individual PPH Line Clearing Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I02_WN2 Individual PPH Line Clearing (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I02_WN2 Individual PPH Line Clearing
+		lineageTag: 102277e5-d38f-4f58-99e1-0e52be1b2ff4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I02_WN2 Individual PPH Line Clearing UCL (Dynamic)' =
+			
+			VAR _CL = [I02_WN2 Individual PPH Line Clearing CL (Dynamic)]
+			VAR _Sigma = [I02_WN2 Individual PPH Line Clearing Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: I02_WN2 Individual PPH Line Clearing
+		lineageTag: 946014e9-1c54-4859-81f1-e3fba6d129c8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I02_WN2 Individual PPH Line Clearing LCL (Dynamic)' =
+			
+			VAR _CL = [I02_WN2 Individual PPH Line Clearing CL (Dynamic)]
+			VAR _Sigma = [I02_WN2 Individual PPH Line Clearing Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: I02_WN2 Individual PPH Line Clearing
+		lineageTag: dacdb1fc-8bb7-4b4e-ae4d-31079219dcda
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I03_WN3 Individual PPH Shipping CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I03_WN3 Individual PPH Shipping (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I03_WN3 Individual PPH Shipping
+		lineageTag: 3e424496-d615-430e-b3dc-80a1dfa87ff8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I03_WN3 Individual PPH Shipping Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I03_WN3 Individual PPH Shipping (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I03_WN3 Individual PPH Shipping
+		lineageTag: 5ef52324-4e77-4868-ae30-990ea13d5cc7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I03_WN3 Individual PPH Shipping UCL (Dynamic)' =
+			
+			VAR _CL = [I03_WN3 Individual PPH Shipping CL (Dynamic)]
+			VAR _Sigma = [I03_WN3 Individual PPH Shipping Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: I03_WN3 Individual PPH Shipping
+		lineageTag: ef62d8db-f949-4ec9-af84-db2f3c1babd6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I03_WN3 Individual PPH Shipping LCL (Dynamic)' =
+			
+			VAR _CL = [I03_WN3 Individual PPH Shipping CL (Dynamic)]
+			VAR _Sigma = [I03_WN3 Individual PPH Shipping Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: I03_WN3 Individual PPH Shipping
+		lineageTag: ee852956-55b5-4cd7-b8f2-e90212b3f339
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I04_WN3 Individual PPH Line Clearing CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I04_WN3 Individual PPH Line Clearing (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I04_WN3 Individual PPH Line Clearing
+		lineageTag: 77d3e95c-4c8c-4444-bdc5-df77e83ba330
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I04_WN3 Individual PPH Line Clearing Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I04_WN3 Individual PPH Line Clearing (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I04_WN3 Individual PPH Line Clearing
+		lineageTag: d59dae08-3265-4cd8-86f0-25c313de0daf
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I04_WN3 Individual PPH Line Clearing UCL (Dynamic)' =
+			
+			VAR _CL = [I04_WN3 Individual PPH Line Clearing CL (Dynamic)]
+			VAR _Sigma = [I04_WN3 Individual PPH Line Clearing Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: I04_WN3 Individual PPH Line Clearing
+		lineageTag: 04dfd5d4-7c03-4eaa-8662-951cec221313
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I04_WN3 Individual PPH Line Clearing LCL (Dynamic)' =
+			
+			VAR _CL = [I04_WN3 Individual PPH Line Clearing CL (Dynamic)]
+			VAR _Sigma = [I04_WN3 Individual PPH Line Clearing Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: I04_WN3 Individual PPH Line Clearing
+		lineageTag: 705245ca-3ed9-4b2c-aa46-9a9e62de2496
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I05_WN3 Individual PPH Runner CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I05_WN3 Individual PPH Runner (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I05_WN3 Individual PPH Runner
+		lineageTag: b2e2ded2-acdd-40ad-89fe-b13591e6f972
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I05_WN3 Individual PPH Runner Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I05_WN3 Individual PPH Runner (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I05_WN3 Individual PPH Runner
+		lineageTag: 74dadcb6-3812-42ce-9f4e-03bcd3558708
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I05_WN3 Individual PPH Runner UCL (Dynamic)' =
+			
+			VAR _CL = [I05_WN3 Individual PPH Runner CL (Dynamic)]
+			VAR _Sigma = [I05_WN3 Individual PPH Runner Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: I05_WN3 Individual PPH Runner
+		lineageTag: 9fc8b6ea-acd9-4194-8d33-1e171a9427d7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I05_WN3 Individual PPH Runner LCL (Dynamic)' =
+			
+			VAR _CL = [I05_WN3 Individual PPH Runner CL (Dynamic)]
+			VAR _Sigma = [I05_WN3 Individual PPH Runner Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: I05_WN3 Individual PPH Runner
+		lineageTag: 7a21dc37-764f-4138-bb57-86074aa4b0fe
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I06_DC Individual PPH Unload + Load CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I06_DC Individual PPH Unload + Load (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I06_DC Individual PPH Unload + Load
+		lineageTag: 0cba6c8d-7be4-405d-b90a-dc840d8fc8db
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I06_DC Individual PPH Unload + Load Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I06_DC Individual PPH Unload + Load (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I06_DC Individual PPH Unload + Load
+		lineageTag: 53683852-3587-48bd-8dd0-2c9c1e7205de
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I06_DC Individual PPH Unload + Load UCL (Dynamic)' =
+			
+			VAR _CL = [I06_DC Individual PPH Unload + Load CL (Dynamic)]
+			VAR _Sigma = [I06_DC Individual PPH Unload + Load Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: I06_DC Individual PPH Unload + Load
+		lineageTag: 9a3e5079-5538-4d46-a282-897a1b3fdc0f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I06_DC Individual PPH Unload + Load LCL (Dynamic)' =
+			
+			VAR _CL = [I06_DC Individual PPH Unload + Load CL (Dynamic)]
+			VAR _Sigma = [I06_DC Individual PPH Unload + Load Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: I06_DC Individual PPH Unload + Load
+		lineageTag: 2c84d5ec-dc15-4780-adb2-7a8037b08694
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I07_DC Individual PPH Putaway CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I07_DC Individual PPH Putaway (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I07_DC Individual PPH Putaway
+		lineageTag: e1e09ce3-b617-4946-a765-e4cb690dbaee
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I07_DC Individual PPH Putaway Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I07_DC Individual PPH Putaway (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I07_DC Individual PPH Putaway
+		lineageTag: 2cf7a797-d88a-4d4c-ae9f-11bc74909942
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I07_DC Individual PPH Putaway UCL (Dynamic)' =
+			
+			VAR _CL = [I07_DC Individual PPH Putaway CL (Dynamic)]
+			VAR _Sigma = [I07_DC Individual PPH Putaway Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: I07_DC Individual PPH Putaway
+		lineageTag: d6764815-dbe8-42ec-9cdb-eec546b1e63c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I07_DC Individual PPH Putaway LCL (Dynamic)' =
+			
+			VAR _CL = [I07_DC Individual PPH Putaway CL (Dynamic)]
+			VAR _Sigma = [I07_DC Individual PPH Putaway Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: I07_DC Individual PPH Putaway
+		lineageTag: 8282f973-1caa-4927-b1bb-d1b57484a23c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
 	measure 'LastWeek Sun-Sat Flag' = ```
 			
 			VAR _utc    = 7/24

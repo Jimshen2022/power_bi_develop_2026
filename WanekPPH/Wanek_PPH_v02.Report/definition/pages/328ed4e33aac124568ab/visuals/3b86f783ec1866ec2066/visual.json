@@ -476,7 +476,7 @@
                 "Entity": "A_Measure"
               }
             },
-            "Property": "1_WN3 All in PPH Shipping (Daily, NoDims)"
+            "Property": "I02_WN2 Individual PPH Line Clearing (Daily, NoDims)"
           }
         },
         "type": "Advanced",
@@ -492,7 +492,7 @@
                 "Entity": "A_Measure"
               }
             },
-            "Property": "1_WN3 All in PPH Shipping CL (Dynamic)"
+            "Property": "I02_WN2 Individual PPH Line Clearing CL (Dynamic)"
           }
         },
         "type": "Advanced",
@@ -508,7 +508,7 @@
                 "Entity": "A_Measure"
               }
             },
-            "Property": "1_WN3 All in PPH Shipping UCL (Dynamic)"
+            "Property": "I02_WN2 Individual PPH Line Clearing UCL (Dynamic)"
           }
         },
         "type": "Advanced",
@@ -524,7 +524,7 @@
                 "Entity": "A_Measure"
               }
             },
-            "Property": "1_WN3 All in PPH Shipping LCL (Dynamic)"
+            "Property": "I02_WN2 Individual PPH Line Clearing LCL (Dynamic)"
           }
         },
         "type": "Advanced",
