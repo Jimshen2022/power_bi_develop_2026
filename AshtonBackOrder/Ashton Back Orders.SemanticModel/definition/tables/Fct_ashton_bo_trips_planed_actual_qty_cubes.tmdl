@@ -1,0 +1,210 @@
+table Fct_ashton_bo_trips_planed_actual_qty_cubes
+	lineageTag: f4110e8f-f881-48dc-b7ed-64282decd1a9
+
+	column item_number
+		dataType: string
+		lineageTag: 5f9590c8-4ea2-4e93-bf79-d91d60ef034c
+		summarizeBy: none
+		sourceColumn: item_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column bo_tran_qty
+		dataType: double
+		formatString: #,0
+		lineageTag: eaf6c2de-a7ba-41c0-b7a9-ffddceb8a703
+		summarizeBy: sum
+		sourceColumn: bo_tran_qty
+
+		annotation SummarizationSetBy = Automatic
+
+	column bo_tran_cube
+		dataType: double
+		formatString: #,0
+		lineageTag: 1696dacf-9873-44a7-a0cd-e0be0b5c5a9a
+		summarizeBy: sum
+		sourceColumn: bo_tran_cube
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_tran_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 9da8f249-ce34-40bd-834e-993bcd3118f8
+		summarizeBy: none
+		sourceColumn: start_tran_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column tran_type
+		dataType: string
+		lineageTag: eb9e98bd-cccb-4156-b262-2080bfeada3d
+		summarizeBy: none
+		sourceColumn: tran_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column trip_nbr
+		dataType: string
+		lineageTag: 0ca20c34-d801-4ec5-ab4a-2d8ff28e705d
+		summarizeBy: none
+		sourceColumn: trip_nbr
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column container_nbr
+		dataType: string
+		lineageTag: 2ef9cb71-32ee-480b-8e85-f0e8dac8df2e
+		summarizeBy: none
+		sourceColumn: container_nbr
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trip_Planned_Qty
+		dataType: double
+		formatString: #,0
+		lineageTag: 653ea367-50c7-4a40-b52b-fc5f3fd3636e
+		summarizeBy: sum
+		sourceColumn: Trip_Planned_Qty
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trip_Planned_Cube
+		dataType: double
+		formatString: #,0
+		lineageTag: 32ddad18-9b6a-4779-b737-0387d4f35218
+		summarizeBy: sum
+		sourceColumn: Trip_Planned_Cube
+
+		annotation SummarizationSetBy = Automatic
+
+	column Shipped_Qty
+		dataType: double
+		formatString: #,0
+		lineageTag: 3196e269-af19-45fd-a20d-41173f6c478a
+		summarizeBy: sum
+		sourceColumn: Shipped_Qty
+
+		annotation SummarizationSetBy = Automatic
+
+	column Shipped_Cube
+		dataType: double
+		formatString: #,0
+		lineageTag: 13a9d5b7-356b-4f34-a073-3a6e426c53c6
+		summarizeBy: sum
+		sourceColumn: Shipped_Cube
+
+		annotation SummarizationSetBy = Automatic
+
+	column container_type
+		dataType: string
+		lineageTag: 41b4c300-e11d-4679-b447-5231ccda16b1
+		summarizeBy: none
+		sourceColumn: container_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Container Size' =
+			
+			COALESCE(
+			    LOOKUPVALUE(
+			        'Fct_bo_bcs_infor'[BokContainerSize],
+			        'Fct_bo_bcs_infor'[BokTripNumBer],
+			        'Fct_ashton_bo_trips_planed_actual_qty_cubes'[trip_nbr]
+			    ),
+			    "40H"
+			)
+		lineageTag: a4131751-3ee8-4e63-a8d5-605fd34a8445
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Standard Cubes' = ```
+			
+			SWITCH(
+			    TRUE(),
+			    'Fct_ashton_bo_trips_planed_actual_qty_cubes'[container_type] = "Mixed" && 'Fct_ashton_bo_trips_planed_actual_qty_cubes'[Container Size] = "40H", 2400,
+			    'Fct_ashton_bo_trips_planed_actual_qty_cubes'[container_type] = "Mixed" && 'Fct_ashton_bo_trips_planed_actual_qty_cubes'[Container Size] = "40", 2150,
+			    'Fct_ashton_bo_trips_planed_actual_qty_cubes'[container_type] = "Mixed" && 'Fct_ashton_bo_trips_planed_actual_qty_cubes'[Container Size] = "20", 1050,
+			    'Fct_ashton_bo_trips_planed_actual_qty_cubes'[container_type] = "Mixed" && 'Fct_ashton_bo_trips_planed_actual_qty_cubes'[Container Size] = "45", 2400,
+			    'Fct_ashton_bo_trips_planed_actual_qty_cubes'[container_type] = "Mixed" && 'Fct_ashton_bo_trips_planed_actual_qty_cubes'[Container Size] = "53", 2400,
+			
+			    'Fct_ashton_bo_trips_planed_actual_qty_cubes'[container_type] = "UPH" && 'Fct_ashton_bo_trips_planed_actual_qty_cubes'[Container Size] = "40H", 2550,
+			    'Fct_ashton_bo_trips_planed_actual_qty_cubes'[container_type] = "UPH" && 'Fct_ashton_bo_trips_planed_actual_qty_cubes'[Container Size] = "40", 2200,
+			    'Fct_ashton_bo_trips_planed_actual_qty_cubes'[container_type] = "UPH" && 'Fct_ashton_bo_trips_planed_actual_qty_cubes'[Container Size] = "20", 1100,
+			    'Fct_ashton_bo_trips_planed_actual_qty_cubes'[container_type] = "UPH" && 'Fct_ashton_bo_trips_planed_actual_qty_cubes'[Container Size] = "45", 2550,
+			    'Fct_ashton_bo_trips_planed_actual_qty_cubes'[container_type] = "UPH" && 'Fct_ashton_bo_trips_planed_actual_qty_cubes'[Container Size] = "53", 2550,
+			
+			    'Fct_ashton_bo_trips_planed_actual_qty_cubes'[container_type] = "CG" && 'Fct_ashton_bo_trips_planed_actual_qty_cubes'[Container Size] = "40H", 2350,
+			    'Fct_ashton_bo_trips_planed_actual_qty_cubes'[container_type] = "CG" && 'Fct_ashton_bo_trips_planed_actual_qty_cubes'[Container Size] = "40", 2200,
+			    'Fct_ashton_bo_trips_planed_actual_qty_cubes'[container_type] = "CG" && 'Fct_ashton_bo_trips_planed_actual_qty_cubes'[Container Size] = "20", 1000,
+			    'Fct_ashton_bo_trips_planed_actual_qty_cubes'[container_type] = "CG" && 'Fct_ashton_bo_trips_planed_actual_qty_cubes'[Container Size] = "45", 2350,
+			    'Fct_ashton_bo_trips_planed_actual_qty_cubes'[container_type] = "CG" && 'Fct_ashton_bo_trips_planed_actual_qty_cubes'[Container Size] = "53", 2350,
+			    
+			    2400
+			)
+			
+			```
+		formatString: #,0
+		lineageTag: 6f54b2e1-7645-4268-9b69-b259e6998747
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column ShippedCubeColor_Measure = ```
+			
+			VAR ThisTrip = SELECTEDVALUE('Fct_ashton_bo_trips_planed_actual_qty_cubes'[trip_nbr])
+			VAR TotalShipped = 
+			    CALCULATE(
+			        SUM('Fct_ashton_bo_trips_planed_actual_qty_cubes'[Shipped_Cube]),
+			        ALLEXCEPT('Fct_ashton_bo_trips_planed_actual_qty_cubes','Fct_ashton_bo_trips_planed_actual_qty_cubes'[trip_nbr])
+			    )
+			VAR Standard = 
+			    MAX('Fct_ashton_bo_trips_planed_actual_qty_cubes'[Standard Cubes])
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        TotalShipped >= Standard, "#A9D18E",         -- Green
+			        TotalShipped < 0.95 * Standard, "#FFD966",   -- Yellow
+			        "#F4B084"                                     -- Red
+			    )
+			// VAR ThisTrip = SELECTEDVALUE('Fct_ashton_bo_trips_planed_actual_qty_cubes'[trip_nbr])
+			// VAR TotalShipped = 
+			//     CALCULATE(
+			//         SUM('Fct_ashton_bo_trips_planed_actual_qty_cubes'[Shipped_Cube]),
+			//         ALLEXCEPT('Fct_ashton_bo_trips_planed_actual_qty_cubes', 'Fct_ashton_bo_trips_planed_actual_qty_cubes'[trip_nbr])
+			//     )
+			// VAR Standard = 
+			//     MAX('Fct_ashton_bo_trips_planed_actual_qty_cubes'[Standard Cubes])
+			// RETURN
+			//     SWITCH(
+			//         TRUE(),
+			//         TotalShipped >= Standard, "#A9D18E",         -- Green
+			//         TotalShipped < 0.95 * Standard, "#FFD966",   -- Yellow
+			//         "#F4B084"                                     -- Red
+			//     )
+			
+			```
+		lineageTag: 49a05071-2433-45b5-a5af-208ceef93690
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fct_ashton_bo_trips_planed_actual_qty_cubes = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"5839814b-ec95-48ea-a07a-ec0241ac9946" = Workspaces{[workspaceId="5839814b-ec95-48ea-a07a-ec0241ac9946"]}[Data],
+				    #"40e98eef-f019-4ac7-8243-dcd0227bcfd1" = #"5839814b-ec95-48ea-a07a-ec0241ac9946"{[dataflowId="40e98eef-f019-4ac7-8243-dcd0227bcfd1"]}[Data],
+				    ashton_bo_trips_planed_actual_qty_cubes_ = #"40e98eef-f019-4ac7-8243-dcd0227bcfd1"{[entity="ashton_bo_trips_planed_actual_qty_cubes",version=""]}[Data]
+				in
+				    ashton_bo_trips_planed_actual_qty_cubes_
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,63 @@
+table A_measure
+	lineageTag: dec74b8e-c009-4078-b24b-821738336653
+
+	measure 'Picked Trips' = COUNTROWS(DISTINCT('Fct_hj_trx_321'[trip_number]))
+		formatString: #,0
+		lineageTag: 4de44450-f8ae-4e54-a32e-0af11d23c478
+
+	measure 'Picked Q''ty' = SUM('Fct_hj_trx_321'[Qty])
+		formatString: #,0
+		lineageTag: ff619135-440e-4477-816b-115abf8839a1
+
+	measure 'BO Q''ty' = SUM('Fct_ashton_bo_trips_planed_actual_qty_cubes'[bo_tran_qty])
+		formatString: #,0
+		lineageTag: 686ab199-5820-4c9f-bffa-f89917c2487f
+
+	measure 'BO Cubes' = SUM(Fct_ashton_bo_trips_planed_actual_qty_cubes[bo_tran_cube])
+		formatString: #,0
+		lineageTag: 8976cf73-3ac3-4868-a44e-2da206d12115
+
+	measure 'BO Trips' = COUNTROWS(DISTINCT('Fct_ashton_bo_trips_planed_actual_qty_cubes'[trip_nbr]))
+		formatString: #,0
+		lineageTag: 79208a95-60e6-4dbf-bcc7-e0e3257d0a75
+
+	measure 'BO Trips(%)' = 'A_measure'[BO Trips]/'A_measure'[Picked Trips]
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 2df24a53-d9cc-4de7-8b99-0db6c9191f77
+
+	measure 'BO Q''ty(%)' = 'A_measure'[BO Q'ty]/'A_measure'[Picked Q'ty]
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: bec92b97-7842-472f-b8d4-ce8ec6a9ad21
+
+	measure BO_Cubes = SUM('Fct_ashton_bo_trips_planed_actual_qty_cubes'[bo_tran_cube])
+		formatString: #,0
+		lineageTag: 7559d162-668d-46e8-957a-ec7aee58c733
+
+	measure ShippedCubeColorMeasure =
+			
+			VAR CurrentShipped = SUM('Fct_ashton_bo_trips_planed_actual_qty_cubes'[Shipped_Cube])
+			VAR CurrentStandard = MAX('Fct_ashton_bo_trips_planed_actual_qty_cubes'[Standard Cubes])
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(CurrentShipped) || ISBLANK(CurrentStandard), "#CCCCCC", -- Handle blank case
+			        CurrentShipped >= CurrentStandard, "#A9D18E",                   -- Green
+			        CurrentShipped <= 0.95 * CurrentStandard, "#F4B084",             -- Red
+			        "#FFD966"                                                       -- Yellow
+			    )
+		lineageTag: 1ae6e87e-ad35-4a0f-bfc1-c0cc15ca9341
+
+	partition A_measure = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

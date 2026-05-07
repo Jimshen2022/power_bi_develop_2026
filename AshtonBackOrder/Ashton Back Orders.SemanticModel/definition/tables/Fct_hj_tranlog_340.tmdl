@@ -1,0 +1,415 @@
+table Fct_hj_tranlog_340
+	lineageTag: 866223c5-fe43-4536-a758-4b7bf57725f6
+
+	measure 'Total Backorders' = SUM('Fct_hj_tranlog_340'[tran_qty])
+		formatString: #,0
+		lineageTag: 9b5837cb-c085-499c-adfd-64f4a5810ef0
+
+		changedProperty = FormatString
+
+	measure 'Trips Count' = DISTINCTCOUNT('Fct_hj_tranlog_340'[trip_nbr])
+		formatString: #,0
+		lineageTag: 1b991126-8331-4a94-b43e-38db8e804bd6
+
+	column tran_type
+		dataType: string
+		lineageTag: 29a094b6-6bcf-46bc-8fe6-55ec42877173
+		summarizeBy: none
+		sourceColumn: tran_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: 8a7a5b16-63dc-4793-bc6c-a661a0a2adb1
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_tran_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: fcb4bce8-e3f8-4ec4-899f-740e9e52b591
+		summarizeBy: none
+		sourceColumn: start_tran_date
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_tran_time
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 53d58f7a-5b8c-44d4-8a3e-bdee1513e8b7
+		summarizeBy: none
+		sourceColumn: start_tran_time
+
+		variation Variation
+			isDefault
+			relationship: 30fc7545-dfd2-4caa-ac0f-a7d4f7df52fa
+			defaultHierarchy: LocalDateTable_046ab2ed-2b72-4c0b-adbe-7afd2e2caccf.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column end_tran_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 10b0232c-5f61-4122-9e6d-21abd85e079e
+		summarizeBy: none
+		sourceColumn: end_tran_date
+
+		variation Variation
+			isDefault
+			relationship: 9f1b61b2-becc-434e-ad79-e440c9e2a88d
+			defaultHierarchy: LocalDateTable_d13dfec5-957f-4f37-a2bb-879b8d3654b1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column end_tran_time
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: cc5b638d-37bb-4566-b2be-cf26f92a5f94
+		summarizeBy: none
+		sourceColumn: end_tran_time
+
+		variation Variation
+			isDefault
+			relationship: ef43b341-b3dd-4639-b802-354800ebdeea
+			defaultHierarchy: LocalDateTable_ba35df92-d84b-43f2-bd0a-6a83a7757bc5.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_id
+		dataType: string
+		lineageTag: 49fb62b5-9289-4f2a-8fe3-b010694d874a
+		summarizeBy: none
+		sourceColumn: employee_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column control_number
+		dataType: string
+		lineageTag: 8226bebd-66bb-4e8e-9654-57aec46bf921
+		summarizeBy: none
+		sourceColumn: control_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column line_number
+		dataType: string
+		lineageTag: 8579a911-912d-401f-b3fb-5003636492a5
+		summarizeBy: none
+		sourceColumn: line_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column control_number_2
+		dataType: string
+		lineageTag: 5390fa0f-9e11-4110-b11d-a5fb053e9808
+		summarizeBy: none
+		sourceColumn: control_number_2
+
+		annotation SummarizationSetBy = Automatic
+
+	column outside_id
+		dataType: string
+		lineageTag: c857b2f5-4442-4344-9880-66b400bd67a6
+		summarizeBy: none
+		sourceColumn: outside_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column wh_id
+		dataType: string
+		lineageTag: 4699fda1-e7cb-4c7a-85be-965d3847b26f
+		summarizeBy: none
+		sourceColumn: wh_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column location_id
+		dataType: string
+		lineageTag: e8849a54-617f-43a4-8e8d-50caf9c64827
+		summarizeBy: none
+		sourceColumn: location_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column hu_id
+		dataType: string
+		lineageTag: 0d295c8f-5e80-442d-8a71-ac44ce467f45
+		summarizeBy: none
+		sourceColumn: hu_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column num_items
+		dataType: int64
+		formatString: 0
+		lineageTag: 1366d3db-4e0c-436d-be91-f683bb668671
+		summarizeBy: sum
+		sourceColumn: num_items
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_number
+		dataType: string
+		lineageTag: ce780a2c-a088-40a8-812f-7dad562a6ca7
+		summarizeBy: none
+		sourceColumn: item_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column lot_number
+		dataType: string
+		lineageTag: 1a98e7cf-716f-4130-9841-8916192ad6d3
+		summarizeBy: none
+		sourceColumn: lot_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column uom
+		dataType: string
+		lineageTag: c49b1c11-f588-40eb-93f7-d75e9673cbce
+		summarizeBy: none
+		sourceColumn: uom
+
+		annotation SummarizationSetBy = Automatic
+
+	column tran_qty
+		dataType: double
+		formatString: #,0
+		lineageTag: d58ecaf7-8d53-48da-9fb2-e7c300cd2955
+		summarizeBy: sum
+		sourceColumn: tran_qty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column wh_id_2
+		dataType: string
+		lineageTag: 3d2b3213-db2a-4d21-8fb7-395467f8ee57
+		summarizeBy: none
+		sourceColumn: wh_id_2
+
+		annotation SummarizationSetBy = Automatic
+
+	column location_id_2
+		dataType: string
+		lineageTag: ee40b85b-79d4-4118-bc9d-e1a20501c236
+		summarizeBy: none
+		sourceColumn: location_id_2
+
+		annotation SummarizationSetBy = Automatic
+
+	column verify_status
+		dataType: string
+		lineageTag: 447898ca-84fa-49b9-8b57-3797e140d209
+		summarizeBy: none
+		sourceColumn: verify_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_id_2
+		dataType: string
+		lineageTag: e492536b-ca28-49be-a012-f3a850ad35f2
+		summarizeBy: none
+		sourceColumn: employee_id_2
+
+		annotation SummarizationSetBy = Automatic
+
+	column routing_code
+		dataType: string
+		lineageTag: 76cf5d44-c220-48a8-bd4e-4067d2c97ad9
+		summarizeBy: none
+		sourceColumn: routing_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column hu_id_2
+		dataType: string
+		lineageTag: 7f2dbc55-b65a-4ecb-9c54-543f3a7d0de5
+		summarizeBy: none
+		sourceColumn: hu_id_2
+
+		annotation SummarizationSetBy = Automatic
+
+	column elapsed_time
+		dataType: int64
+		formatString: 0
+		lineageTag: e2722ff5-42f1-489f-acbb-ae4b3528c144
+		summarizeBy: sum
+		sourceColumn: elapsed_time
+
+		annotation SummarizationSetBy = Automatic
+
+	column log_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 2886d356-834e-40b4-ac4c-fde4ca14e819
+		summarizeBy: sum
+		sourceColumn: log_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column group_id
+		dataType: string
+		lineageTag: 40dcedeb-57c3-4da4-b9bb-00b4405ba0e4
+		summarizeBy: none
+		sourceColumn: group_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column afi_package_rate
+		dataType: double
+		lineageTag: b8b9539f-04e8-454b-b825-9276965cddfb
+		summarizeBy: sum
+		sourceColumn: afi_package_rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Wh_id_3
+		dataType: string
+		lineageTag: 649ea86f-a5b7-4243-a4d8-2bbdb2d6cf2f
+		summarizeBy: none
+		sourceColumn: Wh_id_3
+
+		annotation SummarizationSetBy = Automatic
+
+	column trip_nbr
+		dataType: string
+		lineageTag: adee48ea-eea7-46ea-bdc3-fbfee206ee4e
+		summarizeBy: none
+		sourceColumn: trip_nbr
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column return_disposition
+		dataType: string
+		lineageTag: 94bf84d0-6a7d-4864-974b-26c88bfa4fb5
+		summarizeBy: none
+		sourceColumn: return_disposition
+
+		annotation SummarizationSetBy = Automatic
+
+	column equipment_zone
+		dataType: string
+		lineageTag: da7c2dff-dd8a-47ab-bdc2-e324ca5155af
+		summarizeBy: none
+		sourceColumn: equipment_zone
+
+		annotation SummarizationSetBy = Automatic
+
+	column Reason = LOOKUPVALUE('Dim_code_table'[Code_Description],'Dim_code_table'[Controllable_Code],'Fct_hj_tranlog_340'[return_disposition])
+		lineageTag: c576420c-6498-460e-ba3d-bfdb22f8fc7c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column ITNBR
+		dataType: string
+		lineageTag: 28dd2f61-df2f-459f-86c9-fbbde15de1b3
+		summarizeBy: none
+		sourceColumn: ITNBR
+
+		annotation SummarizationSetBy = Automatic
+
+	column STID
+		dataType: string
+		lineageTag: 0c7c49ea-4b00-423f-8e27-c0def353007f
+		summarizeBy: none
+		sourceColumn: STID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ITCLS
+		dataType: string
+		lineageTag: 780c479e-0149-4de4-a8a9-46b932f8c737
+		summarizeBy: none
+		sourceColumn: ITCLS
+
+		annotation SummarizationSetBy = Automatic
+
+	column B2Z95S
+		dataType: double
+		lineageTag: 1bc4ebf5-f801-40f7-aeff-e478d5b244d2
+		summarizeBy: sum
+		sourceColumn: B2Z95S
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ITDSC
+		dataType: string
+		lineageTag: a3594aab-73d8-4167-8ce6-098f9285bff0
+		summarizeBy: none
+		sourceColumn: ITDSC
+
+		annotation SummarizationSetBy = Automatic
+
+	column pick_put_id
+		dataType: string
+		lineageTag: 3f0048f4-67a0-411d-b399-9173ca5d67bd
+		summarizeBy: none
+		sourceColumn: pick_put_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column commodity_code
+		dataType: string
+		lineageTag: b5138910-c2c2-4801-ad68-930491a605ab
+		summarizeBy: none
+		sourceColumn: commodity_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column class_id
+		dataType: string
+		lineageTag: bdac301a-0095-4278-9f7a-dc543426b031
+		summarizeBy: none
+		sourceColumn: class_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column BO_Cubes
+		dataType: double
+		formatString: #,0
+		lineageTag: 978e3e63-fa4d-47b9-9054-19d1a5214299
+		summarizeBy: sum
+		sourceColumn: BO_Cubes
+
+		annotation SummarizationSetBy = Automatic
+
+	column bo_qty
+		dataType: double
+		lineageTag: f41fae3a-5cba-4206-b3fb-41cc2352374f
+		summarizeBy: sum
+		sourceColumn: bo_qty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Fct_hj_tranlog_340-425e4eac-3767-4e38-b40b-d7d8f158302e = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"5839814b-ec95-48ea-a07a-ec0241ac9946" = Workspaces{[workspaceId="5839814b-ec95-48ea-a07a-ec0241ac9946"]}[Data],
+				    #"40e98eef-f019-4ac7-8243-dcd0227bcfd1" = #"5839814b-ec95-48ea-a07a-ec0241ac9946"{[dataflowId="40e98eef-f019-4ac7-8243-dcd0227bcfd1"]}[Data],
+				    #"Asthon BackOrder Trx 340_" = #"40e98eef-f019-4ac7-8243-dcd0227bcfd1"{[entity="Asthon BackOrder Trx 340",version=""]}[Data],
+				    #"Added TripNbr" = Table.AddColumn(#"Asthon BackOrder Trx 340_", "trip_nbr", each Number.From(Text.BeforeDelimiter([control_number], "-")), type number)
+				
+				in
+				   #"Added TripNbr"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

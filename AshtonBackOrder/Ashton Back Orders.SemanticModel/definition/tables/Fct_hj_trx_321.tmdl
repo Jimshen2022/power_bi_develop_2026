@@ -1,0 +1,74 @@
+table Fct_hj_trx_321
+	lineageTag: 432618db-b59a-4805-a869-a9443e0a9d49
+
+	column tran_type
+		dataType: string
+		lineageTag: 7fc62149-5bb0-410e-9e45-0478e670d16d
+		summarizeBy: none
+		sourceColumn: tran_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_tran_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 396a47a3-5b88-46cc-bb72-c1126925737c
+		summarizeBy: none
+		sourceColumn: start_tran_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column wh_id
+		dataType: string
+		lineageTag: 7e117e02-b4f4-4a09-a6b1-9d846ac15c89
+		summarizeBy: none
+		sourceColumn: wh_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column trip_number
+		dataType: string
+		lineageTag: d40920ba-3dc1-4415-ba57-7f24ffddb7e0
+		summarizeBy: none
+		sourceColumn: trip_number
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Qty
+		dataType: double
+		lineageTag: 9899ce27-4dc1-492f-a35f-86f47b018e77
+		summarizeBy: sum
+		sourceColumn: Qty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column employee_contribution_percentages
+		dataType: string
+		lineageTag: 2f4f5939-031e-40d6-8df3-2fe9d4970e74
+		summarizeBy: none
+		sourceColumn: employee_contribution_percentages
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fct_hj_trx_321 = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"5839814b-ec95-48ea-a07a-ec0241ac9946" = Workspaces{[workspaceId="5839814b-ec95-48ea-a07a-ec0241ac9946"]}[Data],
+				    #"40e98eef-f019-4ac7-8243-dcd0227bcfd1" = #"5839814b-ec95-48ea-a07a-ec0241ac9946"{[dataflowId="40e98eef-f019-4ac7-8243-dcd0227bcfd1"]}[Data],
+				    HJ_Trx_321_ = #"40e98eef-f019-4ac7-8243-dcd0227bcfd1"{[entity="HJ_Trx_321",version=""]}[Data]
+				in
+				    HJ_Trx_321_
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,16 @@
+{
+  "name": "Custom Theme",
+  "visualStyles": {
+    "*": {
+      "filterPane": {
+        "background": [
+          {
+            "solid": {
+              "color": "#4daf4a"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

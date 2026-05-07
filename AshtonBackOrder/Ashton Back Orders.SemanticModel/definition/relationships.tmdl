@@ -1,0 +1,127 @@
+relationship 9f1b61b2-becc-434e-ad79-e440c9e2a88d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fct_hj_tranlog_340.end_tran_date
+	toColumn: LocalDateTable_d13dfec5-957f-4f37-a2bb-879b8d3654b1.Date
+
+relationship ef43b341-b3dd-4639-b802-354800ebdeea
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fct_hj_tranlog_340.end_tran_time
+	toColumn: LocalDateTable_ba35df92-d84b-43f2-bd0a-6a83a7757bc5.Date
+
+relationship 7690ca86-f40c-43db-8396-5ae9deae3b8b
+	fromColumn: Fct_hj_tranlog_340.start_tran_date
+	toColumn: Dim_calander.Date
+
+relationship 2e91cd9f-c1a1-9e49-7fe6-f51e39154581
+	fromColumn: Fct_ashton_bo_trips_planed_actual_qty_cubes.start_tran_date
+	toColumn: Dim_calander.Date
+
+relationship 30fc7545-dfd2-4caa-ac0f-a7d4f7df52fa
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fct_hj_tranlog_340.start_tran_time
+	toColumn: LocalDateTable_046ab2ed-2b72-4c0b-adbe-7afd2e2caccf.Date
+
+relationship ca7d20bb-d302-c7a1-8146-eca948900e39
+	fromColumn: Fct_hj_trx_321.start_tran_date
+	toColumn: Dim_calander.Date
+
+relationship f12fce10-f1df-4441-9b6a-4e886d97ac70
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fct_HJ_TripReport.ThruDate
+	toColumn: LocalDateTable_12a55e00-e567-462b-804f-2b7ae92b8052.Date
+
+relationship b10d7c49-3b77-4a8b-8e92-ed1f062f2034
+	fromColumn: Fct_hj_tranlog_340.trip_nbr
+	toColumn: Dim_trip_nbr.'Trip Nbr'
+
+relationship aa3227c8-e26a-724b-43b1-1e960e7044c2
+	fromColumn: Fct_ashton_bo_trips_planed_actual_qty_cubes.trip_nbr
+	toColumn: Dim_trip_nbr.'Trip Nbr'
+
+relationship 71fa4305-5295-07dd-d9e2-554ae6044b99
+	fromColumn: Fct_HJ_TripReport.trip_nbr
+	toColumn: Dim_trip_nbr.'Trip Nbr'
+
+relationship 52afbc4a-9aeb-4169-ba18-7ade090feae4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fct_bo_bcs_infor.BokTripCreateDate
+	toColumn: LocalDateTable_865ed209-8038-4256-a5c9-e1d44ac7d8d8.Date
+
+relationship f973410b-2702-4d4d-9976-5be6d09963b6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fct_bo_bcs_infor.BokLoadDate
+	toColumn: LocalDateTable_ec37492b-2a05-4b0c-8f65-454d6f5aa612.Date
+
+relationship 467793a6-1835-4bc3-aaed-364826f68fd9
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fct_bo_bcs_infor.BokContainerYardCutoffDate
+	toColumn: LocalDateTable_91675fa2-a8c0-4b98-ad5b-4e9b26476f43.Date
+
+relationship b3aee4b2-3297-432e-b280-2a32f149576a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fct_bo_bcs_infor.BokDocumentationCutoffDate
+	toColumn: LocalDateTable_64658f29-1c85-483f-bc95-ffb4c1569d76.Date
+
+relationship 33c8eb86-4c8c-4d5c-821a-8244d43a2b31
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fct_bo_bcs_infor.BokDispatchDate
+	toColumn: LocalDateTable_84b1c0d8-6e0a-42a3-babf-414bd41ff938.Date
+
+relationship 59b71aac-712f-462f-8c88-1334e017471a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fct_bo_bcs_infor.BokRailCutoff
+	toColumn: LocalDateTable_689775ff-4b8b-424b-8fa7-b02fbc0c4fb0.Date
+
+relationship 2e9f6b15-87d5-45f9-a627-6b27cc8f375e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fct_bo_bcs_infor.dtea
+	toColumn: LocalDateTable_aa063da3-8812-4700-8b41-05a4736a1742.Date
+
+relationship 16c72071-4d2c-4a47-8970-84adde65ff1e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fct_bo_bcs_infor.dtec
+	toColumn: LocalDateTable_d279bc9b-7f70-4ce9-ac63-59d7b93cbd9d.Date
+
+relationship b48d30ee-528c-4ff0-8f46-945ba30ed131
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fct_bo_bcs_infor.BokSetEditaBleDate
+	toColumn: LocalDateTable_cd2e0386-d714-48b0-b783-279715e4a561.Date
+
+relationship c010289d-7daa-4ccb-b86e-2bc7144ee02e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fct_bo_bcs_infor.BokLoadedDispatchDate
+	toColumn: LocalDateTable_1a22652f-3e6a-4a41-8fe1-b8358aab585e.Date
+
+relationship bd04ad3c-b714-4c84-a0af-61cab768fe64
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fct_bo_bcs_infor.BokPlannedETD
+	toColumn: LocalDateTable_2819d2ad-b32e-4037-9e9d-478dbdb0e406.Date
+
+relationship 2e283a79-a7da-4517-9c68-66eaf6a6e50f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fct_bo_bcs_infor.BokRequestedDate
+	toColumn: LocalDateTable_88caea60-6689-4772-a8ee-6938930ce9f9.Date
+
+relationship 1cf0c7c5-545c-4cbb-bef4-813cfb58efff
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fct_bo_bcs_infor.BokEarlyReturnDate
+	toColumn: LocalDateTable_318237e7-d693-42fb-9def-1202990afec1.Date
+
+relationship 250ab0a7-766b-4ba5-a6d0-47b820610f78
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fct_bo_bcs_infor.BokDispatchedDate
+	toColumn: LocalDateTable_036550c9-bd25-4f05-a001-b240e0840757.Date
+
+relationship 378acb1a-5de4-49c1-8d05-eee97f15dba6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fct_bo_bcs_infor.tpkModified
+	toColumn: LocalDateTable_0bc4e20e-9647-4e1c-86f3-f4be17f28939.Date
+
+relationship 1fced0e1-bf64-ff44-ff55-910dd33a7e9e
+	fromColumn: Fct_bo_bcs_infor.BokTripNumBer
+	toColumn: Dim_trip_nbr.'Trip Nbr'
+
+relationship 1632c5d1-6df4-c07f-14ee-d8c61cff5450
+	fromColumn: Fct_hj_trx_321.trip_number
+	toColumn: Dim_trip_nbr.'Trip Nbr'
+

@@ -1,0 +1,174 @@
+table Dim_calander
+	lineageTag: cff5437e-7c5c-45f5-9918-c0014845fcb4
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: Short Date
+		lineageTag: f40ca110-8575-4349-a7c4-0f339176c59c
+		summarizeBy: none
+		sourceColumn: Date
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 0a8e9c16-0851-4b6e-b21c-1a6c7e21ebc0
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: 59a1b92f-6d53-4701-bba9-a5733a08e27a
+		summarizeBy: none
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of the Month'
+		dataType: int64
+		formatString: 0
+		lineageTag: 8bec0ec5-cff9-4aac-be07-b88f0f39e73d
+		summarizeBy: sum
+		sourceColumn: Day of the Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week Ending'
+		dataType: dateTime
+		formatString: m/d/yy
+		lineageTag: 5b5d0cc4-9ad0-4cd3-ae65-6034c7623cf3
+		summarizeBy: none
+		sourceColumn: Week Ending
+		sortByColumn: 'Week Ending Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Day Name'
+		dataType: string
+		lineageTag: 99f81cb9-94a8-4564-9177-8ff74f60d500
+		summarizeBy: none
+		sourceColumn: Day Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 745da834-74f1-4ea8-a286-f4d39f11d7f6
+		summarizeBy: sum
+		sourceColumn: Week Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: a96831eb-57d4-4bfe-aeb0-7662d520fd2e
+		summarizeBy: sum
+		sourceColumn: Month Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Ending'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 29327537-8889-4334-a2b1-29bd0f246d76
+		summarizeBy: none
+		sourceColumn: Month Ending
+		sortByColumn: 'Month Ending Sort'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Month Ending Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 3ec8f718-b7a1-45c5-a4a2-cf5e15b37631
+		summarizeBy: sum
+		sourceColumn: Month Ending Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week Ending Sort'
+		dataType: int64
+		formatString: 0
+		lineageTag: 89f33ada-60a3-4ac5-a315-48985505ad88
+		summarizeBy: sum
+		sourceColumn: Week Ending Sort
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Email Slicer Date' = IF('Dim_calander'[Date]=TODAY()-1,"Yesterday","")
+		lineageTag: 1d7b4f77-ebff-47ee-aeb5-fbc0bf793217
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date_Format = FORMAT('Dim_calander'[Date], "m/d/yy")
+		lineageTag: 21ac1695-24bf-4f9e-860e-7d74fefeb747
+		summarizeBy: none
+		sortByColumn: Date
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_calander-80cdf0ba-d485-4c6e-90c7-27a67aef013c = m
+		mode: import
+		source = ```
+				let
+				    // 获取今天和过去190天前的日期
+				    StartDate = Date.From(DateTime.LocalNow()),
+				    EndDate = StartDate - #duration(60, 0, 0, 0),
+				
+				    // 计算日期列表长度
+				    Length = Duration.Days(StartDate - EndDate) + 1,
+				
+				    // 生成日期表
+				    Source = List.Dates(EndDate, Length, #duration(1, 0, 0, 0)),
+				    #"Converted to Table" = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+				    #"Renamed Columns" = Table.RenameColumns(#"Converted to Table",{{"Column1", "Date"}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"Date", type date}}),
+				
+				    // 添加日期相关列
+				    #"Added Year" = Table.AddColumn(#"Changed Type", "Year", each Date.Year([Date]), Int64.Type),
+				    #"Added Month Name" = Table.AddColumn(#"Added Year", "Month", each Date.MonthName([Date]), type text),
+				    #"Added Day of Month" = Table.AddColumn(#"Added Month Name", "Day of the Month", each Date.Day([Date]), Int64.Type),
+				    #"Added Week Ending" = Table.AddColumn(#"Added Day of Month", "Week Ending", each Date.EndOfWeek([Date]), type date),
+				    #"Added Day Name" = Table.AddColumn(#"Added Week Ending", "Day Name", each Date.DayOfWeekName([Date]), type text),
+				    #"Added Week Number" = Table.AddColumn(#"Added Day Name", "Week Number", each Date.WeekOfYear([Date]), Int64.Type),
+				    #"Added Month Number" = Table.AddColumn(#"Added Week Number", "Month Number", each Date.Month([Date]), Int64.Type),
+				    #"Added Month Ending" = Table.AddColumn(#"Added Month Number", "Month Ending", each Date.EndOfMonth([Date]), type date),
+				    #"Added Month Ending Sort" = Table.AddColumn(#"Added Month Ending", "Month Ending Sort", each Date.EndOfMonth([Date]), Int64.Type),
+				    #"Added Week Ending Sort" = Table.AddColumn(#"Added Month Ending Sort", "Week Ending Sort", each Date.EndOfWeek([Date]), Int64.Type),
+				
+				    // 确保数据类型正确
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Week Ending Sort",{
+				        {"Week Ending Sort", Int64.Type}, 
+				        {"Month Ending Sort", Int64.Type}, 
+				        {"Month Ending", type date}, 
+				        {"Week Ending", type date}, 
+				        {"Date", type date}
+				    })
+				in
+				    #"Changed Type1"
+				```
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

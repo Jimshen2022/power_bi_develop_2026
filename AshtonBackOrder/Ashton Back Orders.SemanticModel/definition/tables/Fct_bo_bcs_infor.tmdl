@@ -1,0 +1,629 @@
+table Fct_bo_bcs_infor
+	lineageTag: 32ab07f5-a767-4375-9c02-5ed886f42618
+
+	column BokBookingID
+		dataType: int64
+		formatString: 0
+		lineageTag: 631c7ca3-e381-473d-a3e4-1649a9beef03
+		summarizeBy: count
+		sourceColumn: BokBookingID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokWarehouse
+		dataType: string
+		lineageTag: ef154035-0f12-4d51-946e-238bd070f53a
+		summarizeBy: none
+		sourceColumn: BokWarehouse
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokBookingStatus
+		dataType: string
+		lineageTag: 9202db01-cf03-445e-b667-6c2d592d9443
+		summarizeBy: none
+		sourceColumn: BokBookingStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokTripCreateDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 73e43aa0-fa1e-4590-9bd4-5791cf87612f
+		summarizeBy: none
+		sourceColumn: BokTripCreateDate
+
+		variation Variation
+			isDefault
+			relationship: 52afbc4a-9aeb-4169-ba18-7ade090feae4
+			defaultHierarchy: LocalDateTable_865ed209-8038-4256-a5c9-e1d44ac7d8d8.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokTripNumBer
+		dataType: string
+		lineageTag: 1a06d6ac-5af5-4572-986c-e646de2d8dec
+		summarizeBy: none
+		sourceColumn: BokTripNumBer
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokJoBID
+		dataType: string
+		lineageTag: d804ae71-8ce5-45f1-beb1-18358b1824fe
+		summarizeBy: none
+		sourceColumn: BokJoBID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokTripStatusCode
+		dataType: string
+		lineageTag: fff61d80-abb8-4ce3-bb8c-ecefdab550f4
+		summarizeBy: none
+		sourceColumn: BokTripStatusCode
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokTripType
+		dataType: string
+		lineageTag: 4f204ab6-23a2-433a-898c-82e2082bb732
+		summarizeBy: none
+		sourceColumn: BokTripType
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokCustomerNumBer
+		dataType: string
+		lineageTag: 38283bd7-f589-4619-a2ec-44487f933281
+		summarizeBy: none
+		sourceColumn: BokCustomerNumBer
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokCustomerShipto
+		dataType: string
+		lineageTag: 29b51eba-a9ad-4361-bbb0-b89710099650
+		summarizeBy: none
+		sourceColumn: BokCustomerShipto
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokFreightForwarderID
+		dataType: string
+		lineageTag: 5661c2bb-ec5e-4eca-a59a-8c9d49e037d5
+		summarizeBy: none
+		sourceColumn: BokFreightForwarderID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokOceanCarrierID
+		dataType: string
+		lineageTag: 35d1d761-23c8-406b-be06-1052cd73a12e
+		summarizeBy: none
+		sourceColumn: BokOceanCarrierID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokLoadDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b9ff8b83-abc6-4e6f-b688-80f4c790d831
+		summarizeBy: none
+		sourceColumn: BokLoadDate
+
+		variation Variation
+			isDefault
+			relationship: f973410b-2702-4d4d-9976-5be6d09963b6
+			defaultHierarchy: LocalDateTable_ec37492b-2a05-4b0c-8f65-454d6f5aa612.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokTotalCuBicFeet
+		dataType: double
+		lineageTag: 17e1150f-43cc-4703-bc93-d05c17de3ceb
+		summarizeBy: sum
+		sourceColumn: BokTotalCuBicFeet
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BokContainerSize
+		dataType: string
+		lineageTag: 593d5913-e099-403b-ac93-9e90cb9e3576
+		summarizeBy: none
+		sourceColumn: BokContainerSize
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokRequiredContainerSize
+		dataType: string
+		lineageTag: 0323d70d-2263-4ccf-bc49-dac9f41c5df3
+		summarizeBy: none
+		sourceColumn: BokRequiredContainerSize
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokPortOfDischargeID
+		dataType: int64
+		formatString: 0
+		lineageTag: 1efea7cc-307e-453f-957d-ca8c8769c764
+		summarizeBy: count
+		sourceColumn: BokPortOfDischargeID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokDestinationID
+		dataType: int64
+		formatString: 0
+		lineageTag: 62a06dd2-378c-4e6a-9ad6-c0ae0a844f3e
+		summarizeBy: count
+		sourceColumn: BokDestinationID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokPortOfLoadingID
+		dataType: int64
+		formatString: 0
+		lineageTag: 59d47ead-494e-4dcc-85c0-ccdb78a1d9d4
+		summarizeBy: count
+		sourceColumn: BokPortOfLoadingID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokBookingNumBer
+		dataType: string
+		lineageTag: 1efd781e-9969-4a18-8741-b96e713490ad
+		summarizeBy: none
+		sourceColumn: BokBookingNumBer
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokVesselVoyageID
+		dataType: int64
+		formatString: 0
+		lineageTag: c0298a4e-d604-4e0a-a872-ec3b14825a3e
+		summarizeBy: count
+		sourceColumn: BokVesselVoyageID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokContainerYardCutoffDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f6f0c962-9197-400a-b278-775c9591adee
+		summarizeBy: none
+		sourceColumn: BokContainerYardCutoffDate
+
+		variation Variation
+			isDefault
+			relationship: 467793a6-1835-4bc3-aaed-364826f68fd9
+			defaultHierarchy: LocalDateTable_91675fa2-a8c0-4b98-ad5b-4e9b26476f43.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokDocumentationCutoffDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4e1dfa69-5c6e-4541-821f-9cf5d1b184a4
+		summarizeBy: none
+		sourceColumn: BokDocumentationCutoffDate
+
+		variation Variation
+			isDefault
+			relationship: b3aee4b2-3297-432e-b280-2a32f149576a
+			defaultHierarchy: LocalDateTable_64658f29-1c85-483f-bc95-ffb4c1569d76.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokTruckingCompany
+		dataType: string
+		lineageTag: ef547dd0-3479-44ee-8858-8096de96de9a
+		summarizeBy: none
+		sourceColumn: BokTruckingCompany
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokDispatchDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 529a5f17-03b1-494a-9d9b-599b28fb243c
+		summarizeBy: none
+		sourceColumn: BokDispatchDate
+
+		variation Variation
+			isDefault
+			relationship: 33c8eb86-4c8c-4d5c-821a-8244d43a2b31
+			defaultHierarchy: LocalDateTable_84b1c0d8-6e0a-42a3-babf-414bd41ff938.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokTerminalReturnID
+		dataType: int64
+		formatString: 0
+		lineageTag: 49a696ce-88af-437a-84a1-6ec86351c207
+		summarizeBy: count
+		sourceColumn: BokTerminalReturnID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokRailCutoff
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ab7ab5df-9fec-4a51-9c36-e3f24a8a127a
+		summarizeBy: none
+		sourceColumn: BokRailCutoff
+
+		variation Variation
+			isDefault
+			relationship: 59b71aac-712f-462f-8c88-1334e017471a
+			defaultHierarchy: LocalDateTable_689775ff-4b8b-424b-8fa7-b02fbc0c4fb0.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokContainerNumBer
+		dataType: string
+		lineageTag: c84e35ce-c3be-4cee-a8a6-9bd8098428a0
+		summarizeBy: none
+		sourceColumn: BokContainerNumBer
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokContainerNumBerCheckDigit
+		dataType: int64
+		formatString: 0
+		lineageTag: 952745f4-fa27-4c38-a260-bc9d0dcb5838
+		summarizeBy: sum
+		sourceColumn: BokContainerNumBerCheckDigit
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokBookingRequestID
+		dataType: int64
+		formatString: 0
+		lineageTag: e0e94dd2-2fb1-425b-8d4d-68198481ccab
+		summarizeBy: count
+		sourceColumn: BokBookingRequestID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokOperation
+		dataType: string
+		lineageTag: 4ab79293-2df5-457a-b623-aaf4755dc6ac
+		summarizeBy: none
+		sourceColumn: BokOperation
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokIsEditaBle
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a18a678c-a981-4770-8db6-ef7efad74e5b
+		summarizeBy: none
+		sourceColumn: BokIsEditaBle
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokApplication
+		dataType: string
+		lineageTag: eb039c15-a062-45e9-8176-f5344d384943
+		summarizeBy: none
+		sourceColumn: BokApplication
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokUsername
+		dataType: string
+		lineageTag: a5e05859-1483-46f8-8422-aa47d54b5d34
+		summarizeBy: none
+		sourceColumn: BokUsername
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokClientMachine
+		dataType: string
+		lineageTag: b0918512-b525-448e-8a91-fc0344bfe76b
+		summarizeBy: none
+		sourceColumn: BokClientMachine
+
+		annotation SummarizationSetBy = Automatic
+
+	column acrec
+		dataType: string
+		lineageTag: 99468970-9a94-4abe-941e-49feef6b69b9
+		summarizeBy: none
+		sourceColumn: acrec
+
+		annotation SummarizationSetBy = Automatic
+
+	column usra
+		dataType: string
+		lineageTag: 4091e548-cd9a-4095-b092-bc65b74b99ef
+		summarizeBy: none
+		sourceColumn: usra
+
+		annotation SummarizationSetBy = Automatic
+
+	column dtea
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: ecad2903-386c-4a20-ba40-268700ab73b2
+		summarizeBy: none
+		sourceColumn: dtea
+
+		variation Variation
+			isDefault
+			relationship: 2e9f6b15-87d5-45f9-a627-6b27cc8f375e
+			defaultHierarchy: LocalDateTable_aa063da3-8812-4700-8b41-05a4736a1742.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column usrc
+		dataType: string
+		lineageTag: b1e8ec04-8bcb-469a-828f-9250119ffaec
+		summarizeBy: none
+		sourceColumn: usrc
+
+		annotation SummarizationSetBy = Automatic
+
+	column dtec
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: bfd2c465-3a87-4411-b67f-073b58ce5ea0
+		summarizeBy: none
+		sourceColumn: dtec
+
+		variation Variation
+			isDefault
+			relationship: 16c72071-4d2c-4a47-8970-84adde65ff1e
+			defaultHierarchy: LocalDateTable_d279bc9b-7f70-4ce9-ac63-59d7b93cbd9d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokProFormaID
+		dataType: int64
+		formatString: 0
+		lineageTag: 5705bc9e-0b15-4dda-be76-59c719c345e5
+		summarizeBy: count
+		sourceColumn: BokProFormaID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokProFormaVersion
+		dataType: int64
+		formatString: 0
+		lineageTag: 9b932b30-0ee7-4335-b715-7a2b66ded79e
+		summarizeBy: sum
+		sourceColumn: BokProFormaVersion
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokProFormaFilename
+		dataType: string
+		lineageTag: b4665ef6-9f35-491a-aabe-8a9d8f79efbc
+		summarizeBy: none
+		sourceColumn: BokProFormaFilename
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokSetEditaBleDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 09392250-b212-4809-a40a-03b10a837bb9
+		summarizeBy: none
+		sourceColumn: BokSetEditaBleDate
+
+		variation Variation
+			isDefault
+			relationship: b48d30ee-528c-4ff0-8f46-945ba30ed131
+			defaultHierarchy: LocalDateTable_cd2e0386-d714-48b0-b783-279715e4a561.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokPreviewDocumentsID
+		dataType: int64
+		formatString: 0
+		lineageTag: a6d65614-165c-49b4-9421-5af72185fef7
+		summarizeBy: count
+		sourceColumn: BokPreviewDocumentsID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokPreviewDocumentsVersion
+		dataType: int64
+		formatString: 0
+		lineageTag: c9619ce3-ba5d-45ea-8736-2b3adb978173
+		summarizeBy: sum
+		sourceColumn: BokPreviewDocumentsVersion
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokIsCustomerServiceCancel
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8fd8510c-5934-409f-abb8-ba9d02fa7d01
+		summarizeBy: none
+		sourceColumn: BokIsCustomerServiceCancel
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokLoadedTruckingCompany
+		dataType: string
+		lineageTag: fde70c34-7a8a-45b0-82c6-50e87c32cc7f
+		summarizeBy: none
+		sourceColumn: BokLoadedTruckingCompany
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokLoadedDispatchDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 85a803ae-4ac0-4bfe-9e40-23492af9277a
+		summarizeBy: none
+		sourceColumn: BokLoadedDispatchDate
+
+		variation Variation
+			isDefault
+			relationship: c010289d-7daa-4ccb-b86e-2bc7144ee02e
+			defaultHierarchy: LocalDateTable_1a22652f-3e6a-4a41-8fe1-b8358aab585e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokEmptyTruckerDispatchDocumentID
+		dataType: int64
+		formatString: 0
+		lineageTag: 8b02b729-a32a-4f71-a767-eb1697712a7d
+		summarizeBy: count
+		sourceColumn: BokEmptyTruckerDispatchDocumentID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokPlannedETD
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 439ef7e3-3019-42a6-89fd-1446f54aedd0
+		summarizeBy: none
+		sourceColumn: BokPlannedETD
+
+		variation Variation
+			isDefault
+			relationship: bd04ad3c-b714-4c84-a0af-61cab768fe64
+			defaultHierarchy: LocalDateTable_2819d2ad-b32e-4037-9e9d-478dbdb0e406.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokIDFNo
+		dataType: string
+		lineageTag: b6a9177f-3326-44b1-9e51-029fb08c3d0a
+		summarizeBy: none
+		sourceColumn: BokIDFNo
+
+		annotation SummarizationSetBy = Automatic
+
+	column BoksealNo
+		dataType: string
+		lineageTag: e4ae1e47-89ef-403b-87df-e925aba1370c
+		summarizeBy: none
+		sourceColumn: BoksealNo
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokCRMName
+		dataType: string
+		lineageTag: 02bbb221-364a-4915-a4d3-e0d6fa7e3fe4
+		summarizeBy: none
+		sourceColumn: BokCRMName
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokRequestedDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e416fe82-c202-4b36-851d-a89096b43ab3
+		summarizeBy: none
+		sourceColumn: BokRequestedDate
+
+		variation Variation
+			isDefault
+			relationship: 2e283a79-a7da-4517-9c68-66eaf6a6e50f
+			defaultHierarchy: LocalDateTable_88caea60-6689-4772-a8ee-6938930ce9f9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokInspectionRequired
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6a055922-2c57-4c8c-b3f1-2f049f4b650b
+		summarizeBy: none
+		sourceColumn: BokInspectionRequired
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokFumigationRequired
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f6b37df6-b293-4580-bf8d-ee38311d0e1d
+		summarizeBy: none
+		sourceColumn: BokFumigationRequired
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokLoadedTruckerDispatchDocumentID
+		dataType: int64
+		formatString: 0
+		lineageTag: 7bd1f491-f52b-4995-a65e-5a16a110dce4
+		summarizeBy: count
+		sourceColumn: BokLoadedTruckerDispatchDocumentID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokEarlyReturnDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 696b56ac-72f9-416a-bf71-3ea113a10eba
+		summarizeBy: none
+		sourceColumn: BokEarlyReturnDate
+
+		variation Variation
+			isDefault
+			relationship: 1cf0c7c5-545c-4cbb-bef4-813cfb58efff
+			defaultHierarchy: LocalDateTable_318237e7-d693-42fb-9def-1202990afec1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column BokDispatchedDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3ecbf0d8-d7e9-4ae7-a48b-f1928e10c438
+		summarizeBy: none
+		sourceColumn: BokDispatchedDate
+
+		variation Variation
+			isDefault
+			relationship: 250ab0a7-766b-4ba5-a6d0-47b820610f78
+			defaultHierarchy: LocalDateTable_036550c9-bd25-4f05-a001-b240e0840757.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column rn
+		dataType: int64
+		formatString: 0
+		lineageTag: 73b2051e-6555-4b38-b6bc-75b4927fa0ee
+		summarizeBy: sum
+		sourceColumn: rn
+
+		annotation SummarizationSetBy = Automatic
+
+	column tpkModified
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 57ea34de-bbfa-4cfb-b19c-9aa44b90b152
+		summarizeBy: none
+		sourceColumn: tpkModified
+
+		variation Variation
+			isDefault
+			relationship: 378acb1a-5de4-49c1-8d05-eee97f15dba6
+			defaultHierarchy: LocalDateTable_0bc4e20e-9647-4e1c-86f3-f4be17f28939.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fct_bo_bcs_infor = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"5839814b-ec95-48ea-a07a-ec0241ac9946" = Workspaces{[workspaceId="5839814b-ec95-48ea-a07a-ec0241ac9946"]}[Data],
+				    #"40e98eef-f019-4ac7-8243-dcd0227bcfd1" = #"5839814b-ec95-48ea-a07a-ec0241ac9946"{[dataflowId="40e98eef-f019-4ac7-8243-dcd0227bcfd1"]}[Data],
+				    bo_bcs_infor_ = #"40e98eef-f019-4ac7-8243-dcd0227bcfd1"{[entity="bo_bcs_infor",version=""]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(bo_bcs_infor_,{"BokRowversion"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

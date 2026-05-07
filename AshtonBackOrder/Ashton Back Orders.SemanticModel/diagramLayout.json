@@ -1,0 +1,152 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 143.03309271294839,
+        "y": 73.449425987730251
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 0,
+            "y": 0
+          },
+          "nodeIndex": "Dim_calander",
+          "nodeLineageTag": "cff5437e-7c5c-45f5-9918-c0014845fcb4",
+          "size": {
+            "height": 419.42496161802234,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 260.39882385453177,
+            "y": 2.2069509490610706
+          },
+          "nodeIndex": "Dim_code_table",
+          "nodeLineageTag": "fffe722c-f196-4a8c-872d-41edc9d9f56d",
+          "size": {
+            "height": 232,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 2908.9807764220677,
+            "y": 524.51958351449127
+          },
+          "nodeIndex": "A_measure",
+          "nodeLineageTag": "dec74b8e-c009-4078-b24b-821738336653",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 730.89161608189806,
+            "y": 523.13527326515361
+          },
+          "nodeIndex": "Fct_hj_tranlog_340",
+          "nodeLineageTag": "866223c5-fe43-4536-a758-4b7bf57725f6",
+          "size": {
+            "height": 506.24999999999977,
+            "width": 311.49999999999989
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 525.79374036498336
+          },
+          "nodeIndex": "Fct_hj_trx_321",
+          "nodeLineageTag": "432618db-b59a-4805-a869-a9443e0a9d49",
+          "size": {
+            "height": 291.09501083642408,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 517.64371425670208,
+            "y": 0.80248573224087139
+          },
+          "nodeIndex": "Dim_trip_nbr",
+          "nodeLineageTag": "faa8b502-6841-48aa-bbe1-bc3ae815d7c8",
+          "size": {
+            "height": 224.99999999999994,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 269.11724614530522,
+            "y": 526.17478140122284
+          },
+          "nodeIndex": "Fct_ashton_bo_trips_planed_actual_qty_cubes",
+          "nodeLineageTag": "f4110e8f-f881-48dc-b7ed-64282decd1a9",
+          "size": {
+            "height": 552.636648987695,
+            "width": 399.00000000000011
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 1079.7977986072865,
+            "y": 526.2670188370314
+          },
+          "nodeIndex": "Fct_HJ_TripReport",
+          "nodeLineageTag": "c4135a27-62e5-4658-9483-68f348757c6f",
+          "size": {
+            "height": 1000,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 1346.73077642207,
+            "y": 514.38350941851581
+          },
+          "nodeIndex": "Fct_bo_bcs_infor",
+          "nodeLineageTag": "32ab07f5-a767-4375-9c02-5ed886f42618",
+          "size": {
+            "height": 683.74999999999955,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 1815.5373090853861,
+            "y": 49.120603015075375
+          },
+          "nodeIndex": "fct_ashton_bo_container_standard_cubes",
+          "nodeLineageTag": "1c55d1f7-c803-4e6e-b56c-3985af1c666d",
+          "size": {
+            "height": 558.49999999999943,
+            "width": 398.69849246231138
+          },
+          "zIndex": 5
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 77.604418596166923,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

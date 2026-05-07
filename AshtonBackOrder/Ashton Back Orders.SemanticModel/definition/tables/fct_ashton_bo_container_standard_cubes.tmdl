@@ -1,0 +1,62 @@
+table fct_ashton_bo_container_standard_cubes
+	lineageTag: 1c55d1f7-c803-4e6e-b56c-3985af1c666d
+
+	column ContainerSize
+		dataType: string
+		lineageTag: 3fa33597-72f8-487e-97ec-41268653fcdb
+		summarizeBy: none
+		sourceColumn: ContainerSize
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: string
+		lineageTag: 3d25a840-5e8a-4abd-afa1-6133cfa636e9
+		summarizeBy: none
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cubes
+		dataType: int64
+		formatString: 0
+		lineageTag: 7bd1c67a-63d1-4883-9ddd-aba7b2d25e00
+		summarizeBy: sum
+		sourceColumn: Cubes
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fct_ashton_bo_container_standard_cubes = m
+		mode: import
+		source = ```
+				let
+				    // 连接到 SharePoint 文件
+				    Source = SharePoint.Files("https://masterashley.sharepoint.com/sites/AsiaWarehouseOperations/", [ApiVersion = 15]),
+				    
+				    // 筛选指定文件夹及其子文件夹下的文件
+				    #"Filtered Folder" = Table.SelectRows(Source, each Text.StartsWith([Folder Path], "https://masterashley.sharepoint.com/sites/AsiaWarehouseOperations/Shared Documents/Ashton/Four Box/Shipping/bo_reason_code/")),
+				    
+				    // 仅筛选 .xlsx 文件
+				    #"Excel Files Only" = Table.SelectRows( #"Filtered Folder", each Text.EndsWith([Name], ".xlsx")),
+				    #"Filtered Rows" = Table.SelectRows(#"Excel Files Only", each ([Name] = "ashton_bo_container_standard_cubes.xlsx")),
+				    // 展开二进制内容
+				    #"Added Custom" = Table.AddColumn(#"Filtered Rows", "Excel Tables", each Excel.Workbook([Content])),
+				    
+				    // 展开 Excel 表格
+				    #"Expanded Excel Tables" = Table.ExpandTableColumn(#"Added Custom", "Excel Tables", {"Data", "Item", "Kind", "Hidden"}, {"Data", "Item", "Kind", "Hidden"}),
+				    
+				    // 仅保留名为 "DATA" 的工作表
+				    #"Filtered Sheets" = Table.SelectRows(#"Expanded Excel Tables", each [Item] = "Sheet1"),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Filtered Sheets",{"Data"}),
+				    #"Expanded Data" = Table.ExpandTableColumn(#"Removed Other Columns", "Data", {"Column1", "Column2", "Column3", "Column4"}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Expanded Data", [PromoteAllScalars=true]),
+				    #"Removed Other Columns1" = Table.SelectColumns(#"Promoted Headers",{"ContainerSize","Type","Cubes"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Removed Other Columns1",{{"ContainerSize", type text}, {"Type", type text}, {"Cubes", Int64.Type}})
+				in
+				    #"Changed Type"
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

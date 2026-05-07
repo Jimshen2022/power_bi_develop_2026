@@ -1,0 +1,47 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Dim_calander","Fct_hj_tranlog_340","Dim_code_table","Fct_ashton_bo_trips_planed_actual_qty_cubes","Fct_hj_trx_321","A_measure","Fct_HJ_TripReport","Fct_bo_bcs_infor","fct_ashton_bo_container_standard_cubes"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_616a2b67-3371-4520-9ead-cea4d60062a3
+ref table Dim_calander
+ref table Fct_hj_tranlog_340
+ref table LocalDateTable_d13dfec5-957f-4f37-a2bb-879b8d3654b1
+ref table LocalDateTable_ba35df92-d84b-43f2-bd0a-6a83a7757bc5
+ref table Dim_code_table
+ref table Fct_ashton_bo_trips_planed_actual_qty_cubes
+ref table Dim_trip_nbr
+ref table LocalDateTable_046ab2ed-2b72-4c0b-adbe-7afd2e2caccf
+ref table Fct_hj_trx_321
+ref table A_measure
+ref table Fct_HJ_TripReport
+ref table LocalDateTable_12a55e00-e567-462b-804f-2b7ae92b8052
+ref table Fct_bo_bcs_infor
+ref table LocalDateTable_865ed209-8038-4256-a5c9-e1d44ac7d8d8
+ref table LocalDateTable_ec37492b-2a05-4b0c-8f65-454d6f5aa612
+ref table LocalDateTable_91675fa2-a8c0-4b98-ad5b-4e9b26476f43
+ref table LocalDateTable_64658f29-1c85-483f-bc95-ffb4c1569d76
+ref table LocalDateTable_84b1c0d8-6e0a-42a3-babf-414bd41ff938
+ref table LocalDateTable_689775ff-4b8b-424b-8fa7-b02fbc0c4fb0
+ref table LocalDateTable_aa063da3-8812-4700-8b41-05a4736a1742
+ref table LocalDateTable_d279bc9b-7f70-4ce9-ac63-59d7b93cbd9d
+ref table LocalDateTable_cd2e0386-d714-48b0-b783-279715e4a561
+ref table LocalDateTable_1a22652f-3e6a-4a41-8fe1-b8358aab585e
+ref table LocalDateTable_2819d2ad-b32e-4037-9e9d-478dbdb0e406
+ref table LocalDateTable_88caea60-6689-4772-a8ee-6938930ce9f9
+ref table LocalDateTable_318237e7-d693-42fb-9def-1202990afec1
+ref table LocalDateTable_036550c9-bd25-4f05-a001-b240e0840757
+ref table LocalDateTable_0bc4e20e-9647-4e1c-86f3-f4be17f28939
+ref table fct_ashton_bo_container_standard_cubes
+
+ref cultureInfo en-US
+

@@ -1,0 +1,343 @@
+table Fct_HJ_TripReport
+	lineageTag: c4135a27-62e5-4658-9483-68f348757c6f
+
+	column WhID
+		dataType: string
+		lineageTag: 5b2a0266-c274-4f0a-a090-4b83d9efcf16
+		summarizeBy: none
+		sourceColumn: WhID
+
+		annotation SummarizationSetBy = Automatic
+
+	column LoadID
+		dataType: string
+		lineageTag: 36a8d4cc-43bd-4e4c-bd4d-172a1561b636
+		summarizeBy: none
+		sourceColumn: LoadID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderType
+		dataType: string
+		lineageTag: 65b547b4-a00c-41c0-8d20-a77c29cc42fb
+		summarizeBy: none
+		sourceColumn: OrderType
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrderTypeDescription
+		dataType: string
+		lineageTag: a5820f7a-f634-446f-b765-efa2ad0b3784
+		summarizeBy: none
+		sourceColumn: OrderTypeDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column TripStatus
+		dataType: string
+		lineageTag: 39e70b1c-4a1b-4f99-9f70-c84902b53cd2
+		summarizeBy: none
+		sourceColumn: TripStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column TripStatusDescription
+		dataType: string
+		lineageTag: a934e30c-38ce-48ff-843a-ec27a6356850
+		summarizeBy: none
+		sourceColumn: TripStatusDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column HomeStore
+		dataType: string
+		lineageTag: 8d737eb4-98d8-4ed8-8b63-aa4bb3be83ac
+		summarizeBy: none
+		sourceColumn: HomeStore
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrailerSize
+		dataType: string
+		lineageTag: 1609e9b5-8357-495a-805d-98680e4e5028
+		summarizeBy: none
+		sourceColumn: TrailerSize
+
+		annotation SummarizationSetBy = Automatic
+
+	column DoorLoc
+		dataType: string
+		lineageTag: a572fe60-391b-46c6-9b36-60e053f8981e
+		summarizeBy: none
+		sourceColumn: DoorLoc
+
+		annotation SummarizationSetBy = Automatic
+
+	column StageLoc
+		dataType: string
+		lineageTag: e2644acf-eefc-498c-89e8-fe66ad0005bb
+		summarizeBy: none
+		sourceColumn: StageLoc
+
+		annotation SummarizationSetBy = Automatic
+
+	column TripType
+		dataType: string
+		lineageTag: bf109eb7-b37d-45da-8a58-c605b5a8aa0d
+		summarizeBy: none
+		sourceColumn: TripType
+
+		annotation SummarizationSetBy = Automatic
+
+	column TripTypeDescription
+		dataType: string
+		lineageTag: 1ea2ece4-19d7-4ec8-a1d8-2d609fdbbd81
+		summarizeBy: none
+		sourceColumn: TripTypeDescription
+
+		annotation SummarizationSetBy = Automatic
+
+	column LoadDate
+		dataType: string
+		lineageTag: 140b57b3-3f69-4fb6-abcc-be9ff2b2529e
+		summarizeBy: none
+		sourceColumn: LoadDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column DispatchDate
+		dataType: string
+		lineageTag: 2cacd408-9dba-4c40-8a79-b1bf05cc35e1
+		summarizeBy: none
+		sourceColumn: DispatchDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column TripCreateDate
+		dataType: string
+		lineageTag: cfd43dcd-8d77-4e9b-9bc4-d4bda8cd9b43
+		summarizeBy: none
+		sourceColumn: TripCreateDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerName
+		dataType: string
+		lineageTag: 6d22025e-431b-4082-994b-808773d8c1ff
+		summarizeBy: none
+		sourceColumn: CustomerName
+
+		annotation SummarizationSetBy = Automatic
+
+	column CarrierName
+		dataType: string
+		lineageTag: 467c204c-d07a-40b5-8d69-96a396d70d07
+		summarizeBy: none
+		sourceColumn: CarrierName
+
+		annotation SummarizationSetBy = Automatic
+
+	column TrailerNumber
+		dataType: string
+		lineageTag: 1ba7bcb8-047e-4717-aea3-5b90f00ed6d5
+		summarizeBy: none
+		sourceColumn: TrailerNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalPieces
+		dataType: int64
+		formatString: #,0
+		lineageTag: 48dc774d-b548-43ba-8ad8-03da5a9dae6b
+		summarizeBy: sum
+		sourceColumn: TotalPieces
+
+		annotation SummarizationSetBy = Automatic
+
+	column UphNeed
+		dataType: int64
+		formatString: 0
+		lineageTag: c79f378d-3cb9-40d6-b494-f3c2bd24b716
+		summarizeBy: sum
+		sourceColumn: UphNeed
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalCube
+		dataType: int64
+		formatString: #,0
+		lineageTag: 5ae71079-c6e1-453b-8f99-cac6b358535b
+		summarizeBy: sum
+		sourceColumn: TotalCube
+
+		annotation SummarizationSetBy = Automatic
+
+	column NumberOfDrops
+		dataType: string
+		lineageTag: f68f5e1f-8c7c-489d-937d-32629bcd576a
+		summarizeBy: none
+		sourceColumn: NumberOfDrops
+
+		annotation SummarizationSetBy = Automatic
+
+	column SpecialShipInst
+		dataType: string
+		lineageTag: 85361be1-251b-4a1a-a9eb-c66ff7d0bbdb
+		summarizeBy: none
+		sourceColumn: SpecialShipInst
+
+		annotation SummarizationSetBy = Automatic
+
+	column AllocablePct
+		dataType: int64
+		formatString: 0
+		lineageTag: 3ca623b2-c0b3-4dcb-a308-3095202a4ede
+		summarizeBy: sum
+		sourceColumn: AllocablePct
+
+		annotation SummarizationSetBy = Automatic
+
+	column LoadablePct
+		dataType: int64
+		formatString: 0
+		lineageTag: f5486202-f9c9-4048-9166-e9b0f4d42c19
+		summarizeBy: sum
+		sourceColumn: LoadablePct
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverAllocablePercentage
+		dataType: int64
+		formatString: 0
+		lineageTag: 9a2365b0-cb41-4782-9c55-c1cfa8d06ae6
+		summarizeBy: sum
+		sourceColumn: OverAllocablePercentage
+
+		annotation SummarizationSetBy = Automatic
+
+	column OverLoadablePercentage
+		dataType: int64
+		formatString: 0
+		lineageTag: 124cd1a8-3067-4fb6-9f89-25bfad95ad3f
+		summarizeBy: sum
+		sourceColumn: OverLoadablePercentage
+
+		annotation SummarizationSetBy = Automatic
+
+	column FirstDropState
+		dataType: string
+		lineageTag: ac39b507-0e69-41d3-88aa-061575462eb5
+		summarizeBy: none
+		sourceColumn: FirstDropState
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerServiceRep
+		dataType: string
+		lineageTag: 700038ed-2174-4f25-8082-df4bd07a3f2d
+		summarizeBy: none
+		sourceColumn: CustomerServiceRep
+
+		annotation SummarizationSetBy = Automatic
+
+	column Comment
+		dataType: string
+		lineageTag: d83a29fa-85a3-486c-84fa-e910a925c108
+		summarizeBy: none
+		sourceColumn: Comment
+
+		annotation SummarizationSetBy = Automatic
+
+	column CurrentOrder
+		dataType: string
+		lineageTag: 8b7d0f16-05a2-4ebc-9021-b5a33c286b38
+		summarizeBy: none
+		sourceColumn: CurrentOrder
+
+		annotation SummarizationSetBy = Automatic
+
+	column PctLoaded
+		dataType: int64
+		formatString: 0
+		lineageTag: 2e2e3fc7-42e1-4805-944f-117355ac8555
+		summarizeBy: sum
+		sourceColumn: PctLoaded
+
+		annotation SummarizationSetBy = Automatic
+
+	column Description
+		dataType: string
+		lineageTag: 02adc519-1c8f-45cf-9c32-e83ec14e7a31
+		summarizeBy: none
+		sourceColumn: Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column ThruDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 70afea5a-220d-4baa-9d7e-1313397dff93
+		summarizeBy: none
+		sourceColumn: ThruDate
+
+		variation Variation
+			isDefault
+			relationship: f12fce10-f1df-4441-9b6a-4e886d97ac70
+			defaultHierarchy: LocalDateTable_12a55e00-e567-462b-804f-2b7ae92b8052.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column CGPercent
+		dataType: double
+		lineageTag: 4cf5d335-dfe8-40ad-96d1-821f309244cc
+		summarizeBy: sum
+		sourceColumn: CGPercent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UPHPercent
+		dataType: double
+		lineageTag: e40ed628-b8ff-4cb5-bb05-ed7c6b1fd693
+		summarizeBy: sum
+		sourceColumn: UPHPercent
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DispatchConfirmed
+		dataType: string
+		lineageTag: 6cabfd7b-6c2f-42c1-83ad-e8176fd47dd7
+		summarizeBy: none
+		sourceColumn: DispatchConfirmed
+
+		annotation SummarizationSetBy = Automatic
+
+	column trip_nbr
+		dataType: string
+		lineageTag: 0a7e4870-ecc4-4ff1-9d68-65449dd6327c
+		summarizeBy: none
+		sourceColumn: trip_nbr
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fct_HJ_TripReport = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"5839814b-ec95-48ea-a07a-ec0241ac9946" = Workspaces{[workspaceId="5839814b-ec95-48ea-a07a-ec0241ac9946"]}[Data],
+				    #"40e98eef-f019-4ac7-8243-dcd0227bcfd1" = #"5839814b-ec95-48ea-a07a-ec0241ac9946"{[dataflowId="40e98eef-f019-4ac7-8243-dcd0227bcfd1"]}[Data],
+				    HJ_TripReport_ = #"40e98eef-f019-4ac7-8243-dcd0227bcfd1"{[entity="HJ_TripReport",version=""]}[Data]
+				in
+				    HJ_TripReport_
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

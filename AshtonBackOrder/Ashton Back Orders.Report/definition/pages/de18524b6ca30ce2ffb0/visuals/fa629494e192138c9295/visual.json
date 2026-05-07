@@ -1,0 +1,1019 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "fa629494e192138c9295",
+  "position": {
+    "x": 1.1188811188811187,
+    "y": 208.11188811188811,
+    "z": 2000,
+    "height": 491.18881118881114,
+    "width": 1278.8811188811187,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_calander"
+                    }
+                  },
+                  "Property": "Date"
+                }
+              },
+              "queryRef": "Dim_calander.Date",
+              "nativeQueryRef": "Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_trip_nbr"
+                    }
+                  },
+                  "Property": "Trip Nbr"
+                }
+              },
+              "queryRef": "trip_nbr.Trip Nbr",
+              "nativeQueryRef": "Trip Number",
+              "displayName": "Trip Number"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "A_measure"
+                    }
+                  },
+                  "Property": "BO Trips"
+                }
+              },
+              "queryRef": "A_measure.BO Trips",
+              "nativeQueryRef": "BO Trips"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "A_measure"
+                    }
+                  },
+                  "Property": "BO Q'ty"
+                }
+              },
+              "queryRef": "A_measure.BO Q'ty",
+              "nativeQueryRef": "BO Q'ty"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_code_table"
+                    }
+                  },
+                  "Property": "Code_Description"
+                }
+              },
+              "queryRef": "Dim_code_table.Code_Description",
+              "nativeQueryRef": "Code_Description"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fct_HJ_TripReport"
+                        }
+                      },
+                      "Property": "TotalCube"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fct_HJ_TripReport.TotalCube)",
+              "nativeQueryRef": "Planned Cubes",
+              "displayName": "Planned Cubes"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Fct_ashton_bo_trips_planed_actual_qty_cubes"
+                        }
+                      },
+                      "Property": "Shipped_Cube"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Fct_ashton_bo_trips_planed_actual_qty_cubes.Shipped_Cube)",
+              "nativeQueryRef": "Shipped Cubes",
+              "displayName": "Shipped Cubes"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "A_measure"
+                    }
+                  },
+                  "Property": "BO_Cubes"
+                }
+              },
+              "queryRef": "A_measure.BO_Cubes",
+              "nativeQueryRef": "BO Cubes",
+              "displayName": "BO Cubes"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fct_hj_tranlog_340"
+                    }
+                  },
+                  "Property": "employee_id"
+                }
+              },
+              "queryRef": "Highjump_Enh TranLog - 340.employee_id",
+              "displayName": "Employee ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fct_ashton_bo_trips_planed_actual_qty_cubes"
+                    }
+                  },
+                  "Property": "container_type"
+                }
+              },
+              "queryRef": "Fct_ashton_bo_trips_planed_actual_qty_cubes.container_type",
+              "nativeQueryRef": "Container Type",
+              "displayName": "Container Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fct_ashton_bo_trips_planed_actual_qty_cubes"
+                    }
+                  },
+                  "Property": "Container Size"
+                }
+              },
+              "queryRef": "Fct_ashton_bo_trips_planed_actual_qty_cubes.Container Size",
+              "nativeQueryRef": "Container Size"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fct_ashton_bo_trips_planed_actual_qty_cubes"
+                    }
+                  },
+                  "Property": "Standard Cubes"
+                }
+              },
+              "queryRef": "Sum(Fct_ashton_bo_trips_planed_actual_qty_cubes.Standard Cubes)",
+              "nativeQueryRef": "Standard Cubes1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fct_hj_trx_321"
+                    }
+                  },
+                  "Property": "employee_contribution_percentages"
+                }
+              },
+              "queryRef": "Fct_hj_trx_321.employee_contribution_percentages",
+              "nativeQueryRef": "Employee_Loaded(%)",
+              "displayName": "Employee_Loaded(%)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Dim_trip_nbr"
+                  }
+                },
+                "Property": "Trip Nbr"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "85.23791752971941D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Highjump_Enh TranLog - 340.employee_id"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "112.78045819344305D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "trip_nbr.Trip Nbr"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "105.02132895652308D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fct_ashton_bo_trips_planed_actual_qty_cubes.container_type"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "79.781154052839D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_calander.Date"
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "rowPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "Sum(Fct_ashton_bo_trips_planed_actual_qty_cubes.Standard Cubes)"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "A_measure"
+                        }
+                      },
+                      "Property": "ShippedCubeColorMeasure"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "Sum(Fct_ashton_bo_trips_planed_actual_qty_cubes.Shipped_Cube)"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 2
+                }
+              }
+            ],
+            "metadata": "Sum(Fct_ashton_bo_trips_planed_actual_qty_cubes.Shipped_Cube)"
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "italic": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 3,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "trip_nbr.Trip Nbr"
+          }
+        },
+        {
+          "properties": {
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Fct_ashton_bo_trips_planed_actual_qty_cubes.Shipped_Cube)"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Highjump_Enh TranLog - 340.employee_id"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fct_ashton_bo_trips_planed_actual_qty_cubes.container_type"
+          }
+        },
+        {
+          "properties": {
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "A_measure.BO Trips"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Fct_HJ_TripReport.TotalCube)"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Fct_ashton_bo_trips_planed_actual_qty_cubes.Standard Cubes)"
+          }
+        },
+        {
+          "properties": {
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Fct_ashton_bo_trips_planed_actual_qty_cubes.Container Size"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "A_measure.BO_Cubes"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "A_measure.BO Q'ty"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0.4
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "20D"
+                }
+              }
+            },
+            "width": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Ashton Back Order Reason Details'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ce5c69986326068f2552",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fct_hj_tranlog_340"
+              }
+            },
+            "Property": "employee_id"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ebfff4ed679d25a80341",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_trip_nbr"
+              }
+            },
+            "Property": "Trip Nbr"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "2c52763e198b22c76b32",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fct_ashton_bo_trips_planed_actual_qty_cubes"
+                  }
+                },
+                "Property": "Shipped_Cube"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "11f993b3096b659bb19c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fct_ashton_bo_trips_planed_actual_qty_cubes"
+              }
+            },
+            "Property": "container_type"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "7519d5b54aa30783dec4",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Fct_HJ_TripReport"
+                  }
+                },
+                "Property": "TotalCube"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1540065b229571a15094",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_measure"
+              }
+            },
+            "Property": "BO Trips"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "4859d58bda241a3226bb",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_code_table"
+              }
+            },
+            "Property": "Code_Description"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "9b14abbf546834363b0b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim_calander"
+              }
+            },
+            "Property": "Date"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "879925cb3f688fe2ad08",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_measure"
+              }
+            },
+            "Property": "BO Q'ty"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "060095e4cb1352366abc",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_measure"
+              }
+            },
+            "Property": "BO_Cubes"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "08ef1803ea492e00d9fc",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fct_ashton_bo_trips_planed_actual_qty_cubes"
+              }
+            },
+            "Property": "Container Size"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "46463e74695c82be68a0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fct_ashton_bo_trips_planed_actual_qty_cubes"
+              }
+            },
+            "Property": "Standard Cubes"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "8995d41483dcc3d252eb",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fct_hj_trx_321"
+              }
+            },
+            "Property": "employee_contribution_percentages"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+table Dim_trip_nbr
+	lineageTag: faa8b502-6841-48aa-bbe1-bc3ae815d7c8
+
+	column 'Trip Nbr'
+		dataType: string
+		lineageTag: e3c314ad-21a5-4641-9ca7-9f87b16fae6a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Trip Nbr]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_trip_nbr = calculated
+		mode: import
+		source = DISTINCT(UNION(SELECTCOLUMNS('Fct_hj_tranlog_340',"Trip Nbr", 'Fct_hj_tranlog_340'[trip_nbr]),SELECTCOLUMNS('Fct_ashton_bo_trips_planed_actual_qty_cubes',"Trip Nbr",'Fct_ashton_bo_trips_planed_actual_qty_cubes'[trip_nbr]),SELECTCOLUMNS('Fct_HJ_TripReport',"Trip Nbr",'Fct_HJ_TripReport'[trip_nbr])))
+
+	annotation PBI_Id = 46480f7966534ac7b74e9b1e35d0c10f
+
