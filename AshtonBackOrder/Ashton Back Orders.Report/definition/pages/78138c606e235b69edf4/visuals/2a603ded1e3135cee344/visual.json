@@ -71,6 +71,20 @@
               },
               "queryRef": "A_measure.BO Q'ty",
               "nativeQueryRef": "BO Q'ty"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fct_hj_tranlog_340"
+                    }
+                  },
+                  "Property": "Reason"
+                }
+              },
+              "queryRef": "Fct_hj_tranlog_340.Reason",
+              "nativeQueryRef": "Reason"
             }
           ]
         }
@@ -456,6 +470,20 @@
           }
         },
         "type": "Advanced"
+      },
+      {
+        "name": "acb3b777eba53f93cabf",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fct_hj_tranlog_340"
+              }
+            },
+            "Property": "Reason"
+          }
+        },
+        "type": "Categorical"
       }
     ]
   }
