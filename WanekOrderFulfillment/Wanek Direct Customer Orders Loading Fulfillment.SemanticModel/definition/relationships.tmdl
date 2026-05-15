@@ -1,0 +1,5 @@
+relationship 7bf04823-4b91-4d4c-8b4e-c5fc7291d646
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_wanek_demand.arrive_date
+	toColumn: LocalDateTable_5754a314-20b0-43e8-b877-da1728e89bea.Date
+

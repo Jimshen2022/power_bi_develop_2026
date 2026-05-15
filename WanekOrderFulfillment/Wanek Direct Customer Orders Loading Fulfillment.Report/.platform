@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Wanek Direct Customer Orders Loading Fulfillment"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "bd71dd7a-8f54-4e32-a071-a7d1146aec71"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Wanek Direct Customer Orders Loading Fulfillment"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e07aa82d-7f79-4599-9db6-979234aaa973"
+  }
+}
