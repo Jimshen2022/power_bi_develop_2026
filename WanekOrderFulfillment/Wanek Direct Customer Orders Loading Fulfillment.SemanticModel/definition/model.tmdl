@@ -10,12 +10,23 @@ annotation __PBI_TimeIntelligenceEnabled = 1
 
 annotation PBI_ProTooling = ["DevMode"]
 
-annotation PBI_QueryOrder = ["Query1","fct_wanek_demand"]
+annotation PBI_QueryOrder = ["fct_wanek_demand","fct_wanek_onhand","fct_cs_booking","fct_log_booking"]
 
-ref table Query1
 ref table fct_wanek_demand
 ref table DateTableTemplate_9f22ea90-b154-4465-ac82-9d43d7198906
 ref table LocalDateTable_5754a314-20b0-43e8-b877-da1728e89bea
+ref table fct_wanek_onhand
+ref table LocalDateTable_50dd27c7-2517-45a6-ac5b-de39f5e17d64
+ref table LocalDateTable_545dabd8-be4b-4336-8b4a-31bfd7660999
+ref table fct_cs_booking
+ref table LocalDateTable_e41aa1e6-632c-4947-a622-1b263ea6f027
+ref table LocalDateTable_d44d9cdf-eb1c-473d-b4f1-222a2cb7dacb
+ref table LocalDateTable_925453e6-7726-41de-ba58-4a060cd5621f
+ref table LocalDateTable_faaea331-023e-4d1d-b3f3-513e67968618
+ref table LocalDateTable_2da8e970-f702-4c2d-999e-b504445041e4
+ref table LocalDateTable_55f80380-c136-40ff-8e13-cfeefa38bfab
+ref table LocalDateTable_55f63e4e-e049-4aa1-8251-c9ed61785854
+ref table fct_log_booking
 
 ref cultureInfo en-US
 

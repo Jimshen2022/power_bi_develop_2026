@@ -3,3 +3,48 @@ relationship 7bf04823-4b91-4d4c-8b4e-c5fc7291d646
 	fromColumn: fct_wanek_demand.arrive_date
 	toColumn: LocalDateTable_5754a314-20b0-43e8-b877-da1728e89bea.Date
 
+relationship c12d0830-cb91-4b94-9dee-75192c7cfd7c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_wanek_onhand.fifo_date
+	toColumn: LocalDateTable_50dd27c7-2517-45a6-ac5b-de39f5e17d64.Date
+
+relationship 19eba271-5473-457f-a1eb-d9c88ae7bb22
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_wanek_onhand.expiration_date
+	toColumn: LocalDateTable_545dabd8-be4b-4336-8b4a-31bfd7660999.Date
+
+relationship 5e18e87b-39a4-4183-9297-2c54c93bed4f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_cs_booking.'Wanek ETD'
+	toColumn: LocalDateTable_e41aa1e6-632c-4947-a622-1b263ea6f027.Date
+
+relationship 6a8a693f-2a59-4fc4-9f29-14addd4e948e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_cs_booking.'Cargo Ready Date'
+	toColumn: LocalDateTable_d44d9cdf-eb1c-473d-b4f1-222a2cb7dacb.Date
+
+relationship aa79022d-0db2-4f45-8762-a87c51d9d1ef
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_cs_booking.'Vessel Date'
+	toColumn: LocalDateTable_925453e6-7726-41de-ba58-4a060cd5621f.Date
+
+relationship 0b8e2fb0-f152-417b-a8b9-e20a883f303e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_cs_booking.'Pick Up'
+	toColumn: LocalDateTable_faaea331-023e-4d1d-b3f3-513e67968618.Date
+
+relationship f3807114-a5cf-48dc-8dbe-2ca4741af8a1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_cs_booking.'Booking Submit Date'
+	toColumn: LocalDateTable_2da8e970-f702-4c2d-999e-b504445041e4.Date
+
+relationship 4d7e74e4-84e0-4d56-9ad8-3bfb1e85b5ab
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_cs_booking.'Booking Received'
+	toColumn: LocalDateTable_55f80380-c136-40ff-8e13-cfeefa38bfab.Date
+
+relationship ab1708d6-2e88-4ee2-ba5b-6eb5f040ab5a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_cs_booking.'Note for Doc'
+	toColumn: LocalDateTable_55f63e4e-e049-4aa1-8251-c9ed61785854.Date
+

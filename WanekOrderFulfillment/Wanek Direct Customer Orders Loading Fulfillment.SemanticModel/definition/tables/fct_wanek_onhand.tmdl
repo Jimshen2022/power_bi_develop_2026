@@ -1,0 +1,176 @@
+table fct_wanek_onhand
+	lineageTag: 774fded6-88a4-4f36-b60c-757fb366c4ea
+
+	column sequence
+		dataType: int64
+		formatString: 0
+		lineageTag: c9dd1ab8-5b61-4152-9c12-8baae2538738
+		summarizeBy: sum
+		sourceColumn: sequence
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_number
+		dataType: string
+		lineageTag: d38d050b-bfff-4a1b-b0f9-c420b01bc0a9
+		summarizeBy: none
+		sourceColumn: item_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column actual_qty
+		dataType: double
+		lineageTag: edb46d79-f450-4b27-bc8e-22224ca27b91
+		summarizeBy: sum
+		sourceColumn: actual_qty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column unavailable_qty
+		dataType: double
+		lineageTag: dcb7b374-c3f2-42c7-9e17-0f08368fe3bf
+		summarizeBy: sum
+		sourceColumn: unavailable_qty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column status
+		dataType: string
+		lineageTag: c955860e-bd9b-4942-bda9-abec529d36df
+		summarizeBy: none
+		sourceColumn: status
+
+		annotation SummarizationSetBy = Automatic
+
+	column wh_id
+		dataType: string
+		lineageTag: 0d7acaab-fc73-460a-a632-607984ad62c7
+		summarizeBy: none
+		sourceColumn: wh_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column location_id
+		dataType: string
+		lineageTag: 5f0f69c3-0cfd-4f48-81d0-eb1b9ab43330
+		summarizeBy: none
+		sourceColumn: location_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column type
+		dataType: string
+		lineageTag: 2560070e-4b47-4ccd-86a5-ad1518a5a2e6
+		summarizeBy: none
+		sourceColumn: type
+
+		annotation SummarizationSetBy = Automatic
+
+	column fifo_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 992c52b9-1b5b-4337-ac7d-5fb64457b087
+		summarizeBy: none
+		sourceColumn: fifo_date
+
+		variation Variation
+			isDefault
+			relationship: c12d0830-cb91-4b94-9dee-75192c7cfd7c
+			defaultHierarchy: LocalDateTable_50dd27c7-2517-45a6-ac5b-de39f5e17d64.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column expiration_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 74bd69fd-7c2e-4328-a90d-7e505954dc52
+		summarizeBy: none
+		sourceColumn: expiration_date
+
+		variation Variation
+			isDefault
+			relationship: 19eba271-5473-457f-a1eb-d9c88ae7bb22
+			defaultHierarchy: LocalDateTable_545dabd8-be4b-4336-8b4a-31bfd7660999.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column reserved_for
+		dataType: string
+		lineageTag: 77271018-b34d-4d18-852d-46c1078ac714
+		summarizeBy: none
+		sourceColumn: reserved_for
+
+		annotation SummarizationSetBy = Automatic
+
+	column lot_number
+		dataType: string
+		lineageTag: 67934789-2cbd-40b4-a399-d1840aa631e9
+		summarizeBy: none
+		sourceColumn: lot_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column inspection_code
+		dataType: string
+		lineageTag: c0d195b3-5ae7-456b-babc-a7e15bbedf0a
+		summarizeBy: none
+		sourceColumn: inspection_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column serial_number
+		dataType: string
+		lineageTag: 6e25fdc3-5b48-422e-b646-55d64f704029
+		summarizeBy: none
+		sourceColumn: serial_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column type2
+		dataType: string
+		lineageTag: 875cf968-7af9-45a6-9421-0f172b1cbb6a
+		summarizeBy: none
+		sourceColumn: type2
+
+		annotation SummarizationSetBy = Automatic
+
+	column put_away_location
+		dataType: string
+		lineageTag: f3f373c6-4d12-410a-99a7-18396e2a9e17
+		summarizeBy: none
+		sourceColumn: put_away_location
+
+		annotation SummarizationSetBy = Automatic
+
+	column owner_id
+		dataType: string
+		lineageTag: 23dbdb32-eda7-4206-a73a-d1a2268b102a
+		summarizeBy: none
+		sourceColumn: owner_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column pod_status
+		dataType: string
+		lineageTag: f1e25fa7-67a2-489d-9ba6-44e29b68048b
+		summarizeBy: none
+		sourceColumn: pod_status
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fct_wanek_onhand = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("WanekWHJSQLprod", "AAD", [Query="SELECT #(lf)    sto.sequence,#(lf)    sto.item_number,#(lf)    sto.actual_qty,#(lf)    sto.unavailable_qty,#(lf)    sto.status,#(lf)    sto.wh_id,#(lf)    sto.location_id,#(lf)    loc.type,#(lf)    sto.fifo_date,#(lf)    sto.expiration_date,#(lf)    sto.reserved_for,#(lf)    sto.lot_number,#(lf)    sto.inspection_code,#(lf)    sto.serial_number,#(lf)    sto.type,#(lf)    sto.put_away_location,#(lf)    sto.owner_id,#(lf)    sto.pod_status#(lf)FROM t_stored_item sto WITH (NOLOCK)#(lf)JOIN t_location loc WITH (NOLOCK)#(lf)    ON sto.location_id = loc.location_id#(lf)    AND sto.wh_id = loc.wh_id#(lf)    AND loc.type <> 'MA'#(lf)JOIN t_item_master itm WITH (NOLOCK)#(lf)    ON sto.item_number = itm.item_number#(lf)    AND sto.wh_id = itm.wh_id#(lf)WHERE sto.wh_id in ('31','33','34','35','36')#(lf)    AND sto.location_id LIKE '%'#(lf)    AND sto.item_number LIKE '%'#(lf)    AND sto.status LIKE '%'#(lf)    AND (#(lf)            ('%' = 'NULL' AND sto.lot_number IS NULL)#(lf)         OR ('%' = 'NOT NULL' AND sto.lot_number IS NOT NULL)#(lf)         OR ('%' = '%')#(lf)        )#(lf)    AND sto.type LIKE '%'#(lf)    AND ISNULL(loc.building, '') LIKE '%'#(lf)    AND itm.pick_put_id LIKE '%'#(lf)    AND itm.commodity_code Like 'Z%' and itm.commodity_code NOT Like '%K'#(lf)    AND sto.type = 'STORAGE'#(lf)ORDER BY #(lf)    sto.item_number,#(lf)    sto.location_id;", CreateNavigationProperties=false, CommandTimeout=#duration(0, 8, 20, 0)])
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

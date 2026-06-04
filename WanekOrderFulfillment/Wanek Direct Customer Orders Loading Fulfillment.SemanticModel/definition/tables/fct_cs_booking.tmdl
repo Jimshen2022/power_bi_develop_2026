@@ -1,0 +1,339 @@
+table fct_cs_booking
+	lineageTag: 6d4c2471-8754-482f-9f89-51001caa3a1e
+
+	column WH
+		dataType: string
+		lineageTag: 4e1224cd-454c-4a60-be6d-3500cc8b9a17
+		summarizeBy: none
+		sourceColumn: WH
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CUST PO'
+		dataType: string
+		lineageTag: 6984f66a-d903-472b-b0a7-f0f411b55be3
+		summarizeBy: none
+		sourceColumn: CUST PO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ashley_PO        '
+		dataType: string
+		lineageTag: f3ab60b3-643a-407d-97e3-8b9c8b23d5f6
+		summarizeBy: none
+		sourceColumn: "Ashley_PO        "
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Wanek ETD'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ee9239f2-da41-473d-8267-86c753b37079
+		summarizeBy: none
+		sourceColumn: Wanek ETD
+
+		variation Variation
+			isDefault
+			relationship: 5e18e87b-39a4-4183-9297-2c54c93bed4f
+			defaultHierarchy: LocalDateTable_e41aa1e6-632c-4947-a622-1b263ea6f027.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Cargo Ready Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: fc7d1311-a9ae-4aee-b411-7550464376bc
+		summarizeBy: none
+		sourceColumn: Cargo Ready Date
+
+		variation Variation
+			isDefault
+			relationship: 6a8a693f-2a59-4fc4-9f29-14addd4e948e
+			defaultHierarchy: LocalDateTable_d44d9cdf-eb1c-473d-b4f1-222a2cb7dacb.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Customer
+		dataType: string
+		lineageTag: 96fd9cb6-29a1-4d89-8895-68b7617a51c9
+		summarizeBy: none
+		sourceColumn: Customer
+
+		annotation SummarizationSetBy = Automatic
+
+	column Booking#
+		dataType: string
+		lineageTag: 5cdf6f71-67d7-4f57-85c5-5ce1cac725ff
+		summarizeBy: none
+		sourceColumn: Booking#
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Vessel Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b8736771-cd8e-4b6b-9115-f2cf5133d18b
+		summarizeBy: none
+		sourceColumn: Vessel Date
+
+		variation Variation
+			isDefault
+			relationship: aa79022d-0db2-4f45-8762-a87c51d9d1ef
+			defaultHierarchy: LocalDateTable_925453e6-7726-41de-ba58-4a060cd5621f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Pick Up'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1d8c63d0-5ff7-417b-88ab-8824ef3a7bae
+		summarizeBy: none
+		sourceColumn: Pick Up
+
+		variation Variation
+			isDefault
+			relationship: 0b8e2fb0-f152-417b-a8b9-e20a883f303e
+			defaultHierarchy: LocalDateTable_faaea331-023e-4d1d-b3f3-513e67968618.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Closing Time'
+		dataType: string
+		lineageTag: fa3d233b-e787-4635-b858-818b63d729e6
+		summarizeBy: none
+		sourceColumn: Closing Time
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'New load'
+		dataType: int64
+		formatString: 0
+		lineageTag: 7989cfca-6c56-45ce-87a4-2fe3d22da5dd
+		summarizeBy: sum
+		sourceColumn: New load
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTY
+		dataType: int64
+		formatString: 0
+		lineageTag: 8d796e43-16a4-453b-80ff-4df858f931b0
+		summarizeBy: sum
+		sourceColumn: QTY
+
+		annotation SummarizationSetBy = Automatic
+
+	column Remark
+		dataType: string
+		lineageTag: 26accdfb-e75e-4466-9520-47400588860b
+		summarizeBy: none
+		sourceColumn: Remark
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Port Of Discharge'
+		dataType: string
+		lineageTag: a65cb702-d3f1-4cbf-a1ae-ae048cc76bad
+		summarizeBy: none
+		sourceColumn: Port Of Discharge
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Place of delivery'
+		dataType: string
+		lineageTag: fcb7cfc0-6add-4b03-852d-1fdc0b271e1d
+		summarizeBy: none
+		sourceColumn: Place of delivery
+
+		annotation SummarizationSetBy = Automatic
+
+	column s
+		dataType: int64
+		formatString: 0
+		lineageTag: 40aa9ee1-b1e7-4e28-b5a1-49e664ae5d8f
+		summarizeBy: sum
+		sourceColumn: s
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Container Size'
+		dataType: string
+		lineageTag: ebe7f9cc-48d3-41e0-bbdd-df88f074c976
+		summarizeBy: none
+		sourceColumn: Container Size
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Ship Via'
+		dataType: string
+		lineageTag: 62b6f967-784a-4de1-a023-f24e0bff1fc7
+		summarizeBy: none
+		sourceColumn: Ship Via
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Load location'
+		dataType: string
+		lineageTag: 0bc1031b-7869-45fe-9572-8ffaad3ee26a
+		summarizeBy: none
+		sourceColumn: Load location
+
+		annotation SummarizationSetBy = Automatic
+
+	column CARRIER
+		dataType: string
+		lineageTag: f48c272a-7f8a-4f89-9e4a-494c4ec559dd
+		summarizeBy: none
+		sourceColumn: CARRIER
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CO STATUS'
+		dataType: string
+		lineageTag: a5d33bd6-b63c-4e71-94c0-fde2e78c4969
+		summarizeBy: none
+		sourceColumn: CO STATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Booking Submit Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: fca49043-73ee-4a04-a43b-2495fe55d2fd
+		summarizeBy: none
+		sourceColumn: Booking Submit Date
+
+		variation Variation
+			isDefault
+			relationship: f3807114-a5cf-48dc-8dbe-2ca4741af8a1
+			defaultHierarchy: LocalDateTable_2da8e970-f702-4c2d-999e-b504445041e4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Booking Received'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 8e85eb30-379d-4d2a-85d2-7de859b15c68
+		summarizeBy: none
+		sourceColumn: Booking Received
+
+		variation Variation
+			isDefault
+			relationship: 4d7e74e4-84e0-4d56-9ad8-3bfb1e85b5ab
+			defaultHierarchy: LocalDateTable_55f80380-c136-40ff-8e13-cfeefa38bfab.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Note for Doc'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6701a8e8-8d48-4c85-9728-c462a39a2437
+		summarizeBy: none
+		sourceColumn: Note for Doc
+
+		variation Variation
+			isDefault
+			relationship: ab1708d6-2e88-4ee2-ba5b-6eb5f040ab5a
+			defaultHierarchy: LocalDateTable_55f63e4e-e049-4aa1-8251-c9ed61785854.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Booking ref number'
+		dataType: string
+		lineageTag: d75928f9-81b5-4159-a5a2-a921ef968d1c
+		summarizeBy: none
+		sourceColumn: Booking ref number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Booking Status'
+		dataType: string
+		lineageTag: e4c1589d-6e98-44eb-9f63-f102fb130f62
+		summarizeBy: none
+		sourceColumn: Booking Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column sum1
+		dataType: int64
+		formatString: 0
+		lineageTag: 1656de42-9fd8-49a9-a195-160416afe7ae
+		summarizeBy: sum
+		sourceColumn: sum1
+
+		annotation SummarizationSetBy = Automatic
+
+	column sum2
+		dataType: int64
+		formatString: 0
+		lineageTag: 65163f25-3fae-481c-92a7-e2aba3251701
+		summarizeBy: sum
+		sourceColumn: sum2
+
+		annotation SummarizationSetBy = Automatic
+
+	column check
+		dataType: string
+		lineageTag: 67a2fd3b-e562-47cc-a09b-e890c15bb3c6
+		summarizeBy: none
+		sourceColumn: check
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date US Uploaded'
+		dataType: string
+		lineageTag: ba0c0f63-6210-421b-8290-795d97f04d4b
+		summarizeBy: none
+		sourceColumn: Date US Uploaded
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Copy to US Uploading file'
+		dataType: string
+		lineageTag: 9fe61dc3-deed-4da2-b1d3-5cfc1111459b
+		summarizeBy: none
+		sourceColumn: Copy to US Uploading file
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fct_cs_booking = m
+		mode: import
+		source =
+				let
+				    BaseUrl = "https://masterashley.sharepoint.com/sites/AsiaWarehouseOperations/",
+				    FolderPath = BaseUrl & "Shared Documents/WANEK 3/DirectFulfillment/CS_BOOKING/",
+				
+				    Source = SharePoint.Files(BaseUrl, [ApiVersion = 15]),
+				
+				    TargetFile = Table.SelectRows(Source, each [Folder Path] = FolderPath and [Name] = "CS_BOOKING.xlsx"),
+				
+				    Sheet1Data = Table.SelectRows(
+				                    Table.ExpandTableColumn(
+				                        Table.AddColumn(TargetFile, "wb", each Excel.Workbook([Content])),
+				                        "wb", {"Data","Item"}, {"Data","Item"}
+				                    ),
+				                    each [Item] = "Sheet1")[Data]{0},
+				    #"Promoted Headers" = Table.PromoteHeaders(Sheet1Data, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"WH", type text}, {"CUST PO", type any}, {"Ashley_PO        ", type text}, {"Wanek ETD", type date}, {"Cargo Ready Date", type date}, {"Customer", type text}, {"Booking#", type any}, {"Vessel Date", type date}, {"Pick Up", type date}, {"Closing Time", type any}, {"New load", Int64.Type}, {"QTY", Int64.Type}, {"Remark", type text}, {"Port Of Discharge", type text}, {"Place of delivery", type text}, {"s", Int64.Type}, {"Container Size", type text}, {"Ship Via", type text}, {"Load location", type text}, {"CARRIER", type text}, {"CO STATUS", type text}, {"Booking Submit Date", type date}, {"Booking Received", type date}, {"Note for Doc", type date}, {"Booking ref number", type text}, {"Booking Status", type text}, {"sum1", Int64.Type}, {"sum2", Int64.Type}, {"check", type text}, {"Date US Uploaded", type text}, {"Copy to US Uploading file", type text}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each true)
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

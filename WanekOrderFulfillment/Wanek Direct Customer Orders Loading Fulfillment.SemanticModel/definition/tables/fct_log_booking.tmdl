@@ -1,0 +1,290 @@
+table fct_log_booking
+	lineageTag: 53b97267-5d7f-49e8-9b6d-52db68a7a4af
+
+	column LOCATION
+		dataType: string
+		lineageTag: c7d72c05-37ae-4be9-8d5d-13561dc25429
+		summarizeBy: none
+		sourceColumn: LOCATION
+
+		annotation SummarizationSetBy = Automatic
+
+	column Destination
+		dataType: string
+		lineageTag: 87425090-99f8-40eb-9edc-ac4348782e75
+		summarizeBy: none
+		sourceColumn: Destination
+
+		annotation SummarizationSetBy = Automatic
+
+	column POD
+		dataType: string
+		lineageTag: 79061a9c-218b-4ed7-948d-54c1a205811b
+		summarizeBy: none
+		sourceColumn: POD
+
+		annotation SummarizationSetBy = Automatic
+
+	column BOOKING
+		dataType: string
+		lineageTag: fb44a5dc-0be5-4ed3-927d-be65dfbba2ba
+		summarizeBy: none
+		sourceColumn: BOOKING
+
+		annotation SummarizationSetBy = Automatic
+
+	column WHS
+		dataType: string
+		lineageTag: a7df80f8-a7a8-42a9-98d2-dd73beb6fd54
+		summarizeBy: none
+		sourceColumn: WHS
+
+		annotation SummarizationSetBy = Automatic
+
+	column SIZE
+		dataType: string
+		lineageTag: 4347eb0b-6184-4859-b50a-d9bf963c0e96
+		summarizeBy: none
+		sourceColumn: SIZE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CARRIER
+		dataType: string
+		lineageTag: 07016a0e-1de8-4a68-ab21-07576fbe49aa
+		summarizeBy: none
+		sourceColumn: CARRIER
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CONT No.'
+		dataType: string
+		lineageTag: 3bdfc540-5ed9-46f4-92dd-3ffbcd4d2ac3
+		summarizeBy: none
+		sourceColumn: CONT No.
+
+		annotation SummarizationSetBy = Automatic
+
+	column SEAL
+		dataType: string
+		lineageTag: 4f199900-2e4d-4139-92cd-c7d4012c0923
+		summarizeBy: none
+		sourceColumn: SEAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tare
+		dataType: string
+		lineageTag: 56c4b794-72bb-4b3f-9748-244f11713728
+		summarizeBy: none
+		sourceColumn: Tare
+
+		annotation SummarizationSetBy = Automatic
+
+	column SA
+		dataType: string
+		lineageTag: 45ee2178-bf39-4ad4-ae09-f7cff6618166
+		summarizeBy: none
+		sourceColumn: SA
+
+		annotation SummarizationSetBy = Automatic
+
+	column SI
+		dataType: string
+		lineageTag: 72424827-1da3-48b4-9f71-1220e6daf233
+		summarizeBy: none
+		sourceColumn: SI
+
+		annotation SummarizationSetBy = Automatic
+
+	column NOTE
+		dataType: string
+		lineageTag: d474e098-c8cd-4d81-af33-6a082376e01d
+		summarizeBy: none
+		sourceColumn: NOTE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PO
+		dataType: string
+		lineageTag: d78548ca-8db2-454e-9405-0ab6f6fc86d5
+		summarizeBy: none
+		sourceColumn: PO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cont ETA ( Ngày cont đến)'
+		dataType: string
+		lineageTag: b32efe99-dcc2-4918-b113-43356a6cee75
+		summarizeBy: none
+		sourceColumn: Cont ETA ( Ngày cont đến)
+
+		annotation SummarizationSetBy = Automatic
+
+	column ATD
+		dataType: string
+		lineageTag: 15cf79e6-b03f-4607-b852-0138997f65f0
+		summarizeBy: none
+		sourceColumn: ATD
+
+		annotation SummarizationSetBy = Automatic
+
+	column ETD
+		dataType: string
+		lineageTag: 152589e9-9d0f-46c0-99c1-889c49421f58
+		summarizeBy: none
+		sourceColumn: ETD
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CLOSE TIME  CY'
+		dataType: string
+		lineageTag: 2f83e70a-fcdd-4b0c-8f19-efbc06e976da
+		summarizeBy: none
+		sourceColumn: CLOSE TIME  CY
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CLOSE TIME  SI'
+		dataType: string
+		lineageTag: 1cdafbcb-390e-47ad-bc33-b87a2869f00b
+		summarizeBy: none
+		sourceColumn: CLOSE TIME  SI
+
+		annotation SummarizationSetBy = Automatic
+
+	column FEEDER
+		dataType: string
+		lineageTag: 6927902f-6bda-4bbd-bcd0-ed3f84e6c66f
+		summarizeBy: none
+		sourceColumn: FEEDER
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'MOTHER VESSEL'
+		dataType: string
+		lineageTag: 01003efe-501c-443c-9114-f91ab168534c
+		summarizeBy: none
+		sourceColumn: MOTHER VESSEL
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'NOI HA'
+		dataType: string
+		lineageTag: f4e81cfc-09ce-46d5-9a3a-dd168ce089f9
+		summarizeBy: none
+		sourceColumn: NOI HA
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'VAN TAI'
+		dataType: string
+		lineageTag: 80636156-1189-482c-b191-b843498e083c
+		summarizeBy: none
+		sourceColumn: VAN TAI
+
+		annotation SummarizationSetBy = Automatic
+
+	column FUMI
+		dataType: string
+		lineageTag: d904dabe-072b-4b64-804c-d53ac52dd148
+		summarizeBy: none
+		sourceColumn: FUMI
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'WH / Location Load'
+		dataType: string
+		lineageTag: a9babf42-8312-4f0e-bf27-6412efeebdb7
+		summarizeBy: none
+		sourceColumn: WH / Location Load
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'FUMI DATE AT P7'
+		dataType: string
+		lineageTag: 5aef86b2-70b7-4e24-b732-87181cf5e8a5
+		summarizeBy: none
+		sourceColumn: FUMI DATE AT P7
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fumigation LOLO'
+		dataType: string
+		lineageTag: ccc17021-11c7-4509-8c79-2968dafeaf0d
+		summarizeBy: none
+		sourceColumn: Fumigation LOLO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Normal LOLO'
+		dataType: string
+		lineageTag: f729acec-5144-4a40-9945-e22abfbcb506
+		summarizeBy: none
+		sourceColumn: Normal LOLO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Net LOLO'
+		dataType: string
+		lineageTag: 3fa74e90-7683-497a-924b-c04b1cebafed
+		summarizeBy: none
+		sourceColumn: Net LOLO
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fumigation at P7'
+		dataType: string
+		lineageTag: 48e32b93-7567-4a81-b29f-aa27bb5459f4
+		summarizeBy: none
+		sourceColumn: Fumigation at P7
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Net Cost Saving'
+		dataType: string
+		lineageTag: 7b043b76-5a8e-4eef-81d0-b1d67da129a6
+		summarizeBy: none
+		sourceColumn: Net Cost Saving
+
+		annotation SummarizationSetBy = Automatic
+
+	column PKD
+		dataType: string
+		lineageTag: 4fc95d92-b89b-45d4-b8f5-cd1b389783ee
+		summarizeBy: none
+		sourceColumn: PKD
+
+		annotation SummarizationSetBy = Automatic
+
+	column FWD
+		dataType: string
+		lineageTag: a895eb40-5c83-4f33-879a-e030f9bbb96a
+		summarizeBy: none
+		sourceColumn: FWD
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fct_log_booking = m
+		mode: import
+		source =
+				let
+				    BaseUrl = "https://masterashley.sharepoint.com/sites/AsiaWarehouseOperations/",
+				    FolderPath = BaseUrl & "Shared Documents/WANEK 3/DirectFulfillment/LOG_BOOKING/",
+				    Source = SharePoint.Files(BaseUrl, [ApiVersion = 15]),
+				    TargetFile = Table.SelectRows(Source, each [Folder Path] = FolderPath and [Name] = "LOG_BOOKING.xlsx"),
+				    Sheet1Data = Table.SelectRows(
+				                    Table.ExpandTableColumn(
+				                        Table.AddColumn(TargetFile, "wb", each Excel.Workbook([Content])),
+				                        "wb", {"Data","Item"}, {"Data","Item"}
+				                    ),
+				                    each [Item] = "Sheet1")[Data]{0},
+				    #"Removed Top Rows" = Table.Skip(Sheet1Data, 1),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Removed Top Rows", [PromoteAllScalars=true])
+				in
+				    #"Promoted Headers"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
