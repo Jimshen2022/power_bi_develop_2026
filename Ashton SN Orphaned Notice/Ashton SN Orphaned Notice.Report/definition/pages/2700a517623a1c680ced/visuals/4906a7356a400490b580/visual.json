@@ -1,0 +1,564 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "4906a7356a400490b580",
+  "position": {
+    "x": 0,
+    "y": 360,
+    "z": 0,
+    "height": 360,
+    "width": 1279.7014925373135,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_sn_orphaned_notice"
+                    }
+                  },
+                  "Property": "ExceptionDateOnly"
+                }
+              },
+              "queryRef": "ashton_sn_orphaned_notice.ExceptionDateOnly",
+              "nativeQueryRef": "ExceptionDateOnly"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_sn_orphaned_notice"
+                    }
+                  },
+                  "Property": "exception_loc"
+                }
+              },
+              "queryRef": "ashton_sn_orphaned_notice.exception_loc",
+              "nativeQueryRef": "exception_loc"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_sn_orphaned_notice"
+                    }
+                  },
+                  "Property": "item_number"
+                }
+              },
+              "queryRef": "ashton_sn_orphaned_notice.item_number",
+              "nativeQueryRef": "item_number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_sn_orphaned_notice"
+                    }
+                  },
+                  "Property": "description"
+                }
+              },
+              "queryRef": "ashton_sn_orphaned_notice.description",
+              "nativeQueryRef": "description"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_sn_orphaned_notice"
+                    }
+                  },
+                  "Property": "employee_id"
+                }
+              },
+              "queryRef": "ashton_sn_orphaned_notice.employee_id",
+              "nativeQueryRef": "employee_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_sn_orphaned_notice"
+                    }
+                  },
+                  "Property": "exception_date"
+                }
+              },
+              "queryRef": "ashton_sn_orphaned_notice.exception_date",
+              "nativeQueryRef": "exception_date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_sn_orphaned_notice"
+                    }
+                  },
+                  "Property": "lot_number"
+                }
+              },
+              "queryRef": "ashton_sn_orphaned_notice.lot_number",
+              "nativeQueryRef": "lot_number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_sn_orphaned_notice"
+                    }
+                  },
+                  "Property": "current_sn_status"
+                }
+              },
+              "queryRef": "ashton_sn_orphaned_notice.current_sn_status",
+              "nativeQueryRef": "current_sn_status"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_sn_orphaned_notice"
+                    }
+                  },
+                  "Property": "current_sn_loc"
+                }
+              },
+              "queryRef": "ashton_sn_orphaned_notice.current_sn_loc",
+              "nativeQueryRef": "current_sn_loc"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_sn_orphaned_notice"
+                    }
+                  },
+                  "Property": "Qty"
+                }
+              },
+              "queryRef": "ashton_sn_orphaned_notice.Qty",
+              "nativeQueryRef": "Qty"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_sn_orphaned_notice"
+                    }
+                  },
+                  "Property": "mo_number"
+                }
+              },
+              "queryRef": "ashton_sn_orphaned_notice.mo_number",
+              "nativeQueryRef": "mo_number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_sn_orphaned_notice"
+                    }
+                  },
+                  "Property": "class_id"
+                }
+              },
+              "queryRef": "ashton_sn_orphaned_notice.class_id",
+              "nativeQueryRef": "class_id"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_sn_orphaned_notice"
+                    }
+                  },
+                  "Property": "tran_type"
+                }
+              },
+              "queryRef": "ashton_sn_orphaned_notice.tran_type",
+              "nativeQueryRef": "tran_type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_sn_orphaned_notice"
+                    }
+                  },
+                  "Property": "wh_id"
+                }
+              },
+              "queryRef": "ashton_sn_orphaned_notice.wh_id",
+              "nativeQueryRef": "wh_id"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "ashton_sn_orphaned_notice"
+                  }
+                },
+                "Property": "ExceptionDateOnly"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "114.92602988581629D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "ashton_sn_orphaned_notice.mo_number"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "100.73174593909746D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "ashton_sn_orphaned_notice.lot_number"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "129.83676138819877D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "ashton_sn_orphaned_notice.exception_date"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "100.50130681742569D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "ashton_sn_orphaned_notice.employee_id"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "99.01717187857253D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "ashton_sn_orphaned_notice.description"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "77.67294840862745D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "ashton_sn_orphaned_notice.class_id"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "104.10600082706198D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "ashton_sn_orphaned_notice.item_number"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "108.9552234726989D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "ashton_sn_orphaned_notice.ExceptionDateOnly"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "83.95522388059702D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "ashton_sn_orphaned_notice.exception_loc"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "51.432869311561994D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "ashton_sn_orphaned_notice.Qty"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "47.85074249023342D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "ashton_sn_orphaned_notice.wh_id"
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 8,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "ashton_sn_orphaned_notice.Qty"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 8,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            },
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "ashton_sn_orphaned_notice.current_sn_status"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 8,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "ashton_sn_orphaned_notice.current_sn_loc"
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "textSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 8,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

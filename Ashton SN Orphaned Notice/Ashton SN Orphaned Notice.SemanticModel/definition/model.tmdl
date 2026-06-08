@@ -1,0 +1,22 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["ashton_sn_orphaned_notice"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DaxQueryView_Desktop","DevMode"]
+
+ref table ashton_sn_orphaned_notice
+ref table DateTableTemplate_33a61d3d-56db-41f9-95ce-824940025980
+ref table LocalDateTable_48cd79fb-bb28-4ebf-aac8-48f6366e2d7b
+ref table LocalDateTable_0320b611-5fa8-4cc8-9c8c-9b406d9e132c
+ref table LocalDateTable_b8ac3908-247c-4c84-aa44-1bd1166f880a
+
+ref cultureInfo en-US
+

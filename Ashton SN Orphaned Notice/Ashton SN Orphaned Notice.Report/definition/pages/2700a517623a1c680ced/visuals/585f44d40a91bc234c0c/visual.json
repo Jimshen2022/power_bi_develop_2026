@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "585f44d40a91bc234c0c",
+  "position": {
+    "x": 609.85074626865674,
+    "y": 70.74626865671641,
+    "z": 2000,
+    "height": 289.25373134328356,
+    "width": 662.68656716417911,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "paretoplus2EFEC13210A14D3E82580687601DE984",
+    "query": {
+      "queryState": {
+        "categories": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_sn_orphaned_notice"
+                    }
+                  },
+                  "Property": "employee_id"
+                }
+              },
+              "queryRef": "ashton_sn_orphaned_notice.employee_id",
+              "nativeQueryRef": "employee_id",
+              "active": true
+            }
+          ]
+        },
+        "values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ashton_sn_orphaned_notice"
+                    }
+                  },
+                  "Property": "Qty"
+                }
+              },
+              "queryRef": "ashton_sn_orphaned_notice.Qty",
+              "nativeQueryRef": "Qty"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,202 @@
+table ashton_sn_orphaned_notice
+	lineageTag: 06fd546b-1d19-4807-9e75-9d9bb9b01830
+
+	measure Qty = count(ashton_sn_orphaned_notice[lot_number])
+		formatString: #,0
+		lineageTag: 70248291-b19c-4412-9308-3aa98965b68c
+
+	measure Orphaned_BG_Color =
+			
+			IF(
+			    SELECTEDVALUE('ashton_sn_orphaned_notice'[current_sn_status]) = "Orphaned",
+			    "#FFFF00",   -- 黄色
+			    BLANK()
+			)
+		lineageTag: 3c742711-a5d0-45a8-a3ff-cdedfbb5f9b3
+
+	measure Show_VALUES =
+			
+			CONCATENATEX(
+			    VALUES('ashton_sn_orphaned_notice'[current_sn_status]),
+			    'ashton_sn_orphaned_notice'[current_sn_status],
+			    ", "
+			)
+		lineageTag: 679686eb-5695-4af5-8782-3b3556df2607
+
+	measure Show_HASONEVALUE =
+			
+			IF(
+			    HASONEVALUE('ashton_sn_orphaned_notice'[current_sn_status]),
+			    "TRUE (只有一个值)",
+			    "FALSE (多个值)"
+			)
+		lineageTag: 36df7eaf-6a6f-4933-92b7-91ce19f70ca8
+
+	measure Show_SELECTEDVALUE =
+			
+			SELECTEDVALUE(
+			    'ashton_sn_orphaned_notice'[current_sn_status],
+			    "多个值"
+			)
+		lineageTag: 6d02de62-e5b5-424f-a467-f5cf460656a4
+
+	measure Status_BG_Color =
+			
+			SWITCH(
+			    SELECTEDVALUE('ashton_sn_orphaned_notice'[current_sn_status]),
+			    "Orphaned", "#FFFF00",   -- 黄
+			    "Hold",     "#D3D3D3",   -- 灰
+			    "Shipped",  "#90EE90",   -- 绿
+			    BLANK()
+			)
+		lineageTag: f6153c2a-4fbc-4d69-8c85-36c6cb99dbe6
+
+	column wh_id
+		dataType: string
+		lineageTag: 79e56f44-34f1-422a-8f91-f52be8052003
+		summarizeBy: none
+		sourceColumn: wh_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column tran_type
+		dataType: string
+		lineageTag: 990e1f2f-c779-4a8b-b38e-e907164a508c
+		summarizeBy: none
+		sourceColumn: tran_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: fc69a170-53f4-4add-bef7-36a9ae194125
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column exception_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0ddec2d6-0813-414f-ba3d-7aabd9e48df4
+		summarizeBy: none
+		sourceColumn: exception_date
+
+		variation Variation
+			isDefault
+			relationship: 76b8411f-cd7f-4730-84cf-df89c7f5ef5c
+			defaultHierarchy: LocalDateTable_48cd79fb-bb28-4ebf-aac8-48f6366e2d7b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_number
+		dataType: string
+		lineageTag: 259558f2-ffb0-41a6-86d3-cbe1d92d19a9
+		summarizeBy: none
+		sourceColumn: item_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column class_id
+		dataType: string
+		lineageTag: bfc15b9d-1963-48f9-994e-1929645afb65
+		summarizeBy: none
+		sourceColumn: class_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column lot_number
+		dataType: string
+		lineageTag: d93cd3e6-6689-4a85-b98d-c14e265a1d8d
+		summarizeBy: none
+		sourceColumn: lot_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column mo_number
+		dataType: string
+		lineageTag: b49df76c-39bb-4090-b9b1-58780dc69401
+		summarizeBy: none
+		sourceColumn: mo_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_id
+		dataType: string
+		lineageTag: 5d3b1b41-a40b-4c4d-ac48-8fc30bc49cd1
+		summarizeBy: none
+		sourceColumn: employee_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column LatestRecord
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b9246ede-3f7a-42ee-a63c-12e56b900dad
+		summarizeBy: none
+		sourceColumn: LatestRecord
+
+		variation Variation
+			isDefault
+			relationship: 0b444e76-897d-4d38-a4af-e0a71caa5388
+			defaultHierarchy: LocalDateTable_0320b611-5fa8-4cc8-9c8c-9b406d9e132c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ExceptionDateOnly
+		dataType: dateTime
+		formatString: ddd,mmm.dd, yyyy
+		lineageTag: 23bfcf76-aba5-4d57-8f08-6a8dbd893bf5
+		summarizeBy: none
+		sourceColumn: ExceptionDateOnly
+
+		variation Variation
+			isDefault
+			relationship: 30d543ff-baae-48c7-b37f-bb027918855c
+			defaultHierarchy: LocalDateTable_b8ac3908-247c-4c84-aa44-1bd1166f880a.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isCustom":true}
+
+	column current_sn_status
+		dataType: string
+		lineageTag: 9541fc80-aab8-4de9-9fb4-d83b7e55b19d
+		summarizeBy: none
+		sourceColumn: current_sn_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column exception_loc
+		dataType: string
+		lineageTag: ca14be61-7832-4852-8e9b-261a23466d2f
+		summarizeBy: none
+		sourceColumn: exception_loc
+
+		annotation SummarizationSetBy = Automatic
+
+	column current_sn_loc
+		dataType: string
+		lineageTag: 0c62b91d-3277-494a-a902-c388f4d22efe
+		summarizeBy: none
+		sourceColumn: current_sn_loc
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ashton_sn_orphaned_notice = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("AshtonWHJSQLprod", "AAD", [Query="DECLARE @N INT = 60;  -- 设定天数，1=今天，2=昨天+今天，7=最近7天#(lf)#(lf)With st as (#(lf)    select a.wh_id,#(lf)        a.serial_number, #(lf)        a.item_number, #(lf)        a.po_number, #(lf)        a.location_id, #(lf)        a.received_date,#(lf)          CASE#(lf)               WHEN a.item_number ='RP ORDER' and a.location_id = 'Shipped' then 'Shipped'#(lf)               WHEN a.serial_no_status = 'H' THEN 'Hold'#(lf)               WHEN ISNULL(a.serial_no_status, 'R') = 'R' THEN 'In Warehouse'#(lf)               WHEN a.serial_no_status = 'L' THEN 'Loaded'#(lf)               WHEN a.serial_no_status = 'S' THEN 'Shipped'#(lf)               WHEN a.serial_no_status = 'O' THEN 'Orphaned'#(lf)               ELSE 'Shipped'#(lf)             END AS serial_no_status#(lf)    from t_serial_active as a#(lf)    where a.wh_id = '335'#(lf)        #(lf))#(lf)SELECT #(lf)    t.wh_id,#(lf)    t.tran_type,#(lf)    t.description,#(lf)    t.exception_date,#(lf)    t.location_id as exception_loc,#(lf)    CAST(t.exception_date AS DATE) AS ExceptionDateOnly,  -- 新增：只保留日期部分#(lf)    t.item_number,#(lf)    t.class_id,#(lf)    t.lot_number,#(lf)    case #(lf)        when s.serial_no_status is null then 'Shipped'#(lf)        when s.location_id = 'NG001OP3' then 'Moved to NG001OP3'#(lf)        else s.serial_no_status end as current_sn_status,#(lf)    s.location_id as current_sn_loc,#(lf)    t.mo_number,#(lf)    t.employee_id,#(lf)    MAX(t.exception_date) OVER() AS LatestRecord           -- 新增列：最大时间（含时分秒）#(lf)FROM t_exception_tran_log AS t#(lf)left join st as s on s.serial_number = t.lot_number#(lf)WHERE t.exception_date >= DATEADD(DAY, -(@N - 1), CAST(GETDATE() AS DATE)) #(lf)  AND t.exception_date < DATEADD(DAY, 1, CAST(GETDATE() AS DATE)) #(lf)  AND t.tran_type = '99G'#(lf)  AND t.location_id NOT IN ('NG001OP3')#(lf)  --AND case #(lf)  --      when s.serial_no_status is null then 'Shipped'#(lf)  --      when s.location_id = 'NG001OP3' then 'Moved to NG001OP3'#(lf)  --      else s.serial_no_status end <> 'Moved to NG001OP3'#(lf)ORDER BY t.exception_date;#(lf)", CreateNavigationProperties=false, CommandTimeout=#duration(0, 8, 20, 0)]),
+				  #"Filtered rows" = Table.SelectRows(Source, each ([description] = "SN are Orphaned") and ([wh_id] = "335"))
+				in
+				  #"Filtered rows"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

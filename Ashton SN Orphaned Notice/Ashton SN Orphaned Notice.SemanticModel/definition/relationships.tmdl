@@ -1,0 +1,15 @@
+relationship 76b8411f-cd7f-4730-84cf-df89c7f5ef5c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ashton_sn_orphaned_notice.exception_date
+	toColumn: LocalDateTable_48cd79fb-bb28-4ebf-aac8-48f6366e2d7b.Date
+
+relationship 0b444e76-897d-4d38-a4af-e0a71caa5388
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ashton_sn_orphaned_notice.LatestRecord
+	toColumn: LocalDateTable_0320b611-5fa8-4cc8-9c8c-9b406d9e132c.Date
+
+relationship 30d543ff-baae-48c7-b37f-bb027918855c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ashton_sn_orphaned_notice.ExceptionDateOnly
+	toColumn: LocalDateTable_b8ac3908-247c-4c84-aa44-1bd1166f880a.Date
+

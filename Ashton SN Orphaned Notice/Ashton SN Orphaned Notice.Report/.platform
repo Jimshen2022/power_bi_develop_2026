@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Ashton SN Orphaned Notice"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "4985cf50-fef2-4ae4-a837-a6b8560dd604"
+  }
+}
