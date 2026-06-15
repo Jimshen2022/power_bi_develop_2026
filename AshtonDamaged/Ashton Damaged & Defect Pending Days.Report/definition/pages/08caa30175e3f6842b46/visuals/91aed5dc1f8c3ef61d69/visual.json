@@ -1,0 +1,216 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "91aed5dc1f8c3ef61d69",
+  "position": {
+    "x": 726.05042016806715,
+    "y": 347.11484593837537,
+    "z": 6000,
+    "height": 311.93277310924367,
+    "width": 536.02240896358535,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Damaged_Transactions"
+                    }
+                  },
+                  "Property": "start_tran_date"
+                }
+              },
+              "queryRef": "F_Damaged_Defect_Transactions.start_tran_date",
+              "nativeQueryRef": "start_tran_date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Damaged_Transactions"
+                    }
+                  },
+                  "Property": "item_number"
+                }
+              },
+              "queryRef": "F_Damaged_Defect_Transactions.item_number",
+              "nativeQueryRef": "item_number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Damaged_Transactions"
+                    }
+                  },
+                  "Property": "SN"
+                }
+              },
+              "queryRef": "F_Damaged_Defect_Transactions.SN",
+              "nativeQueryRef": "SN"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Damaged_Transactions"
+                    }
+                  },
+                  "Property": "FromLocation"
+                }
+              },
+              "queryRef": "F_Damaged_Defect_Transactions.FromLocation",
+              "nativeQueryRef": "FromLocation"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Damaged_Transactions"
+                    }
+                  },
+                  "Property": "ToLocation"
+                }
+              },
+              "queryRef": "F_Damaged_Defect_Transactions.ToLocation",
+              "nativeQueryRef": "ToLocation"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Damaged_Transactions"
+                    }
+                  },
+                  "Property": "description"
+                }
+              },
+              "queryRef": "F_Damaged_Defect_Transactions.description",
+              "nativeQueryRef": "description"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Damaged_Transactions"
+                    }
+                  },
+                  "Property": "employee_id_2"
+                }
+              },
+              "queryRef": "F_Damaged_Defect_Transactions.employee_id_2",
+              "nativeQueryRef": "employee_id_2"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_Damaged_Transactions"
+                        }
+                      },
+                      "Property": "tran_qty"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(F_Damaged_Defect_Transactions.tran_qty)",
+              "nativeQueryRef": "Sum of tran_qty"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Damaged_Transactions"
+                    }
+                  },
+                  "Property": "reference"
+                }
+              },
+              "queryRef": "F_Damaged_Defect_Transactions.reference",
+              "nativeQueryRef": "reference"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Damaged_Transactions"
+                    }
+                  },
+                  "Property": "control_number"
+                }
+              },
+              "queryRef": "F_Damaged_Defect_Transactions.control_number",
+              "nativeQueryRef": "control_number"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Damaged_Transactions"
+                    }
+                  },
+                  "Property": "Transaction_type"
+                }
+              },
+              "queryRef": "F_Damaged_Defect_Transactions.Transaction_type",
+              "nativeQueryRef": "Transaction_type"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "F_Damaged_Transactions"
+                  }
+                },
+                "Property": "start_tran_date"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "visualContainerObjects": {
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "c101d46950608f5c9331"
+}

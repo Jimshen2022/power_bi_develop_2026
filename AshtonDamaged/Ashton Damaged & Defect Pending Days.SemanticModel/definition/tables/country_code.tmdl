@@ -1,0 +1,60 @@
+table country_code
+	lineageTag: 474e8f70-cf57-4228-9f4f-4602080e2ac3
+
+	column AREA
+		dataType: string
+		lineageTag: 8d340e70-bd5a-472b-95ab-b7dc154bb770
+		summarizeBy: none
+		sourceColumn: AREA
+
+		annotation SummarizationSetBy = Automatic
+
+	column COUNTRY
+		dataType: string
+		lineageTag: 357267f0-b0c1-40f7-a350-8ad2a394daf7
+		summarizeBy: none
+		sourceColumn: COUNTRY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CODES
+		dataType: string
+		lineageTag: f97082d5-d90a-4777-bca5-1be14a3d4461
+		summarizeBy: none
+		sourceColumn: CODES
+
+		annotation SummarizationSetBy = Automatic
+
+	column IS
+		dataType: string
+		lineageTag: a0b52753-80f3-4a8e-8b4b-7788a6e9f89c
+		summarizeBy: none
+		sourceColumn: IS
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country_Name_CN
+		dataType: string
+		lineageTag: 4ac8ea60-49d6-4c69-9248-4a85fdff57b9
+		summarizeBy: none
+		sourceColumn: Country_Name_CN
+
+		annotation SummarizationSetBy = Automatic
+
+	partition country_code = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"5839814b-ec95-48ea-a07a-ec0241ac9946" = Workspaces{[workspaceId="5839814b-ec95-48ea-a07a-ec0241ac9946"]}[Data],
+				    #"e93b984f-9783-420a-bbea-d4f6f25aefb5" = #"5839814b-ec95-48ea-a07a-ec0241ac9946"{[dataflowId="e93b984f-9783-420a-bbea-d4f6f25aefb5"]}[Data],
+				    country_code_ = #"e93b984f-9783-420a-bbea-d4f6f25aefb5"{[entity="country_code",version=""]}[Data],
+				    #"Removed Duplicates" = Table.Distinct(country_code_, {"IS"})
+				in
+				    #"Removed Duplicates"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

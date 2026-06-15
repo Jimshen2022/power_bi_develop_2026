@@ -1,0 +1,90 @@
+table D_Calendar
+	lineageTag: b257cf35-2cff-4d87-8452-94843d4a6e66
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 97141ef9-cab8-4fe3-a1be-ec54bb0a9a08
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 2079d94b-d84b-4eee-9d00-3d10af27e6b1
+			defaultHierarchy: LocalDateTable_a70c1876-cd7f-4583-8399-650366d9600c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Weekday
+		dataType: string
+		lineageTag: 61651829-8f53-4a0b-886b-a54a2a9688b8
+		summarizeBy: none
+		sourceColumn: Weekday
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 4415cebe-e040-48f7-a633-dd3edcfab134
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Weeknum
+		dataType: int64
+		formatString: 0
+		lineageTag: d44df450-c0c5-49e9-8132-02f1345cf8ed
+		summarizeBy: sum
+		sourceColumn: Weeknum
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearWeek
+		dataType: int64
+		formatString: 0
+		lineageTag: 3e26fc6e-8ca3-4c45-acf6-9257e3d57036
+		summarizeBy: sum
+		sourceColumn: YearWeek
+
+		annotation SummarizationSetBy = Automatic
+
+	column Week
+		dataType: int64
+		formatString: 0
+		lineageTag: cf403e95-3471-4d5d-af54-5e255bc8de67
+		summarizeBy: sum
+		sourceColumn: Week
+
+		annotation SummarizationSetBy = Automatic
+
+	partition D_Calendar = m
+		mode: import
+		source = ```
+				let
+				    StartDate = Date.From(DateTime.LocalNow()) - #duration(360, 0, 0, 0),  // 90 days before today
+				    EndDate = Date.From(DateTime.LocalNow()) + #duration(0, 0, 0, 0),                          // 14 days after today
+				    NumDays = Duration.Days(EndDate - StartDate) + 1,                   // Calculate number of days
+				    DateList = List.Generate(
+				        () => StartDate,
+				        each _ <= EndDate,
+				        each _ + #duration(1, 0, 0, 0)
+				    ),
+				    CalendarTable = Table.FromList(DateList, Splitter.SplitByNothing(), {"Date"}),  
+				    AddWeekday = Table.AddColumn(CalendarTable, "Weekday", each Date.DayOfWeekName([Date])),
+				    AddYear = Table.AddColumn(AddWeekday, "Year", each Date.Year([Date])),
+				    AddWeeknum = Table.AddColumn(AddYear, "Weeknum", each Date.WeekOfYear([Date])),
+				    AddYearWeek = Table.AddColumn(AddWeeknum, "YearWeek", each [Year] * 100 + [Weeknum]),
+				    Custom1 = Table.AddColumn(AddYearWeek, "Week", each Date.DayOfWeek([Date])),
+				    #"Changed Type" = Table.TransformColumnTypes(Custom1,{{"Date", type date}, {"Weekday", type text}, {"Year", Int64.Type}, {"Weeknum", Int64.Type}, {"YearWeek", Int64.Type}, {"Week", Int64.Type}})
+				in
+				    #"Changed Type"
+				```
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

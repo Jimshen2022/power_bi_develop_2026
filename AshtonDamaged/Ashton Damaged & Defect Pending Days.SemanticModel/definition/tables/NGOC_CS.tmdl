@@ -1,0 +1,209 @@
+table NGOC_CS
+	lineageTag: bffed555-2002-4e79-842a-c9d3741ed31c
+
+	column 'Infor date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c73a9846-acc3-40f0-985c-eb9d5379bb5d
+		summarizeBy: none
+		sourceColumn: Infor date
+
+		variation Variation
+			isDefault
+			relationship: fb77b72f-8f18-41f2-84d3-95826c1c12a0
+			defaultHierarchy: LocalDateTable_29f6e0d3-5daf-4e81-ad4d-ea02b3cec5ba.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Serial Number'
+		dataType: string
+		lineageTag: 65d09269-0d02-4d14-85f2-050863e50bba
+		summarizeBy: none
+		sourceColumn: Serial Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location
+		dataType: string
+		lineageTag: 0cf88283-8e8e-4c86-8625-4440beb0c905
+		summarizeBy: none
+		sourceColumn: Location
+
+		annotation SummarizationSetBy = Automatic
+
+	column ITEM
+		dataType: string
+		lineageTag: 019a45b9-e150-4f86-99ef-67b87ecc45b8
+		summarizeBy: none
+		sourceColumn: ITEM
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Master MO/PO'
+		dataType: string
+		lineageTag: 51be9cc8-e92b-4a33-ba6f-6d8d32fbaa9d
+		summarizeBy: none
+		sourceColumn: Master MO/PO
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vendor
+		dataType: string
+		lineageTag: e1ba0c03-b98c-48ee-a7cc-f275ab69af26
+		summarizeBy: none
+		sourceColumn: Vendor
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Issue from'
+		dataType: string
+		lineageTag: f1c08431-8153-4d8e-8c0a-4113a7363d47
+		summarizeBy: none
+		sourceColumn: Issue from
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Damaged Description'
+		dataType: string
+		lineageTag: f384d581-6c47-4854-bdea-04003ee993f6
+		summarizeBy: none
+		sourceColumn: Damaged Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product
+		dataType: string
+		lineageTag: 00682cce-8036-4026-8402-88ddd0a4eb44
+		summarizeBy: none
+		sourceColumn: Product
+
+		annotation SummarizationSetBy = Automatic
+
+	column Reason
+		dataType: string
+		lineageTag: 4d88213c-7706-4e66-92c9-065fce2d98f2
+		summarizeBy: none
+		sourceColumn: Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Damaged by'
+		dataType: string
+		lineageTag: c425b1e7-8623-45e0-9f20-0a5e80cc2e28
+		summarizeBy: none
+		sourceColumn: Damaged by
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Whse deal with status'
+		dataType: string
+		lineageTag: c0f709d1-0fbc-4519-b8b9-172b8d49fff4
+		summarizeBy: none
+		sourceColumn: Whse deal with status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CS replied'
+		dataType: string
+		lineageTag: 30954910-b11f-44ee-9a1e-043341a053c2
+		summarizeBy: none
+		sourceColumn: CS replied
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CS Estimated Due Date'
+		dataType: string
+		lineageTag: 072e41c1-d8e4-48cf-bf73-b36024f05831
+		summarizeBy: none
+		sourceColumn: CS Estimated Due Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column Damaged_Defect
+		dataType: string
+		lineageTag: e18fd5bc-764d-44e8-9ef2-b851071f9bbb
+		summarizeBy: none
+		sourceColumn: Damaged_Defect
+
+		annotation SummarizationSetBy = Automatic
+
+	column Sheet
+		dataType: string
+		lineageTag: e4fea3e0-0a21-474c-a10e-c2b0d184adc7
+		summarizeBy: none
+		sourceColumn: Sheet
+
+		annotation SummarizationSetBy = Automatic
+
+	column false
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 5557caf2-7111-4840-87a6-7f10a864bdd4
+		summarizeBy: none
+		sourceColumn: false
+
+		annotation SummarizationSetBy = Automatic
+
+	column Qty
+		dataType: int64
+		formatString: 0
+		lineageTag: 849e7f9f-9871-4484-8087-751e8a8dfa31
+		summarizeBy: sum
+		sourceColumn: Qty
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: 49d957e0-8ca5-45eb-9a56-c2c8c9842f19
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	partition NGOC_CS = m
+		mode: import
+		source =
+				// let
+				//     Source = Excel.Workbook(File.Contents("Z:\UPH FG Warehouse\Public\Inventory\Damaged\Ashton_Damaged_List - 2024.xlsb"), null, true),
+				//     DATA1 = Source{[Name="Damaged_Defect"]}[Data],
+				//     #"Promoted Headers" = Table.PromoteHeaders(DATA1, [PromoteAllScalars=true]),
+				//     #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"Serial Number", type text}, {"Infor date", type date}, {"CS Estimated Due Date", type date}}),
+				//     #"Trimmed Text" = Table.TransformColumns(#"Changed Type1",{{"Serial Number", Text.Trim, type text}}),
+				//     #"Replaced Value" = Table.ReplaceValue(#"Trimmed Text",null,#date(1900, 1, 1),Replacer.ReplaceValue,{"CS Estimated Due Date"}),
+				//     #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value",null,"",Replacer.ReplaceValue,{"CS replied"}),
+				//     #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1",null,"",Replacer.ReplaceValue,{"Damaged by"}),
+				//     #"Replaced Value3" = Table.ReplaceValue(#"Replaced Value2",null,"",Replacer.ReplaceValue,{"Reason"}),
+				//     #"Filtered Rows" = Table.SelectRows(#"Replaced Value3", each ([ITEM] <> null)),
+				//     #"Changed Type" = Table.TransformColumnTypes(#"Filtered Rows",{{"Infor date", type date}})
+				// in
+				//     #"Changed Type"
+				
+				
+				let
+				    Source = SharePoint.Files("https://masterashley.sharepoint.com/sites/AsiaWarehouseOperations/", [ApiVersion = 15]),
+				    #"Filtered Rows" = Table.SelectRows(Source, each ([Extension] = ".xlsx") and ([Name] = "Ashton_Damaged_List - 2024.xlsx")),
+				    Custom1 = #"Filtered Rows"{[Name="Ashton_Damaged_List - 2024.xlsx",#"Folder Path"="https://masterashley.sharepoint.com/sites/AsiaWarehouseOperations/Shared Documents/Ashton/Four Box/Inventory/"]}[Content],
+				    #"Imported Excel Workbook" = Excel.Workbook(Custom1),
+				    #"Filtered Rows1" = Table.SelectRows(#"Imported Excel Workbook", each ([Name] = "Damaged_Defect")),
+				    #"Removed Columns" = Table.RemoveColumns(#"Filtered Rows1",{"Name"}),
+				    #"Expanded Data" = Table.ExpandTableColumn(#"Removed Columns", "Data", {"Column1", "Column2", "Column3", "Column4", "Column5", "Column6", "Column7", "Column8", "Column9", "Column10", "Column11", "Column12", "Column13", "Column14", "Column15", "Column16"}, {"Data.Column1", "Data.Column2", "Data.Column3", "Data.Column4", "Data.Column5", "Data.Column6", "Data.Column7", "Data.Column8", "Data.Column9", "Data.Column10", "Data.Column11", "Data.Column12", "Data.Column13", "Data.Column14","Data.Column15","Data.Column16"}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Expanded Data", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"Qty", Int64.Type}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Changed Type1",{{"Infor date", type date}, {"Serial Number", type text}, {"Location", type text}, {"ITEM", type text}, {"Master MO/PO", type text}, {"Vendor", type text}, {"Issue from", type text}, {"Damaged Description", type text}, {"Product", type text}, {"Reason", type text}, {"Damaged by", type text}, {"Whse deal with status", type text}, {"CS replied", type text}, {"CS Estimated Due Date", type any}}),
+				    #"Filtered Rows2" = Table.SelectRows(#"Changed Type", each ([ITEM] <> null))
+				    // #"Removed Other Columns" = Table.SelectColumns(#"Filtered Rows1",{"Data"}),
+				    // #"Expanded Data" = Table.ExpandTableColumn(#"Removed Other Columns", "Data", {"Column1", "Column2", "Column3", "Column4", "Column5", "Column6", "Column7", "Column8", "Column9", "Column10", "Column11", "Column12", "Column13", "Column14", "Column15", "Column16"}, {"Column1", "Column2", "Column3", "Column4", "Column5", "Column6", "Column7", "Column8", "Column9", "Column10", "Column11", "Column12", "Column13", "Column14", "Column15", "Column16"}),
+				    // #"Promoted Headers" = Table.PromoteHeaders(#"Expanded Data", [PromoteAllScalars=true]),
+				    // #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Whse ID", Int64.Type}, {"Inv. Age Days Range", type text}, {"Product Type", type text}, {"Item Number", type text}, {"Item Class", type text}, {"Item Descripiton", type text}, {"On Hand", type number}, {"Inventory Age (Days)", Int64.Type}, {"Next 70 Days Demand", Int64.Type}, {"Balance", type number}, {"Balance_Type", type text}, {"PUR (Jade)", type text}, {"CS (Ho, Mike)", type any}, {"IE (Le Bryan)", type any}, {"Owner", type any}, {"DueDate", type any}}),
+				    // #"Trimmed Text" = Table.TransformColumns(#"Changed Type",{{"Item Number", Text.Trim, type text}})
+				in
+				    // #"Trimmed Text"
+				        #"Filtered Rows2"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

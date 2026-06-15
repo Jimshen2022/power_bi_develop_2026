@@ -1,0 +1,124 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 354.46665736194478,
+            "y": 54.004338730072007
+          },
+          "nodeIndex": "D_Calendar",
+          "nodeLineageTag": "b257cf35-2cff-4d87-8452-94843d4a6e66",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 1502.3878766193882,
+            "y": 0
+          },
+          "nodeIndex": "A_Measure",
+          "nodeLineageTag": "5fab54fd-a338-4175-ab86-a50ec9cdde7b",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 749.11868025156059,
+            "y": 41.403013398799487
+          },
+          "nodeIndex": "Calculation Reference Guide",
+          "nodeLineageTag": "0a5d8fad-6324-454a-825d-2715a97a92f1",
+          "size": {
+            "height": 146.32133091410566,
+            "width": 245.27466517791117
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 691.4910093703827,
+            "y": 446.52162386494609
+          },
+          "nodeIndex": "NGOC_CS",
+          "nodeLineageTag": "bffed555-2002-4e79-842a-c9d3741ed31c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 963.53102694549693,
+            "y": 447.34295477905175
+          },
+          "nodeIndex": "fct_ashton_e_s_oh",
+          "nodeLineageTag": "9b267608-c6c4-42c9-b2c9-3299e6f8d26c",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 70.737849001019185,
+            "y": 451.99695868703492
+          },
+          "nodeIndex": "country_code",
+          "nodeLineageTag": "474e8f70-cf57-4228-9f4f-4602080e2ac3",
+          "size": {
+            "height": 364.89197822695087,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 1319.1358258156067,
+            "y": 741.71757808571454
+          },
+          "nodeIndex": "F_Ashton_Damaged",
+          "size": {
+            "height": 272,
+            "width": 428.48797431896753
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 325.7109236630846,
+            "y": 448.50830076680677
+          },
+          "nodeIndex": "F_Damaged_Transactions",
+          "size": {
+            "height": 300,
+            "width": 341.10931919015616
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 70.955543900968792,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

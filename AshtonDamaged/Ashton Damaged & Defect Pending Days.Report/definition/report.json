@@ -1,0 +1,122 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY24SU05",
+      "reportVersionAtImport": {
+        "visual": "1.8.90",
+        "report": "2.0.90",
+        "page": "1.3.90"
+      },
+      "type": "SharedResources"
+    },
+    "customTheme": {
+      "name": "Custom9485447441369907.json",
+      "reportVersionAtImport": {
+        "visual": "2.7.0",
+        "report": "3.2.0",
+        "page": "2.3.1"
+      },
+      "type": "RegisteredResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          },
+          "visible": {
+            "expr": {
+              "Literal": {
+                "Value": "true"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "publicCustomVisuals": [
+    "paretoEDD8E69761BA4B7BB3AA6D813990D7BF"
+  ],
+  "resourcePackages": [
+    {
+      "name": "scatterChartByAkvelon6CFB0DAB29E746BE850B6DFD1E2789FD_OrgStore",
+      "type": "OrganizationalStoreCustomVisual",
+      "items": [
+        {
+          "name": "resources/scatterChartByAkvelon6CFB0DAB29E746BE850B6DFD1E2789FD_OrgStore.pbiviz.json",
+          "path": "2/5a9d9cfd-c32e-4ac1-a9ed-fe83df4f9e4d/ResourcePackage/BlobIdV2-60fdb473-4614-4390-8763-8ed6c589c4826-Pv8RuLGMzch6fJZ.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    },
+    {
+      "name": "impactBubbleChart9F474F4C9D2243D7A6BB693D25F75740_OrgStore",
+      "type": "OrganizationalStoreCustomVisual",
+      "items": [
+        {
+          "name": "resources/impactBubbleChart9F474F4C9D2243D7A6BB693D25F75740_OrgStore.pbiviz.json",
+          "path": "2/5a9d9cfd-c32e-4ac1-a9ed-fe83df4f9e4d/ResourcePackage/BlobIdV2-f22441be-4cbe-44df-879e-f3c70f7e81775Id4Iw6piKWXhT9UjCO4JUj.json",
+          "type": "CustomVisualMetadata"
+        }
+      ]
+    },
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY24SU05",
+          "path": "BaseThemes/CY24SU05.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "Custom9485447441369907.json",
+          "path": "Custom9485447441369907.json",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  },
+  "slowDataSourceSettings": {
+    "isCrossHighlightingDisabled": false,
+    "isSlicerSelectionsButtonEnabled": false,
+    "isFilterSelectionsButtonEnabled": false,
+    "isFieldWellButtonEnabled": false,
+    "isApplyAllButtonEnabled": false
+  }
+}

@@ -1,0 +1,209 @@
+table F_Damaged_Transactions
+	lineageTag: bd194819-ee92-4287-a311-e7d14c08e953
+
+	column wh_id
+		dataType: string
+		lineageTag: c227407c-b1cf-4dd2-8986-cedc3f9a07a7
+		summarizeBy: none
+		sourceColumn: wh_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column tran_type
+		dataType: string
+		lineageTag: ba7fb23a-de2e-446d-8647-b397fefb9fa2
+		summarizeBy: none
+		sourceColumn: tran_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column description
+		dataType: string
+		lineageTag: 7c4ba31c-3c92-449b-8a0c-64ef9dd630e0
+		summarizeBy: none
+		sourceColumn: description
+
+		annotation SummarizationSetBy = Automatic
+
+	column start_tran_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 6af423c5-09d2-4d3e-a3fd-b3457d913883
+		summarizeBy: none
+		sourceColumn: start_tran_date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column star_tran_time
+		dataType: dateTime
+		formatString: h:nn:ss
+		lineageTag: 59cae88f-0313-4af2-802b-aa28fe9d0133
+		summarizeBy: none
+		sourceColumn: star_tran_time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column end_tran_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 321a135e-133f-40a5-b52b-245d852bc72e
+		summarizeBy: none
+		sourceColumn: end_tran_date
+
+		variation Variation
+			isDefault
+			relationship: f2f7febb-5134-4d68-b155-30c9a2d32edb
+			defaultHierarchy: LocalDateTable_b9796368-3052-4f59-8f39-b03ba409a810.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column end_tran_time
+		dataType: dateTime
+		formatString: h:nn:ss
+		lineageTag: 72320503-6759-47c8-9838-851d2c524c37
+		summarizeBy: none
+		sourceColumn: end_tran_time
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column employee_id
+		dataType: string
+		lineageTag: bf308ec5-765e-4817-8d3b-b5ed9d39f6c1
+		summarizeBy: none
+		sourceColumn: employee_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column control_number
+		dataType: string
+		lineageTag: 8cca686c-b4ba-4e87-b21b-2feef2b3f725
+		summarizeBy: none
+		sourceColumn: control_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column line_number
+		dataType: string
+		lineageTag: 657c5004-956c-4805-969d-daff2883001a
+		summarizeBy: none
+		sourceColumn: line_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column reference
+		dataType: string
+		lineageTag: 24f1e7ef-a8af-456b-b01f-92afb4dc8e8d
+		summarizeBy: none
+		sourceColumn: reference
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_number
+		dataType: string
+		lineageTag: 4db7df9a-d939-4fcc-88be-82844349ebef
+		summarizeBy: none
+		sourceColumn: item_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column SN
+		dataType: string
+		lineageTag: 81f43317-997d-4ae4-8b94-89c3bab6ac35
+		summarizeBy: none
+		sourceColumn: SN
+
+		annotation SummarizationSetBy = Automatic
+
+	column tran_qty
+		dataType: double
+		lineageTag: b7e303fa-644f-48c4-a4f9-d730136112ea
+		summarizeBy: sum
+		sourceColumn: tran_qty
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FromLocation
+		dataType: string
+		lineageTag: 509a29d5-5e0a-4492-94d3-d046b5c2a62e
+		summarizeBy: none
+		sourceColumn: FromLocation
+
+		annotation SummarizationSetBy = Automatic
+
+	column ToLocation
+		dataType: string
+		lineageTag: ddfc08d4-4e34-4562-9b20-02d7e354a533
+		summarizeBy: none
+		sourceColumn: ToLocation
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_id_2
+		dataType: string
+		lineageTag: bb83dbd4-9314-43ad-906d-5f51defbaf7c
+		summarizeBy: none
+		sourceColumn: employee_id_2
+
+		annotation SummarizationSetBy = Automatic
+
+	column Transaction_type
+		dataType: string
+		lineageTag: 18976cff-6d08-466b-9f8c-d16f7879f71b
+		summarizeBy: none
+		sourceColumn: Transaction_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column LP#
+		dataType: string
+		lineageTag: 83681ee3-766c-40b2-bcf2-89e0eabf91a5
+		summarizeBy: none
+		sourceColumn: LP#
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item_Type
+		dataType: string
+		lineageTag: 615cf87c-fb8a-4851-84e7-c2642280f1eb
+		summarizeBy: none
+		sourceColumn: Item_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition F_Damaged_Transactions = m
+		mode: import
+		source =
+				// let
+				//     Source = Sql.Database("ashley-edw.database.windows.net", "ASHLEY_EDW", [Query="SELECT t1.wh_id,#(lf)       t1.tran_type,#(lf)       t1.description,#(lf)       t1.start_tran_date,#(lf)       CAST(t1.start_tran_time AS TIME(0)) AS star_tran_time,#(lf)       t1.end_tran_date,#(lf)       CAST(t1.end_tran_time AS TIME(0)) AS end_tran_time,#(lf)       t1.employee_id,#(lf)       t1.control_number,#(lf)       t1.line_number,#(lf)       t1.control_number_2 AS reference,#(lf)       t1.hu_id as LP#,#(lf)       t1.item_number,#(lf)       CAST(t1.lot_number AS VARCHAR(20)) AS SN,#(lf)       t1.tran_qty,#(lf)       t1.location_id AS 'FromLocation',#(lf)       t1.location_id_2 AS 'ToLocation',#(lf)       t1.employee_id_2,#(lf)       CASE#(lf)           WHEN t1.location_id_2 IN ('DM001AA1') AND t1.control_number_2 LIKE 'RS%' THEN 'Inbound Vendor Damaged received qty'#(lf)           WHEN t1.location_id_2 IN ('SH001AA1') AND t1.control_number_2 LIKE 'RS%' THEN 'Inbound Vendor Shortage Shipment'#(lf)           WHEN t1.location_id_2 IN ('EX001AA1') AND t1.control_number_2 LIKE 'RS%' THEN 'Inbound Vendor Over Shipment'#(lf)           WHEN t1.location_id_2 IN ('DM001AA1') AND t1.control_number_2 LIKE 'A3%' THEN 'Whse Damaged qty'#(lf)           WHEN t1.location_id_2 IN ('NG001MT1') AND t1.control_number_2 LIKE 'A3%' THEN 'Checking Mattress (SN received over 150 days)'#(lf)           WHEN t1.location_id_2 LIKE 'A3%' AND t1.control_number_2 IN ('DM001AA1') THEN 'Inspected & Fixing okay qty'#(lf)           WHEN t1.location_id_2 LIKE 'A3%' AND t1.control_number_2 IN ('NG001CK3') THEN 'Inspected & Fixing okay qty'#(lf)           WHEN t1.location_id_2 IN ('NG001VD3') AND t1.control_number_2 IN ('VD001AA1') THEN 'Inbound Vendor Damaged retured to vendor qty'#(lf)           WHEN t1.location_id_2 IN ('NG001VD3') AND t1.control_number_2 IN ('NG001UP3') THEN 'Whse damaged UPH return to venodr fixing qty'#(lf)           WHEN t1.location_id_2 IN ('NG001VD3') AND t1.control_number_2 IN ('NG001CG3') THEN 'Whse damaged CG return to venodr fixing qty'#(lf)           WHEN t1.location_id_2 IN ('NG001CK3') AND t1.control_number_2 IN ('NG001CG3') THEN 'Ashton can fix it but lack materials qty'#(lf)           WHEN t1.location_id_2 LIKE 'A3%' AND t1.control_number_2 IN ('NG001VD3') THEN 'Vendor fix okay or swap qty'#(lf)           WHEN t1.location_id_2 IN ('NG001OP3') AND t1.control_number_2 IN ('EX001AA1') THEN 'Inbound vendor over shipment returned to vendor'#(lf)           WHEN t1.location_id_2 LIKE 'A3%' AND t1.control_number_2 IN ('SH001AA1') THEN 'Vendor delivered qty for short shipment'#(lf)           ELSE 'Check'#(lf)       END AS Transaction_type#(lf)FROM Distribution_Warehouse_Wholesale.TranLog AS t1#(lf)WHERE t1.wh_id IN ('335')#(lf)  AND t1.start_tran_date > '2024-01-01'#(lf)  AND t1.tran_type IN ('254', '202')#(lf)  AND (CASE#(lf)           WHEN t1.location_id_2 IN ('DM001AA1') AND t1.control_number_2 LIKE 'RS%' THEN 'Inbound Vendor Damaged received qty'#(lf)           WHEN t1.location_id_2 IN ('SH001AA1') AND t1.control_number_2 LIKE 'RS%' THEN 'Inbound Vendor Shortage Shipment'#(lf)           WHEN t1.location_id_2 IN ('EX001AA1') AND t1.control_number_2 LIKE 'RS%' THEN 'Inbound Vendor Over Shipment'#(lf)           WHEN t1.location_id_2 IN ('DM001AA1') AND t1.control_number_2 LIKE 'A3%' THEN 'Whse Damaged qty'#(lf)           WHEN t1.location_id_2 IN ('NG001MT1') AND t1.control_number_2 LIKE 'A3%' THEN 'Checking Mattress (SN received over 150 days)'#(lf)           WHEN t1.location_id_2 LIKE 'A3%' AND t1.control_number_2 IN ('DM001AA1') THEN 'Inspected & Fixing okay qty'#(lf)           WHEN t1.location_id_2 LIKE 'A3%' AND t1.control_number_2 IN ('NG001CK3') THEN 'Inspected & Fixing okay qty'#(lf)           WHEN t1.location_id_2 IN ('NG001VD3') AND t1.control_number_2 IN ('VD001AA1') THEN 'Inbound Vendor Damaged retured to vendor qty'#(lf)           WHEN t1.location_id_2 IN ('NG001VD3') AND t1.control_number_2 IN ('NG001UP3') THEN 'Whse damaged UPH return to venodr fixing qty'#(lf)           WHEN t1.location_id_2 IN ('NG001VD3') AND t1.control_number_2 IN ('NG001CG3') THEN 'Whse damaged CG return to venodr fixing qty'#(lf)           WHEN t1.location_id_2 IN ('NG001CK3') AND t1.control_number_2 IN ('NG001CG3') THEN 'Ashton can fix it but lack materials qty'#(lf)           WHEN t1.location_id_2 LIKE 'A3%' AND t1.control_number_2 IN ('NG001VD3') THEN 'Vendor fix okay or swap qty'#(lf)           WHEN t1.location_id_2 IN ('NG001OP3') AND t1.control_number_2 IN ('EX001AA1') THEN 'Inbound vendor over shipment returned to vendor'#(lf)           WHEN t1.location_id_2 LIKE 'A3%' AND t1.control_number_2 IN ('SH001AA1') THEN 'Vendor delivered qty for short shipment'#(lf)           ELSE 'Check'#(lf)       END) <> 'Check'#(lf)ORDER BY t1.lot_number, t1.start_tran_date, t1.start_tran_time#(lf)", CommandTimeout=#duration(0, 1, 0, 0)]),
+				//     #"Changed Type" = Table.TransformColumnTypes(Source,{{"start_tran_date", type date}, {"end_tran_date", type date}})
+				// in
+				//     #"Changed Type"
+				
+				
+				let
+				    Source = Sql.Database("ashley-edw.database.windows.net", "ASHLEY_EDW", [Query="SELECT t1.wh_id,#(lf)                        t1.tran_type,#(lf)                        t1.description,#(lf)                        t1.start_tran_date,#(lf)                        CAST(t1.start_tran_time AS TIME(0)) AS star_tran_time,#(lf)                        t1.end_tran_date,#(lf)                        CAST(t1.end_tran_time AS TIME(0)) AS end_tran_time,#(lf)                        t1.employee_id,#(lf)                        t1.control_number,#(lf)                        t1.line_number,#(lf)                        t1.control_number_2 AS reference,#(lf)                        t1.hu_id as LP#,#(lf)                        t1.item_number,#(lf)                        CAST(t1.lot_number AS VARCHAR(20)) AS SN,#(lf)                        t1.tran_qty,#(lf)                        t1.location_id AS 'FromLocation',#(lf)                        t1.location_id_2 AS 'ToLocation',#(lf)                        t1.employee_id_2,#(lf)                        CASE#(lf)                            WHEN t1.location_id_2 IN ('DM001AA1') AND t1.control_number_2 LIKE 'RS%' THEN 'Inbound Vendor Damaged received qty'#(lf)                            WHEN t1.location_id_2 IN ('DM001AA1') AND t1.control_number_2 LIKE 'A3%' THEN 'Whse Damaged qty'#(lf)                            WHEN t1.location_id_2 LIKE 'A3%' AND t1.control_number_2 IN ('DM001AA1') THEN 'Inspected & Fixing okay qty'#(lf)                            WHEN t1.location_id_2 LIKE 'A3%' AND t1.control_number_2 IN ('NG001CK3') THEN 'Inspected & Fixing okay qty'#(lf)                                WHEN t1.location_id_2 IN ('NG001VD3') AND t1.control_number_2 IN ('NG001UP3') THEN 'Whse damaged return to venodr fixing qty'#(lf)                            WHEN t1.location_id_2 IN ('NG001VD3') AND t1.control_number_2 IN ('NG001CG3') THEN 'Whse damaged return to venodr fixing qty'#(lf)                            WHEN t1.location_id_2 IN ('NG001CK3') AND t1.control_number_2 IN ('NG001CG3') THEN 'Ashton can fix it but lack materials qty'#(lf)                            WHEN t1.location_id_2 LIKE 'A3%' AND t1.control_number_2 IN ('NG001VD3') THEN 'Vendor fixed okay or swapped qty'#(lf)                            ELSE 'Check'#(lf)                        END AS Transaction_type,#(lf)                        CASE #(lf)                            WHEN substring(t1.item_number,1,4) LIKE '100-' THEN 'CG' #(lf)                            WHEN substring(t1.item_number,1,1) IN ('1','2','3','4','5','6','7','8','9','U') then 'UPH'#(lf)                            WHEN substring(t1.item_number,1,1) IN ('A','B','D','E','G','H','L','M','P','R','T','W','Z') then 'CG'#(lf)                            ELSE 'Check' END AS Item_Type #(lf)                FROM Distribution_Warehouse_Wholesale.TranLog AS t1#(lf)                WHERE t1.wh_id IN ('335')#(lf)                    AND t1.start_tran_date > '2024-01-01'#(lf)                    AND t1.tran_type IN ('254', '202')#(lf)                    AND (CASE#(lf)                            WHEN t1.location_id_2 IN ('DM001AA1') AND t1.control_number_2 LIKE 'RS%' THEN 'Inbound Vendor Damaged received qty'#(lf)                            WHEN t1.location_id_2 IN ('DM001AA1') AND t1.control_number_2 LIKE 'A3%' THEN 'Whse Damaged qty'#(lf)                            WHEN t1.location_id_2 LIKE 'A3%' AND t1.control_number_2 IN ('DM001AA1') THEN 'Inspected & Fixing okay qty'#(lf)                            WHEN t1.location_id_2 LIKE 'A3%' AND t1.control_number_2 IN ('NG001CK3') THEN 'Inspected & Fixing okay qty'#(lf)                            WHEN t1.location_id_2 IN ('NG001VD3') AND t1.control_number_2 IN ('NG001UP3') THEN 'Whse damaged return to venodr fixing qty'#(lf)                            WHEN t1.location_id_2 IN ('NG001VD3') AND t1.control_number_2 IN ('NG001CG3') THEN 'Whse damaged return to venodr fixing qty'#(lf)                            WHEN t1.location_id_2 IN ('NG001CK3') AND t1.control_number_2 IN ('NG001CG3') THEN 'Ashton can fix it but lack materials qty'#(lf)                            WHEN t1.location_id_2 LIKE 'A3%' AND t1.control_number_2 IN ('NG001VD3') THEN 'Vendor fixed okay or swapped qty'#(lf)                            ELSE 'Check'#(lf)                        END) <> 'Check'#(lf)                ORDER BY t1.lot_number, t1.start_tran_date, t1.start_tran_time", CommandTimeout=#duration(0, 1, 0, 0), CreateNavigationProperties=false]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source, {
+				        {"start_tran_date", type date},
+				        {"end_tran_date", type date}
+				    })
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

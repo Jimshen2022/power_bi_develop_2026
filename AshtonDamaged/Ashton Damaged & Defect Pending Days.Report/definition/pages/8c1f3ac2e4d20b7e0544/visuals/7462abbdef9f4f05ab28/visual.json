@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "7462abbdef9f4f05ab28",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 2000,
+    "height": 719.97280108721907,
+    "width": 1267.4733096085408
+  },
+  "visualGroup": {
+    "displayName": "Vendor Over & Short Shipment",
+    "groupMode": "ScaleMode"
+  },
+  "parentGroupName": "b345e26aaf3303d417cd",
+  "isHidden": true
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Ashton Damaged & Defect Pending Days"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e1f26a28-39c0-4ba3-b15b-181a5f8ed66b"
+  }
+}

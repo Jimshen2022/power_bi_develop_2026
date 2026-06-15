@@ -1,0 +1,251 @@
+table fct_ashton_e_s_oh
+	lineageTag: 9b267608-c6c4-42c9-b2c9-3299e6f8d26c
+
+	column wh_id
+		dataType: string
+		lineageTag: 9f5faf91-182e-4898-9e5a-0054d4baf6e1
+		summarizeBy: none
+		sourceColumn: wh_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_number
+		dataType: string
+		lineageTag: 76a847fc-c27f-461b-97ed-67c3373a2f45
+		summarizeBy: none
+		sourceColumn: item_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column location_id
+		dataType: string
+		lineageTag: 30aa2a71-75fe-4da6-ba0c-5ce701d0a018
+		summarizeBy: none
+		sourceColumn: location_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column po_number
+		dataType: string
+		lineageTag: ed19e6fd-225d-4c0a-94f2-aaf728e10eae
+		summarizeBy: none
+		sourceColumn: po_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column serial_no_status
+		dataType: string
+		lineageTag: a7e0170e-d887-4502-9f95-39f67c84c84a
+		summarizeBy: none
+		sourceColumn: serial_no_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column received_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 42aff6a5-ace6-4e1c-9164-22424e5607bc
+		summarizeBy: none
+		sourceColumn: received_date
+
+		variation Variation
+			isDefault
+			relationship: cd401e2e-db34-4741-8b32-e90dc24633ad
+			defaultHierarchy: LocalDateTable_4d763d9c-60aa-4ab7-a821-3b0d8438edb9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column pending_days
+		dataType: int64
+		formatString: 0
+		lineageTag: 1d8ec4d1-2f06-4ada-a266-2f65de5059e1
+		summarizeBy: sum
+		sourceColumn: pending_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column pending_range
+		dataType: string
+		lineageTag: e796c7a0-0e73-4fe2-a56d-4308f93759a4
+		summarizeBy: none
+		sourceColumn: pending_range
+
+		annotation SummarizationSetBy = Automatic
+
+	column podvendornum
+		dataType: string
+		lineageTag: 1a759933-285b-4848-9ee5-0a93a8b565cf
+		summarizeBy: none
+		sourceColumn: podvendornum
+
+		annotation SummarizationSetBy = Automatic
+
+	column podMfrName
+		dataType: string
+		lineageTag: 4de29c0d-994e-4ab7-86b2-ae885dc82569
+		summarizeBy: none
+		sourceColumn: podMfrName
+
+		annotation SummarizationSetBy = Automatic
+
+	column podMfrCountry
+		dataType: string
+		lineageTag: 4fe07249-6ab1-43b7-9ef7-744e0e21f13f
+		summarizeBy: none
+		sourceColumn: podMfrCountry
+
+		annotation SummarizationSetBy = Automatic
+
+	column podstatuscode
+		dataType: string
+		lineageTag: a5a3f8f3-dd81-458f-b8f6-98b438b1313e
+		summarizeBy: none
+		sourceColumn: podstatuscode
+
+		annotation SummarizationSetBy = Automatic
+
+	column serial_number
+		dataType: string
+		lineageTag: 325b5a96-4f4c-4ac0-8a89-dbd7d8fe6a07
+		summarizeBy: none
+		sourceColumn: serial_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column po_number2
+		dataType: string
+		lineageTag: 32ba1117-d652-416a-ab38-632e57f360f8
+		summarizeBy: none
+		sourceColumn: po_number2
+
+		annotation SummarizationSetBy = Automatic
+
+	column ITDSC
+		dataType: string
+		lineageTag: f1f3a27e-99e4-4405-945f-6e693510f794
+		summarizeBy: none
+		sourceColumn: ITDSC
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fct_ashton_e_s_oh = m
+		mode: import
+		source = ```
+				let
+				    Source = Sql.Database("ashley-edw.database.windows.net", "ASHLEY_EDW", [Query="
+				    
+				WITH itm AS (
+				    SELECT ITNBR, ITDSC
+				    FROM MasterData_ItemMaster_AFI.ITMRVA
+				    WHERE STID = '335' 
+				),
+				cy AS (
+					SELECT
+						[podwarehouse],
+						[podordernum],
+						[podvendornum],
+						[podMfrName],
+						[podMfrCountry],
+						[podstatuscode],
+						[podduedate],
+						SUM([podqtyordered]) AS qtyordered
+					FROM [Wholesale_ProductSourcing_AFI].[PoDetail]
+					WHERE
+						podwarehouse = '335'
+						AND podMfrName IS NOT NULL
+						AND LTRIM(RTRIM(podMfrName)) <> ''
+					GROUP BY 
+						[podwarehouse],
+						[podordernum],
+						[podvendornum],
+						[podMfrName],
+						[podMfrCountry],
+						[podstatuscode],
+						[podduedate]
+				),
+				sn_po AS (
+					SELECT 
+						t1.lot_number,
+						t1.item_number,
+						po.po_number,
+						t1.wh_id,
+						cy.[podvendornum],
+						cy.[podMfrName],
+						cy.[podMfrCountry],
+						cy.[podstatuscode],
+						cy.[podduedate],
+						MIN(t1.start_tran_date) as start_tran_date
+					FROM Distribution_Warehouse_Wholesale.TranLog AS t1 
+					CROSS APPLY (
+						SELECT 
+							CASE 
+								WHEN t1.control_number_2 NOT LIKE 'P%' THEN t1.control_number
+								ELSE t1.control_number_2 
+							END AS po_number
+					) AS po
+					LEFT JOIN cy ON cy.[podordernum] = po.po_number
+					WHERE 
+						t1.wh_id = '335'
+						AND (
+							(LEN(t1.control_number_2) >= 4 AND t1.control_number_2 LIKE 'P%')
+							OR (LEN(t1.control_number) >= 4 AND t1.control_number LIKE 'P%')
+						)
+						AND t1.lot_number IS NOT NULL
+					GROUP BY
+						t1.lot_number,
+						t1.item_number,
+						po.po_number,
+						t1.wh_id,
+						cy.[podvendornum],
+						cy.[podMfrName],
+						cy.[podMfrCountry],
+						cy.[podstatuscode],
+						cy.[podduedate]
+				)
+				
+				SELECT 
+					t1.wh_id, 
+					t1.item_number, 
+					t1.location_id, 
+					t1.po_number,
+					t1.serial_no_status,
+					t1.received_date,
+					-- 计算 Pending Days
+					DATEDIFF(DAY, t1.received_date, GETDATE()) AS pending_days,
+					-- 按天数划分区间
+					CASE 
+						WHEN DATEDIFF(DAY, t1.received_date, GETDATE()) <= 7 THEN '(a) 0-7 days'
+						WHEN DATEDIFF(DAY, t1.received_date, GETDATE()) BETWEEN 8 AND 30 THEN '(b) 8-30 days'
+						WHEN DATEDIFF(DAY, t1.received_date, GETDATE()) BETWEEN 31 AND 90 THEN '(c) 31-90 days'
+						ELSE '(d) 90+ days'
+					END AS pending_range,
+					sy.[podvendornum],
+				    sy.[podMfrName],
+				    sy.[podMfrCountry],
+				    sy.[podstatuscode],
+					t1.serial_number,
+					sy.po_number,
+					i.ITDSC
+				FROM Distribution_Warehouse_Wholesale.t_serial_active AS t1
+				LEFT JOIN sn_po as sy on sy.lot_number = t1.serial_number
+				LEFT JOIN itm as i on t1.item_number = i.ITNBR
+				WHERE t1.wh_id IN ('335') 
+					--AND t1.serial_no_status NOT IN ('O') 
+					--AND t1.master_status NOT IN ('S')
+					AND (t1.location_id like 'NG%' OR t1.location_id like 'DM%' OR t1.location_id like 'SH00%' OR t1.location_id like 'EX%')
+					AND t1.location_id NOT like 'NG%OP%'
+				
+				    ", CommandTimeout=#duration(0, 1, 0, 0)]),
+				    #"Trimmed Text" = Table.TransformColumns(Source,{{"serial_number", Text.Trim, type text}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Trimmed Text", {"serial_number"})
+				
+				
+				
+				in
+				    #"Removed Duplicates"
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

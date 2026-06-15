@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "fb870c286e7ac9ce62d0",
+  "position": {
+    "x": 0,
+    "y": 2.3304968152057694E-13,
+    "z": 3000,
+    "height": 718.74549164069606,
+    "width": 1259.7817806442465
+  },
+  "visualGroup": {
+    "displayName": "Transactions",
+    "groupMode": "ScaleMode"
+  },
+  "parentGroupName": "b345e26aaf3303d417cd"
+}

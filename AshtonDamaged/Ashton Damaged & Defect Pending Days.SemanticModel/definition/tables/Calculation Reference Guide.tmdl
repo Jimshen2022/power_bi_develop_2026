@@ -1,0 +1,51 @@
+table 'Calculation Reference Guide'
+	lineageTag: 0a5d8fad-6324-454a-825d-2715a97a92f1
+
+	column 'Location ID'
+		dataType: string
+		lineageTag: f718f41e-2fe4-4e6e-b558-fed1ac7c4dd5
+		summarizeBy: none
+		sourceColumn: Location ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Location Function'
+		dataType: string
+		lineageTag: 1ed68918-613b-406f-87c2-37797d838a04
+		summarizeBy: none
+		sourceColumn: Location Function
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SN Received Date Defined'
+		dataType: string
+		lineageTag: dcf7c20b-2d51-453f-b28e-f781ccafcfac
+		summarizeBy: none
+		sourceColumn: SN Received Date Defined
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Calculation Reference Guide' = m
+		mode: import
+		source =
+				let
+				    Source = SharePoint.Files("https://masterashley.sharepoint.com/sites/AsiaWarehouseOperations/", [ApiVersion = 15]),
+				    #"Filtered Rows" = Table.SelectRows(Source, each ([Extension] = ".xlsx") and ([Name] = "Ashton Damaged&Defect Process - 20240801.xlsx")),
+				    Custom1 = #"Filtered Rows"{[Name="Ashton Damaged&Defect Process - 20240801.xlsx",#"Folder Path"="https://masterashley.sharepoint.com/sites/AsiaWarehouseOperations/Shared Documents/Ashton/Four Box/Inventory/"]}[Content],
+				    #"Imported Excel Workbook" = Excel.Workbook(Custom1),
+				    #"Filtered Rows1" = Table.SelectRows(#"Imported Excel Workbook", each ([Name] = "Location Meaning")),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Filtered Rows1",{"Data"}),
+				    #"Expanded Data" = Table.ExpandTableColumn(#"Removed Other Columns", "Data", {"Column1", "Column2", "Column3"}, {"Column1", "Column2", "Column3"}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Expanded Data", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Location ID", type text}, {"Location Function", type text}, {"SN Received Date Defined", type text}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type",null,"",Replacer.ReplaceValue,{"SN Received Date Defined"})
+				in
+				    #"Replaced Value"
+				
+				
+				    // Custom1 = #"Filtered Rows"{[Name="Ashton Damaged&Defect Process - 20240801.xlsx",#"Folder Path"="https://masterashley.sharepoint.com/sites/AsiaWarehouseOperations/Shared Documents/Ashton/Four Box/Inventory/"]}[Content],
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

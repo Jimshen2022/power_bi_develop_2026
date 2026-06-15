@@ -1,0 +1,57 @@
+relationship 2079d94b-d84b-4eee-9d00-3d10af27e6b1
+	joinOnDateBehavior: datePartOnly
+	fromColumn: D_Calendar.Date
+	toColumn: LocalDateTable_a70c1876-cd7f-4583-8399-650366d9600c.Date
+
+relationship 9c3c037b-f7a4-4275-a56d-bc93726cc6a5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: F_Ashton_Damaged.received_into_ashton_date
+	toColumn: LocalDateTable_ce6cdc32-d4c3-4807-80b4-d7e6690548c3.Date
+
+relationship 42ad3512-f7f1-444d-97fc-71f2388bd054
+	joinOnDateBehavior: datePartOnly
+	fromColumn: F_Ashton_Damaged.received_into_loc_date
+	toColumn: LocalDateTable_33ee8daf-64ea-4a3f-a5ac-c77bd69dcecc.Date
+
+relationship f2f7febb-5134-4d68-b155-30c9a2d32edb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: F_Damaged_Transactions.end_tran_date
+	toColumn: LocalDateTable_b9796368-3052-4f59-8f39-b03ba409a810.Date
+
+relationship 8062b953-6b2b-f725-4745-caabeded2fd5
+	fromColumn: F_Damaged_Transactions.start_tran_date
+	toColumn: D_Calendar.Date
+
+relationship fb77b72f-8f18-41f2-84d3-95826c1c12a0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: NGOC_CS.'Infor date'
+	toColumn: LocalDateTable_29f6e0d3-5daf-4e81-ad4d-ea02b3cec5ba.Date
+
+relationship AutoDetected_b0c19928-7121-4899-b811-cf6ba4aebb9f
+	fromColumn: NGOC_CS.Location
+	toColumn: 'Calculation Reference Guide'.'Location ID'
+
+relationship cd401e2e-db34-4741-8b32-e90dc24633ad
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_ashton_e_s_oh.received_date
+	toColumn: LocalDateTable_4d763d9c-60aa-4ab7-a821-3b0d8438edb9.Date
+
+relationship AutoDetected_22b59bf2-101c-490e-844c-6459c47a96eb
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: fct_ashton_e_s_oh.serial_number
+	toColumn: F_Ashton_Damaged.serial_number
+
+relationship AutoDetected_5e4cba19-a9b9-4e13-bfba-38bc173d52e4
+	fromColumn: fct_ashton_e_s_oh.location_id
+	toColumn: 'Calculation Reference Guide'.'Location ID'
+
+relationship 797ba1a8-15c1-7d1b-1743-238acc5e5480
+	fromColumn: F_Ashton_Damaged.podMfrCountry
+	toColumn: country_code.IS
+
+relationship 31b79635-d1f8-479d-a193-c92975259604
+	joinOnDateBehavior: datePartOnly
+	fromColumn: F_Ashton_Damaged.received_into_dm_date
+	toColumn: LocalDateTable_16f560c3-bb70-4b12-b293-e209ef9126d2.Date
+

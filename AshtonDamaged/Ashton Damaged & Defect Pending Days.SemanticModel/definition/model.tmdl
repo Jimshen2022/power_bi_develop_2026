@@ -1,0 +1,36 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		fastCombine
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["F_Ashton_Damaged","D_Calendar","A_Measure","Calculation Reference Guide","F_Damaged_Transactions","NGOC_CS","fct_ashton_e_s_oh","country_code"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation __TEdtr = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table F_Ashton_Damaged
+ref table DateTableTemplate_7f8e9d6b-5141-4db2-b331-d25127a62fc1
+ref table D_Calendar
+ref table LocalDateTable_a70c1876-cd7f-4583-8399-650366d9600c
+ref table A_Measure
+ref table 'Calculation Reference Guide'
+ref table LocalDateTable_ce6cdc32-d4c3-4807-80b4-d7e6690548c3
+ref table LocalDateTable_33ee8daf-64ea-4a3f-a5ac-c77bd69dcecc
+ref table F_Damaged_Transactions
+ref table LocalDateTable_b9796368-3052-4f59-8f39-b03ba409a810
+ref table NGOC_CS
+ref table LocalDateTable_29f6e0d3-5daf-4e81-ad4d-ea02b3cec5ba
+ref table fct_ashton_e_s_oh
+ref table LocalDateTable_4d763d9c-60aa-4ab7-a821-3b0d8438edb9
+ref table country_code
+ref table LocalDateTable_16f560c3-bb70-4b12-b293-e209ef9126d2
+
+ref cultureInfo en-US
+

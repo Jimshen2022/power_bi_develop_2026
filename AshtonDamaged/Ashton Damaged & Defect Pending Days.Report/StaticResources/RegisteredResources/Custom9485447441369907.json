@@ -1,0 +1,18 @@
+{
+  "name": "Custom",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "outspacePane": [
+          {
+            "backgroundColor": {
+              "solid": {
+                "color": "#FD6A6A"
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

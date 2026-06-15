@@ -1,0 +1,58 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
+  "displayName": "📊  Current Stock",
+  "name": "d6a340506a2a0e0be89d",
+  "options": {
+    "targetVisualNames": [
+      "d4f20a728d58c0cabd4e",
+      "99974fb3271238b87cec",
+      "28f602212ac995ba078b",
+      "ebc832e76e93150395ed",
+      "14d919899b1c59290700",
+      "fc3291f9491837dbd61a",
+      "ec4138851e680683da6b"
+    ]
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "df506b7fd4797cacd18b",
+    "sections": {
+      "df506b7fd4797cacd18b": {
+        "visualContainers": {},
+        "visualContainerGroups": {
+          "3aa715614bc5aaa8e0eb": {
+            "isHidden": false,
+            "children": {
+              "9b215af141b52b6d68ce": {
+                "isHidden": true
+              },
+              "c4d76119aabb5bd37963": {
+                "isHidden": true
+              },
+              "d4f20a728d58c0cabd4e": {
+                "isHidden": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

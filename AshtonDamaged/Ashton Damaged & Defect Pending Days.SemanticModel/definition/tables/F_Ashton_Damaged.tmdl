@@ -1,0 +1,344 @@
+table F_Ashton_Damaged
+	lineageTag: 39e4e497-ac40-4798-8481-752cdccbf55c
+
+	column wh_id
+		dataType: string
+		lineageTag: 3f55348f-9575-4d85-89fc-d931a4f0e450
+		summarizeBy: none
+		sourceColumn: wh_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column serial_number
+		dataType: string
+		lineageTag: 008d6396-ddb0-4a5a-972b-0f1cd0044cff
+		summarizeBy: none
+		sourceColumn: serial_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column item_number
+		dataType: string
+		lineageTag: 69b1707a-26a0-4c2f-a596-0bf8961c9783
+		summarizeBy: none
+		sourceColumn: item_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column po_number
+		dataType: string
+		lineageTag: 1f369d29-a5de-4b3d-ab1d-10897ba445d6
+		summarizeBy: none
+		sourceColumn: po_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column location_id
+		dataType: string
+		lineageTag: 58c25b7b-36a3-4ce3-920b-f1bb7bcf5212
+		summarizeBy: none
+		sourceColumn: location_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location_Meaning
+		dataType: string
+		lineageTag: b0ac3bd2-6702-4aa3-b247-8e78560bd7bf
+		summarizeBy: none
+		sourceColumn: Location_Meaning
+
+		annotation SummarizationSetBy = Automatic
+
+	column DateRange =
+			SWITCH(TRUE(),
+			'F_Ashton_Damaged'[PendingDays] < 3, "a.   0 ~ 3 days",
+			'F_Ashton_Damaged'[PendingDays] < 7, "b.   3 ~ 7 days",
+			'F_Ashton_Damaged'[PendingDays] < 14, "c.   7 ~ 14 days",
+			'F_Ashton_Damaged'[PendingDays] < 21, "d.   14 ~ 21 days",
+			'F_Ashton_Damaged'[PendingDays] < 30, "e.   21 ~ 30 days",
+			'F_Ashton_Damaged'[PendingDays] < 60, "f.   30 ~ 60 days",
+			'F_Ashton_Damaged'[PendingDays] < 90, "g.   60 ~ 90 days",
+			'F_Ashton_Damaged'[PendingDays] < 180, "h.   3 ~ 6 Months",
+			'F_Ashton_Damaged'[PendingDays] < 360, "i.   6 ~ 12 Months",
+			'F_Ashton_Damaged'[PendingDays] < 540, "j.   1 ~ 1.5 Years",
+			'F_Ashton_Damaged'[PendingDays] < 720, "k.   1.5 ~ 2 Years",
+			'F_Ashton_Damaged'[PendingDays] < 900, "l.   2 ~ 2.5 Years",
+			'F_Ashton_Damaged'[PendingDays] < 1080, "m.   2.5 ~ 3 Years",
+			"n.   Over 3 Years")
+		lineageTag: b3eafbdc-c22c-4a0f-8788-8630ad519ba0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column received_into_ashton_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: c5ff7905-c72c-4bcd-b542-acd47d6ef029
+		summarizeBy: none
+		sourceColumn: received_into_ashton_date
+
+		variation Variation
+			isDefault
+			relationship: 9c3c037b-f7a4-4275-a56d-bc93726cc6a5
+			defaultHierarchy: LocalDateTable_ce6cdc32-d4c3-4807-80b4-d7e6690548c3.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column received_into_loc_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 41ca39e3-4060-485a-92ae-f15aa3bdca35
+		summarizeBy: none
+		sourceColumn: received_into_loc_date
+
+		variation Variation
+			isDefault
+			relationship: 42ad3512-f7f1-444d-97fc-71f2388bd054
+			defaultHierarchy: LocalDateTable_33ee8daf-64ea-4a3f-a5ac-c77bd69dcecc.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column PendingDays
+		dataType: int64
+		formatString: 0
+		lineageTag: a150fdab-77d8-44cc-8d13-63bb3d5bd7f1
+		summarizeBy: sum
+		sourceColumn: PendingDays
+
+		annotation SummarizationSetBy = Automatic
+
+	column Item_Type
+		dataType: string
+		lineageTag: 9b1bb264-e294-4046-97fc-f98ae435a1e9
+		summarizeBy: none
+		sourceColumn: Item_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Issue from'
+		dataType: string
+		lineageTag: f63b0450-1fd3-4002-bf54-b9f4adae8586
+		summarizeBy: none
+		sourceColumn: Issue from
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Damaged Description'
+		dataType: string
+		lineageTag: 8357f17c-90f4-4e2b-ae0d-50ce05493f67
+		summarizeBy: none
+		sourceColumn: Damaged Description
+
+		annotation SummarizationSetBy = Automatic
+
+	column Reason
+		dataType: string
+		lineageTag: dac040a6-4e92-4e4a-95a3-b35e451187be
+		summarizeBy: none
+		sourceColumn: Reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Damaged by'
+		dataType: string
+		lineageTag: 6a0303d0-6e2a-49e2-981a-805057dbee91
+		summarizeBy: none
+		sourceColumn: Damaged by
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Whse deal with status'
+		dataType: string
+		lineageTag: 8f41c68e-d653-4daf-acbb-d0a038d13291
+		summarizeBy: none
+		sourceColumn: Whse deal with status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CS replied'
+		dataType: string
+		lineageTag: 3c8ae716-8e5f-4913-968d-a6d514878d40
+		summarizeBy: none
+		sourceColumn: CS replied
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'CS Estimated Due Date'
+		dataType: string
+		lineageTag: ed99d52c-f348-4011-8747-fd1f27e6550e
+		summarizeBy: none
+		sourceColumn: CS Estimated Due Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column LocationMeaning = 'F_Ashton_Damaged'[Location_Meaning]
+		lineageTag: b479e009-b127-4191-b91c-581b00f40be1
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Status
+		dataType: string
+		lineageTag: 94d64a89-7ad1-4f79-be69-590ae8bb4e1d
+		summarizeBy: none
+		sourceColumn: Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column podMfrName
+		dataType: string
+		lineageTag: 314d2fa5-7833-406e-ba6f-71cd7f6a7f66
+		summarizeBy: none
+		sourceColumn: podMfrName
+
+		annotation SummarizationSetBy = Automatic
+
+	column podMfrCountry
+		dataType: string
+		lineageTag: be8eb023-845b-47b8-8978-ecddfb7ed61f
+		summarizeBy: none
+		sourceColumn: podMfrCountry
+
+		annotation SummarizationSetBy = Automatic
+
+	column po_number2
+		dataType: string
+		lineageTag: 9dd97f67-a590-4235-9d9e-4f9f5dc6a733
+		summarizeBy: none
+		sourceColumn: po_number2
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location_Goal =
+			
+			SWITCH(
+			    TRUE(),
+			    'F_Ashton_Damaged'[Location_Meaning] = "Operation Issue Extra Stock Area", "60 days",
+			    'F_Ashton_Damaged'[Location_Meaning] = "Vendor Over Shipment Area", "30 days",
+			    'F_Ashton_Damaged'[Location_Meaning] = "(1) Damaged Item Entry Location - PendingInspection", "7 days",
+			    'F_Ashton_Damaged'[Location_Meaning] = "Vendor Short Shipment Area", "30 days",
+			    'F_Ashton_Damaged'[Location_Meaning] = "(2) Repair Materials Required - CartonsDamaged", "21 days",
+			    'F_Ashton_Damaged'[Location_Meaning] = "(3) Vendor Repair Required - ProductsDamaged", "14 days",
+			    'F_Ashton_Damaged'[Location_Meaning] = "(4) Returned To Vendor For Repair", "30 days",
+			    BLANK()
+			)
+		lineageTag: af0cf118-858c-4b53-a6e3-5819a47ddef8
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Location_Status =
+			
+			IF(
+			    'F_Ashton_Damaged'[PendingDays]
+			        <= VALUE(MID('F_Ashton_Damaged'[Location_Goal],1,2)),
+			    "Under Goal",
+			    "Over Goal"
+			)
+		lineageTag: f63f62ef-2227-4dc8-8aa2-23568e13771d
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column received_into_dm_date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 5eb0deb3-7880-40a4-b846-f6c245099a9a
+		summarizeBy: none
+		sourceColumn: received_into_dm_date
+
+		variation Variation
+			isDefault
+			relationship: 31b79635-d1f8-479d-a193-c92975259604
+			defaultHierarchy: LocalDateTable_16f560c3-bb70-4b12-b293-e209ef9126d2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition F_Ashton_Damaged = m
+		mode: import
+		source = ```
+				// let
+				//     Source = Sql.Database("ashley-edw.database.windows.net", "ASHLEY_EDW", [Query="-- Aug.16.2024 Updated Ashton damaged and defect products BI report by new process -- JimShen#(lf)-- To get serial number received into Ashton begin date from HJ transactions#(lf)WITH r1 AS (#(lf)    SELECT t1.wh_id#(lf)        , t1.item_number#(lf)        , CAST(t1.lot_number as VARCHAR(20)) AS SN#(lf)        , MIN(t1.start_tran_date) AS received_into_ashton_date#(lf)    FROM Distribution_Warehouse_Wholesale.TranLog AS t1#(lf)    WHERE t1.wh_id IN ('335') AND t1.start_tran_date > '2023-01-01' AND t1.lot_number is not null and len(t1.lot_number)>5#(lf)    GROUP BY t1.wh_id, t1.item_number, CAST(t1.lot_number as VARCHAR(20))#(lf)    ),#(lf)-- To get serial number received into location begin date from HJ transactions#(lf)    r2 AS (#(lf)    SELECT t1.wh_id#(lf)#(tab), t1.item_number#(lf)#(tab), CAST(t1.lot_number as VARCHAR(20)) AS SN#(lf)#(tab), t1.location_id_2#(lf)#(tab), MIN(t1.start_tran_date) AS received_into_loc_date#(lf)FROM Distribution_Warehouse_Wholesale.TranLog AS t1#(lf)WHERE t1.wh_id IN ('335') AND t1.start_tran_date > '2023-01-01' AND t1.lot_number is not null and len(t1.lot_number)>5#(lf)#(tab)AND t1.location_id_2 IN ('DM001AA1','NG001MT1','VD001AA1','EX001AA1','EX001AA2','SH001AA1','NG001CK3','NG001CG3','NG001UP3','NG001VD3','DR001AA1','DR001AB1') #(lf)GROUP BY t1.wh_id, t1.item_number, CAST(t1.lot_number as VARCHAR(20)), t1.location_id_2#(lf)    )#(lf)----------- Main ------------------------------------------------------------------#(lf)SELECT t1.wh_id#(lf)#(tab), t1.serial_number#(lf)#(tab), t1.item_number#(lf)#(tab), t1.po_number#(lf)#(tab), t1.location_id#(lf)#(tab), CASE#(lf)#(tab)#(tab)#(tab)WHEN t1.location_id = 'DM001AA1' THEN 'Damaged&Defect Main location'#(lf)#(tab)#(tab)#(tab)WHEN t1.location_id = 'NG001MT1' THEN 'Checking Mattresses(Over 150 days)'#(lf)#(tab)#(tab)#(tab)WHEN t1.location_id = 'VD001AA1' THEN 'Inbound Vendor Damaged'#(lf)#(tab)#(tab)#(tab)WHEN t1.location_id = 'EX001AA1' THEN 'Vendor Over Shipment'#(lf)#(tab)#(tab)#(tab)WHEN t1.location_id = 'EX001AA2' THEN 'Extra Due to Operation Issue'#(lf)#(tab)#(tab)#(tab)WHEN t1.location_id = 'SH001AA1' THEN 'Vendor Short Shipment'#(lf)#(tab)#(tab)#(tab)WHEN t1.location_id = 'NG001CK3' THEN 'Checking Pieces(Lack repair materials)'#(lf)#(tab)#(tab)#(tab)WHEN t1.location_id = 'NG001CG3' THEN 'Whse CaseGoods Damaged'#(lf)#(tab)#(tab)#(tab)WHEN t1.location_id = 'NG001UP3' THEN 'Whse UPH Damaged'#(lf)#(tab)#(tab)#(tab)WHEN t1.location_id = 'NG001VD3' THEN 'Send back to Vendor for fixing'#(lf)#(tab)#(tab)#(tab)WHEN t1.location_id = 'DR001AA1' THEN 'Shipping Supervisor Unpick/Unload'#(lf)#(tab)#(tab)#(tab)WHEN t1.location_id = 'DR001AB1' THEN 'Shipping Supervisor Unpick/Unload'#(lf)#(tab)#(tab)#(tab)ELSE 'Check' END AS Location_Meaning#(lf)    , CASE #(lf)            WHEN substring(t1.item_number,1,4) LIKE '100-' THEN 'CG' #(lf)            WHEN substring(t1.item_number,1,1) IN ('1','2','3','4','5','6','7','8','9','U') then 'UPH'#(lf)            WHEN substring(t1.item_number,1,1) IN ('A','B','D','E','G','H','L','M','P','R','T','W','Z') then 'CG'#(lf)            ELSE 'Check' END AS Item_Type #(lf)    , r1.received_into_ashton_date#(lf)    , r2.received_into_loc_date#(lf)FROM Distribution_Warehouse_Wholesale.t_serial_active  AS T1#(lf)    LEFT JOIN (SELECT * FROM r1) AS r1 ON t1.wh_id = r1.wh_id AND t1.item_number = r1.item_number AND t1.serial_number = r1.SN#(lf)    LEFT JOIN (SELECT * FROM r2) AS r2 ON t1.wh_id = r2.wh_id AND t1.item_number = r2.item_number AND t1.serial_number = r2.SN AND t1.location_id = r2.location_id_2#(lf)WHERE  t1.wh_id  IN ('335') #(lf)#(tab)AND T1.location_id IN ('DM001AA1','NG001MT1','VD001AA1','EX001AA1','EX001AA2','SH001AA1','NG001CK3','NG001CG3','NG001UP3','NG001VD3','DR001AA1','DR001AB1') #(lf)#(tab)AND t1.serial_no_status NOT IN ('O') and t1.master_status NOT IN ('S') ", CommandTimeout=#duration(0, 1, 0, 0)]),
+				//     #"Changed Type" = Table.TransformColumnTypes(Source,{{"received_into_ashton_date", type date}, {"received_into_loc_date", type date}}),
+				//     #"Added Conditional Column" = Table.AddColumn(#"Changed Type", "PendingDays", 
+				    
+				//     each 
+				//         if [received_into_loc_date] is null then Date.From(DateTime.LocalNow()) - [received_into_ashton_date]
+				//         else if  [location_id] = "DM001AA1" then Date.From(DateTime.LocalNow()) - [received_into_loc_date]
+				//         else if  [location_id] = "NG001MT1" then Date.From(DateTime.LocalNow()) - [received_into_ashton_date]
+				//         else Date.From(DateTime.LocalNow()) - [received_into_loc_date] 
+				//     ),
+				//     #"Changed Type1" = Table.TransformColumnTypes(#"Added Conditional Column",{{"PendingDays", Int64.Type}}),
+				//     #"Trimmed Text" = Table.TransformColumns(#"Changed Type1",{{"serial_number", Text.Trim, type text}}),
+				//     #"Merged Queries" = Table.NestedJoin(#"Trimmed Text", {"serial_number"}, NGOC_CS, {"Serial Number"}, "NGOC_CS", JoinKind.LeftOuter),
+				//     #"Expanded NGOC_CS" = Table.ExpandTableColumn(#"Merged Queries", "NGOC_CS", {"Vendor", "Issue from", "Damaged Description", "Reason", "Damaged by", "Whse deal with status", "CS replied", "CS Estimated Due Date"}, {"Vendor", "Issue from", "Damaged Description", "Reason", "Damaged by", "Whse deal with status", "CS replied", "CS Estimated Due Date"}),
+				//     #"Merged Queries1" = Table.NestedJoin(#"Expanded NGOC_CS", {"serial_number"}, Vendor_Over_Short_Shipment, {"Serial Number"}, "Vendor_Over_Short_Shipment", JoinKind.LeftOuter),
+				//     #"Expanded Vendor_Over_Short_Shipment" = Table.ExpandTableColumn(#"Merged Queries1", "Vendor_Over_Short_Shipment", {"CS replied", "CS Estimated Due Date"}, {"CS replied.1", "CS Estimated Due Date.1"})
+				// in
+				//     #"Expanded Vendor_Over_Short_Shipment"
+				
+				let
+				    Source = Sql.Database("ashley-edw.database.windows.net", "ASHLEY_EDW", [Query="#(lf)-- Aug.16.2024 Updated Ashton damaged and defect products BI report by new process -- JimShen#(lf)-- To get serial number received into Ashton begin date from HJ transactions#(lf)WITH itm as (#(lf)    SELECT distinct b.ITNBR as item_number,b.PICKPUT as pick_put_id,#(lf)#(tab)case when b.PICKPUT = 'UPH' then 'UPH'#(lf)#(tab)else 'CG' end as product_category#(lf)#(tab)FROM MasterData_ItemMaster_AFI.ITBEXT b#(lf)    WHERE b.HOUSE IN ('335')#(lf)),#(lf)#(lf)r1 AS (#(lf)    SELECT t1.wh_id#(lf)        , t1.item_number#(lf)        , CAST(t1.lot_number as VARCHAR(20)) AS SN#(lf)        , MIN(t1.start_tran_date) AS received_into_ashton_date#(lf)    FROM Distribution_Warehouse_Wholesale.TranLog AS t1#(lf)    WHERE t1.wh_id IN ('335') AND t1.start_tran_date > '2023-01-01' AND t1.lot_number is not null and len(t1.lot_number)>5#(lf)    GROUP BY t1.wh_id, t1.item_number, CAST(t1.lot_number as VARCHAR(20))#(lf)    ),#(lf)-- To get serial number received into location begin date from HJ transactions#(lf)    r2 AS (#(lf)    SELECT t1.wh_id#(lf)#(tab), t1.item_number#(lf)#(tab), CAST(t1.lot_number as VARCHAR(20)) AS SN#(lf)#(tab), t1.location_id_2#(lf)#(tab), MIN(t1.start_tran_date) AS received_into_loc_date#(lf)FROM Distribution_Warehouse_Wholesale.TranLog AS t1#(lf)WHERE t1.wh_id IN ('335') AND t1.start_tran_date > '2023-01-01' AND t1.lot_number is not null and len(t1.lot_number)>5#(lf)#(tab)AND t1.location_id_2 IN ('DM001AA1','NG001CK3','NG001CG3','NG001UP3','NG001VD3') #(lf)GROUP BY t1.wh_id, t1.item_number, CAST(t1.lot_number as VARCHAR(20)), t1.location_id_2#(lf)    ),#(lf)#(lf)#(tab)-- To get serial number received into location begin date from HJ transactions#(lf)    r3 AS (#(lf)    SELECT t1.wh_id#(lf)#(tab), t1.item_number#(lf)#(tab), CAST(t1.lot_number as VARCHAR(20)) AS SN#(lf)#(tab), t1.location_id_2#(lf)#(tab), MIN(t1.start_tran_date) AS received_into_DM_date#(lf)FROM Distribution_Warehouse_Wholesale.TranLog AS t1#(lf)WHERE t1.wh_id IN ('335') AND t1.start_tran_date > '2023-01-01' AND t1.lot_number is not null and len(t1.lot_number)>5#(lf)#(tab)AND t1.location_id_2 IN ('DM001AA1') #(lf)GROUP BY t1.wh_id, t1.item_number, CAST(t1.lot_number as VARCHAR(20)), t1.location_id_2#(lf)    )#(lf)----------- Main ------------------------------------------------------------------#(lf)SELECT t1.wh_id#(lf)#(tab), t1.serial_number#(lf)#(tab), t1.item_number#(lf)#(tab), t1.po_number#(lf)#(tab), t1.location_id#(lf)#(tab), CASE#(lf)#(tab)#(tab)#(tab)WHEN t1.location_id = 'DM001AA1' THEN '(1) Damaged Item Entry Location - PendingInspection'#(lf)#(tab)#(tab)#(tab)WHEN t1.location_id = 'NG001CK3' THEN '(2) Repair Materials Required - CartonsDamaged'#(lf)#(tab)#(tab)#(tab)WHEN t1.location_id = 'NG001CG3' THEN '(3) Vendor Repair Required - ProductsDamaged'#(lf)#(tab)#(tab)#(tab)WHEN t1.location_id = 'NG001UP3' THEN '(3) Vendor Repair Required - ProductsDamaged'#(lf)#(tab)#(tab)#(tab)WHEN t1.location_id = 'NG001VD3' THEN '(4) Returned To Vendor For Repair'#(lf)#(tab)#(tab)#(tab)ELSE 'Check' END AS Location_Meaning#(lf)    , case when itm.product_category is null then #(lf)#(tab)#(tab)#(tab)#(tab)#(tab)#(tab)#(tab)#(tab)#(tab)#(tab)case when left(t1.item_number,1) like '[U,1-9]%' THEN 'UPH' else 'CG' end#(lf)#(tab)#(tab)#(tab)#(tab)#(tab)#(tab)#(tab)#(tab)#(tab)#(tab)else itm.product_category end as Item_Type#(lf)    , r1.received_into_ashton_date#(lf)    , r2.received_into_loc_date#(lf)#(tab), CASE #(lf)#(tab)#(tab)#(tab)WHEN r3.received_into_DM_date IS NULL #(lf)#(tab)#(tab)#(tab)#(tab)THEN DATEADD(day, -1, r2.received_into_loc_date)#(lf)#(tab)#(tab)#(tab)WHEN r3.received_into_DM_date < r2.received_into_loc_date  #(lf)#(tab)#(tab)#(tab)#(tab)THEN DATEADD(day, -1, r2.received_into_loc_date)#(lf)#(tab)#(tab)#(tab)ELSE r3.received_into_DM_date #(lf)#(tab)#(tab)#(tab)END AS received_into_dm_date#(lf)#(lf)FROM Distribution_Warehouse_Wholesale.t_serial_active  AS T1#(lf)    LEFT JOIN (SELECT * FROM r1) AS r1 ON t1.wh_id = r1.wh_id AND t1.item_number = r1.item_number AND t1.serial_number = r1.SN#(lf)    LEFT JOIN (SELECT * FROM r2) AS r2 ON t1.wh_id = r2.wh_id AND t1.item_number = r2.item_number AND t1.serial_number = r2.SN AND t1.location_id = r2.location_id_2#(lf)    LEFT JOIN (SELECT * FROM r3) AS r3 ON t1.wh_id = r3.wh_id AND t1.item_number = r3.item_number AND t1.serial_number = r3.SN #(lf)#(tab)LEFT JOIN itm ON t1.item_number = itm.item_number#(lf)WHERE  t1.wh_id  IN ('335') #(lf)#(tab)AND T1.location_id IN ('DM001AA1','NG001CK3','NG001CG3','NG001UP3','NG001VD3') #(lf)#(tab)AND t1.serial_no_status NOT IN ('O') and t1.master_status NOT IN ('S') ", CommandTimeout=#duration(0, 10, 0, 0), CreateNavigationProperties=false]),
+				
+				    #"Changed Type" = Table.TransformColumnTypes(Source,
+				        {
+				            {"received_into_ashton_date", type date},
+				            {"received_into_loc_date", type date},
+				             {"received_into_dm_date", type date}
+				        }
+				    ),
+				
+				    #"Added Conditional Column" = Table.AddColumn(#"Changed Type", "PendingDays",
+				        each
+				            if [received_into_loc_date] is null then
+				                Date.From(DateTime.LocalNow()) - [received_into_dm_date]
+				
+				            else if [location_id] = "DM001AA1" then
+				                Date.From(DateTime.LocalNow()) - [received_into_dm_date]
+				
+				            else if [location_id] = "NG001MT1" then
+				                Date.From(DateTime.LocalNow()) - [received_into_ashton_date]
+				
+				            else
+				                Date.From(DateTime.LocalNow()) - [received_into_dm_date]
+				    ),
+				
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Conditional Column",
+				        {
+				            {"PendingDays", Int64.Type}
+				        }
+				    ),
+				
+				    #"Trimmed Text" = Table.TransformColumns(#"Changed Type1",
+				        {
+				            {"serial_number", Text.Trim, type text}
+				        }
+				    ),
+				
+				    #"Merged Queries" = Table.NestedJoin(
+				        #"Trimmed Text",
+				        {"serial_number"},
+				        NGOC_CS,
+				        {"Serial Number"},
+				        "NGOC_CS",
+				        JoinKind.LeftOuter
+				    ),
+				
+				    #"Expanded NGOC_CS" = Table.ExpandTableColumn(#"Merged Queries", "NGOC_CS", {"Issue from", "Damaged Description", "Reason", "Damaged by", "Whse deal with status", "CS replied", "CS Estimated Due Date", "Status"}, {"Issue from", "Damaged Description", "Reason", "Damaged by", "Whse deal with status", "CS replied", "CS Estimated Due Date", "Status"}),
+				
+				    #"Merged Queries2" = Table.NestedJoin( #"Expanded NGOC_CS" , {"serial_number"}, fct_ashton_e_s_oh, {"serial_number"}, "fct_ashton_e_s_oh", JoinKind.LeftOuter),
+				    #"Expanded fct_ashton_e_s_oh" = Table.ExpandTableColumn(#"Merged Queries2", "fct_ashton_e_s_oh", {"podMfrName", "podMfrCountry", "po_number2"}, {"podMfrName", "podMfrCountry", "po_number2"})
+				in
+				    #"Expanded fct_ashton_e_s_oh"
+				```
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

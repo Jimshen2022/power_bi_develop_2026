@@ -1,0 +1,41 @@
+table A_Measure
+	lineageTag: 5fab54fd-a338-4175-ab86-a50ec9cdde7b
+
+	measure SKUs = DISTINCTCOUNT('F_Ashton_Damaged'[item_number])
+		formatString: #,0
+		lineageTag: 009f7fcb-89e3-4327-8429-6adc175cf553
+
+	measure 'Q''ty' = COUNTROWS('F_Ashton_Damaged')
+		formatString: #,0
+		lineageTag: 8afdd882-bd14-4a53-9bc6-56f28cc14246
+
+	measure Damaged&DefectTransactionQty = SUM('F_Damaged_Transactions'[tran_qty])
+		formatString: #,0
+		lineageTag: f9f6a71b-e526-4393-b4b5-013a51e1d988
+
+	measure Damaged&DefectTransactionSKUs = DISTINCTCOUNT('F_Damaged_Transactions'[item_number])
+		formatString: #,0
+		lineageTag: e07a840f-5d19-41c4-ba02-df5ae9d2709e
+
+	measure 'Vendor Over Shipment SKUs' = COUNTROWS(FILTER('F_Ashton_Damaged','F_Ashton_Damaged'[Location_Meaning] = "Vendor Over Shipment"))
+		formatString: 0
+		lineageTag: 98f6bb95-34fc-4771-a0f7-5d871583fda6
+
+	measure 'DamagedQ''ty' = COUNTROWS(FILTER('F_Ashton_Damaged','F_Ashton_Damaged'[Location_Meaning] IN {"Checking Mattresses(Over 150 days)","Whse CaseGoods Damaged","Damaged&Defect Main location","Send back to Vendor for fixing","Checking Pieces(Lack repair materials)","Whse UPH Damaged"}))
+		formatString: 0
+		lineageTag: 4743070b-632d-4941-9079-2ca2fa5727be
+
+	partition A_Measure = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
