@@ -1,0 +1,92 @@
+relationship 6051093c-7eed-4600-9899-80232ca752f7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Calendar.Date
+	toColumn: LocalDateTable_774b84c4-d63a-4544-8cb0-0a7d32867b85.Date
+
+relationship 7705e3c2-29b8-417d-bc0a-c401b91b1a78
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Calendar.WeekSaturday
+	toColumn: LocalDateTable_47ef376a-a38c-4658-a403-a86344a75366.Date
+
+relationship 2c2b1c25-1c92-ca14-5e57-e2df08519450
+	fromColumn: Fct_Supervisors_Hours.Date
+	toColumn: Dim_Calendar.Date
+
+relationship f1fa95ec-9048-d7d1-2095-00839cf2a0ec
+	fromColumn: Fct_Supervisors_Hours.Shift
+	toColumn: Dim_Shift.Shift
+
+relationship 936ded4b-a4de-0e22-30fe-42fa20f2993e
+	fromColumn: Fct_Supervisors_Hours.Group
+	toColumn: Dim_Group.Group
+
+relationship 093f0a9a-4d5d-1be8-0645-9532a86ca6cd
+	fromColumn: Fact_Transactions.shift_date
+	toColumn: Dim_Calendar.Date
+
+relationship d3d882bf-9787-d737-6afa-6ff8ebc1a97b
+	fromColumn: Fact_Transactions.shift
+	toColumn: Dim_Shift.Shift
+
+relationship 3183b0ad-ea77-db54-7223-83fee7f4c15a
+	fromColumn: Fct_Supervisors_Hours.Team
+	toColumn: Dim_Team.Team
+
+relationship fe5977aa-7cbc-f87f-4c6a-8f91cd66d3bf
+	fromColumn: Fct_Supervisors_Hours.Position
+	toColumn: Dim_Position.Position
+
+relationship f4b0bed6-e6d9-9d0b-40eb-0c13e7315b24
+	fromColumn: Fct_Supervisors_Hours.Site
+	toColumn: Dim_Site.Site
+
+relationship c9d9022a-c860-c271-b1e7-42931eb1ea93
+	fromColumn: Fact_Transactions.site
+	toColumn: Dim_Site.Site
+
+relationship AutoDetected_1c642167-5652-42a1-a615-395b37ae22cd
+	fromColumn: Fct_Supervisors_Hours.Employee_ID
+	toColumn: Dim_Employee.Employee_ID
+
+relationship 1647e49d-568f-ff90-b3ff-af3d8272870e
+	fromColumn: Fact_Transactions.employee_id
+	toColumn: Dim_Employee.Employee_ID
+
+relationship 4a0fca46-527e-da38-6ecb-f9632fd0558e
+	fromColumn: Fct_Supervisors_Hours.PPH_Type
+	toColumn: Dim_PPH_Type.PPH_Type
+
+relationship 0b3d1344-967d-0d4d-f95b-e6a722e104bd
+	fromColumn: Fact_Transactions.pph_type
+	toColumn: Dim_PPH_Type.PPH_Type
+
+relationship 2471086f-56ee-ba21-2508-afe5e43a23be
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Dim_Metric.MetricName
+	toColumn: Fct_metrics_goal.MetricName
+
+relationship b5e98269-2e6e-0ef4-0756-cb2ac96750b3
+	fromColumn: Fct_All_Details_Rows_Summary.Date
+	toColumn: Dim_Calendar.Date
+
+relationship 565c7f4f-1c10-a204-619f-1c6339d39531
+	fromColumn: Fct_All_Details_Rows_Summary.Employee_ID
+	toColumn: Dim_Employee.Employee_ID
+
+relationship 8f3189f3-df90-405c-2f2e-181860150dc1
+	fromColumn: Fct_All_Details_Rows_Summary.Shift
+	toColumn: Dim_Shift.Shift
+
+relationship 2013a450-cc3c-973d-5c72-661fa322fd69
+	fromColumn: Fct_All_Details_Rows_Summary.MetricName
+	toColumn: Fct_metrics_goal.MetricName
+
+relationship df6c145b-229a-f6f0-0d85-9020ad79dae1
+	fromColumn: Fct_All_Details_Rows_Summary.Site
+	toColumn: Dim_Site.Site
+
+relationship 36a76230-bc97-1c64-2a74-a2f8ff709d8c
+	fromColumn: Fct_All_Details_Rows_Summary.Position
+	toColumn: Dim_Position.Position
+

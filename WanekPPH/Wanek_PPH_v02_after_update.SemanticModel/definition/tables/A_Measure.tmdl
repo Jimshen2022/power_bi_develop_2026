@@ -1,0 +1,4060 @@
+table A_Measure
+	lineageTag: d0044d11-9b58-4635-96b6-bd4ff116557e
+
+	measure '1_WN3_All in PPH Shipping Pieces' =
+			
+			CALCULATE(
+			    'A_Measure'[0_Trx_Pieces],
+			    Fct_Supervisors_Hours[Position] IN {"WN3 - Shipping"}
+			)
+		formatString: #,0
+		displayFolder: 1_WN3 All in PPH Shipping
+		lineageTag: 9b040ba9-4f37-48fc-b7db-e4f688c9b1c0
+
+	measure 0_Trx_Pieces = SUM('Fct_Supervisors_Hours'[Transaction_Pieces])
+		displayFolder: 0_Commn
+		lineageTag: ad9f944a-557b-4ec9-9f22-6ef3d6eafe12
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '0_Individual PPH Pieces' = ```
+			
+			sum(Fct_Supervisors_Hours[Group_Date_Team_Avg_Transaction_Pieces])
+			
+			```
+		displayFolder: 0_Commn
+		lineageTag: e2107207-e86e-4182-adb3-02e903c7fd86
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '0_Individual PPH Hours' = ```
+			
+			SUM(Fct_Supervisors_Hours[Group_Date_Team_Avg_Hrs])
+			
+			```
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		displayFolder: 0_Commn
+		lineageTag: bcc1a5c8-96a7-486b-ad97-085a5fcc6203
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 0_Hours_individual = SUM('Fct_Supervisors_Hours'[Final_Hrs_Individual])
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		displayFolder: 0_Commn
+		lineageTag: 3f39ffc2-1c49-4636-a12c-c83e8e233c8b
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 0_Hours_all_in = SUM('Fct_Supervisors_Hours'[Final_Hrs_All_In])
+		displayFolder: 0_Commn
+		lineageTag: 53d2ef87-0e6e-47ac-9363-2bf17d63dd83
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '1_WN3 All in PPH Shipping Hours' =
+			
+			CALCULATE(
+			    SUM(Fct_Supervisors_Hours[Final_Hrs_All_In]),
+			     Fct_Supervisors_Hours[Position] IN {"WN3 - Shipping"}
+			)
+		displayFolder: 1_WN3 All in PPH Shipping
+		lineageTag: 4169ede3-7f56-4b37-9f90-6ed3f4cf5087
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '1_WN3 All in PPH Shipping' =
+			
+			DIVIDE(
+			    [1_WN3_All in PPH Shipping Pieces],
+			    [1_WN3 All in PPH Shipping Hours]
+			)
+		displayFolder: 1_WN3 All in PPH Shipping
+		lineageTag: 973095b9-aaf0-4f4b-a381-53c3f2d9f9e8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '1_WN3 All in PPH Shipping (Daily, NoDims)' = ```
+			
+			//-- ① 每日 PPH（去掉 Group / Shift / Employee 等维度，只按日期算）
+			CALCULATE(
+			    [1_WN3 All in PPH Shipping],      -- 你原来的度量：Pieces ÷ Hours
+			    REMOVEFILTERS('Dim_Group'),
+			    REMOVEFILTERS('Dim_Team'),
+			    REMOVEFILTERS('Dim_Shift'),
+			    REMOVEFILTERS('Dim_Employee'),
+			    REMOVEFILTERS('Dim_PPH_Type')
+			)
+			
+			```
+		displayFolder: 1_WN3 All in PPH Shipping
+		lineageTag: 62829540-01cf-4f1a-b15c-39556af1cae7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '1_WN3 All in PPH Shipping CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] ) -- 获取切片器选中的日期集合
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [1_WN3 All in PPH Shipping (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 1_WN3 All in PPH Shipping
+		lineageTag: 8495d0b5-f222-4de2-9678-625195ac8f55
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '1_WN3 All in PPH Shipping Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P ( -- 使用总体标准差
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [1_WN3 All in PPH Shipping (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 1_WN3 All in PPH Shipping
+		lineageTag: d4df3d84-27f8-4621-a2b8-1eb2a27384b0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '1_WN3 All in PPH Shipping UCL (Dynamic)' =
+			
+			VAR _CL = [1_WN3 All in PPH Shipping CL (Dynamic)]
+			VAR _Sigma = [1_WN3 All in PPH Shipping Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: 1_WN3 All in PPH Shipping
+		lineageTag: 407864c2-ee2d-4bf8-a906-dd82429f2493
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '1_WN3 All in PPH Shipping LCL (Dynamic)' =
+			
+			VAR _CL = [1_WN3 All in PPH Shipping CL (Dynamic)]
+			VAR _Sigma = [1_WN3 All in PPH Shipping Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma ) -- 不要小于 0
+			    )
+		displayFolder: 1_WN3 All in PPH Shipping
+		lineageTag: 6065ae1d-074e-43bf-b421-5c8a940837b8
+
+	measure '1_WN3 All in PPH Shipping Target Line' = 13
+		formatString: 0
+		displayFolder: 1_WN3 All in PPH Shipping
+		lineageTag: 971b366c-6315-4648-9735-e2ec8f68ca5a
+
+
+	measure '2_WN3 All in PPH Line Clearing CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [2_WN3 All in PPH Line Clearing (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 2_WN3 All in PPH Line Clearing
+		lineageTag: 96f92b5c-07fe-4523-9af4-ede20e9dfbde
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '2_WN3 All in PPH Line Clearing Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [2_WN3 All in PPH Line Clearing (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 2_WN3 All in PPH Line Clearing
+		lineageTag: 6fd11da8-47b0-46e5-be77-eb2a18c0fd5d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '2_WN3 All in PPH Line Clearing UCL (Dynamic)' =
+			
+			VAR _CL = [2_WN3 All in PPH Line Clearing CL (Dynamic)]
+			VAR _Sigma = [2_WN3 All in PPH Line Clearing Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: 2_WN3 All in PPH Line Clearing
+		lineageTag: 9a1bb3e5-24d7-4492-b09d-44105467b6dd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '2_WN3 All in PPH Line Clearing LCL (Dynamic)' =
+			
+			VAR _CL = [2_WN3 All in PPH Line Clearing CL (Dynamic)]
+			VAR _Sigma = [2_WN3 All in PPH Line Clearing Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: 2_WN3 All in PPH Line Clearing
+		lineageTag: 0c80a291-d704-4b9b-a67b-4ffa2235ebf9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3_WN2 All in PPH Shipping CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [3_WN2 All in PPH Shipping (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 3_WN2 All in PPH Shipping
+		lineageTag: eedfac4c-e03f-4ef9-84af-60e8f4dd4d4c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3_WN2 All in PPH Shipping Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [3_WN2 All in PPH Shipping (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 3_WN2 All in PPH Shipping
+		lineageTag: 2b20312d-b7be-4ced-8dfb-fac8b12d8313
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3_WN2 All in PPH Shipping UCL (Dynamic)' =
+			
+			VAR _CL = [3_WN2 All in PPH Shipping CL (Dynamic)]
+			VAR _Sigma = [3_WN2 All in PPH Shipping Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: 3_WN2 All in PPH Shipping
+		lineageTag: f033c7ab-2877-4f8f-8e18-c7bc5aaedf72
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3_WN2 All in PPH Shipping LCL (Dynamic)' =
+			
+			VAR _CL = [3_WN2 All in PPH Shipping CL (Dynamic)]
+			VAR _Sigma = [3_WN2 All in PPH Shipping Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: 3_WN2 All in PPH Shipping
+		lineageTag: 9f4cc8b7-d06e-4071-b070-41ded8c1bb4b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '4_WN2 All in PPH Line Clearing CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [4_WN2 All in PPH Line Clearing (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 4_WN2 All in PPH Line Clearing
+		lineageTag: e09e3b31-b154-4e2c-888a-3b8244bc4405
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '4_WN2 All in PPH Line Clearing Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [4_WN2 All in PPH Line Clearing (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 4_WN2 All in PPH Line Clearing
+		lineageTag: 6858059f-b4cf-4262-aa2e-9a5bcd5102c5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '4_WN2 All in PPH Line Clearing UCL (Dynamic)' =
+			
+			VAR _CL = [4_WN2 All in PPH Line Clearing CL (Dynamic)]
+			VAR _Sigma = [4_WN2 All in PPH Line Clearing Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: 4_WN2 All in PPH Line Clearing
+		lineageTag: 5957accd-b953-46f1-9dbf-d6580f545d38
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '4_WN2 All in PPH Line Clearing LCL (Dynamic)' =
+			
+			VAR _CL = [4_WN2 All in PPH Line Clearing CL (Dynamic)]
+			VAR _Sigma = [4_WN2 All in PPH Line Clearing Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: 4_WN2 All in PPH Line Clearing
+		lineageTag: 2f5ea732-8b9d-4ec8-8acc-5def1bf55f89
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '5_DC All in PPH Unload + Load CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [5_DC All in PPH Unload + Load (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 5_DC All in PPH Unload + Load
+		lineageTag: 9037cdb4-1ce8-4dbe-a231-edadc492a0da
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '5_DC All in PPH Unload + Load Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [5_DC All in PPH Unload + Load (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 5_DC All in PPH Unload + Load
+		lineageTag: 2f40b0f0-cb97-4e2d-8d2c-a1d7b51e379c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '5_DC All in PPH Unload + Load UCL (Dynamic)' =
+			
+			VAR _CL = [5_DC All in PPH Unload + Load CL (Dynamic)]
+			VAR _Sigma = [5_DC All in PPH Unload + Load Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: 5_DC All in PPH Unload + Load
+		lineageTag: cd1386eb-499b-4236-9e81-02a90eaf6ee2
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '5_DC All in PPH Unload + Load LCL (Dynamic)' =
+			
+			VAR _CL = [5_DC All in PPH Unload + Load CL (Dynamic)]
+			VAR _Sigma = [5_DC All in PPH Unload + Load Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: 5_DC All in PPH Unload + Load
+		lineageTag: 9cc585ec-14da-49ec-b926-459e8aef4d23
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '6_DC All in PPH Load CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [6_DC All in PPH Load (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 6_DC All in PPH Load
+		lineageTag: d7485bc7-fe1d-4eb0-9a37-925bbf186cfc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '6_DC All in PPH Load Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [6_DC All in PPH Load (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: 6_DC All in PPH Load
+		lineageTag: 0a4b821e-7ad7-4611-bdbc-792cca03a859
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '6_DC All in PPH Load UCL (Dynamic)' =
+			
+			VAR _CL = [6_DC All in PPH Load CL (Dynamic)]
+			VAR _Sigma = [6_DC All in PPH Load Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: 6_DC All in PPH Load
+		lineageTag: 4cd5962b-36c7-40d2-ad33-cb0714059342
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '6_DC All in PPH Load LCL (Dynamic)' =
+			
+			VAR _CL = [6_DC All in PPH Load CL (Dynamic)]
+			VAR _Sigma = [6_DC All in PPH Load Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: 6_DC All in PPH Load
+		lineageTag: 97be74d0-ebba-43b1-8faf-e7634e6fbacd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I01_WN2 Individual PPH Shipping CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I01_WN2 Individual PPH Shipping (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I01_WN2 Individual PPH Shipping
+		lineageTag: 2034f36d-8b82-484a-9412-d503b3c1fa24
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I01_WN2 Individual PPH Shipping Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I01_WN2 Individual PPH Shipping (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I01_WN2 Individual PPH Shipping
+		lineageTag: ce788d06-a00b-4de5-97ac-17b8cca2f4b5
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I01_WN2 Individual PPH Shipping UCL (Dynamic)' =
+			
+			VAR _CL = [I01_WN2 Individual PPH Shipping CL (Dynamic)]
+			VAR _Sigma = [I01_WN2 Individual PPH Shipping Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: I01_WN2 Individual PPH Shipping
+		lineageTag: 4e5b9641-cfcb-4ef6-ab4c-db6de89610b8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I01_WN2 Individual PPH Shipping LCL (Dynamic)' =
+			
+			VAR _CL = [I01_WN2 Individual PPH Shipping CL (Dynamic)]
+			VAR _Sigma = [I01_WN2 Individual PPH Shipping Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: I01_WN2 Individual PPH Shipping
+		lineageTag: 6eebc11b-c6ea-401a-ae0e-e27b222a07f6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I02_WN2 Individual PPH Line Clearing CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I02_WN2 Individual PPH Line Clearing (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I02_WN2 Individual PPH Line Clearing
+		lineageTag: c0cf7ee0-dd35-48c0-81a0-921936c47e58
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I02_WN2 Individual PPH Line Clearing Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I02_WN2 Individual PPH Line Clearing (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I02_WN2 Individual PPH Line Clearing
+		lineageTag: 102277e5-d38f-4f58-99e1-0e52be1b2ff4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I02_WN2 Individual PPH Line Clearing UCL (Dynamic)' =
+			
+			VAR _CL = [I02_WN2 Individual PPH Line Clearing CL (Dynamic)]
+			VAR _Sigma = [I02_WN2 Individual PPH Line Clearing Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: I02_WN2 Individual PPH Line Clearing
+		lineageTag: 946014e9-1c54-4859-81f1-e3fba6d129c8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I02_WN2 Individual PPH Line Clearing LCL (Dynamic)' =
+			
+			VAR _CL = [I02_WN2 Individual PPH Line Clearing CL (Dynamic)]
+			VAR _Sigma = [I02_WN2 Individual PPH Line Clearing Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: I02_WN2 Individual PPH Line Clearing
+		lineageTag: dacdb1fc-8bb7-4b4e-ae4d-31079219dcda
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I03_WN3 Individual PPH Shipping CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I03_WN3 Individual PPH Shipping (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I03_WN3 Individual PPH Shipping
+		lineageTag: 3e424496-d615-430e-b3dc-80a1dfa87ff8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I03_WN3 Individual PPH Shipping Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I03_WN3 Individual PPH Shipping (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I03_WN3 Individual PPH Shipping
+		lineageTag: 5ef52324-4e77-4868-ae30-990ea13d5cc7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I03_WN3 Individual PPH Shipping UCL (Dynamic)' =
+			
+			VAR _CL = [I03_WN3 Individual PPH Shipping CL (Dynamic)]
+			VAR _Sigma = [I03_WN3 Individual PPH Shipping Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: I03_WN3 Individual PPH Shipping
+		lineageTag: ef62d8db-f949-4ec9-af84-db2f3c1babd6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I03_WN3 Individual PPH Shipping LCL (Dynamic)' =
+			
+			VAR _CL = [I03_WN3 Individual PPH Shipping CL (Dynamic)]
+			VAR _Sigma = [I03_WN3 Individual PPH Shipping Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: I03_WN3 Individual PPH Shipping
+		lineageTag: ee852956-55b5-4cd7-b8f2-e90212b3f339
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I04_WN3 Individual PPH Line Clearing CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I04_WN3 Individual PPH Line Clearing (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I04_WN3 Individual PPH Line Clearing
+		lineageTag: 77d3e95c-4c8c-4444-bdc5-df77e83ba330
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I04_WN3 Individual PPH Line Clearing Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I04_WN3 Individual PPH Line Clearing (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I04_WN3 Individual PPH Line Clearing
+		lineageTag: d59dae08-3265-4cd8-86f0-25c313de0daf
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I04_WN3 Individual PPH Line Clearing UCL (Dynamic)' =
+			
+			VAR _CL = [I04_WN3 Individual PPH Line Clearing CL (Dynamic)]
+			VAR _Sigma = [I04_WN3 Individual PPH Line Clearing Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: I04_WN3 Individual PPH Line Clearing
+		lineageTag: 04dfd5d4-7c03-4eaa-8662-951cec221313
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I04_WN3 Individual PPH Line Clearing LCL (Dynamic)' =
+			
+			VAR _CL = [I04_WN3 Individual PPH Line Clearing CL (Dynamic)]
+			VAR _Sigma = [I04_WN3 Individual PPH Line Clearing Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: I04_WN3 Individual PPH Line Clearing
+		lineageTag: 705245ca-3ed9-4b2c-aa46-9a9e62de2496
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I05_WN3 Individual PPH Runner CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I05_WN3 Individual PPH Runner (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I05_WN3 Individual PPH Runner
+		lineageTag: b2e2ded2-acdd-40ad-89fe-b13591e6f972
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I05_WN3 Individual PPH Runner Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I05_WN3 Individual PPH Runner (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I05_WN3 Individual PPH Runner
+		lineageTag: 74dadcb6-3812-42ce-9f4e-03bcd3558708
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I05_WN3 Individual PPH Runner UCL (Dynamic)' =
+			
+			VAR _CL = [I05_WN3 Individual PPH Runner CL (Dynamic)]
+			VAR _Sigma = [I05_WN3 Individual PPH Runner Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: I05_WN3 Individual PPH Runner
+		lineageTag: 9fc8b6ea-acd9-4194-8d33-1e171a9427d7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I05_WN3 Individual PPH Runner LCL (Dynamic)' =
+			
+			VAR _CL = [I05_WN3 Individual PPH Runner CL (Dynamic)]
+			VAR _Sigma = [I05_WN3 Individual PPH Runner Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: I05_WN3 Individual PPH Runner
+		lineageTag: 7a21dc37-764f-4138-bb57-86074aa4b0fe
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I06_DC Individual PPH Unload + Load CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I06_DC Individual PPH Unload + Load (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I06_DC Individual PPH Unload + Load
+		lineageTag: 0cba6c8d-7be4-405d-b90a-dc840d8fc8db
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I06_DC Individual PPH Unload + Load Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I06_DC Individual PPH Unload + Load (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I06_DC Individual PPH Unload + Load
+		lineageTag: 53683852-3587-48bd-8dd0-2c9c1e7205de
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I06_DC Individual PPH Unload + Load UCL (Dynamic)' =
+			
+			VAR _CL = [I06_DC Individual PPH Unload + Load CL (Dynamic)]
+			VAR _Sigma = [I06_DC Individual PPH Unload + Load Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: I06_DC Individual PPH Unload + Load
+		lineageTag: 9a3e5079-5538-4d46-a282-897a1b3fdc0f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I06_DC Individual PPH Unload + Load LCL (Dynamic)' =
+			
+			VAR _CL = [I06_DC Individual PPH Unload + Load CL (Dynamic)]
+			VAR _Sigma = [I06_DC Individual PPH Unload + Load Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: I06_DC Individual PPH Unload + Load
+		lineageTag: 2c84d5ec-dc15-4780-adb2-7a8037b08694
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I07_DC Individual PPH Putaway CL (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        AVERAGEX (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I07_DC Individual PPH Putaway (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I07_DC Individual PPH Putaway
+		lineageTag: e1e09ce3-b617-4946-a765-e4cb690dbaee
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I07_DC Individual PPH Putaway Sigma (Dynamic)' =
+			
+			VAR DateWindow = ALLSELECTED ( 'Dim_Calendar'[Date] )
+			RETURN
+			    CALCULATE (
+			        STDEVX.P (
+			            VALUES ( 'Dim_Calendar'[Date] ),
+			            [I07_DC Individual PPH Putaway (Daily, NoDims)]
+			        ),
+			        DateWindow
+			    )
+		displayFolder: I07_DC Individual PPH Putaway
+		lineageTag: 2cf7a797-d88a-4d4c-ae9f-11bc74909942
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I07_DC Individual PPH Putaway UCL (Dynamic)' =
+			
+			VAR _CL = [I07_DC Individual PPH Putaway CL (Dynamic)]
+			VAR _Sigma = [I07_DC Individual PPH Putaway Sigma (Dynamic)]
+			RETURN
+			    IF ( NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ), _CL + 3 * _Sigma )
+		displayFolder: I07_DC Individual PPH Putaway
+		lineageTag: d6764815-dbe8-42ec-9cdb-eec546b1e63c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I07_DC Individual PPH Putaway LCL (Dynamic)' =
+			
+			VAR _CL = [I07_DC Individual PPH Putaway CL (Dynamic)]
+			VAR _Sigma = [I07_DC Individual PPH Putaway Sigma (Dynamic)]
+			RETURN
+			    IF (
+			        NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			        MAX ( 0, _CL - 3 * _Sigma )
+			    )
+		displayFolder: I07_DC Individual PPH Putaway
+		lineageTag: 8282f973-1caa-4927-b1bb-d1b57484a23c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'LastWeek Sun-Sat Flag' = ```
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )          -- 今天（按越南时区）
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1  -- 本周周日
+			VAR _start   = _currSun - 7                   -- 上周周日
+			VAR _end     = _start + 6                     -- 上周周六
+			VAR d        = SELECTEDVALUE('Dim_Calendar'[Date])
+			RETURN
+			IF (
+			    NOT ISBLANK(d) &&
+			    d >= _start &&
+			    d <= _end,
+			    1,
+			    0
+			)
+			
+			```
+		formatString: 0
+		displayFolder: 0_Commn
+		lineageTag: 650b97d6-192c-48d7-b12c-cc088ecd7ef5
+
+	measure '2_WN3_All in PPH Line Clearing Pieces' =
+			
+			CALCULATE(
+			    'A_Measure'[0_Trx_Pieces],
+			    Fct_Supervisors_Hours[Position] IN {"WN3 - Line Clearing"}
+			)
+		formatString: #,0
+		displayFolder: 2_WN3 All in PPH Line Clearing
+		lineageTag: d45dd7ed-9614-4223-9edf-2a40d7ce8f23
+
+	measure '2_WN3 All in PPH Line Clearing Hours' =
+			
+			CALCULATE(
+			    SUM(Fct_Supervisors_Hours[Final_Hrs_All_In]),
+			     Fct_Supervisors_Hours[Position] IN {"WN3 - Line Clearing"}
+			)
+		displayFolder: 2_WN3 All in PPH Line Clearing
+		lineageTag: db86b0ac-6519-4822-92c2-953f44fa71a0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '2_WN3 All in PPH Line Clearing' =
+			
+			DIVIDE(
+			    [2_WN3_All in PPH Line Clearing Pieces],
+			    [2_WN3 All in PPH Line Clearing Hours]
+			)
+		displayFolder: 2_WN3 All in PPH Line Clearing
+		lineageTag: c27c861b-d950-4e81-845f-d32a1e98bf95
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '2_WN3 All in PPH Line Clearing (Daily, NoDims)' = ```
+			
+			//-- ① 每日 PPH（去掉 Group / Shift / Employee 等维度，只按日期算）
+			CALCULATE(
+			    [2_WN3 All in PPH Line Clearing],      -- 你原来的度量：Pieces ÷ Hours
+			    REMOVEFILTERS('Dim_Group'),
+			    REMOVEFILTERS('Dim_Team'),
+			    REMOVEFILTERS('Dim_Shift'),
+			    REMOVEFILTERS('Dim_Employee'),
+			    REMOVEFILTERS('Dim_PPH_Type')
+			)
+			
+			```
+		displayFolder: 2_WN3 All in PPH Line Clearing
+		lineageTag: beab9458-9203-439a-b7df-b713178dc42a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '2_WN3 All in PPH Line Clearing Sigma (LastWeek)' =
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1
+			VAR _start   = _currSun - 7
+			VAR _end     = _start + 6
+			
+			VAR DateWindow =
+			    FILTER (
+			        ALL ( 'Dim_Calendar' ),
+			        'Dim_Calendar'[Date] >= _start &&
+			        'Dim_Calendar'[Date] <= _end
+			    )
+			RETURN
+			CALCULATE (
+			    STDEVX.S (
+			        VALUES ( 'Dim_Calendar'[Date] ),
+			        [2_WN3 All in PPH Line Clearing (Daily, NoDims)]
+			    ),
+			    DateWindow
+			)
+		displayFolder: 2_WN3 All in PPH Line Clearing
+		lineageTag: 6ef8f51e-5fa8-46bd-86e1-30f3d769f725
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '2_WN3 All in PPH Line Clearing CL (LastWeek)' =
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1
+			VAR _start   = _currSun - 7
+			VAR _end     = _start + 6
+			
+			VAR DateWindow =
+			    FILTER (
+			        ALL ( 'Dim_Calendar' ),
+			        'Dim_Calendar'[Date] >= _start &&
+			        'Dim_Calendar'[Date] <= _end
+			    )
+			RETURN
+			CALCULATE (
+			    AVERAGEX (
+			        VALUES ( 'Dim_Calendar'[Date] ),
+			        [2_WN3 All in PPH Line Clearing (Daily, NoDims)]
+			    ),
+			    DateWindow
+			)
+		displayFolder: 2_WN3 All in PPH Line Clearing
+		lineageTag: 7e8b079b-a353-4836-99de-c7de51522ab8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '2_WN3 All in PPH Line Clearing LCL (LastWeek)' =
+			
+			VAR _CL    = [2_WN3 All in PPH Line Clearing CL (LastWeek)]
+			VAR _Sigma = [2_WN3 All in PPH Line Clearing Sigma (LastWeek)]
+			RETURN
+			IF (
+			    NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			    MAX ( 0, _CL - 3 * _Sigma )    -- 不要小于 0
+			)
+		displayFolder: 2_WN3 All in PPH Line Clearing
+		lineageTag: 7567581a-58f6-4522-8f8c-fc69d75cf729
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '2_WN3 All in PPH Line Clearing UCL (LastWeek)' =
+			
+			VAR _CL    = [2_WN3 All in PPH Line Clearing CL (LastWeek)]
+			VAR _Sigma = [2_WN3 All in PPH Line Clearing Sigma (LastWeek)]
+			RETURN
+			IF (
+			    NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			    _CL + 3 * _Sigma
+			)
+		displayFolder: 2_WN3 All in PPH Line Clearing
+		lineageTag: 80805877-0a75-4ced-8662-25d61f90c028
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '2_WN3 All in PPH Line Clearing Target Line' = 25
+		formatString: 0
+		displayFolder: 2_WN3 All in PPH Line Clearing
+		lineageTag: d6ad3af7-28ff-455e-9505-c22c4a63c306
+
+	measure '3_WN2_All in PPH Shipping Pieces' =
+			
+			CALCULATE(
+			    'A_Measure'[0_Trx_Pieces],
+			    Fct_Supervisors_Hours[Position] IN {"WN2 - Shipping"}
+			)
+		formatString: #,0
+		displayFolder: 3_WN2 All in PPH Shipping
+		lineageTag: 809e3711-d922-4cef-a12a-b56f67d2054f
+
+	measure '3_WN2 All in PPH Shipping Hours' =
+			
+			CALCULATE(
+			    SUM(Fct_Supervisors_Hours[Final_Hrs_All_In]),
+			     Fct_Supervisors_Hours[Position] IN {"WN2 - Shipping"}
+			)
+		displayFolder: 3_WN2 All in PPH Shipping
+		lineageTag: a5121776-6e43-4000-98fd-bf749fab9838
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3_WN2 All in PPH Shipping' =
+			
+			DIVIDE(
+			    [3_WN2_All in PPH Shipping Pieces],
+			    [3_WN2 All in PPH Shipping Hours]
+			)
+		displayFolder: 3_WN2 All in PPH Shipping
+		lineageTag: d167eaa5-5a1d-4648-b018-6107249dae3f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3_WN2 All in PPH Shipping (Daily, NoDims)' = ```
+			
+			//-- ① 每日 PPH（去掉 Group / Shift / Employee 等维度，只按日期算）
+			CALCULATE(
+			    [3_WN2 All in PPH Shipping],      -- 你原来的度量：Pieces ÷ Hours
+			    REMOVEFILTERS('Dim_Group'),
+			    REMOVEFILTERS('Dim_Team'),
+			    REMOVEFILTERS('Dim_Shift'),
+			    REMOVEFILTERS('Dim_Employee'),
+			    REMOVEFILTERS('Dim_PPH_Type')
+			)
+			
+			```
+		displayFolder: 3_WN2 All in PPH Shipping
+		lineageTag: 9ef2fd10-55e4-48b2-90af-2bcfbabe1c61
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3_WN2 All in PPH Shipping CL (LastWeek)' =
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1
+			VAR _start   = _currSun - 7
+			VAR _end     = _start + 6
+			
+			VAR DateWindow =
+			    FILTER (
+			        ALL ( 'Dim_Calendar' ),
+			        'Dim_Calendar'[Date] >= _start &&
+			        'Dim_Calendar'[Date] <= _end
+			    )
+			RETURN
+			CALCULATE (
+			    AVERAGEX (
+			        VALUES ( 'Dim_Calendar'[Date] ),
+			        [3_WN2 All in PPH Shipping (Daily, NoDims)]
+			    ),
+			    DateWindow
+			)
+		displayFolder: 3_WN2 All in PPH Shipping
+		lineageTag: f394273f-f391-4a85-a938-f4fe43cc20c7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3_WN2 All in PPH Shipping LCL (LastWeek)' =
+			
+			VAR _CL    = [3_WN2 All in PPH Shipping CL (LastWeek)]
+			VAR _Sigma = [3_WN2 All in PPH Shipping Sigma (LastWeek)]
+			RETURN
+			IF (
+			    NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			    MAX ( 0, _CL - 3 * _Sigma )    -- 不要小于 0
+			)
+		displayFolder: 3_WN2 All in PPH Shipping
+		lineageTag: e923313a-e110-4d62-8606-a8b2e2f1b7d8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3_WN2 All in PPH Shipping Sigma (LastWeek)' =
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1
+			VAR _start   = _currSun - 7
+			VAR _end     = _start + 6
+			
+			VAR DateWindow =
+			    FILTER (
+			        ALL ( 'Dim_Calendar' ),
+			        'Dim_Calendar'[Date] >= _start &&
+			        'Dim_Calendar'[Date] <= _end
+			    )
+			RETURN
+			CALCULATE (
+			    STDEVX.S (
+			        VALUES ( 'Dim_Calendar'[Date] ),
+			        [3_WN2 All in PPH Shipping (Daily, NoDims)]
+			    ),
+			    DateWindow
+			)
+		displayFolder: 3_WN2 All in PPH Shipping
+		lineageTag: ebf1b0a1-9778-41a3-8832-d69843a97986
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '3_WN2 All in PPH Shipping UCL (LastWeek)' =
+			
+			VAR _CL    = [3_WN2 All in PPH Shipping CL (LastWeek)]
+			VAR _Sigma = [3_WN2 All in PPH Shipping Sigma (LastWeek)]
+			RETURN
+			IF (
+			    NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			    _CL + 3 * _Sigma
+			)
+		displayFolder: 3_WN2 All in PPH Shipping
+		lineageTag: 3beebbf2-9cea-4281-bec3-bba1c4973945
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '4_WN2_All in PPH Line Clearing Pieces' =
+			
+			CALCULATE(
+			    'A_Measure'[0_Trx_Pieces],
+			    Fct_Supervisors_Hours[Position] IN {"WN2 - Line Clearing"}
+			)
+		formatString: #,0
+		displayFolder: 4_WN2 All in PPH Line Clearing
+		lineageTag: b45ff035-30d6-4b26-bfd0-35e9249c78be
+
+	measure '4_WN2 All in PPH Line Clearing Hours' =
+			
+			CALCULATE(
+			    SUM(Fct_Supervisors_Hours[Final_Hrs_All_In]),
+			     Fct_Supervisors_Hours[Position] IN {"WN2 - Line Clearing"}
+			)
+		displayFolder: 4_WN2 All in PPH Line Clearing
+		lineageTag: 3306ea4c-08c4-472e-ac9b-863acef5af6c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '4_WN2 All in PPH Line Clearing' =
+			
+			DIVIDE(
+			    [4_WN2_All in PPH Line Clearing Pieces],
+			    [4_WN2 All in PPH Line Clearing Hours]
+			)
+		displayFolder: 4_WN2 All in PPH Line Clearing
+		lineageTag: d38cffc1-a626-4f62-80a8-87bd40cd711d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '4_WN2 All in PPH Line Clearing (Daily, NoDims)' = ```
+			
+			//-- ① 每日 PPH（去掉 Group / Shift / Employee 等维度，只按日期算）
+			CALCULATE(
+			    [4_WN2 All in PPH Line Clearing],      -- 你原来的度量：Pieces ÷ Hours
+			    REMOVEFILTERS('Dim_Group'),
+			    REMOVEFILTERS('Dim_Team'),
+			    REMOVEFILTERS('Dim_Shift'),
+			    REMOVEFILTERS('Dim_Employee'),
+			    REMOVEFILTERS('Dim_PPH_Type')
+			)
+			
+			```
+		displayFolder: 4_WN2 All in PPH Line Clearing
+		lineageTag: dd442c4c-7498-4062-8d7e-68eb482e3364
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '4_WN2 All in PPH Line Clearing Sigma (LastWeek)' =
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1
+			VAR _start   = _currSun - 7
+			VAR _end     = _start + 6
+			
+			VAR DateWindow =
+			    FILTER (
+			        ALL ( 'Dim_Calendar' ),
+			        'Dim_Calendar'[Date] >= _start &&
+			        'Dim_Calendar'[Date] <= _end
+			    )
+			RETURN
+			CALCULATE (
+			    STDEVX.S (
+			        VALUES ( 'Dim_Calendar'[Date] ),
+			        [4_WN2 All in PPH Line Clearing (Daily, NoDims)]
+			    ),
+			    DateWindow
+			)
+		displayFolder: 4_WN2 All in PPH Line Clearing
+		lineageTag: 7bada0a3-a25d-466a-9740-dc16e4739bdb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '4_WN2 All in PPH Line Clearing CL (LastWeek)' =
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1
+			VAR _start   = _currSun - 7
+			VAR _end     = _start + 6
+			
+			VAR DateWindow =
+			    FILTER (
+			        ALL ( 'Dim_Calendar' ),
+			        'Dim_Calendar'[Date] >= _start &&
+			        'Dim_Calendar'[Date] <= _end
+			    )
+			RETURN
+			CALCULATE (
+			    AVERAGEX (
+			        VALUES ( 'Dim_Calendar'[Date] ),
+			        [4_WN2 All in PPH Line Clearing (Daily, NoDims)]
+			    ),
+			    DateWindow
+			)
+		displayFolder: 4_WN2 All in PPH Line Clearing
+		lineageTag: 8d231491-731b-419c-9196-ceabf72478ef
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '4_WN2 All in PPH Line Clearing LCL (LastWeek)' =
+			
+			VAR _CL    = [4_WN2 All in PPH Line Clearing CL (LastWeek)]
+			VAR _Sigma = [4_WN2 All in PPH Line Clearing Sigma (LastWeek)]
+			RETURN
+			IF (
+			    NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			    MAX ( 0, _CL - 3 * _Sigma )    -- 不要小于 0
+			)
+		displayFolder: 4_WN2 All in PPH Line Clearing
+		lineageTag: b52e1c5b-61b9-4ed1-81b5-b4cf4c60753f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '4_WN2 All in PPH Line Clearing UCL (LastWeek)' =
+			
+			VAR _CL    = [4_WN2 All in PPH Line Clearing CL (LastWeek)]
+			VAR _Sigma = [4_WN2 All in PPH Line Clearing Sigma (LastWeek)]
+			RETURN
+			IF (
+			    NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			    _CL + 3 * _Sigma
+			)
+		displayFolder: 4_WN2 All in PPH Line Clearing
+		lineageTag: 3b486483-cb18-444a-87f1-ae944d73eac7
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '5_DC_All in PPH Unload + Load Pieces' =
+			
+			CALCULATE(
+			    'A_Measure'[0_Trx_Pieces],
+			    Fct_Supervisors_Hours[Position] IN {"DC Unload + Load"}
+			)
+		formatString: #,0
+		displayFolder: 5_DC All in PPH Unload + Load
+		lineageTag: b9734309-d501-4d4f-853e-5d7c6f9dcf59
+
+	measure '5_DC All in PPH Unload + Load Hours' =
+			
+			CALCULATE(
+			    SUM(Fct_Supervisors_Hours[Final_Hrs_All_In]),
+			     Fct_Supervisors_Hours[Position] IN {"DC Unload + Load","DC Put away"}
+			)
+		displayFolder: 5_DC All in PPH Unload + Load
+		lineageTag: c16a0e04-3513-4bf5-a5eb-e8c46ff3550e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '5_DC All in PPH Unload + Load' =
+			
+			DIVIDE(
+			    [5_DC_All in PPH Unload + Load Pieces],
+			    [5_DC All in PPH Unload + Load Hours]
+			)
+		displayFolder: 5_DC All in PPH Unload + Load
+		lineageTag: db5d88b8-84e9-4885-8a03-011c742d971a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '5_DC All in PPH Unload + Load (Daily, NoDims)' = ```
+			
+			//-- ① 每日 PPH（去掉 Group / Shift / Employee 等维度，只按日期算）
+			CALCULATE(
+			    [5_DC All in PPH Unload + Load],      -- 你原来的度量：Pieces ÷ Hours
+			    REMOVEFILTERS('Dim_Group'),
+			    REMOVEFILTERS('Dim_Team'),
+			    REMOVEFILTERS('Dim_Shift'),
+			    REMOVEFILTERS('Dim_Employee'),
+			    REMOVEFILTERS('Dim_PPH_Type')
+			)
+			
+			```
+		displayFolder: 5_DC All in PPH Unload + Load
+		lineageTag: a8765abc-1912-4b1a-97e3-0c480413d91c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '5_DC All in PPH Unload + Load CL (LastWeek)' =
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1
+			VAR _start   = _currSun - 7
+			VAR _end     = _start + 6
+			
+			VAR DateWindow =
+			    FILTER (
+			        ALL ( 'Dim_Calendar' ),
+			        'Dim_Calendar'[Date] >= _start &&
+			        'Dim_Calendar'[Date] <= _end
+			    )
+			RETURN
+			CALCULATE (
+			    AVERAGEX (
+			        VALUES ( 'Dim_Calendar'[Date] ),
+			        [5_DC All in PPH Unload + Load (Daily, NoDims)]
+			    ),
+			    DateWindow
+			)
+		displayFolder: 5_DC All in PPH Unload + Load
+		lineageTag: 53e4ccdd-c50f-4fee-b45d-5d5aec178509
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '5_DC All in PPH Unload + Load Sigma (LastWeek)' =
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1
+			VAR _start   = _currSun - 7
+			VAR _end     = _start + 6
+			
+			VAR DateWindow =
+			    FILTER (
+			        ALL ( 'Dim_Calendar' ),
+			        'Dim_Calendar'[Date] >= _start &&
+			        'Dim_Calendar'[Date] <= _end
+			    )
+			RETURN
+			CALCULATE (
+			    STDEVX.S (
+			        VALUES ( 'Dim_Calendar'[Date] ),
+			        [5_DC All in PPH Unload + Load (Daily, NoDims)]
+			    ),
+			    DateWindow
+			)
+		displayFolder: 5_DC All in PPH Unload + Load
+		lineageTag: ee2b956e-1bca-4fad-841f-e449191bebcd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '5_DC All in PPH Unload + Load LCL (LastWeek)' =
+			
+			VAR _CL    = [5_DC All in PPH Unload + Load CL (LastWeek)]
+			VAR _Sigma = [5_DC All in PPH Unload + Load Sigma (LastWeek)]
+			RETURN
+			IF (
+			    NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			    MAX ( 0, _CL - 3 * _Sigma )    -- 不要小于 0
+			)
+		displayFolder: 5_DC All in PPH Unload + Load
+		lineageTag: 9f6e5632-8385-4ba1-8fdb-a18791ee014e
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '5_DC All in PPH Unload + Load UCL (LastWeek)' =
+			
+			VAR _CL    = [5_DC All in PPH Unload + Load CL (LastWeek)]
+			VAR _Sigma = [5_DC All in PPH Unload + Load Sigma (LastWeek)]
+			RETURN
+			IF (
+			    NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			    _CL + 3 * _Sigma
+			)
+		displayFolder: 5_DC All in PPH Unload + Load
+		lineageTag: 42b2c8e7-2048-4d28-a5da-323f13bfbce6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '6_DC_All in PPH Load Pieces' =
+			
+			CALCULATE(
+			    'A_Measure'[0_Trx_Pieces],
+			    Fct_Supervisors_Hours[Position] IN {"DC Load"}
+			)
+		formatString: #,0
+		displayFolder: 6_DC All in PPH Load
+		lineageTag: a06cedfc-52f3-498b-8946-5647342dfdb7
+
+	measure '6_DC All in PPH Load Hours' =
+			
+			CALCULATE(
+			    SUM(Fct_Supervisors_Hours[Final_Hrs_All_In]),
+			     Fct_Supervisors_Hours[Position] IN {"DC Load","DC Put away"}
+			)
+		displayFolder: 6_DC All in PPH Load
+		lineageTag: 8328dd8d-44d7-4a43-a39a-3fb188b2581d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '6_DC All in PPH Load' =
+			
+			DIVIDE(
+			    [6_DC_All in PPH Load Pieces],
+			    [6_DC All in PPH Load Hours]
+			)
+		formatString: #,0.0
+		displayFolder: 6_DC All in PPH Load
+		lineageTag: 20477432-a1e8-419a-bdd0-22ccb6c90f92
+
+	measure '6_DC All in PPH Load (Daily, NoDims)' =
+			
+			//-- ① 每日 PPH（去掉 Group / Shift / Employee 等维度，只按日期算）
+			CALCULATE(
+			    [6_DC All in PPH Load],      -- 你原来的度量：Pieces ÷ Hours
+			    REMOVEFILTERS('Dim_Group'),
+			    REMOVEFILTERS('Dim_Team'),
+			    REMOVEFILTERS('Dim_Shift'),
+			    REMOVEFILTERS('Dim_Employee'),
+			    REMOVEFILTERS('Dim_PPH_Type')
+			)
+		displayFolder: 6_DC All in PPH Load
+		lineageTag: 2eb02c00-27ed-4146-bf32-0c916db3e04f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '6_DC All in PPH Load CL (LastWeek)' =
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1
+			VAR _start   = _currSun - 7
+			VAR _end     = _start + 6
+			
+			VAR DateWindow =
+			    FILTER (
+			        ALL ( 'Dim_Calendar' ),
+			        'Dim_Calendar'[Date] >= _start &&
+			        'Dim_Calendar'[Date] <= _end
+			    )
+			RETURN
+			CALCULATE (
+			    AVERAGEX (
+			        VALUES ( 'Dim_Calendar'[Date] ),
+			        [6_DC All in PPH Load (Daily, NoDims)]
+			    ),
+			    DateWindow
+			)
+		displayFolder: 6_DC All in PPH Load
+		lineageTag: 9203e212-f002-4c5a-a246-18c8ac723ee4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '6_DC All in PPH Load Sigma (LastWeek)' =
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1
+			VAR _start   = _currSun - 7
+			VAR _end     = _start + 6
+			
+			VAR DateWindow =
+			    FILTER (
+			        ALL ( 'Dim_Calendar' ),
+			        'Dim_Calendar'[Date] >= _start &&
+			        'Dim_Calendar'[Date] <= _end
+			    )
+			RETURN
+			CALCULATE (
+			    STDEVX.S (
+			        VALUES ( 'Dim_Calendar'[Date] ),
+			        [6_DC All in PPH Load (Daily, NoDims)]
+			    ),
+			    DateWindow
+			)
+		displayFolder: 6_DC All in PPH Load
+		lineageTag: 26dffc26-6a36-45bb-a55c-0f03b257df04
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '6_DC All in PPH Load LCL (LastWeek)' =
+			
+			VAR _CL    = [6_DC All in PPH Load CL (LastWeek)]
+			VAR _Sigma = [6_DC All in PPH Load Sigma (LastWeek)]
+			RETURN
+			IF (
+			    NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			    MAX ( 0, _CL - 3 * _Sigma )    -- 不要小于 0
+			)
+		displayFolder: 6_DC All in PPH Load
+		lineageTag: afb44dba-5bcc-4f75-b713-5f6869a0acca
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '6_DC All in PPH Load UCL (LastWeek)' =
+			
+			VAR _CL    = [6_DC All in PPH Load CL (LastWeek)]
+			VAR _Sigma = [6_DC All in PPH Load Sigma (LastWeek)]
+			RETURN
+			IF (
+			    NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			    _CL + 3 * _Sigma
+			)
+		displayFolder: 6_DC All in PPH Load
+		lineageTag: 38e0bf1f-5a77-4ccd-a2a0-2410056316cf
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I01_WN2 Individual PPH Shipping Pieces' =
+			
+			CALCULATE(
+			    'A_Measure'[0_Individual PPH Pieces],
+			    Fct_Supervisors_Hours[Position] IN {"WN2 - Shipping"}
+			)
+		formatString: #,0
+		displayFolder: I01_WN2 Individual PPH Shipping
+		lineageTag: 77881c3e-48a6-48e3-8fbe-c7d58b94f18b
+
+	measure 'I01_WN2 Individual PPH Shipping Hours' =
+			
+			CALCULATE(
+			    'A_Measure'[0_Individual PPH Hours],
+			     Fct_Supervisors_Hours[Position] IN {"WN2 - Shipping"}
+			)
+		formatString: #,0.00
+		displayFolder: I01_WN2 Individual PPH Shipping
+		lineageTag: 669cad9f-3e7e-49c9-a02a-aa3d6366cee9
+
+	measure 'I01_WN2 Individual PPH Shipping' =
+			
+			AVERAGEX(
+			    VALUES('Fct_Supervisors_Hours'[Employee_ID]),
+			    CALCULATE(
+			        AVERAGE('Fct_Supervisors_Hours'[Group_Date_Team_PPH]),
+			        FILTER(
+			            'Fct_Supervisors_Hours',
+			             Fct_Supervisors_Hours[Position] IN {"WN2 - Shipping"}
+			        )
+			    )
+			)
+		formatString: #,0.0
+		displayFolder: I01_WN2 Individual PPH Shipping
+		lineageTag: bf99f0db-1450-450e-bc78-9f95d78e64e8
+
+	measure 'I01_WN2 Individual PPH Shipping (Daily, NoDims)' = ```
+			
+			//-- ① 每日 PPH（去掉 Group / Shift / Employee 等维度，只按日期算）
+			CALCULATE(
+			    [I01_WN2 Individual PPH Shipping],      -- 你原来的度量：Pieces ÷ Hours
+			    REMOVEFILTERS('Dim_Group'),
+			    REMOVEFILTERS('Dim_Team'),
+			    REMOVEFILTERS('Dim_Shift'),
+			    REMOVEFILTERS('Dim_Employee'),
+			    REMOVEFILTERS('Dim_PPH_Type')
+			)
+			
+			```
+		displayFolder: I01_WN2 Individual PPH Shipping
+		lineageTag: bfd2485d-0274-44d3-9577-8d08d6d3c1ca
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I01_WN2 Individual PPH Shipping CL (LastWeek)' =
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1
+			VAR _start   = _currSun - 7
+			VAR _end     = _start + 6
+			
+			VAR DateWindow =
+			    FILTER (
+			        ALL ( 'Dim_Calendar' ),
+			        'Dim_Calendar'[Date] >= _start &&
+			        'Dim_Calendar'[Date] <= _end
+			    )
+			RETURN
+			CALCULATE (
+			    AVERAGEX (
+			        VALUES ( 'Dim_Calendar'[Date] ),
+			        [I01_WN2 Individual PPH Shipping (Daily, NoDims)]
+			    ),
+			    DateWindow
+			)
+		displayFolder: I01_WN2 Individual PPH Shipping
+		lineageTag: 747cebfa-93c1-46b4-814b-e3c1fb884b6a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I01_WN2 Individual PPH Shipping Sigma (LastWeek)' =
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1
+			VAR _start   = _currSun - 7
+			VAR _end     = _start + 6
+			
+			VAR DateWindow =
+			    FILTER (
+			        ALL ( 'Dim_Calendar' ),
+			        'Dim_Calendar'[Date] >= _start &&
+			        'Dim_Calendar'[Date] <= _end
+			    )
+			RETURN
+			CALCULATE (
+			    STDEVX.S (
+			        VALUES ( 'Dim_Calendar'[Date] ),
+			        [I01_WN2 Individual PPH Shipping (Daily, NoDims)]
+			    ),
+			    DateWindow
+			)
+		displayFolder: I01_WN2 Individual PPH Shipping
+		lineageTag: f97eca97-7e99-43b3-96cd-650087521eaa
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I01_WN2 Individual PPH Shipping LCL (LastWeek)' =
+			
+			VAR _CL    = [I01_WN2 Individual PPH Shipping CL (LastWeek)]
+			VAR _Sigma = [I01_WN2 Individual PPH Shipping Sigma (LastWeek)]
+			RETURN
+			IF (
+			    NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			    MAX ( 0, _CL - 3 * _Sigma )    -- 不要小于 0
+			)
+		displayFolder: I01_WN2 Individual PPH Shipping
+		lineageTag: 9eacac77-f366-4712-8745-10516e14e1b6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I01_WN2 Individual PPH Shipping UCL (LastWeek)' =
+			
+			VAR _CL    = [I01_WN2 Individual PPH Shipping CL (LastWeek)]
+			VAR _Sigma = [I01_WN2 Individual PPH Shipping Sigma (LastWeek)]
+			RETURN
+			IF (
+			    NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			    _CL + 3 * _Sigma
+			)
+		displayFolder: I01_WN2 Individual PPH Shipping
+		lineageTag: 810e5025-0bd6-4f6d-95b1-0308a7619129
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I02_WN2 Individual PPH Line Clearing Pieces' =
+			
+			CALCULATE(
+			    'A_Measure'[0_Individual PPH Pieces],
+			    Fct_Supervisors_Hours[Position] IN {"WN2 - Line Clearing"}
+			)
+		formatString: #,0
+		displayFolder: I02_WN2 Individual PPH Line Clearing
+		lineageTag: d3935d78-9408-4697-981b-966951511269
+
+	measure 'I02_WN2 Individual PPH Line Clearing Hours' =
+			
+			CALCULATE(
+			    'A_Measure'[0_Individual PPH Hours],
+			     Fct_Supervisors_Hours[Position] IN {"WN2 - Line Clearing"}
+			)
+		formatString: #,0.00
+		displayFolder: I02_WN2 Individual PPH Line Clearing
+		lineageTag: 886f1d88-046c-42be-a92b-68ac3cb32c3f
+
+	measure 'I02_WN2 Individual PPH Line Clearing' =
+			
+			AVERAGEX(
+			    VALUES('Fct_Supervisors_Hours'[Employee_ID]),
+			    CALCULATE(
+			        AVERAGE('Fct_Supervisors_Hours'[Group_Date_Team_PPH]),
+			        FILTER(
+			            'Fct_Supervisors_Hours',
+			             Fct_Supervisors_Hours[Position] IN {"WN2 - Line Clearing"}
+			        )
+			    )
+			)
+		formatString: 0.0
+		displayFolder: I02_WN2 Individual PPH Line Clearing
+		lineageTag: d995eb3d-f201-4966-91be-dcae8483b064
+
+	measure 'I02_WN2 Individual PPH Line Clearing (Daily, NoDims)' =
+			
+			//-- ① 每日 PPH（去掉 Group / Shift / Employee 等维度，只按日期算）
+			CALCULATE(
+			    [I02_WN2 Individual PPH Line Clearing],      -- 你原来的度量：Pieces ÷ Hours
+			    REMOVEFILTERS('Dim_Group'),
+			    REMOVEFILTERS('Dim_Team'),
+			    REMOVEFILTERS('Dim_Shift'),
+			    REMOVEFILTERS('Dim_Employee'),
+			    REMOVEFILTERS('Dim_PPH_Type')
+			)
+		displayFolder: I02_WN2 Individual PPH Line Clearing
+		lineageTag: ab08f78d-9495-460b-975d-666c29b3d69c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I02_WN2 Individual PPH Line Clearing CL (LastWeek)' =
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1
+			VAR _start   = _currSun - 7
+			VAR _end     = _start + 6
+			
+			VAR DateWindow =
+			    FILTER (
+			        ALL ( 'Dim_Calendar' ),
+			        'Dim_Calendar'[Date] >= _start &&
+			        'Dim_Calendar'[Date] <= _end
+			    )
+			RETURN
+			CALCULATE (
+			    AVERAGEX (
+			        VALUES ( 'Dim_Calendar'[Date] ),
+			        [I02_WN2 Individual PPH Line Clearing (Daily, NoDims)]
+			    ),
+			    DateWindow
+			)
+		displayFolder: I02_WN2 Individual PPH Line Clearing
+		lineageTag: 4920e804-02ce-461b-a90a-ca5383092157
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I02_WN2 Individual PPH Line Clearing Sigma (LastWeek)' =
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1
+			VAR _start   = _currSun - 7
+			VAR _end     = _start + 6
+			
+			VAR DateWindow =
+			    FILTER (
+			        ALL ( 'Dim_Calendar' ),
+			        'Dim_Calendar'[Date] >= _start &&
+			        'Dim_Calendar'[Date] <= _end
+			    )
+			RETURN
+			CALCULATE (
+			    STDEVX.S (
+			        VALUES ( 'Dim_Calendar'[Date] ),
+			        [I02_WN2 Individual PPH Line Clearing (Daily, NoDims)]
+			    ),
+			    DateWindow
+			)
+		displayFolder: I02_WN2 Individual PPH Line Clearing
+		lineageTag: a63dda06-7145-43b1-b13e-253558698506
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I02_WN2 Individual PPH Line Clearing LCL (LastWeek)' =
+			
+			VAR _CL    = [I02_WN2 Individual PPH Line Clearing CL (LastWeek)]
+			VAR _Sigma = [I02_WN2 Individual PPH Line Clearing Sigma (LastWeek)]
+			RETURN
+			IF (
+			    NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			    MAX ( 0, _CL - 3 * _Sigma )    -- 不要小于 0
+			)
+		displayFolder: I02_WN2 Individual PPH Line Clearing
+		lineageTag: f7ebea0f-65a5-4582-88ec-c85bdff3898a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I02_WN2 Individual PPH Line Clearing UCL (LastWeek)' =
+			
+			VAR _CL    = [I02_WN2 Individual PPH Line Clearing CL (LastWeek)]
+			VAR _Sigma = [I02_WN2 Individual PPH Line Clearing Sigma (LastWeek)]
+			RETURN
+			IF (
+			    NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			    _CL + 3 * _Sigma
+			)
+		displayFolder: I02_WN2 Individual PPH Line Clearing
+		lineageTag: 42308101-dc7c-4643-872d-0d92cff36d1b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I03_WN3 Individual PPH Shipping Pieces' =
+			
+			CALCULATE(
+			    'A_Measure'[0_Individual PPH Pieces],
+			    Fct_Supervisors_Hours[Position] IN {"WN3 - Shipping"}
+			)
+		formatString: #,0
+		displayFolder: I03_WN3 Individual PPH Shipping
+		lineageTag: ba1296d4-0a08-467b-98a6-8516752c21d2
+
+	measure 'I03_WN3 Individual PPH Shipping Hours' =
+			
+			CALCULATE(
+			    'A_Measure'[0_Individual PPH Hours],
+			     Fct_Supervisors_Hours[Position] IN {"WN3 - Shipping"}
+			)
+		formatString: #,0.00
+		displayFolder: I03_WN3 Individual PPH Shipping
+		lineageTag: 4917720f-d5c8-4885-8db7-6d1a43f2089e
+
+	measure 'I03_WN3 Individual PPH Shipping' =
+			
+			AVERAGEX(
+			    VALUES('Fct_Supervisors_Hours'[Employee_ID]),
+			    CALCULATE(
+			        AVERAGE('Fct_Supervisors_Hours'[Group_Date_Team_PPH]),
+			        FILTER(
+			            'Fct_Supervisors_Hours',
+			             Fct_Supervisors_Hours[Position] IN {"WN3 - Shipping"}
+			        )
+			    )
+			)
+		formatString: #,0.0
+		displayFolder: I03_WN3 Individual PPH Shipping
+		lineageTag: 4a77856f-79c0-4913-b597-7d3767da93a5
+
+	measure 'I03_WN3 Individual PPH Shipping (Daily, NoDims)' =
+			
+			//-- ① 每日 PPH（去掉 Group / Shift / Employee 等维度，只按日期算）
+			CALCULATE(
+			    [I03_WN3 Individual PPH Shipping],      -- 你原来的度量：Pieces ÷ Hours
+			    REMOVEFILTERS('Dim_Group'),
+			    REMOVEFILTERS('Dim_Team'),
+			    REMOVEFILTERS('Dim_Shift'),
+			    REMOVEFILTERS('Dim_Employee'),
+			    REMOVEFILTERS('Dim_PPH_Type')
+			)
+		displayFolder: I03_WN3 Individual PPH Shipping
+		lineageTag: 787b47bd-073b-4ce8-91c2-16074ef16ad3
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I03_WN3 Individual PPH Shipping CL (LastWeek)' =
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1
+			VAR _start   = _currSun - 7
+			VAR _end     = _start + 6
+			
+			VAR DateWindow =
+			    FILTER (
+			        ALL ( 'Dim_Calendar' ),
+			        'Dim_Calendar'[Date] >= _start &&
+			        'Dim_Calendar'[Date] <= _end
+			    )
+			RETURN
+			CALCULATE (
+			    AVERAGEX (
+			        VALUES ( 'Dim_Calendar'[Date] ),
+			        [I03_WN3 Individual PPH Shipping (Daily, NoDims)]
+			    ),
+			    DateWindow
+			)
+		displayFolder: I03_WN3 Individual PPH Shipping
+		lineageTag: 2c3e88e4-0f32-4557-92d8-2f50ab3e0f0f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I03_WN3 Individual PPH Shipping Sigma (LastWeek)' =
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1
+			VAR _start   = _currSun - 7
+			VAR _end     = _start + 6
+			
+			VAR DateWindow =
+			    FILTER (
+			        ALL ( 'Dim_Calendar' ),
+			        'Dim_Calendar'[Date] >= _start &&
+			        'Dim_Calendar'[Date] <= _end
+			    )
+			RETURN
+			CALCULATE (
+			    STDEVX.S (
+			        VALUES ( 'Dim_Calendar'[Date] ),
+			        [I03_WN3 Individual PPH Shipping (Daily, NoDims)]
+			    ),
+			    DateWindow
+			)
+		displayFolder: I03_WN3 Individual PPH Shipping
+		lineageTag: 7842037b-0fd4-44fd-bba4-3d20cc5096c4
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I03_WN3 Individual PPH Shipping LCL (LastWeek)' =
+			
+			VAR _CL    = [I02_WN2 Individual PPH Line Clearing CL (LastWeek)]
+			VAR _Sigma = [I02_WN2 Individual PPH Line Clearing Sigma (LastWeek)]
+			RETURN
+			IF (
+			    NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			    MAX ( 0, _CL - 3 * _Sigma )    -- 不要小于 0
+			)
+		displayFolder: I03_WN3 Individual PPH Shipping
+		lineageTag: 971e9328-6697-4ac2-bf38-9caf849a442a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I03_WN3 Individual PPH Shipping UCL (LastWeek)' =
+			
+			VAR _CL    = [I03_WN3 Individual PPH Shipping CL (LastWeek)]
+			VAR _Sigma = [I03_WN3 Individual PPH Shipping Sigma (LastWeek)]
+			RETURN
+			IF (
+			    NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			    _CL + 3 * _Sigma
+			)
+		displayFolder: I03_WN3 Individual PPH Shipping
+		lineageTag: e1d242b9-3a53-4c0b-9ed1-b397acc30926
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I04_WN3 Individual PPH Line Clearing Pieces' =
+			
+			CALCULATE(
+			    'A_Measure'[0_Individual PPH Pieces],
+			    Fct_Supervisors_Hours[Position] IN {"WN3 - Line Clearing"}
+			)
+		formatString: #,0
+		displayFolder: I04_WN3 Individual PPH Line Clearing
+		lineageTag: 74455df9-f9aa-47be-bcdf-592bf678bc72
+
+	measure 'I04_WN3 Individual PPH Line Clearing Hours' =
+			
+			CALCULATE(
+			    'A_Measure'[0_Individual PPH Hours],
+			     Fct_Supervisors_Hours[Position] IN {"WN3 - Line Clearing"}
+			)
+		formatString: #,0.00
+		displayFolder: I04_WN3 Individual PPH Line Clearing
+		lineageTag: 96d638a9-821a-4d21-95ce-f6327db6b530
+
+	measure 'I04_WN3 Individual PPH Line Clearing' =
+			
+			AVERAGEX(
+			    VALUES('Fct_Supervisors_Hours'[Employee_ID]),
+			    CALCULATE(
+			        AVERAGE('Fct_Supervisors_Hours'[Group_Date_Team_PPH]),
+			        FILTER(
+			            'Fct_Supervisors_Hours',
+			             Fct_Supervisors_Hours[Position] IN {"WN3 - Line Clearing"}
+			        )
+			    )
+			)
+		formatString: #,0.0
+		displayFolder: I04_WN3 Individual PPH Line Clearing
+		lineageTag: b26b0079-99bc-4593-be53-f12820783eb7
+
+	measure 'I04_WN3 Individual PPH Line Clearing (Daily, NoDims)' =
+			
+			//-- ① 每日 PPH（去掉 Group / Shift / Employee 等维度，只按日期算）
+			CALCULATE(
+			    [I04_WN3 Individual PPH Line Clearing],      -- 你原来的度量：Pieces ÷ Hours
+			    REMOVEFILTERS('Dim_Group'),
+			    REMOVEFILTERS('Dim_Team'),
+			    REMOVEFILTERS('Dim_Shift'),
+			    REMOVEFILTERS('Dim_Employee'),
+			    REMOVEFILTERS('Dim_PPH_Type')
+			)
+		displayFolder: I04_WN3 Individual PPH Line Clearing
+		lineageTag: 7d8d47d4-8063-4c18-a2b1-31251d06d919
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I04_WN3 Individual PPH Line Clearing CL (LastWeek)' =
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1
+			VAR _start   = _currSun - 7
+			VAR _end     = _start + 6
+			
+			VAR DateWindow =
+			    FILTER (
+			        ALL ( 'Dim_Calendar' ),
+			        'Dim_Calendar'[Date] >= _start &&
+			        'Dim_Calendar'[Date] <= _end
+			    )
+			RETURN
+			CALCULATE (
+			    AVERAGEX (
+			        VALUES ( 'Dim_Calendar'[Date] ),
+			        [I04_WN3 Individual PPH Line Clearing (Daily, NoDims)]
+			    ),
+			    DateWindow
+			)
+		displayFolder: I04_WN3 Individual PPH Line Clearing
+		lineageTag: ce043c5a-a3d7-4e46-9091-7ffe20c0f84d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I04_WN3 Individual PPH Line Clearing Sigma (LastWeek)' =
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1
+			VAR _start   = _currSun - 7
+			VAR _end     = _start + 6
+			
+			VAR DateWindow =
+			    FILTER (
+			        ALL ( 'Dim_Calendar' ),
+			        'Dim_Calendar'[Date] >= _start &&
+			        'Dim_Calendar'[Date] <= _end
+			    )
+			RETURN
+			CALCULATE (
+			    STDEVX.S (
+			        VALUES ( 'Dim_Calendar'[Date] ),
+			        [I04_WN3 Individual PPH Line Clearing (Daily, NoDims)]
+			    ),
+			    DateWindow
+			)
+		displayFolder: I04_WN3 Individual PPH Line Clearing
+		lineageTag: 953bd186-268f-4dd5-8650-7183b0a78114
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I04_WN3 Individual PPH Line Clearing LCL (LastWeek)' =
+			
+			VAR _CL    = [I04_WN3 Individual PPH Line Clearing CL (LastWeek)]
+			VAR _Sigma = [I04_WN3 Individual PPH Line Clearing Sigma (LastWeek)]
+			RETURN
+			IF (
+			    NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			    MAX ( 0, _CL - 3 * _Sigma )    -- 不要小于 0
+			)
+		displayFolder: I04_WN3 Individual PPH Line Clearing
+		lineageTag: 76c9d017-3511-4ecf-b60a-e927bfa72d20
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I04_WN3 Individual PPH Line Clearing UCL (LastWeek)' =
+			
+			VAR _CL    = [I04_WN3 Individual PPH Line Clearing CL (LastWeek)]
+			VAR _Sigma = [I04_WN3 Individual PPH Line Clearing Sigma (LastWeek)]
+			RETURN
+			IF (
+			    NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			    _CL + 3 * _Sigma
+			)
+		displayFolder: I04_WN3 Individual PPH Line Clearing
+		lineageTag: a08ca45f-d28e-4edd-a32d-4308583c5cd0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I05_WN3 Individual PPH Runner Pieces' = ```
+			
+			CALCULATE(
+			    'A_Measure'[0_Individual PPH Runner Pieces],
+			    Fct_Supervisors_Hours[Position] IN {"WN3 - Line Clearing"} 
+			    && Fct_Supervisors_Hours[Team] IN {"T1"}   //Violet comfirmed Runner take B1 Ramp team qty and T2 always for B1 Ramp
+			)
+			```
+		formatString: #,0
+		displayFolder: I05_WN3 Individual PPH Runner
+		lineageTag: 2498f2d4-08ec-4450-aef0-03950970cdee
+
+	measure 'I05_WN3 Individual PPH Runner Hours' = ```
+			
+			CALCULATE(
+			    'A_Measure'[0_Individual PPH Runner Hours], 
+			            Fct_Supervisors_Hours[Position] IN {"WN3 - Line Clearing"} 
+			            && Fct_Supervisors_Hours[Team] IN {"T1"}
+			    )  //Violet comfirmed that T1 is always for Runner team in B1, and T2 is always for B1 Ramp team )))
+			```
+		formatString: #,0.00
+		displayFolder: I05_WN3 Individual PPH Runner
+		lineageTag: 223c259c-5b7f-446e-8153-c7171eaf3941
+
+	measure 'I05_WN3 Individual PPH Runner' =
+			
+			DIVIDE('A_Measure'[I05_WN3 Individual PPH Runner Pieces],'A_Measure'[I05_WN3 Individual PPH Runner Hours])
+		formatString: #,0.0
+		displayFolder: I05_WN3 Individual PPH Runner
+		lineageTag: 0257bab8-4bab-4a7a-9755-eec2d95b2c91
+
+	measure '0_Individual PPH Runner Pieces' = ```
+			
+			sum(Fct_Supervisors_Hours[Group_Date_Team_Avg_Runner_Transaction_Pieces])
+			
+			```
+		displayFolder: 0_Commn
+		lineageTag: 3763a00a-83a7-470b-9c13-1b5f4a036b26
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '0_Individual PPH Runner Hours' = ```
+			
+			sum(Fct_Supervisors_Hours[Group_Date_Team_Avg_Runner_Transaction_Hours])
+			
+			```
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		displayFolder: 0_Commn
+		lineageTag: a964e286-9317-4abb-9f48-937105e8e3da
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'I05_WN3 Individual PPH Runner (Daily, NoDims)' =
+			
+			//-- ① 每日 PPH（去掉 Group / Shift / Employee 等维度，只按日期算）
+			CALCULATE(
+			    [I05_WN3 Individual PPH Runner],      -- 你原来的度量：Pieces ÷ Hours
+			    REMOVEFILTERS('Dim_Group'),
+			    REMOVEFILTERS('Dim_Team'),
+			    REMOVEFILTERS('Dim_Shift'),
+			    REMOVEFILTERS('Dim_Employee'),
+			    REMOVEFILTERS('Dim_PPH_Type')
+			)
+		displayFolder: I05_WN3 Individual PPH Runner
+		lineageTag: 2e462cc9-aa94-479e-96bc-d62eae8869f0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I05_WN3 Individual PPH Runner CL (LastWeek)' =
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1
+			VAR _start   = _currSun - 7
+			VAR _end     = _start + 6
+			
+			VAR DateWindow =
+			    FILTER (
+			        ALL ( 'Dim_Calendar' ),
+			        'Dim_Calendar'[Date] >= _start &&
+			        'Dim_Calendar'[Date] <= _end
+			    )
+			RETURN
+			CALCULATE (
+			    AVERAGEX (
+			        VALUES ( 'Dim_Calendar'[Date] ),
+			        [I05_WN3 Individual PPH Runner (Daily, NoDims)]
+			    ),
+			    DateWindow
+			)
+		displayFolder: I05_WN3 Individual PPH Runner
+		lineageTag: 7d559e88-2619-4a31-b403-23ef9dc1257d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I05_WN3 Individual PPH Runner Sigma (LastWeek)' =
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1
+			VAR _start   = _currSun - 7
+			VAR _end     = _start + 6
+			
+			VAR DateWindow =
+			    FILTER (
+			        ALL ( 'Dim_Calendar' ),
+			        'Dim_Calendar'[Date] >= _start &&
+			        'Dim_Calendar'[Date] <= _end
+			    )
+			RETURN
+			CALCULATE (
+			    STDEVX.S (
+			        VALUES ( 'Dim_Calendar'[Date] ),
+			        [I05_WN3 Individual PPH Runner (Daily, NoDims)]
+			    ),
+			    DateWindow
+			)
+		displayFolder: I05_WN3 Individual PPH Runner
+		lineageTag: a229f8c0-0996-47e2-a227-04b7cf2a1bef
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I05_WN3 Individual PPH Runner LCL (LastWeek)' =
+			
+			VAR _CL    = [I05_WN3 Individual PPH Runner CL (LastWeek)]
+			VAR _Sigma = [I05_WN3 Individual PPH Runner Sigma (LastWeek)]
+			RETURN
+			IF (
+			    NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			    MAX ( 0, _CL - 3 * _Sigma )    -- 不要小于 0
+			)
+		displayFolder: I05_WN3 Individual PPH Runner
+		lineageTag: b6b532e9-515f-4ba2-aefa-0adcd874392f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I05_WN3 Individual PPH Runner UCL (LastWeek)' =
+			
+			VAR _CL    = [I05_WN3 Individual PPH Runner CL (LastWeek)]
+			VAR _Sigma = [I05_WN3 Individual PPH Runner Sigma (LastWeek)]
+			RETURN
+			IF (
+			    NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			    _CL + 3 * _Sigma
+			)
+		displayFolder: I05_WN3 Individual PPH Runner
+		lineageTag: 50375520-785b-4509-89d5-2fd0d8a03f5c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I06_DC Individual PPH Unload+Load Pieces' =
+			
+			CALCULATE(
+			    'A_Measure'[0_Individual PPH Pieces],
+			    Fct_Supervisors_Hours[Position] IN {"DC Unload + Load"}
+			)
+		formatString: #,0
+		displayFolder: I06_DC Individual PPH Unload + Load
+		lineageTag: 74a55b5b-089d-4596-88d5-647bc957e51b
+
+	measure 'I06_DC Individual PPH Unload + Load Hours' =
+			
+			CALCULATE(
+			    'A_Measure'[0_Individual PPH Hours],
+			     Fct_Supervisors_Hours[Position] IN {"DC Unload + Load"}
+			)
+		formatString: 0.00
+		displayFolder: I06_DC Individual PPH Unload + Load
+		lineageTag: 32cd5886-ca58-421f-9782-306c1ea5b2f0
+
+	measure 'I06_DC Individual PPH Unload + Load' =
+			
+			AVERAGEX(
+			    VALUES('Fct_Supervisors_Hours'[Employee_ID]),
+			    CALCULATE(
+			        AVERAGE('Fct_Supervisors_Hours'[Group_Date_Team_PPH]),
+			        FILTER(
+			            'Fct_Supervisors_Hours',
+			             Fct_Supervisors_Hours[Position] IN {"DC Unload + Load"}
+			        )
+			    )
+			)
+		formatString: #,0.0
+		displayFolder: I06_DC Individual PPH Unload + Load
+		lineageTag: 9251a39e-8080-4340-8e7d-01312fb5d2a6
+
+	measure 'I06_DC Individual PPH Unload + Load (Daily, NoDims)' =
+			
+			//-- ① 每日 PPH（去掉 Group / Shift / Employee 等维度，只按日期算）
+			CALCULATE(
+			    [I06_DC Individual PPH Unload + Load],      -- 你原来的度量：Pieces ÷ Hours
+			    REMOVEFILTERS('Dim_Group'),
+			    REMOVEFILTERS('Dim_Team'),
+			    REMOVEFILTERS('Dim_Shift'),
+			    REMOVEFILTERS('Dim_Employee'),
+			    REMOVEFILTERS('Dim_PPH_Type')
+			)
+		displayFolder: I06_DC Individual PPH Unload + Load
+		lineageTag: a9bd83bf-517d-4ee9-a8c8-eee6160aa91d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I06_DC Individual PPH Unload + Load CL (LastWeek)' =
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1
+			VAR _start   = _currSun - 7
+			VAR _end     = _start + 6
+			
+			VAR DateWindow =
+			    FILTER (
+			        ALL ( 'Dim_Calendar' ),
+			        'Dim_Calendar'[Date] >= _start &&
+			        'Dim_Calendar'[Date] <= _end
+			    )
+			RETURN
+			CALCULATE (
+			    AVERAGEX (
+			        VALUES ( 'Dim_Calendar'[Date] ),
+			        [I06_DC Individual PPH Unload + Load (Daily, NoDims)]
+			    ),
+			    DateWindow
+			)
+		displayFolder: I06_DC Individual PPH Unload + Load
+		lineageTag: 23bec129-fe03-4164-a33a-feebe76f0707
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I06_DC Individual PPH Unload + Load LCL (LastWeek)' =
+			
+			VAR _CL    = [I06_DC Individual PPH Unload + Load CL (LastWeek)]
+			VAR _Sigma = [I06_DC Individual PPH Unload + Load Sigma (LastWeek)]
+			RETURN
+			IF (
+			    NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			    MAX ( 0, _CL - 3 * _Sigma )    -- 不要小于 0
+			)
+		displayFolder: I06_DC Individual PPH Unload + Load
+		lineageTag: 8621d64e-8f44-40fd-9ff3-b9f9b643baaf
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I06_DC Individual PPH Unload + Load Sigma (LastWeek)' =
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1
+			VAR _start   = _currSun - 7
+			VAR _end     = _start + 6
+			
+			VAR DateWindow =
+			    FILTER (
+			        ALL ( 'Dim_Calendar' ),
+			        'Dim_Calendar'[Date] >= _start &&
+			        'Dim_Calendar'[Date] <= _end
+			    )
+			RETURN
+			CALCULATE (
+			    STDEVX.S (
+			        VALUES ( 'Dim_Calendar'[Date] ),
+			        [I06_DC Individual PPH Unload + Load (Daily, NoDims)]
+			    ),
+			    DateWindow
+			)
+		displayFolder: I06_DC Individual PPH Unload + Load
+		lineageTag: 9858e521-daf6-43dd-b3c1-5a56fc673854
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I06_DC Individual PPH Unload + Load UCL (LastWeek)' =
+			
+			VAR _CL    = [I06_DC Individual PPH Unload + Load CL (LastWeek)]
+			VAR _Sigma = [I06_DC Individual PPH Unload + Load Sigma (LastWeek)]
+			RETURN
+			IF (
+			    NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			    _CL + 3 * _Sigma
+			)
+		displayFolder: I06_DC Individual PPH Unload + Load
+		lineageTag: 1dee1d3a-63e2-44a3-92d7-e164746d2947
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I07_DC Individual PPH Putaway Pieces' =
+			CALCULATE(
+			    'A_Measure'[0_Individual PPH Pieces],
+			    Fct_Supervisors_Hours[Position] IN {"DC Put away"}
+			)
+		formatString: #,0
+		displayFolder: I07_DC Individual PPH Putaway
+		lineageTag: 19e75afb-7eae-46f6-862c-b92a033221b7
+
+	measure 'I07_DC Individual PPH Putaway Hours' =
+			
+			CALCULATE(
+			    'A_Measure'[0_Individual PPH Hours],
+			     Fct_Supervisors_Hours[Position] IN {"DC Put away"}
+			)
+		formatString: #,0.00
+		displayFolder: I07_DC Individual PPH Putaway
+		lineageTag: ace68583-2dd0-4d49-974a-a8af0301eaab
+
+	measure 'I07_DC Individual PPH Putaway' =
+			
+			AVERAGEX(
+			    VALUES('Fct_Supervisors_Hours'[Employee_ID]),
+			    CALCULATE(
+			        AVERAGE('Fct_Supervisors_Hours'[Group_Date_Team_PPH]),
+			        FILTER(
+			            'Fct_Supervisors_Hours',
+			             Fct_Supervisors_Hours[Position] IN {"DC Put away"}
+			        )
+			    )
+			)
+		formatString: 0.0
+		displayFolder: I07_DC Individual PPH Putaway
+		lineageTag: 267e4751-d3dc-4af9-8f37-1192f9c92b36
+
+	measure 'I07_DC Individual PPH Putaway (Daily, NoDims)' =
+			
+			//-- ① 每日 PPH（去掉 Group / Shift / Employee 等维度，只按日期算）
+			CALCULATE(
+			    [I07_DC Individual PPH Putaway],      -- 你原来的度量：Pieces ÷ Hours
+			    REMOVEFILTERS('Dim_Group'),
+			    REMOVEFILTERS('Dim_Team'),
+			    REMOVEFILTERS('Dim_Shift'),
+			    REMOVEFILTERS('Dim_Employee'),
+			    REMOVEFILTERS('Dim_PPH_Type')
+			)
+		displayFolder: I07_DC Individual PPH Putaway
+		lineageTag: 70da5658-90b0-4ae7-bb7e-1f4c855adc05
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I07_DC Individual PPH Putaway CL (LastWeek)' =
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1
+			VAR _start   = _currSun - 7
+			VAR _end     = _start + 6
+			
+			VAR DateWindow =
+			    FILTER (
+			        ALL ( 'Dim_Calendar' ),
+			        'Dim_Calendar'[Date] >= _start &&
+			        'Dim_Calendar'[Date] <= _end
+			    )
+			RETURN
+			CALCULATE (
+			    AVERAGEX (
+			        VALUES ( 'Dim_Calendar'[Date] ),
+			        [I07_DC Individual PPH Putaway (Daily, NoDims)]
+			    ),
+			    DateWindow
+			)
+		displayFolder: I07_DC Individual PPH Putaway
+		lineageTag: ce3f504b-08c0-40da-ba7c-5573f27e47b1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I07_DC Individual PPH Putaway LCL (LastWeek)' =
+			
+			VAR _CL    = [I07_DC Individual PPH Putaway CL (LastWeek)]
+			VAR _Sigma = [I07_DC Individual PPH Putaway Sigma (LastWeek)]
+			RETURN
+			IF (
+			    NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			    MAX ( 0, _CL - 3 * _Sigma )    -- 不要小于 0
+			)
+		displayFolder: I07_DC Individual PPH Putaway
+		lineageTag: 426a632e-e96f-4191-9421-3d0e37b9857c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I07_DC Individual PPH Putaway Sigma (LastWeek)' =
+			
+			VAR _utc    = 7/24
+			VAR _today  = INT ( TODAY() + _utc )
+			VAR _currSun = _today - WEEKDAY(_today, 1) + 1
+			VAR _start   = _currSun - 7
+			VAR _end     = _start + 6
+			
+			VAR DateWindow =
+			    FILTER (
+			        ALL ( 'Dim_Calendar' ),
+			        'Dim_Calendar'[Date] >= _start &&
+			        'Dim_Calendar'[Date] <= _end
+			    )
+			RETURN
+			CALCULATE (
+			    STDEVX.S (
+			        VALUES ( 'Dim_Calendar'[Date] ),
+			        [I07_DC Individual PPH Putaway (Daily, NoDims)]
+			    ),
+			    DateWindow
+			)
+		displayFolder: I07_DC Individual PPH Putaway
+		lineageTag: 5adcf05a-651e-4427-9edd-79e31fb88809
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'I07_DC Individual PPH Putaway UCL (LastWeek)' =
+			
+			VAR _CL    = [I07_DC Individual PPH Putaway CL (LastWeek)]
+			VAR _Sigma = [I07_DC Individual PPH Putaway Sigma (LastWeek)]
+			RETURN
+			IF (
+			    NOT ISBLANK ( _CL ) && NOT ISBLANK ( _Sigma ),
+			    _CL + 3 * _Sigma
+			)
+		displayFolder: I07_DC Individual PPH Putaway
+		lineageTag: 7c3a4c0f-787e-4a92-8b1d-e2f16c6a6a0f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '0_PPH Metric Value' = ```
+			
+			VAR m = SELECTEDVALUE(dim_Metric[MetricName])
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    m = "1_WN3 All in PPH Shipping",              'A_Measure'[1_WN3 All in PPH Shipping],
+			    m = "2_WN3 All in PPH Line Clearing",         'A_Measure'[2_WN3 All in PPH Line Clearing],
+			    m = "3_WN2 All in PPH Shipping",              'A_Measure'[3_WN2 All in PPH Shipping],
+			    m = "4_WN2 All in PPH Line Clearing",         'A_Measure'[4_WN2 All in PPH Line Clearing],
+			    m = "5_DC All in PPH Unload + Load",          'A_Measure'[5_DC All in PPH Unload + Load],
+			    m = "6_DC All in PPH Load",                   'A_Measure'[6_DC All in PPH Load],
+			    m = "I01_WN2 Individual PPH Shipping",        'A_Measure'[I01_WN2 Individual PPH Shipping],
+			    m = "I02_WN2 Individual PPH Line Clearing",   'A_Measure'[I02_WN2 Individual PPH Line Clearing],
+			    m = "I03_WN3 Individual PPH Shipping",        'A_Measure'[I03_WN3 Individual PPH Shipping],
+			    m = "I04_WN3 Individual PPH Line Clearing",   'A_Measure'[I04_WN3 Individual PPH Line Clearing],
+			    m = "I05_WN3 Individual PPH Runner",          'A_Measure'[I05_WN3 Individual PPH Runner],
+			    m = "I06_DC Individual PPH Unload + Load",    'A_Measure'[I06_DC Individual PPH Unload + Load],
+			    m = "I07_DC Individual PPH Putaway",          'A_Measure'[I07_DC Individual PPH Putaway],
+			    BLANK()
+			)
+			
+			```
+		formatString: #,0.0
+		displayFolder: 0_Commn
+		lineageTag: 30b89ec3-3917-46ff-ac3e-19f7ad151647
+
+	measure 'Week Avg Achievement% (Total as Average)' =
+			
+			VAR _isEmployeeRow =
+			    ISINSCOPE ( 'Dim_Employee'[Employee_ID] )
+			RETURN
+			    IF (
+			        -- 行级：按员工显示原来的值
+			        _isEmployeeRow,
+			        [Week Avg Achievement%],
+			        -- Total 行：对当前筛选下所有员工的周达成率再取平均
+			        AVERAGEX (
+			            VALUES ( 'Dim_Employee'[Employee_ID]),
+			            [Week Avg Achievement%]
+			        )
+			    )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 00_Week_Rank
+		lineageTag: bae69429-fcf0-4061-ae1a-f712b4268619
+
+	measure 'Week Avg Achievement%' =
+			
+			// VAR currWeek =
+			//     SELECTEDVALUE ( 'Dim_Calendar'[WeekSaturday] )
+			// VAR currEmp =
+			//     SELECTEDVALUE ( 'Dim_Employee'[Employee_ID])
+			// RETURN
+			//     CALCULATE (
+			//         AVERAGE ( 'Fct_All_Details_Rows_Summary'[Achievement%] ),
+			//         KEEPFILTERS ( 'Dim_Calendar'[WeekSaturday] = currWeek ),
+			//         KEEPFILTERS ( 'Dim_Employee'[Employee_ID] = currEmp )
+			//     )
+			
+			
+			
+			AVERAGE ( 'Fct_All_Details_Rows_Summary'[Achievement%] )
+		displayFolder: 00_Week_Rank
+		lineageTag: db3cce49-3409-4c75-8a32-dde9b9a7433c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'PPH Metric Value' =
+			
+			VAR m =
+			    SELECTEDVALUE ( Dim_Metric[MetricName] )
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        m = "1_WN3 All in PPH Shipping", [1_WN3 All in PPH Shipping],
+			        m = "2_WN3 All in PPH Line Clearing", [2_WN3 All in PPH Line Clearing],
+			        m = "3_WN2_All in PPH Shipping", [3_WN2 All in PPH Shipping],
+			        m = "4_WN2 All in PPH Line Clearing", [4_WN2 All in PPH Line Clearing],
+			        m = "5_DC All in PPH Unload + Load", [5_DC All in PPH Unload + Load],
+			        m = "6_DC All in PPH Load", [6_DC All in PPH Load],
+			        m = "I01_WN2 Individual PPH Shipping", [I01_WN2 Individual PPH Shipping],
+			        m = "I02_WN2 Individual PPH Line Clearing", [I02_WN2 Individual PPH Line Clearing],
+			        m = "I03_WN3 Individual PPH Shipping", [I03_WN3 Individual PPH Shipping],
+			        m = "I04_WN3 Individual PPH Line Clearing", [I04_WN3 Individual PPH Line Clearing],
+			        m = "I05_WN3 Individual PPH Runner", [I05_WN3 Individual PPH Runner],
+			        m = "I06_DC Individual PPH Unload+Load", [I06_DC Individual PPH Unload + Load],
+			        m = "I07_DC Individual PPH Put away", [I07_DC Individual PPH Putaway],
+			        BLANK ()
+			    )
+		displayFolder: 00_Achievement
+		lineageTag: 2a72267f-b9c0-4e27-9237-cef30f4d7fd0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Goal =
+			
+			CALCULATE ( SUM ( 'Fct_metrics_goal'[Goal] ) )
+		formatString: 0
+		displayFolder: 00_Achievement
+		lineageTag: 9c939b85-53e3-4b75-a086-d5fefa2c06f0
+
+	measure Achievement% =
+			
+			DIVIDE ( 'A_Measure'[PPH Metric Value], 'A_Measure'[Goal] )
+		displayFolder: 00_Achievement
+		lineageTag: b66a82d2-9188-469a-bd52-d4c323725539
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Achievement% (Last 3 Months)' =
+			
+			CALCULATE (
+			    [Achievement%],
+			    DATESINPERIOD ( 'Dim_Calendar'[Date], MAX ( 'Dim_Calendar'[Date] ), -3, MONTH )
+			)
+		displayFolder: 00_Achievement
+		lineageTag: 833b253f-0287-47c3-ba64-850dbed68dec
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Employee Month Position' =
+			
+			VAR _month =
+			    SELECTEDVALUE ( 'Dim_Calendar'[YearMonth] )
+			VAR _empID =
+			    SELECTEDVALUE ( 'Dim_Employee'[Employee_ID] )
+			VAR _empName =
+			    SELECTEDVALUE ( 'Dim_Employee'[Employee_Name] ) -- 先算这个月员工的 Month Achievement% Avg.
+			VAR _achv =
+			    CALCULATE (
+			        [Month Avg Achievement%],
+			        'Dim_Calendar'[YearMonth] = _month,
+			        'Dim_Employee'[Employee_ID] = _empID
+			    )
+			RETURN
+			    IF (
+			        -- 只有 Week Achievement% Avg. > 0 的行才显示
+			        _achv > 0,
+			        CONCATENATEX (
+			            CALCULATETABLE (
+			                DISTINCT ( 'Fct_All_Details_Rows_Summary'[Position] ),
+			                'Dim_Calendar'[YearMonth] = _month,
+			                'Dim_Employee'[Employee_ID] = _empID,
+			                'Dim_Employee'[Employee_Name] = _empName
+			            ),
+			            'Fct_All_Details_Rows_Summary'[Position],
+			            ", ",
+			            'Fct_All_Details_Rows_Summary'[Position], ASC
+			        )
+			    )
+		displayFolder: 00_Month_Rank
+		lineageTag: 7052cce0-d537-4e29-97a2-29beb5fdc2d1
+
+	measure 'Month Avg Achievement%' =
+			AVERAGE ( 'Fct_All_Details_Rows_Summary'[Achievement%] )
+			// VAR currMonth =
+			//     SELECTEDVALUE ( 'Dim_Calendar'[YearMonth] )
+			// VAR currEmp =
+			//     SELECTEDVALUE ( 'Dim_Employee'[Employee_ID] )
+			// RETURN
+			//     CALCULATE (
+			//         AVERAGE ( 'Fct_All_Details_Rows_Summary'[Achievement%] ),
+			//         KEEPFILTERS ( 'Dim_Calendar'[YearMonth] = currMonth ),
+			//         KEEPFILTERS ( 'Dim_Employee'[Employee_ID] = currEmp )
+			//     )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 00_Month_Rank
+		lineageTag: c102c6eb-5708-4b8d-b03e-28ef32b3f9ba
+
+	measure 'Employee Week Position' =
+			
+			VAR _week =
+			    SELECTEDVALUE ( 'Dim_Calendar'[WeekSaturday] )
+			VAR _empID =
+			    SELECTEDVALUE ( 'Dim_Employee'[Employee_ID] )
+			VAR _empName =
+			    SELECTEDVALUE ( 'Dim_Employee'[Employee_Name] ) -- 先算这一周这个员工的 Week Achievement% Avg.
+			VAR _achv =
+			    CALCULATE (
+			        [Week Avg Achievement%],
+			        'Dim_Calendar'[WeekSaturday] = _week,
+			        'Dim_Employee'[Employee_ID] = _empID
+			    )
+			RETURN
+			    IF (
+			        -- 只有 Week Achievement% Avg. > 0 的行才显示
+			        _achv > 0,
+			        CONCATENATEX (
+			            CALCULATETABLE (
+			                DISTINCT ( 'Fct_All_Details_Rows_Summary'[Position] ),
+			                'Dim_Calendar'[WeekSaturday] = _week,
+			                'Dim_Employee'[Employee_ID] = _empID,
+			                'Dim_Employee'[Employee_Name] = _empName
+			            ),
+			            'Fct_All_Details_Rows_Summary'[Position],
+			            ", ",
+			            'Fct_All_Details_Rows_Summary'[Position], ASC
+			        )
+			    )
+		displayFolder: 00_Week_Rank
+		lineageTag: 942a149b-65ea-4e29-91d7-0a890068ed2f
+
+	measure 'Medal by AVG% (Adjusted)' =
+			
+			// VAR _rank = [Week Rank]
+			// VAR _icon =
+			//     SWITCH ( _rank, 1, "🥇", 2, "🥈", 3, "🥉" )
+			// RETURN
+			//     IF (
+			//         NOT ISBLANK ( _icon ),
+			//         "data:image/svg+xml;utf8, " & "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>" & // 建议 y 值调整到 75 左右，使图标在单元格内垂直居中
+			//         "<text x='50' y='45' font-size='35' text-anchor='middle'>" & _icon & "</text>" & "</svg>"
+			//     )
+		formatString: 0
+		displayFolder: 00_Week_Rank
+		lineageTag: 7395af1e-4c9d-4ed0-b160-7896793382a4
+
+	measure 'Medal by AVG% (Big)' =
+			
+			// VAR _rank = [Week Rank]
+			// VAR _icon =
+			//     SWITCH ( _rank, 1, "🥇", 2, "🥈", 3, "🥉" )
+			// RETURN
+			//     IF (
+			//         NOT ISBLANK ( _icon ),
+			//         "data:image/svg+xml;utf8, " & "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>" & "<text x='25' y='45' font-size='90' text-anchor='middle'>" & _icon & "</text>" & "</svg>"
+			//     )
+		formatString: 0
+		displayFolder: 00_Week_Rank
+		lineageTag: 4a469442-7475-486c-8478-3868e69fba70
+
+	measure 'Week Medal' =
+			
+			VAR _currentAvg = [Week Avg Achievement%] // 获取当前行的平均值
+			VAR _rank = [Week Rank] // 获取你刚才写好的排名度量值
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        // 1. 安全检查：如果平均值为为空，或者排名为空，则不显示奖牌
+			        ISBLANK ( _currentAvg ) || ISBLANK ( _rank ), BLANK (),
+			        // 2. 根据排名分配奖牌
+			        _rank = 1, "🥇",
+			        _rank = 2, "🥈",
+			        _rank = 3, "🥉",
+			        // 3. 第4名及以后不显示任何内容
+			        BLANK ()
+			    )
+		displayFolder: 00_Week_Rank
+		lineageTag: ae21dc30-3bca-4563-9099-39bff1d70946
+
+	measure 'Week Rank' = ```
+			
+			VAR v = [Week Avg Achievement%]
+			VAR _isEmployeeRow =
+			    ISINSCOPE ( Dim_Employee[Employee_ID] )
+			RETURN
+			IF (
+			    NOT _isEmployeeRow,
+			    BLANK(),                 -- 🔴 Total / 小计行不显示 Rank
+			    IF (
+			        ISBLANK ( v ),
+			        BLANK(),
+			        RANKX (
+			            CALCULATETABLE (
+			                ALL ( Dim_Employee[Employee_ID] ),
+			                REMOVEFILTERS ( Dim_Employee[Employee_Name] ),
+			                REMOVEFILTERS ( Dim_Shift ),
+			                REMOVEFILTERS ( Dim_Position )
+			            ),
+			            CALCULATE (
+			                [Week Avg Achievement%],
+			                REMOVEFILTERS ( Dim_Employee[Employee_Name] ),
+			                REMOVEFILTERS ( Dim_Shift ),
+			                REMOVEFILTERS ( Dim_Position )
+			            ),
+			            ,
+			            DESC,
+			            DENSE
+			        )
+			    )
+			)
+			
+			
+			```
+		formatString: 0
+		displayFolder: 00_Week_Rank
+		lineageTag: 6a9fc1f8-8c2c-4109-9b97-d33293c1609d
+
+	measure 'Month Avg Achievement% (Total as Average)' =
+			
+			VAR _isEmployeeRow =
+			    ISINSCOPE ( 'Dim_Employee'[Employee_ID] )
+			RETURN
+			    IF (
+			        -- 行级：按员工显示原来的值
+			        _isEmployeeRow,
+			        [Month Avg Achievement%],
+			        -- Total 行：对当前筛选下所有员工的周达成率再取平均
+			        AVERAGEX (
+			            VALUES ( 'Dim_Employee'[Employee_ID] ),
+			            [Month Avg Achievement%]
+			        )
+			    )
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: 00_Month_Rank
+		lineageTag: eb2d92cf-4df5-4624-b63a-8c1338b941bf
+
+	measure 'Month Medal' =
+			
+			VAR _currentAvg = [Month Avg Achievement%] // 获取当前行的平均值
+			VAR _rank = [Month Rank] // 获取你刚才写好的排名度量值
+			RETURN
+			    SWITCH (
+			        TRUE (),
+			        // 1. 安全检查：如果平均值为为空，或者排名为空，则不显示奖牌
+			        ISBLANK ( _currentAvg ) || ISBLANK ( _rank ), BLANK (),
+			        // 2. 根据排名分配奖牌
+			        _rank = 1, "🥇",
+			        _rank = 2, "🥈",
+			        _rank = 3, "🥉",
+			        // 3. 第4名及以后不显示任何内容
+			        BLANK ()
+			    )
+		displayFolder: 00_Month_Rank
+		lineageTag: e946c1bc-ed34-4aab-9be8-a19df536439d
+
+	measure 'Month Rank' = ```
+			
+			VAR v = [Month Avg Achievement%]
+			VAR _isEmployeeRow =
+			    ISINSCOPE ( Dim_Employee[Employee_ID] )
+			RETURN
+			IF (
+			    NOT _isEmployeeRow,
+			    BLANK(),                 -- 🔴 Total 行直接空
+			    IF (
+			        ISBLANK ( v ),
+			        BLANK(),
+			        RANKX (
+			            CALCULATETABLE (
+			                ALL ( Dim_Employee[Employee_ID] ),
+			                REMOVEFILTERS ( Dim_Employee[Employee_Name] ),
+			                REMOVEFILTERS ( Dim_Shift ),
+			                REMOVEFILTERS ( Dim_Position )
+			            ),
+			            CALCULATE (
+			                [Month Avg Achievement%],
+			                REMOVEFILTERS ( Dim_Employee[Employee_Name] ),
+			                REMOVEFILTERS ( Dim_Shift ),
+			                REMOVEFILTERS ( Dim_Position )
+			            ),
+			            ,
+			            DESC,
+			            DENSE
+			        )
+			    )
+			)
+			
+			```
+		formatString: 0
+		displayFolder: 00_Month_Rank
+		lineageTag: a30dffdc-0b01-4192-9b11-659958e310e2
+
+	measure Html_Navigate_Pro = ```
+			
+			"<!DOCTYPE html>
+			<html>
+			<head>
+			  <meta charset='UTF-8'>
+			  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+			  <title>Ashton PPH Dashboard</title>
+			  <style>
+			    /* 全局重置样式 - 移除默认边距和内边距 */
+			    /* Global reset - Remove default margins/paddings */
+			    * {
+			      margin: 0;
+			      padding: 0;
+			      box-sizing: border-box;
+			    }
+			    
+			    /* 主体样式 - 设置背景渐变和居中布局 */
+			    /* Body styles - Set gradient background and centered layout */
+			    body {
+			      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			      /*background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); !* 紫色渐变背景 / Purple gradient *!*/
+			      background: #4a4f58; /* 紫色渐变背景 / Purple gradient */
+			      min-height: 100vh;
+			      display: flex;
+			      justify-content: center;
+			      align-items: center;
+			      padding: 20px;
+			    }
+			    
+			    /* 主容器样式 - 白色半透明卡片容器 */
+			    /* Main container - White semi-transparent card container */
+			    .container {
+			      max-width: 1200px;
+			      width: 100%;
+			      background: rgba(255, 255, 255, 0.95);
+			      border-radius: 20px;
+			      padding: 40px;
+			      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+			    }
+			    
+			    /* 页头样式 - 标题区域居中 */
+			    /* Header styles - Centered title area */
+			    header {
+			      text-align: center;
+			      margin-bottom: 40px;
+			    }
+			    
+			    /* 主标题样式 */
+			    /* Main title styles */
+			    h1 {
+			      color: #333;
+			      font-size: 2.5em;
+			      margin-bottom: 10px;
+			      font-weight: 700;
+			    }
+			    
+			    /* 副标题样式 */
+			    /* Subtitle styles */
+			    .subtitle {
+			      color: #666;
+			      font-size: 1.2em;
+			      font-weight: 300;
+			    }
+			    
+			    /* 卡片网格布局 - 响应式网格系统 */
+			    /* Card grid layout - Responsive grid system */
+			    .card-grid {
+			      display: grid;
+			      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			      gap: 25px;
+			      margin-bottom: 30px;
+			    }
+			    
+			    /* 单个卡片样式 - 带悬停效果的交互卡片 */
+			    /* Individual card styles - Interactive card with hover effects */
+			    .card {
+			      background: white;
+			      border-radius: 15px;
+			      padding: 25px;
+			      text-decoration: none;
+			      color: inherit;
+			      transition: all 0.3s ease;
+			      border: 2px solid transparent;
+			      cursor: pointer;
+			      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+			    }
+			    
+			    /* 卡片悬停效果 - 上浮和加强阴影 */
+			    /* Card hover effect - Lift up and enhance shadow */
+			    .card:hover {
+			      transform: translateY(-5px);
+			      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+			      border-color: #667eea;
+			    }
+			    
+			    /* 卡片图标样式 */
+			    /* Card icon styles */
+			    .card-icon {
+			      font-size: 2.5em;
+			      margin-bottom: 15px;
+			      display: block;
+			    }
+			    
+			    /* 卡片标题样式 */
+			    /* Card title styles */
+			    .card-title {
+			      font-size: 1.3em;
+			      font-weight: 600;
+			      color: #333;
+			      margin-bottom: 10px;
+			    }
+			    
+			    /* 卡片描述文字样式 */
+			    /* Card description text styles */
+			    .card-desc {
+			      color: #777;
+			      font-size: 0.95em;
+			      line-height: 1.5;
+			    }
+			    
+			    /* 底部操作按钮区域 - Flexbox居中布局 */
+			    /* Footer actions area - Flexbox centered layout */
+			    .footer-actions {
+			      display: flex;
+			      gap: 15px;
+			      justify-content: center;
+			      flex-wrap: wrap;
+			    }
+			    
+			    /* 通用按钮样式 */
+			    /* Common button styles */
+			    .btn {
+			      padding: 15px 30px;
+			      border-radius: 10px;
+			      text-decoration: none;
+			      font-weight: 600;
+			      transition: all 0.3s ease;
+			      cursor: pointer;
+			      border: none;
+			      font-size: 1em;
+			    }
+			    
+			    /* 主按钮样式 - 紫色渐变 */
+			    /* Primary button - Purple gradient */
+			    .btn-primary {
+			      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			      color: white;
+			    }
+			    
+			    /* 主按钮悬停效果 */
+			    /* Primary button hover effect */
+			    .btn-primary:hover {
+			      transform: scale(1.05);
+			      box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+			    }
+			    
+			    /* 次要按钮样式 - 绿色 */
+			    /* Secondary button - Green */
+			    .btn-secondary {
+			      background: #28a745;
+			      color: white;
+			    }
+			    
+			    /* 次要按钮悬停效果 */
+			    /* Secondary button hover effect */
+			    .btn-secondary:hover {
+			      transform: scale(1.05);
+			      background: #218838;
+			    }
+			    
+			    /* 移动端响应式样式 - 小于768px屏幕 */
+			    /* Mobile responsive styles - Screens smaller than 768px */
+			    @media (max-width: 768px) {
+			      h1 { font-size: 2em; }
+			      .container { padding: 20px; }
+			      .card-grid { grid-template-columns: 1fr; }
+			    }
+			  </style>
+			</head>
+			<body>
+			<div class='container'>
+			  <!-- 页头区域：标题和副标题 -->
+			  <!-- Header area: Title and subtitle -->
+			  <header>
+			    <h1>Wanek PPH Dashboard</h1>
+			    <div class='subtitle'>Performance & Productivity Navigation</div>
+			  </header>
+			  
+			  <!-- 卡片网格区域：4个导航卡片 -->
+			  <!-- Card grid area: 4 navigation cards -->
+			  <div class='card-grid'>
+			    <!-- 卡片1: 总体PPH趋势 -->
+			    <!-- Card 1: Overall PPH Trend -->
+			    <a href='#' class='card' onclick='navigateToBookmark(""All in PPH Trend"")'>
+			      <span class='card-icon'>📊</span>
+			      <div class='card-title'>All in PPH</div>
+			      <div class='card-desc'>Overall pieces-per-hour across operations.</div>
+			    </a>
+			    
+			    <!-- 卡片2: 个人PPH -->
+			    <!-- Card 2: Individual PPH -->
+			    <a href='#' class='card' onclick='navigateToBookmark(""Individual PPH"")'>
+			      <span class='card-icon'>👤</span>
+			      <div class='card-title'>Individual PPH</div>
+			      <div class='card-desc'>Employee-level performance distribution.</div>
+			    </a>
+			    
+			    <!-- 卡片3: 周排名 -->
+			    <!-- Card 3: Weekly Ranking -->
+			    <a href='#' class='card' onclick='navigateToBookmark(""Weekly PPH Rank"")'>
+			      <span class='card-icon'>📅</span>
+			      <div class='card-title'>Weekly PPH Rank</div>
+			      <div class='card-desc'>Weekly ranking by team and employee.</div>
+			    </a>
+			    
+			    <!-- 卡片4: 月排名 -->
+			    <!-- Card 4: Monthly Ranking -->
+			    <a href='#' class='card' onclick='navigateToBookmark(""Monthly PPH Rank"")'>
+			      <span class='card-icon'>📈</span>
+			      <div class='card-title'>Monthly PPH Rank</div>
+			      <div class='card-desc'>Monthly trend and ranking summary.</div>
+			    </a>
+			  </div>
+			  
+			  <!-- 底部操作按钮区域 -->
+			  <!-- Footer action buttons area -->
+			  <div class='footer-actions'>
+			    <!-- 维护PPH目标按钮 -->
+			    <!-- Maintain PPH Goal button -->
+			    <button class='btn btn-primary' onclick='navigateToBookmark(""Maintain PPH Goal"")'>Maintain PPH Goal</button>
+			    
+			    <!-- 下载PPH详情按钮 -->
+			    <!-- Download PPH Details button -->
+			    <button class='btn btn-secondary' onclick='navigateToBookmark(""Download PPH Details"")'>Download PPH Details</button>
+			  </div>
+			</div>
+			
+			<script>
+			  /**
+			   * Power BI 书签导航函数
+			   * Power BI Bookmark Navigation Function
+			   * 
+			   * @param {string} bookmarkName - Power BI 书签名称 / Power BI bookmark name
+			   * 
+			   * 功能说明 / Function description:
+			   * 1. 检查 Power BI 的 webpackJsonp 是否存在 / Check if Power BI's webpackJsonp exists
+			   * 2. 查找书签管理器模块 / Find bookmark manager module
+			   * 3. 执行书签导航 / Execute bookmark navigation
+			   */
+			  function navigateToBookmark(bookmarkName) {
+			    try {
+			      // 方法1: 使用 Power BI 的全局对象（如果可用）
+			      // Method 1: Use Power BI global object (if available)
+			      if (window.powerbi) {
+			        window.powerbi.bookmarksManager.apply(bookmarkName);
+			        return;
+			      }
+			      
+			      // 方法2: 通过 webpackJsonp 查找书签管理器
+			      // Method 2: Find bookmark manager through webpackJsonp
+			      if (window.webpackJsonp) {
+			        window.webpackJsonp([], {
+			          0: function(n, o, t) {
+			            // 查找书签管理器模块
+			            // Find bookmark manager module
+			            var bookmarkManager = t(""BookmarksManager"");
+			            if (bookmarkManager && bookmarkManager.applyBookmark) {
+			              bookmarkManager.applyBookmark(bookmarkName);
+			            }
+			          }
+			        }, [0]);
+			      }
+			      
+			      // 方法3: 发送自定义事件（备用方案）
+			      // Method 3: Send custom event (fallback)
+			      var event = new CustomEvent('navigateToBookmark', {
+			        detail: { bookmarkName: bookmarkName }
+			      });
+			      window.dispatchEvent(event);
+			      
+			      // 在控制台输出导航信息（调试用）
+			      // Output navigation info to console (for debugging)
+			      console.log('Navigating to bookmark: ' + bookmarkName);
+			      
+			    } catch (error) {
+			      // 错误处理 / Error handling
+			      console.error('Error navigating to bookmark:', error);
+			      alert('导航到: ' + bookmarkName + '\nNavigating to: ' + bookmarkName);
+			    }
+			  }
+			  
+			  // 防止默认链接行为
+			  // Prevent default link behavior
+			  document.addEventListener('DOMContentLoaded', function() {
+			    var links = document.querySelectorAll('.card, .btn');
+			    links.forEach(function(link) {
+			      link.addEventListener('click', function(e) {
+			        e.preventDefault(); // 阻止默认行为 / Prevent default action
+			      });
+			    });
+			  });
+			</script>
+			</body>
+			</html>"
+			```
+		lineageTag: f23b74c5-db9f-4ada-9c8b-e070042b54f6
+
+	measure Html_Navigate_Pro2 = ```
+			
+			"<!DOCTYPE html>
+			<html>
+			<head>
+			  <meta charset='UTF-8'>
+			  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+			  <title>Ashton PPH Dashboard</title>
+			  <style>
+			    /* 全局重置样式 - 移除默认边距和内边距 */
+			    /* Global reset - Remove default margins/paddings */
+			    * {
+			      margin: 0;
+			      padding: 0;
+			      box-sizing: border-box;
+			    }
+			    
+			    /* 主体样式 - 设置背景渐变和居中布局 */
+			    /* Body styles - Set gradient background and centered layout */
+			    body {
+			      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			      /*background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); !* 紫色渐变背景 / Purple gradient *!*/
+			      background: #4a4f58; /* 紫色渐变背景 / Purple gradient */
+			      min-height: 100vh;
+			      display: flex;
+			      justify-content: center;
+			      align-items: center;
+			      padding: 20px;
+			    }
+			    
+			    /* 主容器样式 - 白色半透明卡片容器 */
+			    /* Main container - White semi-transparent card container */
+			    .container {
+			      max-width: 1200px;
+			      width: 100%;
+			      background: rgba(255, 255, 255, 0.95);
+			      border-radius: 20px;
+			      padding: 40px;
+			      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+			    }
+			    
+			    /* 页头样式 - 标题区域居中 */
+			    /* Header styles - Centered title area */
+			    header {
+			      text-align: center;
+			      margin-bottom: 40px;
+			    }
+			    
+			    /* 主标题样式 */
+			    /* Main title styles */
+			    h1 {
+			      color: #333;
+			      font-size: 2.5em;
+			      margin-bottom: 10px;
+			      font-weight: 700;
+			    }
+			    
+			    /* 副标题样式 */
+			    /* Subtitle styles */
+			    .subtitle {
+			      color: #666;
+			      font-size: 1.2em;
+			      font-weight: 300;
+			    }
+			    
+			    /* 卡片网格布局 - 响应式网格系统 */
+			    /* Card grid layout - Responsive grid system */
+			    .card-grid {
+			      display: grid;
+			      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			      gap: 25px;
+			      margin-bottom: 30px;
+			    }
+			    
+			    /* 单个卡片样式 - 带悬停效果的交互卡片 */
+			    /* Individual card styles - Interactive card with hover effects */
+			    .card {
+			      background: white;
+			      border-radius: 15px;
+			      padding: 25px;
+			      text-decoration: none;
+			      color: inherit;
+			      transition: all 0.3s ease;
+			      border: 2px solid transparent;
+			      cursor: pointer;
+			      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+			    }
+			    
+			    /* 卡片悬停效果 - 上浮和加强阴影 */
+			    /* Card hover effect - Lift up and enhance shadow */
+			    .card:hover {
+			      transform: translateY(-5px);
+			      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+			      border-color: #667eea;
+			    }
+			    
+			    /* 卡片图标样式 */
+			    /* Card icon styles */
+			    .card-icon {
+			      font-size: 2.5em;
+			      margin-bottom: 15px;
+			      display: block;
+			    }
+			    
+			    /* 卡片标题样式 */
+			    /* Card title styles */
+			    .card-title {
+			      font-size: 1.3em;
+			      font-weight: 600;
+			      color: #333;
+			      margin-bottom: 10px;
+			    }
+			    
+			    /* 卡片描述文字样式 */
+			    /* Card description text styles */
+			    .card-desc {
+			      color: #777;
+			      font-size: 0.95em;
+			      line-height: 1.5;
+			    }
+			    
+			    /* 底部操作按钮区域 - Flexbox居中布局 */
+			    /* Footer actions area - Flexbox centered layout */
+			    .footer-actions {
+			      display: flex;
+			      gap: 15px;
+			      justify-content: center;
+			      flex-wrap: wrap;
+			    }
+			    
+			    /* 通用按钮样式 */
+			    /* Common button styles */
+			    .btn {
+			      padding: 15px 30px;
+			      border-radius: 10px;
+			      text-decoration: none;
+			      font-weight: 600;
+			      transition: all 0.3s ease;
+			      cursor: pointer;
+			      border: none;
+			      font-size: 1em;
+			    }
+			    
+			    /* 主按钮样式 - 紫色渐变 */
+			    /* Primary button - Purple gradient */
+			    .btn-primary {
+			      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			      color: white;
+			    }
+			    
+			    /* 主按钮悬停效果 */
+			    /* Primary button hover effect */
+			    .btn-primary:hover {
+			      transform: scale(1.05);
+			      box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+			    }
+			    
+			    /* 次要按钮样式 - 绿色 */
+			    /* Secondary button - Green */
+			    .btn-secondary {
+			      background: #28a745;
+			      color: white;
+			    }
+			    
+			    /* 次要按钮悬停效果 */
+			    /* Secondary button hover effect */
+			    .btn-secondary:hover {
+			      transform: scale(1.05);
+			      background: #218838;
+			    }
+			    
+			    /* 移动端响应式样式 - 小于768px屏幕 */
+			    /* Mobile responsive styles - Screens smaller than 768px */
+			    @media (max-width: 768px) {
+			      h1 { font-size: 2em; }
+			      .container { padding: 20px; }
+			      .card-grid { grid-template-columns: 1fr; }
+			    }
+			  </style>
+			</head>
+			<body>
+			<div class='container'>
+			  <!-- 页头区域：标题和副标题 -->
+			  <!-- Header area: Title and subtitle -->
+			  <header>
+			    <h1>Wanek PPH Dashboard</h1>
+			    <div class='subtitle'>Performance & Productivity Navigation</div>
+			  </header>
+			  
+			  <!-- 卡片网格区域：4个导航卡片 -->
+			  <!-- Card grid area: 4 navigation cards -->
+			  <div class='card-grid'>
+			    <!-- 卡片1: 总体PPH趋势 -->
+			    <!-- Card 1: Overall PPH Trend -->
+			    <a href='#' class='card' onclick='navigateToBookmark(""All in PPH Trend"")'>
+			      <span class='card-icon'>📊</span>
+			      <div class='card-title'>All in PPH</div>
+			      <div class='card-desc'>Overall pieces-per-hour across operations.</div>
+			    </a>
+			    
+			    <!-- 卡片2: 个人PPH -->
+			    <!-- Card 2: Individual PPH -->
+			    <a href='#' class='card' onclick='navigateToBookmark(""Individual PPH"")'>
+			      <span class='card-icon'>👤</span>
+			      <div class='card-title'>Individual PPH</div>
+			      <div class='card-desc'>Employee-level performance distribution.</div>
+			    </a>
+			    
+			    <!-- 卡片3: 周排名 -->
+			    <!-- Card 3: Weekly Ranking -->
+			    <a href='#' class='card' onclick='navigateToBookmark(""Weekly PPH Rank"")'>
+			      <span class='card-icon'>📅</span>
+			      <div class='card-title'>Weekly PPH Rank</div>
+			      <div class='card-desc'>Weekly ranking by team and employee.</div>
+			    </a>
+			    
+			    <!-- 卡片4: 月排名 -->
+			    <!-- Card 4: Monthly Ranking -->
+			    <a href='#' class='card' onclick='navigateToBookmark(""Monthly PPH Rank"")'>
+			      <span class='card-icon'>📈</span>
+			      <div class='card-title'>Monthly PPH Rank</div>
+			      <div class='card-desc'>Monthly trend and ranking summary.</div>
+			    </a>
+			  </div>
+			  
+			  <!-- 底部操作按钮区域 -->
+			  <!-- Footer action buttons area -->
+			  <div class='footer-actions'>
+			    <!-- 维护PPH目标按钮 -->
+			    <!-- Maintain PPH Goal button -->
+			    <button class='btn btn-primary' onclick='navigateToBookmark(""Maintain PPH Goal"")'>Maintain PPH Goal</button>
+			    
+			    <!-- 下载PPH详情按钮 -->
+			    <!-- Download PPH Details button -->
+			    <button class='btn btn-secondary' onclick='navigateToBookmark(""Download PPH Details"")'>Download PPH Details</button>
+			  </div>
+			</div>
+			
+			<script>
+			  /**
+			   * Power BI 书签导航函数
+			   * Power BI Bookmark Navigation Function
+			   * 
+			   * @param {string} bookmarkName - Power BI 书签名称 / Power BI bookmark name
+			   * 
+			   * 功能说明 / Function description:
+			   * 1. 检查 Power BI 的 webpackJsonp 是否存在 / Check if Power BI's webpackJsonp exists
+			   * 2. 查找书签管理器模块 / Find bookmark manager module
+			   * 3. 执行书签导航 / Execute bookmark navigation
+			   */
+			  function navigateToBookmark(bookmarkName) {
+			    try {
+			      // 方法1: 使用 Power BI 的全局对象（如果可用）
+			      // Method 1: Use Power BI global object (if available)
+			      if (window.powerbi) {
+			        window.powerbi.bookmarksManager.apply(bookmarkName);
+			        return;
+			      }
+			      
+			      // 方法2: 通过 webpackJsonp 查找书签管理器
+			      // Method 2: Find bookmark manager through webpackJsonp
+			      if (window.webpackJsonp) {
+			        window.webpackJsonp([], {
+			          0: function(n, o, t) {
+			            // 查找书签管理器模块
+			            // Find bookmark manager module
+			            var bookmarkManager = t(""BookmarksManager"");
+			            if (bookmarkManager && bookmarkManager.applyBookmark) {
+			              bookmarkManager.applyBookmark(bookmarkName);
+			            }
+			          }
+			        }, [0]);
+			      }
+			      
+			      // 方法3: 发送自定义事件（备用方案）
+			      // Method 3: Send custom event (fallback)
+			      var event = new CustomEvent('navigateToBookmark', {
+			        detail: { bookmarkName: bookmarkName }
+			      });
+			      window.dispatchEvent(event);
+			      
+			      // 在控制台输出导航信息（调试用）
+			      // Output navigation info to console (for debugging)
+			      console.log('Navigating to bookmark: ' + bookmarkName);
+			      
+			    } catch (error) {
+			      // 错误处理 / Error handling
+			      console.error('Error navigating to bookmark:', error);
+			      alert('导航到: ' + bookmarkName + '\nNavigating to: ' + bookmarkName);
+			    }
+			  }
+			  
+			  // 防止默认链接行为
+			  // Prevent default link behavior
+			  document.addEventListener('DOMContentLoaded', function() {
+			    var links = document.querySelectorAll('.card, .btn');
+			    links.forEach(function(link) {
+			      link.addEventListener('click', function(e) {
+			        e.preventDefault(); // 阻止默认行为 / Prevent default action
+			      });
+			    });
+			  });
+			</script>
+			</body>
+			</html>"
+			```
+		lineageTag: cd210ab5-7769-45d4-86c1-6d715de8106f
+
+	measure Html_Navigate_Pro3 = ```
+			
+			"<!DOCTYPE html>
+			<html>
+			<head>
+			  <meta charset='UTF-8'>
+			  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+			  <title>Wanek PPH Dashboard</title>
+			  <style>
+			    * {
+			      margin: 0;
+			      padding: 0;
+			      box-sizing: border-box;
+			    }
+			    
+			    html, body {
+			      margin: 0 !important;
+			      padding: 0 !important;
+			      width: 100%;
+			      height: 100%;
+			      overflow: hidden;
+			    }
+			    
+			    body {
+			      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			      background: #4a4f58;
+			      display: flex;
+			      justify-content: center;
+			      align-items: center;
+			      height: 100%;
+			    }
+			    
+			    .container {
+			      width: 100%;
+			      height: 100%;
+			      background: rgba(255, 255, 255, 0.95);
+			      padding: 20px;
+			      display: flex;
+			      flex-direction: column;
+			      overflow-y: auto;
+			    }
+			    
+			    header {
+			      text-align: center;
+			      margin-bottom: 25px;
+			      flex-shrink: 0;
+			    }
+			    
+			    h1 {
+			      color: #333;
+			      font-size: 2.2em;
+			      margin-bottom: 8px;
+			      font-weight: 700;
+			    }
+			    
+			    .subtitle {
+			      color: #666;
+			      font-size: 1.1em;
+			      font-weight: 300;
+			    }
+			    
+			    .card-grid {
+			      display: grid;
+			      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+			      gap: 18px;
+			      margin-bottom: 20px;
+			      flex: 1;
+			    }
+			    
+			    .card {
+			      background: white;
+			      border-radius: 12px;
+			      padding: 18px;
+			      text-decoration: none;
+			      color: inherit;
+			      transition: all 0.3s ease;
+			      border: 2px solid transparent;
+			      cursor: pointer;
+			      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+			      display: flex;
+			      flex-direction: column;
+			      justify-content: center;
+			      align-items: center;
+			      text-align: center;
+			    }
+			    
+			    .card:hover {
+			      transform: translateY(-5px);
+			      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+			      border-color: #667eea;
+			    }
+			    
+			    .card-icon {
+			      font-size: 2.3em;
+			      margin-bottom: 12px;
+			    }
+			    
+			    .card-title {
+			      font-size: 1.2em;
+			      font-weight: 600;
+			      color: #333;
+			      margin-bottom: 8px;
+			    }
+			    
+			    .card-desc {
+			      color: #777;
+			      font-size: 0.9em;
+			      line-height: 1.4;
+			    }
+			    
+			    .footer-actions {
+			      display: flex;
+			      gap: 12px;
+			      justify-content: center;
+			      flex-wrap: wrap;
+			      flex-shrink: 0;
+			      padding-top: 10px;
+			    }
+			    
+			    .btn {
+			      padding: 12px 24px;
+			      border-radius: 8px;
+			      text-decoration: none;
+			      font-weight: 600;
+			      transition: all 0.3s ease;
+			      cursor: pointer;
+			      border: none;
+			      font-size: 0.95em;
+			    }
+			    
+			    .btn-primary {
+			      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			      color: white;
+			    }
+			    
+			    .btn-primary:hover {
+			      transform: scale(1.05);
+			      box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+			    }
+			    
+			    .btn-secondary {
+			      background: #28a745;
+			      color: white;
+			    }
+			    
+			    .btn-secondary:hover {
+			      transform: scale(1.05);
+			      background: #218838;
+			    }
+			    
+			    @media (max-width: 768px) {
+			      h1 { font-size: 1.8em; }
+			      .container { padding: 12px; }
+			      .card-grid { 
+			        grid-template-columns: 1fr;
+			        gap: 12px;
+			      }
+			      .card { padding: 12px; }
+			      .btn { padding: 10px 20px; font-size: 0.9em; }
+			    }
+			  </style>
+			</head>
+			<body>
+			<div class='container'>
+			  <header>
+			    <h1>Wanek PPH Dashboard</h1>
+			    <div class='subtitle'>Performance & Productivity Navigation</div>
+			  </header>
+			  
+			  <div class='card-grid'>
+			    <a href='#' class='card' onclick='navigateToBookmark(""All in PPH Trend"")'>
+			      <span class='card-icon'>📊</span>
+			      <div class='card-title'>All in PPH</div>
+			      <div class='card-desc'>Overall pieces-per-hour across operations.</div>
+			    </a>
+			    
+			    <a href='#' class='card' onclick='navigateToBookmark(""Individual PPH Trend"")'>
+			      <span class='card-icon'>👤</span>
+			      <div class='card-title'>Individual PPH</div>
+			      <div class='card-desc'>Employee-level performance distribution.</div>
+			    </a>
+			    
+			    <a href='#' class='card' onclick='navigateToBookmark(""Weekly PPH Rank"")'>
+			      <span class='card-icon'>📅</span>
+			      <div class='card-title'>Weekly PPH Rank</div>
+			      <div class='card-desc'>Weekly ranking by team and employee.</div>
+			    </a>
+			    
+			    <a href='#' class='card' onclick='navigateToBookmark(""Monthly PPH Rank"")'>
+			      <span class='card-icon'>📈</span>
+			      <div class='card-title'>Monthly PPH Rank</div>
+			      <div class='card-desc'>Monthly trend and ranking summary.</div>
+			    </a>
+			  </div>
+			  
+			  <div class='footer-actions'>
+			    <button class='btn btn-primary' onclick='navigateToBookmark(""Maintain PPH Goal"")'>Maintain PPH Goal</button>
+			    <button class='btn btn-secondary' onclick='navigateToBookmark(""Download PPH Details"")'>Download PPH Details</button>
+			  </div>
+			</div>
+			
+			<script>
+			  function navigateToBookmark(bookmarkName) {
+			    try {
+			      if (window.powerbi) {
+			        window.powerbi.bookmarksManager.apply(bookmarkName);
+			        return;
+			      }
+			      
+			      if (window.webpackJsonp) {
+			        window.webpackJsonp([], {
+			          0: function(n, o, t) {
+			            var bookmarkManager = t('BookmarksManager');
+			            if (bookmarkManager && bookmarkManager.applyBookmark) {
+			              bookmarkManager.applyBookmark(bookmarkName);
+			            }
+			          }
+			        }, [0]);
+			      }
+			      
+			      var event = new CustomEvent('navigateToBookmark', {
+			        detail: { bookmarkName: bookmarkName }
+			      });
+			      window.dispatchEvent(event);
+			      
+			      console.log('Navigating to bookmark: ' + bookmarkName);
+			      
+			    } catch (error) {
+			      console.error('Error navigating to bookmark:', error);
+			    }
+			  }
+			  
+			  document.addEventListener('DOMContentLoaded', function() {
+			    var links = document.querySelectorAll('.card, .btn');
+			    links.forEach(function(link) {
+			      link.addEventListener('click', function(e) {
+			        e.preventDefault();
+			      });
+			    });
+			  });
+			</script>
+			</body>
+			</html>"
+			
+			```
+		lineageTag: 6dcecb37-2d4c-423a-b671-d845a8dd44f6
+
+	measure Html_Navigate_Pro4 = ```
+			
+			"<!DOCTYPE html>
+			<html>
+			<head>
+			  <meta charset='UTF-8'>
+			  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+			  <title>Wanek PPH Dashboard</title>
+			  <style>
+			    /* 全局重置样式 - 完全移除所有默认边距 */
+			    * {
+			      margin: 0;
+			      padding: 0;
+			      box-sizing: border-box;
+			    }
+			    
+			    /* 移除 html 和 body 的所有边距和内边距 */
+			    html, body {
+			      margin: 0 !important;
+			      padding: 0 !important;
+			      width: 100%;
+			      height: 100%;
+			      overflow: hidden;
+			    }
+			    
+			    /* 主体样式 - 完全填充，无任何边距 */
+			    body {
+			      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			      background: #4a4f58;
+			      display: flex;
+			      justify-content: center;
+			      align-items: center;
+			      height: 100%;
+			      padding: 0 !important;  /* 👈 确保无边距 */
+			    }
+			    
+			    /* 主容器样式 - 完全填充视觉对象区域 */
+			    .container {
+			      width: 100%;
+			      height: 100%;
+			      background: rgba(255, 255, 255, 0.95);
+			      padding: 15px 20px;  /* 👈 只保留左右内边距，上下减少 */
+			      display: flex;
+			      flex-direction: column;
+			      overflow-y: auto;
+			      border-radius: 0;  /* 👈 移除圆角 */
+			      box-shadow: none;  /* 👈 移除阴影 */
+			    }
+			    
+			    /* 页头样式 */
+			    header {
+			      text-align: center;
+			      margin-bottom: 20px;  /* 👈 减少底部边距 */
+			      margin-top: 5px;  /* 👈 减少顶部边距 */
+			      flex-shrink: 0;
+			    }
+			    
+			    h1 {
+			      color: #333;
+			      font-size: 2.2em;
+			      margin-bottom: 8px;
+			      font-weight: 700;
+			    }
+			    
+			    .subtitle {
+			      color: #666;
+			      font-size: 1.1em;
+			      font-weight: 300;
+			    }
+			    
+			    /* 卡片网格布局 */
+			    .card-grid {
+			      display: grid;
+			      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+			      gap: 18px;
+			      margin-bottom: 15px;  /* 👈 减少底部边距 */
+			      flex: 1;
+			      align-content: center;  /* 👈 垂直居中卡片 */
+			    }
+			    
+			    /* 卡片样式 - 内容适度下移 */
+			    .card {
+			      background: white;
+			      border-radius: 12px;
+			      padding: 15px;  /* 👈 减少内边距 */
+			      padding-top: 25px;  /* 👈 顶部内边距，让内容下移 */
+			      padding-bottom: 20px;  /* 👈 底部内边距 */
+			      text-decoration: none;
+			      color: inherit;
+			      transition: all 0.3s ease;
+			      border: 2px solid transparent;
+			      cursor: pointer;
+			      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+			      display: flex;
+			      flex-direction: column;
+			      justify-content: flex-start;  /* 👈 从顶部开始排列 */
+			      align-items: center;
+			      text-align: center;
+			    }
+			    
+			    .card:hover {
+			      transform: translateY(-5px);
+			      box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+			      border-color: #667eea;
+			    }
+			    
+			    .card-icon {
+			      font-size: 2.3em;
+			      margin-bottom: 12px;
+			    }
+			    
+			    .card-title {
+			      font-size: 1.2em;
+			      font-weight: 600;
+			      color: #333;
+			      margin-bottom: 8px;
+			    }
+			    
+			    .card-desc {
+			      color: #777;
+			      font-size: 0.9em;
+			      line-height: 1.4;
+			    }
+			    
+			    /* 底部操作按钮区域 */
+			    .footer-actions {
+			      display: flex;
+			      gap: 12px;
+			      justify-content: center;
+			      flex-wrap: wrap;
+			      flex-shrink: 0;
+			      padding-top: 5px;  /* 👈 减少顶部间距 */
+			      padding-bottom: 5px;  /* 👈 减少底部间距 */
+			      margin-bottom: 0;  /* 👈 移除底部边距 */
+			    }
+			    
+			    .btn {
+			      padding: 12px 24px;
+			      border-radius: 8px;
+			      text-decoration: none;
+			      font-weight: 600;
+			      transition: all 0.3s ease;
+			      cursor: pointer;
+			      border: none;
+			      font-size: 0.95em;
+			    }
+			    
+			    .btn-primary {
+			      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+			      color: white;
+			    }
+			    
+			    .btn-primary:hover {
+			      transform: scale(1.05);
+			      box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+			    }
+			    
+			    .btn-secondary {
+			      background: #28a745;
+			      color: white;
+			    }
+			    
+			    .btn-secondary:hover {
+			      transform: scale(1.05);
+			      background: #218838;
+			    }
+			    
+			    /* 移动端响应式样式 */
+			    @media (max-width: 768px) {
+			      h1 { font-size: 1.8em; }
+			      .container { padding: 10px 12px; }
+			      .card-grid { 
+			        grid-template-columns: 1fr;
+			        gap: 12px;
+			      }
+			      .card { 
+			        padding: 12px;
+			        padding-top: 20px;
+			        padding-bottom: 15px;
+			      }
+			      .btn { padding: 10px 20px; font-size: 0.9em; }
+			    }
+			  </style>
+			</head>
+			<body>
+			<div class='container'>
+			  <!-- 页头区域：标题和副标题 -->
+			  <header>
+			    <h1>Wanek PPH Dashboard</h1>
+			    <div class='subtitle'>Performance & Productivity Navigation</div>
+			  </header>
+			  
+			  <!-- 卡片网格区域：4个导航卡片 -->
+			  <div class='card-grid'>
+			    <!-- 卡片1: 总体PPH趋势 -->
+			    <a href='#' class='card' onclick='navigateToBookmark(""All in PPH Trend"")'>
+			      <span class='card-icon'>📊</span>
+			      <div class='card-title'>All in PPH</div>
+			      <div class='card-desc'>Overall pieces-per-hour across operations.</div>
+			    </a>
+			    
+			    <!-- 卡片2: 个人PPH -->
+			    <a href='#' class='card' onclick='navigateToBookmark(""Individual PPH Trend"")'>
+			      <span class='card-icon'>👤</span>
+			      <div class='card-title'>Individual PPH</div>
+			      <div class='card-desc'>Employee-level performance distribution.</div>
+			    </a>
+			    
+			    <!-- 卡片3: 周排名 -->
+			    <a href='#' class='card' onclick='navigateToBookmark(""Weekly PPH Rank"")'>
+			      <span class='card-icon'>📅</span>
+			      <div class='card-title'>Weekly PPH Rank</div>
+			      <div class='card-desc'>Weekly ranking by team and employee.</div>
+			    </a>
+			    
+			    <!-- 卡片4: 月排名 -->
+			    <a href='#' class='card' onclick='navigateToBookmark(""Monthly PPH Rank"")'>
+			      <span class='card-icon'>📈</span>
+			      <div class='card-title'>Monthly PPH Rank</div>
+			      <div class='card-desc'>Monthly trend and ranking summary.</div>
+			    </a>
+			  </div>
+			  
+			  <!-- 底部操作按钮区域 -->
+			  <div class='footer-actions'>
+			    <!-- 维护PPH目标按钮 -->
+			    <button class='btn btn-primary' onclick='navigateToBookmark(""Maintain PPH Goal"")'>Maintain PPH Goal</button>
+			    
+			    <!-- 下载PPH详情按钮 -->
+			    <button class='btn btn-secondary' onclick='navigateToBookmark(""Download PPH Details"")'>Download PPH Details</button>
+			  </div>
+			</div>
+			
+			<script>
+			  /**
+			   * Power BI 书签导航函数
+			   */
+			  function navigateToBookmark(bookmarkName) {
+			    try {
+			      if (window.powerbi) {
+			        window.powerbi.bookmarksManager.apply(bookmarkName);
+			        return;
+			      }
+			      
+			      if (window.webpackJsonp) {
+			        window.webpackJsonp([], {
+			          0: function(n, o, t) {
+			            var bookmarkManager = t('BookmarksManager');
+			            if (bookmarkManager && bookmarkManager.applyBookmark) {
+			              bookmarkManager.applyBookmark(bookmarkName);
+			            }
+			          }
+			        }, [0]);
+			      }
+			      
+			      var event = new CustomEvent('navigateToBookmark', {
+			        detail: { bookmarkName: bookmarkName }
+			      });
+			      window.dispatchEvent(event);
+			      
+			      console.log('Navigating to bookmark: ' + bookmarkName);
+			      
+			    } catch (error) {
+			      console.error('Error navigating to bookmark:', error);
+			    }
+			  }
+			  
+			  document.addEventListener('DOMContentLoaded', function() {
+			    var links = document.querySelectorAll('.card, .btn');
+			    links.forEach(function(link) {
+			      link.addEventListener('click', function(e) {
+			        e.preventDefault();
+			      });
+			    });
+			  });
+			</script>
+			</body>
+			</html>"
+			
+			```
+		lineageTag: 425930aa-4e71-44bd-9657-76cbfdb8e2e7
+
+	measure '1_WN3 All in PPH Shipping Count Green Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF([1_WN3 All in PPH Shipping (Daily, NoDims)] >= 13, 1, 0)
+			)
+			```
+		formatString: 0
+		displayFolder: 1_WN3 All in PPH Shipping
+		lineageTag: 01170245-ea65-47de-bcbe-8f392fbc8cdb
+
+	measure '1_WN3 All in PPH Shipping Count Yellow Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF(
+			        [1_WN3 All in PPH Shipping (Daily, NoDims)] >= 10 && 
+			        [1_WN3 All in PPH Shipping (Daily, NoDims)] < 13, 
+			        1, 0
+			    )
+			)
+			```
+		formatString: 0
+		displayFolder: 1_WN3 All in PPH Shipping
+		lineageTag: 78b1f95d-76b8-4ab3-927a-48986ea75ab1
+
+	measure '1_WN3 All in PPH Shipping Count Red Days' = ```
+			
+			SUMX(
+			    VALUES('Dim_Calendar'[Date]), 
+			    IF(
+			        NOT ISBLANK([1_WN3 All in PPH Shipping (Daily, NoDims)]) && 
+			        [1_WN3 All in PPH Shipping (Daily, NoDims)] < 10, 
+			        1, 0
+			    )
+			)
+			```
+		formatString: 0
+		displayFolder: 1_WN3 All in PPH Shipping
+		lineageTag: b83a5093-600c-401d-a4a8-19b2f2e77491
+
+	measure '1_WN3 All in PPH Shipping (LastDate Label)' = ```
+			
+			VAR LastVisibleDate =
+			    MAXX (
+			        ALLSELECTED ( 'Dim_Calendar'[Date] ),   -- 当前报表/切片器下能看到的最大日期
+			        'Dim_Calendar'[Date]
+			    )
+			VAR CurrDate =
+			    MAX ( 'Dim_Calendar'[Date] )
+			RETURN
+			IF (
+			    CurrDate = LastVisibleDate,
+			    [1_WN3 All in PPH Shipping],               -- 只在最后一天返回数值
+			    BLANK ()                                   -- 其他日期都为空
+			)
+			
+			```
+		displayFolder: 1_WN3 All in PPH Shipping
+		lineageTag: 788bd764-d5a5-4425-942f-915b074a8def
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition A_Measure = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

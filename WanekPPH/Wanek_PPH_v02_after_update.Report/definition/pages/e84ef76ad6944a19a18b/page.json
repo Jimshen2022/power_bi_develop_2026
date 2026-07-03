@@ -1,0 +1,48 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "e84ef76ad6944a19a18b",
+  "displayName": "WN2 Individual PPH Line Clearing Details",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "6bd62a3e7a4744048517",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "I02_WN2 Individual PPH Line Clearing"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "Drillthrough"
+      }
+    ]
+  },
+  "pageBinding": {
+    "name": "7d72de67d1e840dca47e",
+    "type": "Drillthrough",
+    "parameters": [
+      {
+        "name": "3dbfeaf5292f40eb9e67",
+        "boundFilter": "6bd62a3e7a4744048517",
+        "fieldExpr": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "A_Measure"
+              }
+            },
+            "Property": "I02_WN2 Individual PPH Line Clearing"
+          }
+        }
+      }
+    ]
+  },
+  "visibility": "HiddenInViewMode"
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "2d43743e55b6c1e3e3a9",
+  "displayName": "I07_DC Individual PPH Put away",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "objects": {
+    "outspace": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "ThemeDataColor": {
+                    "ColorId": 0,
+                    "Percent": -0.1
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "79e7a1e10006ba3b1451",
+      "target": "453ed05f6920d30b5cc6",
+      "type": "NoFilter"
+    },
+    {
+      "source": "80b7cc9d250268898e7b",
+      "target": "453ed05f6920d30b5cc6",
+      "type": "NoFilter"
+    },
+    {
+      "source": "80b7cc9d250268898e7b",
+      "target": "c237bd0e080accb06197",
+      "type": "HighlightFilter"
+    }
+  ]
+}
