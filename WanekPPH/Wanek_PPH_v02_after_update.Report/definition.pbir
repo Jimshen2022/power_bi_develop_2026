@@ -3,7 +3,7 @@
   "version": "4.0",
   "datasetReference": {
     "byPath": {
-      "path": "../Wanek_PPH_v02.SemanticModel"
+      "path": "../Wanek_PPH_v02_after_update.SemanticModel"
     }
   }
 }
