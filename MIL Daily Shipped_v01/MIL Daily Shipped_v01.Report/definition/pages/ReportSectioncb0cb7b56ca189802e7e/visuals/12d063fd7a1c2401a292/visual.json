@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
-  "name": "c4505446a197155cbbab",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "12d063fd7a1c2401a292",
   "position": {
-    "x": 0,
-    "y": 111.4066496163683,
+    "x": 155.76158940397352,
+    "y": 0,
     "z": 4000,
-    "height": 148.23529411764707,
-    "width": 141.79028132992329,
+    "height": 718.41059602649011,
+    "width": 143.04635761589404,
     "tabOrder": 4000
   },
   "visual": {
@@ -20,34 +20,18 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "D_Date"
+                      "Entity": "D_Product_Category"
                     }
                   },
-                  "Property": "Date"
+                  "Property": "PRODUCT"
                 }
               },
-              "queryRef": "D_Date.Date",
+              "queryRef": "D_Product_Category.Product",
+              "nativeQueryRef": "Product",
               "active": true
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "D_Date"
-                  }
-                },
-                "Property": "Date"
-              }
-            },
-            "direction": "Descending"
-          }
-        ]
       }
     },
     "objects": {
@@ -57,7 +41,7 @@
             "mode": {
               "expr": {
                 "Literal": {
-                  "Value": "'Between'"
+                  "Value": "'Basic'"
                 }
               }
             }
@@ -120,11 +104,6 @@
           }
         }
       ]
-    },
-    "syncGroup": {
-      "groupName": "Date",
-      "fieldChanges": true,
-      "filterChanges": true
     },
     "drillFilterOtherVisuals": true
   }

@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
-  "name": "c4505446a197155cbbab",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "e679123408d6acb53689",
   "position": {
     "x": 0,
-    "y": 111.4066496163683,
+    "y": 453.44877344877347,
     "z": 4000,
-    "height": 148.23529411764707,
-    "width": 141.79028132992329,
+    "height": 265.974025974026,
+    "width": 134.83405483405485,
     "tabOrder": 4000
   },
   "visual": {
@@ -20,34 +20,17 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "D_Date"
+                      "Entity": "fct_MILCNTDETAILS"
                     }
                   },
-                  "Property": "Date"
+                  "Property": "WCIDESTINATION"
                 }
               },
-              "queryRef": "D_Date.Date",
+              "queryRef": "MILCNTDETAILS.WCIDESTINATION",
               "active": true
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "D_Date"
-                  }
-                },
-                "Property": "Date"
-              }
-            },
-            "direction": "Descending"
-          }
-        ]
       }
     },
     "objects": {
@@ -57,7 +40,7 @@
             "mode": {
               "expr": {
                 "Literal": {
-                  "Value": "'Between'"
+                  "Value": "'Basic'"
                 }
               }
             }
@@ -83,17 +66,17 @@
                 }
               }
             },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Destination'"
+                }
+              }
+            },
             "textSize": {
               "expr": {
                 "Literal": {
                   "Value": "10D"
-                }
-              }
-            },
-            "bold": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
                 }
               }
             }
@@ -120,11 +103,6 @@
           }
         }
       ]
-    },
-    "syncGroup": {
-      "groupName": "Date",
-      "fieldChanges": true,
-      "filterChanges": true
     },
     "drillFilterOtherVisuals": true
   }

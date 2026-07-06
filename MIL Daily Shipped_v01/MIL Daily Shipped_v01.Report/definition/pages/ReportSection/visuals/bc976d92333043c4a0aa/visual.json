@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
-  "name": "af2a8a75ddb124d23dad",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "bc976d92333043c4a0aa",
   "position": {
-    "x": 142.56,
-    "y": 406.08000000000004,
+    "x": 148.23529411764707,
+    "y": 348.03069053708441,
     "z": 1000,
-    "height": 313.92,
-    "width": 558.72,
+    "height": 371.04859335038367,
+    "width": 591.09974424552433,
     "tabOrder": 1000
   },
   "visual": {
@@ -30,6 +30,20 @@
             },
             {
               "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "D_Measure"
+                    }
+                  },
+                  "Property": "ContainerQ'ty"
+                }
+              },
+              "queryRef": "D_Measure.ContainerQ'ty",
+              "displayName": "Container_Q'ty"
+            },
+            {
+              "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
@@ -50,25 +64,10 @@
                       "Entity": "D_Measure"
                     }
                   },
-                  "Property": "ContainerQ'ty"
-                }
-              },
-              "queryRef": "D_Measure.ContainerQ'ty",
-              "displayName": "Container Q'ty"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "D_Measure"
-                    }
-                  },
                   "Property": "SKUs"
                 }
               },
-              "queryRef": "D_Measure.SKUS_",
-              "nativeQueryRef": "SKUS_"
+              "queryRef": "D_Measure.SKUs"
             },
             {
               "field": {
@@ -81,7 +80,8 @@
                   "Property": "Products"
                 }
               },
-              "queryRef": "D_Measure.Products"
+              "queryRef": "D_Measure.Products",
+              "nativeQueryRef": "Products"
             }
           ]
         }
@@ -111,21 +111,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "166.55498734814955D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "D_Measure.Products"
-          }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "256.92124681044936D"
+                  "Value": "241D"
                 }
               }
             }
@@ -139,7 +125,21 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "97.86637597794571D"
+                  "Value": "98.17363344051446D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MILCNTDETAILS.ITEMNUMBER"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "71.90292883701508D"
                 }
               }
             }
@@ -147,84 +147,47 @@
           "selector": {
             "metadata": "D_Measure.ContainerQ'ty"
           }
-        }
-      ],
-      "columnFormatting": [
+        },
         {
           "properties": {
-            "styleValues": {
+            "value": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "79D"
                 }
               }
-            },
-            "styleTotal": {
+            }
+          },
+          "selector": {
+            "metadata": "D_Date.Date"
+          }
+        },
+        {
+          "properties": {
+            "value": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "52.95354025063842D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "D_Measure.SKUs"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "129.37897826468839D"
                 }
               }
             }
           },
           "selector": {
             "metadata": "D_Measure.Products"
-          }
-        },
-        {
-          "properties": {
-            "styleHeader": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "styleTotal": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "alignment": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Center'"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "D_Measure.ContainerQ'ty"
-          }
-        },
-        {
-          "properties": {
-            "styleHeader": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "styleTotal": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "alignment": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Center'"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "D_Measure.SKUS_"
           }
         }
       ],
@@ -243,7 +206,129 @@
       ],
       "columnHeaders": [
         {
-          "properties": {}
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "autoSizeColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "D_Date.Date"
+          }
+        },
+        {
+          "properties": {
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "D_Measure.ContainerQ'ty"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Left'"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "MILCNTDETAILS.CONTAINER#"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "D_Measure.SKUs"
+          }
         }
       ]
     },
@@ -254,7 +339,7 @@
             "name": {
               "expr": {
                 "Literal": {
-                  "Value": "'AlternatingRowsNew'"
+                  "Value": "'BoldHeader'"
                 }
               }
             }
@@ -264,6 +349,13 @@
       "title": [
         {
           "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Product Category Qty in Mixed Containers'"
+                }
+              }
+            },
             "show": {
               "expr": {
                 "Literal": {
@@ -271,17 +363,10 @@
                 }
               }
             },
-            "text": {
+            "titleWrap": {
               "expr": {
                 "Literal": {
-                  "Value": "'Container SKUs and Products'"
-                }
-              }
-            },
-            "alignment": {
-              "expr": {
-                "Literal": {
-                  "Value": "'center'"
+                  "Value": "true"
                 }
               }
             },
@@ -297,10 +382,17 @@
                 }
               }
             },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "13D"
                 }
               }
             }
@@ -310,15 +402,17 @@
       "background": [
         {
           "properties": {
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": -0.1
-                    }
-                  }
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
                 }
               }
             }

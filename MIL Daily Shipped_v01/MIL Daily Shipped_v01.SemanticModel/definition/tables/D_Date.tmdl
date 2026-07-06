@@ -1,0 +1,112 @@
+table D_Date
+	lineageTag: c28bfd76-5e8e-460a-8a11-78a08ecf163a
+
+	column Date
+		formatString: m/d/yy
+		lineageTag: 8e24251f-3b15-4e46-9154-439b07a7a644
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: bd04ee66-6021-4d1d-8fb6-b84ba5f3d0eb
+			defaultHierarchy: LocalDateTable_f561553f-1413-4652-b508-2e087b0bf9e0.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Year
+		formatString: 0
+		lineageTag: 6062ab93-5ba4-4ac5-9c1b-71ba04a2c447
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		formatString: 0
+		lineageTag: 5ec2a3df-de15-471e-8eba-d1473c15b61a
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		formatString: 0
+		lineageTag: c1e35f19-0167-4caa-86c9-776dd5141f03
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Day]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Week
+		formatString: 0
+		lineageTag: 3d65b33d-b6df-4242-9146-4cec3b3d34f9
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Week]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WeekN
+		formatString: 0
+		lineageTag: c1cb13de-6e1b-4ef7-a016-f40d276b77eb
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [WeekN]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		lineageTag: 00164259-bcb4-4690-8a34-1b34453fc746
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonth
+		formatString: 0
+		lineageTag: 28877d7a-abae-41be-8472-494d2e080068
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [YearMonth]
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearWeek
+		formatString: 0
+		lineageTag: aa1b9acb-2045-44ef-99af-aac9add5c80d
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [YearWeek]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition D_Date-084985c0-f4ae-45d1-8b1f-959cd493cccd = calculated
+		mode: import
+		source =
+				filter(ADDCOLUMNS(
+				CALENDAR(today()-360,DATE(2038, 12, 31)),
+				"Year",YEAR([Date]),
+				"Month",Month([Date]),
+				"Day", day([Date]),
+				"Week", WEEKDAY([Date],1),
+				"WeekN", WEEKNUM([Date],2),
+				"Quarter",YEAR([Date])&"Q"&QUARTER([Date]),
+				"YearMonth",year([Date])*100+MONTH([Date]),
+				"YearWeek", year([Date])*100+WEEKNUM([Date],2)),[Date]<=TODAY())
+
+	annotation PBI_Id = a3a38ec1702948b9aaffdf14956bc00d
+

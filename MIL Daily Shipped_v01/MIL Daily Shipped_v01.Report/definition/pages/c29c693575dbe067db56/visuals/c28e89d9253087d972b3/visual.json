@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
-  "name": "c4505446a197155cbbab",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "c28e89d9253087d972b3",
   "position": {
     "x": 0,
-    "y": 111.4066496163683,
-    "z": 4000,
-    "height": 148.23529411764707,
-    "width": 141.79028132992329,
-    "tabOrder": 4000
+    "y": 0,
+    "z": 1000,
+    "height": 90.110262934690411,
+    "width": 221.47582697201017,
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "slicer",
@@ -20,13 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "D_Date"
+                      "Entity": "fct_mil_loading_audit"
                     }
                   },
                   "Property": "Date"
                 }
               },
-              "queryRef": "D_Date.Date",
+              "queryRef": "fct_mil_loading_audit.Date",
+              "nativeQueryRef": "Date",
               "active": true
             }
           ]
@@ -39,15 +40,16 @@
               "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "D_Date"
+                    "Entity": "fct_mil_loading_audit"
                   }
                 },
                 "Property": "Date"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
-        ]
+        ],
+        "isDefaultSort": true
       }
     },
     "objects": {
@@ -66,18 +68,67 @@
       ],
       "general": [
         {
-          "properties": {}
+          "properties": {
+            "orientation": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "date": [
+        {
+          "properties": {
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#80B59E'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.1
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       ],
       "header": [
         {
           "properties": {
-            "fontColor": {
+            "background": {
               "solid": {
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#118dff'"
+                      "Value": "'#80B59E'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.1
                     }
                   }
                 }
@@ -86,14 +137,7 @@
             "textSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
-                }
-              }
-            },
-            "bold": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
+                  "Value": "12D"
                 }
               }
             }
@@ -109,9 +153,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 8,
-                      "Percent": 0.6
+                    "Literal": {
+                      "Value": "'#80B59E'"
                     }
                   }
                 }
@@ -120,11 +163,6 @@
           }
         }
       ]
-    },
-    "syncGroup": {
-      "groupName": "Date",
-      "fieldChanges": true,
-      "filterChanges": true
     },
     "drillFilterOtherVisuals": true
   }

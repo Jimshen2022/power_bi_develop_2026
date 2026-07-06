@@ -22,6 +22,7 @@ SELECT t.STID, t.ITNBR, t.ITCLS, t.B2Z95S, t.WEGHT, s.ITMCQTY,
             WHEN t.ITCLS IN ('WVCS') THEN 'Foundation'
             WHEN t.ITCLS IN ('ZABC','ZECD','ZDAA','ZECD','ZDWC','ZDAB','ZDAE','ZDAW','ZDBC','ZDWC','ZDAY','ZEBR','ZVTY','ZVTC','ZEOT','ZDYB') THEN 'CaseGoods'
             WHEN t.ITCLS IN ('ZAIS','ZKIS','ZNFR','ZKBP','ZKBA','ZBMA','ZCIM') THEN 'Bedding'
+            WHEN t.ITCLS = 'ZEBF' THEN 'Aero Bed'
             ELSE 'Check' END) AS Product
 FROM AMFLIBL.ITMRVA AS t
 JOIN AFILELIBL.ITMEXT AS s ON t.itnbr = s.itnbr

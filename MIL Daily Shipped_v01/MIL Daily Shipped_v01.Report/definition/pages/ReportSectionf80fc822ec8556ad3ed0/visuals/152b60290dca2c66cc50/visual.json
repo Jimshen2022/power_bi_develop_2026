@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
-  "name": "c4505446a197155cbbab",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "152b60290dca2c66cc50",
   "position": {
     "x": 0,
-    "y": 111.4066496163683,
-    "z": 4000,
-    "height": 148.23529411764707,
-    "width": 141.79028132992329,
-    "tabOrder": 4000
+    "y": 0,
+    "z": 3000,
+    "height": 83.116883116883116,
+    "width": 134.83405483405485,
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "slicer",
@@ -20,34 +20,17 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "D_Date"
+                      "Entity": "fct_MILCNTDETAILS"
                     }
                   },
-                  "Property": "Date"
+                  "Property": "CONTAINERTYPE"
                 }
               },
-              "queryRef": "D_Date.Date",
+              "queryRef": "MILCNTDETAILS.Container_Type",
               "active": true
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "D_Date"
-                  }
-                },
-                "Property": "Date"
-              }
-            },
-            "direction": "Descending"
-          }
-        ]
       }
     },
     "objects": {
@@ -57,7 +40,7 @@
             "mode": {
               "expr": {
                 "Literal": {
-                  "Value": "'Between'"
+                  "Value": "'Basic'"
                 }
               }
             }
@@ -72,14 +55,10 @@
       "header": [
         {
           "properties": {
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#118dff'"
-                    }
-                  }
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'ContainerType'"
                 }
               }
             },
@@ -90,7 +69,33 @@
                 }
               }
             },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
             "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'wf_standard-font_light, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "show": {
               "expr": {
                 "Literal": {
                   "Value": "true"
@@ -109,9 +114,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 8,
-                      "Percent": 0.6
+                    "Literal": {
+                      "Value": "'#F0E199'"
                     }
                   }
                 }
@@ -120,11 +124,6 @@
           }
         }
       ]
-    },
-    "syncGroup": {
-      "groupName": "Date",
-      "fieldChanges": true,
-      "filterChanges": true
     },
     "drillFilterOtherVisuals": true
   }

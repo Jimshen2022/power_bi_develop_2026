@@ -1,0 +1,23 @@
+relationship 77584fdb-da9c-4ef1-98b1-29bba86553da
+	fromColumn: fct_MILCNTDETAILS.PRODUCT
+	toColumn: D_Product_Category.PRODUCT
+
+relationship 278e4ff8-fb8b-49b4-9217-3682251af1ff
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_mil_loading_audit.LAST_AUDIT_TIME
+	toColumn: LocalDateTable_6964c371-f2fe-4bcc-bcbf-2eda93ea502a.Date
+
+relationship 06a5d164-80c2-466b-b398-b2b0ab98c29e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct_mil_loading_audit.Date
+	toColumn: LocalDateTable_22855ec9-91d1-43df-8464-207e9494b206.Date
+
+relationship bd04ee66-6021-4d1d-8fb6-b84ba5f3d0eb
+	joinOnDateBehavior: datePartOnly
+	fromColumn: D_Date.Date
+	toColumn: LocalDateTable_f561553f-1413-4652-b508-2e087b0bf9e0.Date
+
+relationship cba0bb5b-9b0c-4427-9ff6-5a8b63848b7d
+	fromColumn: fct_MILCNTDETAILS.DATE
+	toColumn: D_Date.Date
+

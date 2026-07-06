@@ -1,0 +1,17 @@
+table D_Product_Category
+	lineageTag: a36444e7-75fc-46e4-8550-4292896ebeb6
+
+	column PRODUCT
+		lineageTag: 0fa4a498-774a-4ba1-b463-56e5068dddeb
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: fct_MILCNTDETAILS[PRODUCT]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition D_Product_Category-beaefe67-15e8-4e12-b732-94256143b9ec = calculated
+		mode: import
+		source = VALUES('fct_MILCNTDETAILS'[PRODUCT])
+
+	annotation PBI_Id = 443cd423f3724959911657e4ec7d4eca
+

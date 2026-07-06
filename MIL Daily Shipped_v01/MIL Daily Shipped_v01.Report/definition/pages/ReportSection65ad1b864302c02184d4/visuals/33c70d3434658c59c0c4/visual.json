@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
-  "name": "d5b09184eb4e02e3ad18",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "33c70d3434658c59c0c4",
   "position": {
-    "x": 707.28606356968214,
-    "y": 405.28117359413204,
-    "z": 2000,
-    "height": 314.52322738386312,
-    "width": 572.71393643031786,
-    "tabOrder": 2000
+    "x": 141.76344086021504,
+    "y": 406.02150537634407,
+    "z": 1000,
+    "height": 313.80645161290323,
+    "width": 1138.236559139785,
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "tableEx",
@@ -20,14 +20,27 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "fct_MILCNTDETAILS"
+                      "Entity": "D_Date"
                     }
                   },
-                  "Property": "DATE"
+                  "Property": "Date"
                 }
               },
-              "queryRef": "MILCNTDETAILS.DATE",
-              "nativeQueryRef": "DATE"
+              "queryRef": "D_Date.Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "D_Date"
+                    }
+                  },
+                  "Property": "YearWeek"
+                }
+              },
+              "queryRef": "Sum(D_Date.YearWeek)",
+              "nativeQueryRef": "Date"
             },
             {
               "field": {
@@ -41,6 +54,7 @@
                 }
               },
               "queryRef": "MILCNTDETAILS.CONTAINER#",
+              "nativeQueryRef": "Container Number",
               "displayName": "Container Number"
             },
             {
@@ -51,11 +65,12 @@
                       "Entity": "fct_MILCNTDETAILS"
                     }
                   },
-                  "Property": "ITEMNUMBER"
+                  "Property": "WCHCONTAINERSIZE"
                 }
               },
-              "queryRef": "MILCNTDETAILS.ITEMNUMBER",
-              "displayName": "Item Number"
+              "queryRef": "MILCNTDETAILS.WCHCONTAINERSIZE",
+              "nativeQueryRef": "CTN_Size",
+              "displayName": "CTN_Size"
             },
             {
               "field": {
@@ -65,26 +80,12 @@
                       "Entity": "fct_MILCNTDETAILS"
                     }
                   },
-                  "Property": "PRODUCT"
+                  "Property": "CONTAINERTYPE"
                 }
               },
-              "queryRef": "MILCNTDETAILS.PRODUCT",
-              "displayName": "Products"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fct_MILCNTDETAILS"
-                    }
-                  },
-                  "Property": "ITCLS"
-                }
-              },
-              "queryRef": "fct_MILCNTDETAILS.ITCLS",
-              "nativeQueryRef": "ItemClass",
-              "displayName": "ItemClass"
+              "queryRef": "MILCNTDETAILS.Container_Type",
+              "nativeQueryRef": "CTN_Type",
+              "displayName": "CTN_Type"
             },
             {
               "field": {
@@ -102,27 +103,23 @@
                   "Function": 0
                 }
               },
-              "queryRef": "Sum(MILCNTDETAILS.QTY)",
-              "displayName": "Q'ty"
+              "queryRef": "Sum(MILCNTDETAILS.Qty)",
+              "nativeQueryRef": "Qty",
+              "displayName": "Qty"
             },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "fct_MILCNTDETAILS"
-                        }
-                      },
-                      "Property": "CUBES"
+                    "SourceRef": {
+                      "Entity": "D_Measure"
                     }
                   },
-                  "Function": 0
+                  "Property": "Cubes"
                 }
               },
-              "queryRef": "Sum(MILCNTDETAILS.CUBES)",
-              "displayName": "ItemCubes"
+              "queryRef": "D_Measure.Cubes",
+              "nativeQueryRef": "Cubes"
             },
             {
               "field": {
@@ -132,49 +129,45 @@
                       "Entity": "fct_MILCNTDETAILS"
                     }
                   },
-                  "Property": "UTILIZATION"
-                }
-              },
-              "queryRef": "Sum(MILCNTDETAILS.UTILIZATION)",
-              "nativeQueryRef": "UTILIZATION",
-              "displayName": "ItemUtilization%"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "fct_MILCNTDETAILS"
-                    }
-                  },
-                  "Property": "H_CUBES"
-                }
-              },
-              "queryRef": "Sum(MILCNTDETAILS.H_CUBES)",
-              "nativeQueryRef": "TotalContainerCubes",
-              "displayName": "TotalContainerCubes"
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "fct_MILCNTDETAILS"
-                        }
-                      },
-                      "Property": "Container Utilization%"
-                    }
-                  },
-                  "Function": 0
+                  "Property": "Container Utilization%"
                 }
               },
               "queryRef": "Sum(MILCNTDETAILS.Container Utilization%)",
-              "nativeQueryRef": "Container Utilization%"
+              "nativeQueryRef": "Container Utilization%1"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "D_Measure"
+                    }
+                  },
+                  "Property": "Products"
+                }
+              },
+              "queryRef": "D_Measure.Products",
+              "nativeQueryRef": "Products"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "D_Measure"
+                  }
+                },
+                "Property": "Utilization(%)"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
       }
     },
     "objects": {
@@ -184,7 +177,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "250.6366441704062D"
+                  "Value": "327.07849050359806D"
                 }
               }
             }
@@ -198,19 +191,41 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "98.17363344051446D"
+                  "Value": "84.26347305389221D"
                 }
               }
             }
           },
           "selector": {
-            "metadata": "MILCNTDETAILS.ITEMNUMBER"
+            "metadata": "D_Measure.Cubes"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "226.11377245508982D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "D_Measure.Products"
           }
         }
       ],
-      "columnHeaders": [
+      "total": [
         {
-          "properties": {}
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
         }
       ]
     },
@@ -221,7 +236,7 @@
             "name": {
               "expr": {
                 "Literal": {
-                  "Value": "'BoldHeader'"
+                  "Value": "'AlternatingRowsNew'"
                 }
               }
             }
@@ -241,7 +256,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Container Details'"
+                  "Value": "'Container SKUs and Products'"
                 }
               }
             },
@@ -268,24 +283,6 @@
               "expr": {
                 "Literal": {
                   "Value": "14D"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "background": [
-        {
-          "properties": {
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": -0.1
-                    }
-                  }
                 }
               }
             }

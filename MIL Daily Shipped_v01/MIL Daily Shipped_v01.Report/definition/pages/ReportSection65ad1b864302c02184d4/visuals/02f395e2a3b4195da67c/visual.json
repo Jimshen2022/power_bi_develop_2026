@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
-  "name": "c4505446a197155cbbab",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "02f395e2a3b4195da67c",
   "position": {
     "x": 0,
-    "y": 111.4066496163683,
-    "z": 4000,
-    "height": 148.23529411764707,
-    "width": 141.79028132992329,
-    "tabOrder": 4000
+    "y": 214.25685425685427,
+    "z": 6000,
+    "height": 234.57431457431457,
+    "width": 134.83405483405485,
+    "tabOrder": 6000
   },
   "visual": {
     "visualType": "slicer",
@@ -20,34 +20,17 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "D_Date"
+                      "Entity": "D_Product_Category"
                     }
                   },
-                  "Property": "Date"
+                  "Property": "PRODUCT"
                 }
               },
-              "queryRef": "D_Date.Date",
+              "queryRef": "D_Product_Category.Product",
               "active": true
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "D_Date"
-                  }
-                },
-                "Property": "Date"
-              }
-            },
-            "direction": "Descending"
-          }
-        ]
       }
     },
     "objects": {
@@ -57,7 +40,7 @@
             "mode": {
               "expr": {
                 "Literal": {
-                  "Value": "'Between'"
+                  "Value": "'Basic'"
                 }
               }
             }
@@ -72,14 +55,10 @@
       "header": [
         {
           "properties": {
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#118dff'"
-                    }
-                  }
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Product'"
                 }
               }
             },
@@ -90,7 +69,33 @@
                 }
               }
             },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
             "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'wf_standard-font_light, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "show": {
               "expr": {
                 "Literal": {
                   "Value": "true"
@@ -120,11 +125,6 @@
           }
         }
       ]
-    },
-    "syncGroup": {
-      "groupName": "Date",
-      "fieldChanges": true,
-      "filterChanges": true
     },
     "drillFilterOtherVisuals": true
   }

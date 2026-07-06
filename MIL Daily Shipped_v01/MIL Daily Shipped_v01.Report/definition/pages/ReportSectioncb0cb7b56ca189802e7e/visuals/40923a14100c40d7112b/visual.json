@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.8.0/schema.json",
-  "name": "c4505446a197155cbbab",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "40923a14100c40d7112b",
   "position": {
     "x": 0,
-    "y": 111.4066496163683,
-    "z": 4000,
-    "height": 148.23529411764707,
+    "y": 267.0076726342711,
+    "z": 3000,
+    "height": 452.071611253197,
     "width": 141.79028132992329,
-    "tabOrder": 4000
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "slicer",
@@ -20,34 +20,18 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "D_Date"
+                      "Entity": "fct_MILCNTDETAILS"
                     }
                   },
-                  "Property": "Date"
+                  "Property": "WCIDESTINATION"
                 }
               },
-              "queryRef": "D_Date.Date",
-              "active": true
+              "queryRef": "MILCNTDETAILS.WCIDESTINATION",
+              "active": true,
+              "displayName": "Destinations"
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "D_Date"
-                  }
-                },
-                "Property": "Date"
-              }
-            },
-            "direction": "Descending"
-          }
-        ]
       }
     },
     "objects": {
@@ -57,7 +41,7 @@
             "mode": {
               "expr": {
                 "Literal": {
-                  "Value": "'Between'"
+                  "Value": "'Basic'"
                 }
               }
             }
@@ -120,11 +104,6 @@
           }
         }
       ]
-    },
-    "syncGroup": {
-      "groupName": "Date",
-      "fieldChanges": true,
-      "filterChanges": true
     },
     "drillFilterOtherVisuals": true
   }

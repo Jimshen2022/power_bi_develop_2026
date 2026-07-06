@@ -324,8 +324,7 @@ table fct_MILCNTDETAILS
 				    #"61456a58-5221-49a3-a963-ca77dc011dac" = #"5839814b-ec95-48ea-a07a-ec0241ac9946"{[dataflowId="61456a58-5221-49a3-a963-ca77dc011dac"]}[Data],
 				    mil_daily_shipped_ = #"61456a58-5221-49a3-a963-ca77dc011dac"{[entity="mil_daily_shipped",version=""]}[Data],    
 				    #"Reordered Columns" = Table.ReorderColumns(mil_daily_shipped_,{"WCIORIGIN", "CONTAINER#", "CUBES", "ITCLS", "PRODUCT", "WCIDESTINATION", "WCIORDER", "ITEMNUMBER", "QTY", "WCILASTMAINTENANCETIMESTAMP", "CONTAINERNUMBER", "CONTAINERTYPE", "WCILASTMAINTENANCEUSER", "ITMCQTY", "UNITCUBE", "UNITWEIGHT", "CARTONS", "WCHCONTAINERSIZE", "WCHDOORNUMBER", "WCHBUILDING", "H_CUBES", "UTILIZATION", "WH", "DATE"}),
-				    #"Updated Product" = Table.ReplaceValue(#"Reordered Columns", each [PRODUCT], each if [PRODUCT] = "Check" and [ITCLS] = "ZEBF" then "Aero Bed" else [PRODUCT], Replacer.ReplaceValue, {"PRODUCT"}),
-				    #"Filtered Rows" = Table.SelectRows(#"Updated Product", each [#"CONTAINER#"] <> null and [#"CONTAINER#"] <> "")
+				    #"Filtered Rows" = Table.SelectRows(#"Reordered Columns", each [#"CONTAINER#"] <> null and [#"CONTAINER#"] <> "")
 				in
 				    #"Filtered Rows"
 				```
