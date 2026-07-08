@@ -1,0 +1,119 @@
+table F_Utilization_Summary
+	lineageTag: a2f99199-26c3-4b90-8d7f-390ca8a6ed74
+
+	column Qty
+		formatString: #,0
+		lineageTag: fb0a75d1-b75e-41db-8a03-ca007ef1e273
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Qty]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Total_Cartons
+		dataType: int64
+		formatString: #,0
+		lineageTag: b47ebc2f-2051-497d-81bf-01d7c4fdbf35
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Total_Cartons]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: ef2615b2-2fdb-406f-ad66-281e38d10200
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column WH
+		lineageTag: bf9ab1e2-c056-4c43-bf57-569cd1e5fbb5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Wanek[WH]
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTAINER#
+		lineageTag: 8e4f6e3f-431c-4a3a-b4cf-2d27859e8509
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Wanek[CONTAINER#]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cont_Categories
+		lineageTag: ec1804f8-bc1f-4188-911e-3394c0fcbfb8
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Wanek[Cont_Categories]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCHCONTAINERSIZE
+		lineageTag: 654e11f5-c370-44b7-8d63-122ff7439df5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Wanek[WCHCONTAINERSIZE]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCIDESTINATION
+		lineageTag: 3a413ac2-f64b-435b-845c-c223710c11ac
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Wanek[WCIDESTINATION]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cubes
+		formatString: #,0
+		lineageTag: be36652f-a533-42c7-86da-9388b29a4a20
+		summarizeBy: sum
+		sourceColumn: Wanek[H_CUBES]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Utilization =
+			SWITCH(TRUE(),
+			MID('F_Utilization_Summary'[WCHCONTAINERSIZE],1,2) = "53", 'F_Utilization_Summary'[Cubes]/3831,
+			MID('F_Utilization_Summary'[WCHCONTAINERSIZE],1,2) = "50", 'F_Utilization_Summary'[CUBES]/3333,
+			MID('F_Utilization_Summary'[WCHCONTAINERSIZE],1,2) = "45", 'F_Utilization_Summary'[CUBES]/3037,
+			MID('F_Utilization_Summary'[WCHCONTAINERSIZE],1,3) = "40H", 'F_Utilization_Summary'[CUBES]/2650,
+			MID('F_Utilization_Summary'[WCHCONTAINERSIZE],1,2) = "40", 'F_Utilization_Summary'[CUBES]/2383,
+			MID('F_Utilization_Summary'[WCHCONTAINERSIZE],1,1) = "2", 'F_Utilization_Summary'[CUBES]/1191,
+			'F_Utilization_Summary'[CUBES]/2650)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 3292cfe0-f764-470d-903c-4157a31a5ed9
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTAINER#2
+		lineageTag: 7844a3f8-8208-4501-b1e2-27243eddd755
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Wanek[CONTAINER#2]
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTAINERTYPE
+		lineageTag: a5d37dc0-bc41-4b45-b868-1178e213584b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Wanek[CONTAINERTYPE]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition F_Utilization_Summary-a6f820c2-b19f-4692-8575-a0fe5484e4e0 = calculated
+		mode: import
+		source = UNION(SUMMARIZECOLUMNS('Wanek'[WH],'Wanek'[CONTAINER#],'Wanek'[Cont_Categories],'Wanek'[WCHCONTAINERSIZE],'Wanek'[WCIDESTINATION],'Wanek'[H_CUBES],'Wanek'[CONTAINER#2],'Wanek'[CONTAINERTYPE],"Qty",sum('Wanek'[QTY]),"Total_Cartons",sum('Wanek'[CARTONS]),"Date",MAX('Wanek'[DATE])),SUMMARIZECOLUMNS('Millennium'[WH],'Millennium'[CONTAINER#],'Millennium'[Cont_Categories],'Millennium'[WCHCONTAINERSIZE],'Millennium'[WCIDESTINATION],'Millennium'[H_CUBES],Millennium[CONTAINER#2],'Millennium'[CONTAINERTYPE],"Qty",sum('Millennium'[QTY]),"Total_Cartons",sum('Millennium'[CARTONS]),"Date",MAX('Millennium'[DATE])),SUMMARIZECOLUMNS('Ashton'[WH],'Ashton'[CONTAINER#],'Ashton'[Cont_Categories],'Ashton'[Container_size_final],'Ashton'[Destination],'Ashton'[ConatinerTotalCubes],'Ashton'[CONTAINER#2],'Ashton'[ContainerType],"Qty",SUM('Ashton'[ITSHQT]),"Total_Cartons",SUM(Ashton[ITSHQT]),"Date",MAX('Ashton'[Date])))
+
+	annotation PBI_Id = 2916c4b58fb246ef9a99e7c5bb0411ea
+

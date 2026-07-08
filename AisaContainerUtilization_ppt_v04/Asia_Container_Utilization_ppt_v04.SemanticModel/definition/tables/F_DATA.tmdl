@@ -1,0 +1,246 @@
+table F_DATA
+	lineageTag: 75828d9b-daff-44c0-9246-e550a08e49e7
+
+	column WCIORIGIN
+		lineageTag: 8699b524-3724-4a5d-9162-c18b4cfa1cd3
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [WCIORIGIN]
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTAINER#
+		lineageTag: cfbd3d61-1576-4a7c-986b-0f2ea2b5e274
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [CONTAINER#]
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUBES
+		lineageTag: 91aa0b6b-19f4-4e18-9d82-e341c80b18e3
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [CUBES]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ITCLS
+		lineageTag: 2a782c9e-cf52-41d5-b03d-7c55d272dc24
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [ITCLS]
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT
+		lineageTag: cbedbc21-89bb-42ee-af5c-ce4049510487
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [PRODUCT]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCIDESTINATION
+		lineageTag: d353afb1-b984-4876-8014-6d25d3d3e1ca
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [WCIDESTINATION]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCIORDER
+		lineageTag: 2e438f71-a400-42a9-88cf-b82246e08d6c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [WCIORDER]
+
+		annotation SummarizationSetBy = Automatic
+
+	column ITEMNUMBER
+		lineageTag: c252a971-968b-4092-b601-7d919bd96b13
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [ITEMNUMBER]
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTY
+		lineageTag: 1665e459-6e12-4f6f-baaa-c7d4cd6c0638
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [QTY]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column WCILASTMAINTENANCETIMESTAMP
+		lineageTag: 8b0795b6-79ff-4234-8f9d-1ff0e38f9372
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [WCILASTMAINTENANCETIMESTAMP]
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTAINERNUMBER
+		lineageTag: 1108f3ec-85f6-40e2-99b1-a25196a25a1d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [CONTAINERNUMBER]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCILASTMAINTENANCEUSER
+		lineageTag: 0608d703-0844-415f-9b9f-092664601a1e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [WCILASTMAINTENANCEUSER]
+
+		annotation SummarizationSetBy = Automatic
+
+	column ITMCQTY
+		lineageTag: e446edd2-95b9-4abf-bcfc-a86fcbae337a
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [ITMCQTY]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UNITCUBE
+		lineageTag: 1dcf33f7-9d39-43c3-8aea-1b731f2b06ae
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [UNITCUBE]
+
+		annotation SummarizationSetBy = Automatic
+
+	column UNITWEIGHT
+		lineageTag: 1753b06c-24fe-4435-90e7-68967b34e929
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [UNITWEIGHT]
+
+		annotation SummarizationSetBy = Automatic
+
+	column CARTONS
+		lineageTag: 524f663d-3478-4fee-bebd-fc1d605edff0
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [CARTONS]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CONTAINERTYPE
+		lineageTag: d29aac4c-2006-457a-a177-4bc9a840ac11
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [CONTAINERTYPE]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATE
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: e1911b41-f92f-4e6d-9b44-0926d4a6b876
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [DATE]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column WCHCONTAINERSIZE
+		lineageTag: f537b1d0-5e36-45b3-98f6-93d03f178913
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [WCHCONTAINERSIZE]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Utilization
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 631684de-4b1b-4c01-b25b-883658b2edd6
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Utilization]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MS
+		lineageTag: 2079660a-1860-4b27-a7ce-fdb49d787deb
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MS]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cont_Categories
+		lineageTag: 1e05184c-a07c-4525-a072-a2d269cc4073
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Cont_Categories]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Judge
+		lineageTag: 38e408cd-b6d3-4989-af85-81ca3f169894
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Judge]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCHDOORNUMBER
+		lineageTag: cb1e7331-ff32-48ed-a2db-4ea814aa27cf
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [WCHDOORNUMBER]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCHBUILDING
+		lineageTag: e2db7e94-6b37-4926-8b8b-15cbc772a3cb
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [WCHBUILDING]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WH
+		lineageTag: 7a58e84d-6cfb-439b-92e1-e0f5624f8b93
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [WH]
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTAINER#2
+		lineageTag: 8fbc8c4d-d50d-4434-afdd-2a1be51fb6c4
+		summarizeBy: none
+		sourceColumn: Ashton[CONTAINER#2]
+
+		annotation SummarizationSetBy = Automatic
+
+	column H_Cubes
+		lineageTag: 452ab468-7070-4a7b-afe2-15cd08f5b6d6
+		summarizeBy: sum
+		sourceColumn: Ashton[ConatinerTotalCubes]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition F_DATA-5b6f62ab-2370-4923-9bc2-199403499bf0 = calculated
+		mode: import
+		source = union(SELECTCOLUMNS('Ashton',"WCIORIGIN",'Ashton'[INWHSE],"CONTAINER#",'Ashton'[CONTAINER#],"CUBES",'Ashton'[CUBES],"ITCLS","","PRODUCT",'Ashton'[PRODUCT],"WCIDESTINATION","","WCIORDER",'Ashton'[TRIP#],"ITEMNUMBER",'Ashton'[ITITNO],"QTY",'Ashton'[ITSHQT],"WCILASTMAINTENANCETIMESTAMP","","CONTAINERNUMBER",'Ashton'[Cont_Number],"WCILASTMAINTENANCEUSER","","ITMCQTY",1,"UNITCUBE","","UNITWEIGHT","","CARTONS",'Ashton'[ITSHQT],"CONTAINERTYPE",'Ashton'[CONTAINERTYPE],"DATE",'Ashton'[Date],"WCHCONTAINERSIZE",'Ashton'[Container_size_final],"Utilization",'Ashton'[Utilization],"MS","","Cont_Categories",'Ashton'[CONT_CATEGORIES],"Judge","","WCHDOORNUMBER","","WCHBUILDING","","WH","Ashton",'Ashton'[ConatinerTotalCubes],'Ashton'[CONTAINER#2]),SELECTCOLUMNS('Wanek','Wanek'[WCIORIGIN],'Wanek'[CONTAINER#],'Wanek'[CUBES],'Wanek'[ITCLS],'Wanek'[PRODUCT],'Wanek'[WCIDESTINATION],'Wanek'[WCIORDER],'Wanek'[ITEMNUMBER],'Wanek'[QTY],'Wanek'[WCILASTMAINTENANCETIMESTAMP],'Wanek'[CONTAINERNUMBER],'Wanek'[WCILASTMAINTENANCEUSER],'Wanek'[ITMCQTY],'Wanek'[UNITCUBE],'Wanek'[UNITWEIGHT],'Wanek'[CARTONS],'Wanek'[CONTAINERTYPE],'Wanek'[DATE],'Wanek'[WCHCONTAINERSIZE],'Wanek'[UTILIZATION],'Wanek'[MS],'Wanek'[Cont_Categories],'Wanek'[Judge],'Wanek'[WCHDOORNUMBER],'Wanek'[WCHBUILDING],'Wanek'[WH],'Wanek'[H_CUBES],'Wanek'[CONTAINER#2]),SELECTCOLUMNS('Millennium','Millennium'[WCIORIGIN],'Millennium'[CONTAINER#],'Millennium'[CUBES],'Millennium'[ITCLS],'Millennium'[PRODUCT],'Millennium'[WCIDESTINATION],'Millennium'[WCIORDER],'Millennium'[ITEMNUMBER],'Millennium'[QTY],'Millennium'[WCILASTMAINTENANCETIMESTAMP],'Millennium'[CONTAINERNUMBER],'Millennium'[WCILASTMAINTENANCEUSER],'Millennium'[ITMCQTY],'Millennium'[UNITCUBE],'Millennium'[UNITWEIGHT],'Millennium'[CARTONS],'Millennium'[CONTAINERTYPE],'Millennium'[DATE],'Millennium'[WCHCONTAINERSIZE],'Millennium'[UTILIZATION],'Millennium'[MS],'Millennium'[Cont_Categories],'Millennium'[Judge],'Millennium'[WCHDOORNUMBER],'Millennium'[WCHBUILDING],'Millennium'[WH],'Millennium'[H_CUBES],'Millennium'[CONTAINER#2]))
+
+	annotation PBI_Id = 58f36297d5a64f269ac6a7c46f618532
+

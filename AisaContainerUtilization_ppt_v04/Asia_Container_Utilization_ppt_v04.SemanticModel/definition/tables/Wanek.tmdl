@@ -1,0 +1,362 @@
+table Wanek
+	lineageTag: fd9559af-1e99-4784-acbd-dfbf66ec9cf4
+
+	column WCIORIGIN
+		dataType: string
+		lineageTag: 28122bf4-0b33-496b-a6d0-dec8da8fa602
+		summarizeBy: none
+		sourceColumn: WCIORIGIN
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTAINER#
+		dataType: string
+		lineageTag: 6d82dec5-804a-4fb8-a2eb-435a9a078deb
+		summarizeBy: none
+		sourceColumn: CONTAINER#
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUBES
+		dataType: double
+		lineageTag: 21417924-964c-406d-a5e6-ac9e66d47b48
+		summarizeBy: sum
+		sourceColumn: CUBES
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ITCLS
+		dataType: string
+		lineageTag: 1836c798-f2d9-4978-9289-82ba739c3521
+		summarizeBy: none
+		sourceColumn: ITCLS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT
+		dataType: string
+		lineageTag: 2fcaf148-131d-4437-8363-d9949f0dff7e
+		summarizeBy: none
+		sourceColumn: PRODUCT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCIDESTINATION
+		dataType: string
+		lineageTag: 750c21ec-4127-4d72-ab37-b989fc9dcb0a
+		summarizeBy: none
+		sourceColumn: WCIDESTINATION
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCIORDER
+		dataType: string
+		lineageTag: 5cdd8ed1-48c8-4891-8735-332dcc614ea9
+		summarizeBy: none
+		sourceColumn: WCIORDER
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ITEMNUMBER
+		dataType: string
+		lineageTag: 99f94fd9-ef38-4e55-804c-1bb902e1846c
+		summarizeBy: none
+		sourceColumn: ITEMNUMBER
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTY
+		dataType: double
+		lineageTag: ce362243-afd8-445f-a842-dc6e945162a7
+		summarizeBy: sum
+		sourceColumn: QTY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column WCILASTMAINTENANCETIMESTAMP
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 177ca88c-6671-47c8-b82b-d35579414d43
+		summarizeBy: none
+		sourceColumn: WCILASTMAINTENANCETIMESTAMP
+
+		variation Variation
+			isDefault
+			relationship: c0f00d44-31dc-464c-b5c5-5379926a1a00
+			defaultHierarchy: LocalDateTable_08cc516b-cba8-468c-8d6d-b1bf8354d9f5.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTAINERNUMBER
+		dataType: string
+		lineageTag: f19b45ae-4e4d-427c-8638-0ddfffe9f27f
+		summarizeBy: none
+		sourceColumn: CONTAINERNUMBER
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCILASTMAINTENANCEUSER
+		dataType: string
+		lineageTag: 62f48508-fa45-4544-aea4-303480488f47
+		summarizeBy: none
+		sourceColumn: WCILASTMAINTENANCEUSER
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ITMCQTY
+		dataType: double
+		lineageTag: 78748dca-2b2f-4dd3-8f93-5c258e2f5fa3
+		summarizeBy: sum
+		sourceColumn: ITMCQTY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UNITCUBE
+		dataType: double
+		lineageTag: 918784e9-3fe4-454e-9482-2fcdbfaa26a0
+		summarizeBy: sum
+		sourceColumn: UNITCUBE
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UNITWEIGHT
+		dataType: double
+		lineageTag: 656451ae-242a-4e9e-b774-3ba8c504a407
+		summarizeBy: sum
+		sourceColumn: UNITWEIGHT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CARTONS
+		dataType: double
+		lineageTag: 715fad34-cfa6-4a65-ae9c-0553a65c02f5
+		summarizeBy: sum
+		sourceColumn: CARTONS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CONTAINERTYPE
+		dataType: string
+		lineageTag: ff00f01a-9ec9-4ffd-88ee-65935f87321c
+		summarizeBy: none
+		sourceColumn: CONTAINERTYPE
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCHCONTAINERSIZE
+		dataType: string
+		lineageTag: 00f21298-e9d8-42cd-b86c-ba65f7a7a6e1
+		summarizeBy: none
+		sourceColumn: WCHCONTAINERSIZE
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column UTILIZATION
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 28ab1880-3b22-4100-ab13-cfe98f0227b2
+		summarizeBy: sum
+		sourceColumn: UTILIZATION
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column MS = IF(AND('Wanek'[PRODUCT]="UPH",LOOKUPVALUE('M&S'[Kind],'M&S'[Item],'Wanek'[ITEMNUMBER])="Motion"),"Motion", IF(AND('Wanek'[PRODUCT]="UPH",LOOKUPVALUE('M&S'[Kind],'M&S'[Item],'Wanek'[ITEMNUMBER])<>"Motion"),"Stationary",""))
+		lineageTag: eb96e047-f6dc-4a3e-a45c-1392e91ca5da
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cont_Categories = IF('Wanek'[ContainerType]="Mixed","Mixed",if(and('Wanek'[Product]="UPH",SUMX(FILTER('Wanek','Wanek'[Container#]=EARLIER('Wanek'[Container#])),'Wanek'[Judge])=0),"Motion",if(and('Wanek'[Product]="UPH",SUMX(FILTER('Wanek','Wanek'[Container#]=EARLIER('Wanek'[Container#])),'Wanek'[Judge])=COUNTX(FILTER('Wanek','Wanek'[Container#]=EARLIER('Wanek'[Container#])),'Wanek'[Judge])),"Stationary",if(and('Wanek'[Product]="UPH",SUMX(FILTER('Wanek','Wanek'[Container#]=EARLIER('Wanek'[Container#])),'Wanek'[Judge])<COUNTX(FILTER('Wanek','Wanek'[Container#]=EARLIER('Wanek'[Container#])),'Wanek'[Judge])),"Mixed",'Wanek'[Product]))))
+		lineageTag: 34d41de1-a833-4c8e-bc66-fd40ea5c8e86
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Judge = if(and('Wanek'[PRODUCT]="UPH",'Wanek'[MS]="Motion"),0,if(and('Wanek'[Product]="UPH",'Wanek'[MS]="Stationary"),1,9999))
+		formatString: 0
+		lineageTag: 31591fb9-8044-4c32-a8b2-aee93ec62c1d
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCHDOORNUMBER
+		dataType: double
+		lineageTag: 01fbab00-ebbe-4dec-837c-e63a5bb5d842
+		summarizeBy: sum
+		sourceColumn: WCHDOORNUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column WCHBUILDING
+		dataType: string
+		lineageTag: 300a4437-56dc-4258-9bd8-67b4aa6e827b
+		summarizeBy: none
+		sourceColumn: WCHBUILDING
+
+		annotation SummarizationSetBy = Automatic
+
+	column WH
+		dataType: string
+		lineageTag: 44c30188-b66b-4743-b524-b43212ead597
+		summarizeBy: none
+		sourceColumn: WH
+
+		annotation SummarizationSetBy = Automatic
+
+	column H_CUBES
+		dataType: double
+		lineageTag: f7bc247c-fd30-47a5-bbd1-73ec05d30b90
+		summarizeBy: sum
+		sourceColumn: H_CUBES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DATE
+		dataType: string
+		lineageTag: 945f9400-33d7-49ad-a8f6-debfe3a91485
+		summarizeBy: none
+		sourceColumn: DATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTAINER#2
+		dataType: string
+		lineageTag: 0d933d96-2c4a-4469-a6f6-37560250d21f
+		summarizeBy: none
+		sourceColumn: CONTAINER#2
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCHPOSTEDTIMESTAMP
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 74fa6919-d20c-4de8-81b1-2db6b8140102
+		summarizeBy: none
+		sourceColumn: WCHPOSTEDTIMESTAMP
+
+		variation Variation
+			isDefault
+			relationship: 8e0a77a4-0caa-4193-89a1-2053ee19cd27
+			defaultHierarchy: LocalDateTable_559bc77c-a6d2-4ed1-8ef3-6e99d68d8580.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column SKUs = CALCULATE(DISTINCTCOUNT(Wanek[ITEMNUMBER]),ALLEXCEPT('Wanek','Wanek'[CONTAINER#2]))
+		formatString: 0
+		lineageTag: 26da048f-6762-4fa4-b309-28c90aeefe28
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCHCLOSEDUSER
+		dataType: string
+		lineageTag: e8a7695a-85e9-4afc-8b43-dd61b184b251
+		summarizeBy: none
+		sourceColumn: WCHCLOSEDUSER
+
+		annotation SummarizationSetBy = Automatic
+
+	column SHIFT
+		dataType: string
+		lineageTag: 58f72fb7-2d75-4dd0-a974-07f12401f461
+		summarizeBy: none
+		sourceColumn: SHIFT
+
+		annotation SummarizationSetBy = Automatic
+
+	column SHIFT_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3366dcab-6b0d-488d-9188-baa6feeefe34
+		summarizeBy: none
+		sourceColumn: SHIFT_DATE
+
+		variation Variation
+			isDefault
+			relationship: 537fcbdb-eefb-429a-93d5-74a6addd0f48
+			defaultHierarchy: LocalDateTable_1bb3585b-0881-4548-99dc-2e13dfa22922.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Wanek-6ca5b138-7dda-457e-991f-0011d59ba731 = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"5839814b-ec95-48ea-a07a-ec0241ac9946" = Workspaces{[workspaceId="5839814b-ec95-48ea-a07a-ec0241ac9946"]}[Data],
+				    #"a6e3eb39-5367-4b72-a81b-4512e92d6e22" = #"5839814b-ec95-48ea-a07a-ec0241ac9946"{[dataflowId="a6e3eb39-5367-4b72-a81b-4512e92d6e22"]}[Data],
+				    wanek_container_utilization_details_db2_df_ = #"a6e3eb39-5367-4b72-a81b-4512e92d6e22"{[entity="wanek_container_utilization_details_db2_df",version=""]}[Data]
+				in
+				    wanek_container_utilization_details_db2_df_
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,213 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "431d797cd94d7309951a",
+  "position": {
+    "x": 232.14428857715433,
+    "y": 386.05210420841684,
+    "z": 5000,
+    "height": 333.46693386773546,
+    "width": 1047.8557114228456,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Utilization_Summary"
+                    }
+                  },
+                  "Property": "WH"
+                }
+              },
+              "queryRef": "F_Utilization_Summary.WH",
+              "nativeQueryRef": "WH"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Utilization_Summary"
+                    }
+                  },
+                  "Property": "Date"
+                }
+              },
+              "queryRef": "F_Utilization_Summary.Date",
+              "nativeQueryRef": "Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Utilization_Summary"
+                    }
+                  },
+                  "Property": "CONTAINER#2"
+                }
+              },
+              "queryRef": "F_Utilization_Summary.CONTAINER#2",
+              "nativeQueryRef": "CONTAINER#2"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "A_Measure2"
+                    }
+                  },
+                  "Property": "_Cont_Qty"
+                }
+              },
+              "queryRef": "A_Measure2._Cont_Qty",
+              "nativeQueryRef": "_Cont_Qty"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_Utilization_Summary"
+                        }
+                      },
+                      "Property": "Qty"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(F_Utilization_Summary.Qty)",
+              "nativeQueryRef": "Sum of Qty"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_Utilization_Summary"
+                        }
+                      },
+                      "Property": "Cubes"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(F_Utilization_Summary.Cubes)",
+              "nativeQueryRef": "Sum of Cubes"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Utilization_Summary"
+                    }
+                  },
+                  "Property": "WCHCONTAINERSIZE"
+                }
+              },
+              "queryRef": "F_Utilization_Summary.WCHCONTAINERSIZE",
+              "nativeQueryRef": "WCHCONTAINERSIZE"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_Utilization_Summary"
+                        }
+                      },
+                      "Property": "Utilization"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(F_Utilization_Summary.Utilization)",
+              "nativeQueryRef": "Sum of Utilization"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Utilization_Summary"
+                    }
+                  },
+                  "Property": "CONTAINERTYPE"
+                }
+              },
+              "queryRef": "F_Utilization_Summary.CONTAINERTYPE",
+              "nativeQueryRef": "CONTAINERTYPE"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Utilization_Summary"
+                    }
+                  },
+                  "Property": "Cont_Categories"
+                }
+              },
+              "queryRef": "F_Utilization_Summary.Cont_Categories",
+              "nativeQueryRef": "Cont_Categories"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Utilization_Summary"
+                    }
+                  },
+                  "Property": "WCIDESTINATION"
+                }
+              },
+              "queryRef": "F_Utilization_Summary.WCIDESTINATION",
+              "nativeQueryRef": "WCIDESTINATION"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {}
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "textSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

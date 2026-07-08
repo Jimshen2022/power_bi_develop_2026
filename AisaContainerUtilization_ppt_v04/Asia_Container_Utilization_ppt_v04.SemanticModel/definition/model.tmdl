@@ -1,0 +1,39 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Ashton","Wanek","Millennium","M&S","A_Measure","WH","A_Measure2"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Ashton
+ref table DateTableTemplate_e477ab2a-6ee8-4285-81ba-94c7577b7de7
+ref table Wanek
+ref table LocalDateTable_08cc516b-cba8-468c-8d6d-b1bf8354d9f5
+ref table Millennium
+ref table M&S
+ref table LocalDateTable_3ef46374-c82e-4490-9d3d-be741ab54f92
+ref table D_Date
+ref table LocalDateTable_d9e64242-f944-4622-a131-183a676b78e2
+ref table F_DATA
+ref table A_Measure
+ref table WH
+ref table F_Utilization_Summary
+ref table Container_Category
+ref table Destinations
+ref table A_Measure2
+ref table LocalDateTable_3a8854b0-9a8f-4224-9219-006128b446dd
+ref table LocalDateTable_559bc77c-a6d2-4ed1-8ef3-6e99d68d8580
+ref table F_Utilization_Wanek_For_Tan
+ref table LocalDateTable_f0bb2159-5d78-419c-81c1-8fefcf4a3336
+ref table LocalDateTable_be7d24df-7a4f-4cd4-bf64-376ba4498105
+ref table LocalDateTable_1bb3585b-0881-4548-99dc-2e13dfa22922
+
+ref cultureInfo en-US
+

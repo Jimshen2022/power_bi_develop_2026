@@ -1,0 +1,92 @@
+table A_Measure
+	lineageTag: d066e39c-f443-43dd-b97c-ad75cbd9b856
+
+	measure SUM_UtiliZATION = sum('F_Utilization_Summary'[Utilization])
+		lineageTag: 5497b710-c92e-41b5-9199-464b1bc3fa85
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Cont_Qty = COUNTROWS(VALUES('F_Utilization_Summary'[CONTAINER#2]))
+		formatString: #,0
+		lineageTag: 089a7594-6e16-444d-afee-0b0dfea0f910
+
+		changedProperty = IsHidden
+
+	measure Utilization(%) = 'A_Measure'[SUM_UtiliZATION]/'A_Measure'[Cont_Qty]
+		formatString: #,0.00%;-#,0.00%;#,0.00%
+		lineageTag: f6c8caef-1f4e-4123-8d69-97cfbd34e63f
+
+		changedProperty = IsHidden
+
+	measure 'Q''TY' = SUM(F_DATA[QTY])
+		formatString: 0
+		lineageTag: 488951d6-a015-45ea-a03e-6dbbba63c498
+
+		changedProperty = IsHidden
+
+	measure Utilization_less_than_87% = COUNTROWS(FILTER('F_Utilization_Summary','F_Utilization_Summary'[Utilization]< 0.87))
+		formatString: 0
+		lineageTag: 3b36231a-af71-4ccf-be51-fb11a4a630f3
+
+		changedProperty = IsHidden
+
+	measure Products = if(HASONEVALUE(F_DATA[Container#]),CONCATENATEX(VALUES('F_DATA'[PRODUCT]),'F_DATA'[PRODUCT],", "))
+		lineageTag: 082bcfdc-6a94-494e-baba-a03ebf21b8cb
+
+		changedProperty = IsHidden
+
+	measure SKUs = countrows(SUMMARIZE('F_DATA','F_DATA'[CONTAINER#2],'F_DATA'[ITEMNUMBER]))
+		formatString: #,0
+		lineageTag: 85c7a903-1d1b-4cfc-9acf-1a82f021de4e
+
+		changedProperty = IsHidden
+
+	measure 'Avg.SKUs/Container' = 'A_Measure'[SKUs]/'A_Measure'[Cont_Qty(SKUsCalculation)]
+		lineageTag: 40ad726e-7562-483a-86d5-d63dbaf20761
+
+		changedProperty = IsHidden
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure SKUs_by_week = DISTINCTCOUNT('F_DATA'[ITEMNUMBER])
+		formatString: 0
+		lineageTag: 913ce517-63b0-4e5b-897c-0fcb1794ea51
+
+		changedProperty = IsHidden
+
+	measure UnKits_Container_Qty = CALCULATE('A_Measure'[Cont_Qty],FILTER('F_DATA','F_DATA'[Cont_Categories] = "UnKits"))
+		formatString: 0
+		lineageTag: 9915ffa0-5231-44c4-9459-0f307676a68d
+
+	measure UnKitsContainerQtyPercent = 'A_Measure'[UnKits_Container_Qty]/'A_Measure'[Destination_Cont_Qty]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 1bdb46cf-ba72-47c8-90e2-a216cf2ddafc
+
+	measure Destination_Cont_Qty = CALCULATE('A_Measure'[UnKits_Container_Qty],ALL('F_DATA'[WCIDESTINATION]))
+		formatString: 0
+		lineageTag: 6546b56e-4d20-4788-be14-52768bd6cdc4
+
+	measure 'Utilization_less_than_87% 2' = COUNTROWS(FILTER('F_Utilization_Summary','F_Utilization_Summary'[Utilization]<0.87))
+		formatString: 0
+		lineageTag: 2a27ef53-3739-443e-96c9-c411e50539d8
+
+	measure Cont_Qty(SKUsCalculation) = COUNTROWS(VALUES('F_DATA'[CONTAINER#2]))
+		formatString: 0
+		lineageTag: 409e6612-3cd4-465a-80b8-91db6cefeba6
+
+	partition A_Measure-86f4898b-dde9-4fd1-aa87-e30db7665a63 = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

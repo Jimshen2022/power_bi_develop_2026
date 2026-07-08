@@ -1,0 +1,325 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "c3eb2ea098f7d1954ded",
+  "position": {
+    "x": 231.94029850746267,
+    "y": 178.20895522388059,
+    "z": 1000,
+    "height": 541.79104477611941,
+    "width": 1046.8656716417911
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Utilization_Summary"
+                    }
+                  },
+                  "Property": "WH"
+                }
+              },
+              "queryRef": "F_Utilization_Summary.WH",
+              "nativeQueryRef": "WH"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Utilization_Summary"
+                    }
+                  },
+                  "Property": "Date"
+                }
+              },
+              "queryRef": "F_Utilization_Summary.Date",
+              "nativeQueryRef": "Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Utilization_Summary"
+                    }
+                  },
+                  "Property": "CONTAINER#2"
+                }
+              },
+              "queryRef": "F_Utilization_Summary.CONTAINER#2",
+              "nativeQueryRef": "Container Number",
+              "displayName": "Container Number"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "A_Measure"
+                    }
+                  },
+                  "Property": "Cont_Qty"
+                }
+              },
+              "queryRef": "A_Measure.Cont_Qty",
+              "nativeQueryRef": "Cont_Qty"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_Utilization_Summary"
+                        }
+                      },
+                      "Property": "Qty"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(F_Utilization_Summary.Qty)",
+              "nativeQueryRef": "Quantity",
+              "displayName": "Quantity"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_Utilization_Summary"
+                        }
+                      },
+                      "Property": "Total_Cartons"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(F_Utilization_Summary.Total_Cartons)",
+              "nativeQueryRef": "Cartons",
+              "displayName": "Cartons"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Utilization_Summary"
+                    }
+                  },
+                  "Property": "WCHCONTAINERSIZE"
+                }
+              },
+              "queryRef": "F_Utilization_Summary.WCHCONTAINERSIZE",
+              "nativeQueryRef": "Cont_Size",
+              "displayName": "Cont_Size"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_Utilization_Summary"
+                        }
+                      },
+                      "Property": "Cubes"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(F_Utilization_Summary.Cubes)",
+              "nativeQueryRef": "Cubes",
+              "displayName": "Cubes"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_Utilization_Summary"
+                        }
+                      },
+                      "Property": "Utilization"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(F_Utilization_Summary.Utilization)",
+              "nativeQueryRef": "Average of Utilization",
+              "displayName": "Utilization%"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_Utilization_Summary"
+                    }
+                  },
+                  "Property": "Cont_Categories"
+                }
+              },
+              "queryRef": "F_Utilization_Summary.Cont_Categories",
+              "nativeQueryRef": "Cont_Categories"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "F_Utilization_Summary"
+                      }
+                    },
+                    "Property": "Total_Cartons"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "299.78792701258897D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "F_Utilization_Summary.CONTAINER#2"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "90.68613015354326D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "F_Utilization_Summary.Date"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "140.11435566325508D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "F_Utilization_Summary.WCHCONTAINERSIZE"
+          }
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            },
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleTotal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "F_Utilization_Summary.WCHCONTAINERSIZE"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'BoldHeader'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

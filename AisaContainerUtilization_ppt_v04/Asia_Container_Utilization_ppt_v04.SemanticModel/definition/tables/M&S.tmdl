@@ -1,0 +1,56 @@
+table M&S
+	lineageTag: 84a0acb3-f9ae-4671-9b8c-a6c2deb7e7fa
+
+	column Item
+		dataType: string
+		lineageTag: aaa3107b-b8f3-4808-99c4-b16a5ba63b0b
+		summarizeBy: none
+		sourceColumn: Item
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Kind
+		dataType: string
+		lineageTag: 1e237779-2bb5-4dfb-bc40-f1b9abf736ec
+		summarizeBy: none
+		sourceColumn: Kind
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition M&S-2dcb2c74-e07d-4ee0-95e5-fff6bc767171 = m
+		mode: import
+		source = ```
+				// let
+				//     Source = Access.Database(File.Contents("V:\Prod & Inv Control\Public\00.Master Data\UPHMaster.accdb"), [CreateNavigationProperties=true]),
+				//     #"Removed Other Columns" = Table.SelectColumns(Source,{"Data"}),
+				//     #"Expanded Data" = Table.ExpandTableColumn(#"Removed Other Columns", "Data", {"Item", "Kind"}, {"Item", "Kind"}),
+				//     #"Changed Type" = Table.TransformColumnTypes(#"Expanded Data",{{"Item", type text}, {"Kind", type text}}),
+				//     #"Removed Duplicates" = Table.Distinct(#"Changed Type", {"Item"})
+				// in
+				//     #"Removed Duplicates"
+				
+				let
+				    Source = Access.Database(File.Contents("V:\Prod & Inv Control\Public\00.Master Data\UPHMaster.accdb"), [CreateNavigationProperties=true]),
+				    #"Removed Other Columns" = Table.SelectColumns(Source,{"Data"}),
+				    #"Expanded Data" = Table.ExpandTableColumn(#"Removed Other Columns", "Data", {"Item", "Kind"}, {"Item", "Kind"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded Data",{{"Item", type text}, {"Kind", type text}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Changed Type", {"Item"}),
+				    #"Modified Kind" = Table.TransformColumns(#"Removed Duplicates", {
+				        {"Kind", each if _ = "Recliner" then "Motion" 
+				                 else if _ = "Ottoman" then "Stationary" 
+				                 else _, type text}
+				    })
+				in
+				    #"Modified Kind"
+				```
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

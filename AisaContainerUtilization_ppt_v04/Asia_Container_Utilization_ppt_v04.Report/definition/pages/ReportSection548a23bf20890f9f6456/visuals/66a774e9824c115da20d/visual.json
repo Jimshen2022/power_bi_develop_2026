@@ -1,0 +1,144 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "66a774e9824c115da20d",
+  "position": {
+    "x": 464.57099468488997,
+    "y": 370.29612756264243,
+    "z": 7000,
+    "height": 348.914198936978,
+    "width": 801.8223234624146
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_DATA"
+                    }
+                  },
+                  "Property": "DATE"
+                }
+              },
+              "queryRef": "F_DATA.DATE",
+              "nativeQueryRef": "DATE"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_DATA"
+                    }
+                  },
+                  "Property": "WH"
+                }
+              },
+              "queryRef": "F_DATA.WH",
+              "nativeQueryRef": "WH"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_DATA"
+                    }
+                  },
+                  "Property": "CONTAINER#2"
+                }
+              },
+              "queryRef": "F_DATA.CONTAINER#2",
+              "nativeQueryRef": "Container Number",
+              "displayName": "Container Number"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_DATA"
+                        }
+                      },
+                      "Property": "QTY"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(F_DATA.QTY)",
+              "nativeQueryRef": "Quantity",
+              "displayName": "Quantity"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "A_Measure"
+                    }
+                  },
+                  "Property": "SKUs"
+                }
+              },
+              "queryRef": "A_Measure.SKUs",
+              "nativeQueryRef": "SKUs"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "A_Measure"
+                    }
+                  },
+                  "Property": "Avg.SKUs/Container"
+                }
+              },
+              "queryRef": "A_Measure.Avg.SKUs/Container",
+              "nativeQueryRef": "Avg.SKUs/Container"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "A_Measure"
+                    }
+                  },
+                  "Property": "Cont_Qty(SKUsCalculation)"
+                }
+              },
+              "queryRef": "A_Measure.Cont_Qty(SKUsCalculation)",
+              "nativeQueryRef": "Cont_Qty",
+              "displayName": "Cont_Qty"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "grid": [
+        {
+          "properties": {
+            "textSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

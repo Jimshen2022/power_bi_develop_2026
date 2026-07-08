@@ -1,0 +1,32 @@
+table A_Measure2
+	lineageTag: da448e38-1c67-4273-ae4d-5ed43aa18e45
+
+	measure Utilization(%)_3 = SUM(F_DATA[UTILIZATION])
+		lineageTag: af138eb1-0b08-4cb3-88d9-5a22702ae324
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure _Cont_Qty = COUNTROWS(VALUES('F_Utilization_Summary'[CONTAINER#2]))
+		formatString: 0
+		lineageTag: a351e869-d1d5-4a6c-8894-18c3b147daf5
+
+	measure _Destination_Cont_Qty = CALCULATE('A_Measure2'[_Cont_Qty],ALL('Destinations'[WCIDESTINATION]))
+		formatString: 0
+		lineageTag: b6c1cacb-f6a9-40ed-a750-cb94161a2b3d
+
+	measure _ContainerQtyPercent = 'A_Measure2'[_Cont_Qty]/'A_Measure2'[_Destination_Cont_Qty]
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: d76e2d76-9be5-4e7e-b535-f6d192fdf3a0
+
+	partition A_Measure2 = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

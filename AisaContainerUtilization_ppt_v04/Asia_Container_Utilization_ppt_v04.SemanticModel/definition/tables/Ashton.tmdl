@@ -1,0 +1,244 @@
+table Ashton
+	lineageTag: e73f7836-97c2-4618-863e-0730d80afba3
+
+	column INIVDT
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 397f489c-8d11-4f27-b99a-ddd02488378a
+		summarizeBy: none
+		sourceColumn: INIVDT
+
+		variation Variation
+			isDefault
+			relationship: 6f05d3ba-1874-4254-bd3f-96c296e3dd1e
+			defaultHierarchy: LocalDateTable_3a8854b0-9a8f-4224-9219-006128b446dd.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ITITNO
+		dataType: string
+		lineageTag: 6878c7f2-19f5-44e5-ac2f-b3fb8c479ddf
+		summarizeBy: none
+		sourceColumn: ITITNO
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column INWHSE
+		dataType: string
+		lineageTag: 884f57b1-f703-49a8-b44a-1dc793ecf409
+		summarizeBy: none
+		sourceColumn: INWHSE
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ITSHQT
+		dataType: double
+		lineageTag: 54427f51-81b8-47d2-8c03-edabe926f264
+		summarizeBy: sum
+		sourceColumn: ITSHQT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TRIP#
+		dataType: int64
+		formatString: 0
+		lineageTag: 0c820663-b4ea-4c60-8378-af8ba70faa8f
+		summarizeBy: sum
+		sourceColumn: TRIP#
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUBES
+		dataType: double
+		lineageTag: 2d9cf2a8-07d1-4bb9-8895-eaf2e0f9a8e2
+		summarizeBy: sum
+		sourceColumn: CUBES
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CONTAINER#
+		dataType: string
+		lineageTag: b5371b1f-ec50-4324-8af7-e0ada7fde6a7
+		summarizeBy: none
+		sourceColumn: CONTAINER#
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT
+		dataType: string
+		lineageTag: 5f797bc8-58d7-46a0-b1fa-a28fd17ae753
+		summarizeBy: none
+		sourceColumn: PRODUCT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cont_Number = [CONTAINER#]
+		lineageTag: e9ca4674-34c9-46f7-bee0-1d59bf38b04b
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: ccca2101-c647-4f0f-82ea-13595c4dfab0
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: a8f1348f-2e5b-40dc-bb97-06b6b5848bf2
+			defaultHierarchy: LocalDateTable_d9e64242-f944-4622-a131-183a676b78e2.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Utilization =
+			SWITCH(TRUE(),
+			MID('Ashton'[Container_size_final],1,2) = "53", 'Ashton'[CUBES]/3831,
+			MID('Ashton'[Container_size_final],1,2) = "50", 'Ashton'[CUBES]/3333,
+			MID('Ashton'[Container_size_final],1,3) = "40H", 'Ashton'[CUBES]/2650,
+			MID('Ashton'[Container_size_final],1,3) = "40", 'Ashton'[CUBES]/2383,
+			MID('Ashton'[Container_size_final],1,1) = "2", 'Ashton'[CUBES]/1325,
+			'Ashton'[CUBES]/2650)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: fd504eed-28b0-48c1-826e-57895e9ee13a
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column tran_type
+		dataType: string
+		lineageTag: ea9aa76a-9d5d-4bac-99bd-5d3261ee0906
+		summarizeBy: none
+		sourceColumn: tran_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column Container_Size
+		dataType: string
+		lineageTag: 69fd4ba2-8600-4a72-b3c7-ce4af49a3a3f
+		summarizeBy: none
+		sourceColumn: Container_Size
+
+		annotation SummarizationSetBy = Automatic
+
+	column ContainerType
+		dataType: string
+		lineageTag: 03b730f0-092f-4207-bad5-5d859010e4db
+		summarizeBy: none
+		sourceColumn: ContainerType
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cont_Categories
+		dataType: string
+		lineageTag: e02d9eb8-97b0-4f77-b93f-343a148e9e5e
+		summarizeBy: none
+		sourceColumn: Cont_Categories
+
+		annotation SummarizationSetBy = Automatic
+
+	column Unit_Cube
+		dataType: double
+		lineageTag: a3dcc7ad-fc74-4b64-a444-15f2b1702bdd
+		summarizeBy: sum
+		sourceColumn: Unit_Cube
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ctn_size_2
+		dataType: string
+		lineageTag: c0a432ee-9d74-4628-afa6-06f9edbbb8d2
+		summarizeBy: none
+		sourceColumn: ctn_size_2
+
+		annotation SummarizationSetBy = Automatic
+
+	column Container_size_final
+		dataType: string
+		lineageTag: aa3db27d-4dae-4fea-9136-6ae259f00fdc
+		summarizeBy: none
+		sourceColumn: Container_size_final
+
+		annotation SummarizationSetBy = Automatic
+
+	column Destination = ""
+		lineageTag: 8c700d6b-14f8-4883-aa35-7f50d7e2e639
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column WH = "Ashton"
+		lineageTag: a70f247c-01be-4302-ba8e-4f9305b92e54
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTAINER#2 = 'Ashton'[CONTAINER#]
+		lineageTag: e46a2a53-da8f-4f40-ba7e-cdf0a1c2f61f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column ConatinerTotalCubes =
+			
+			CALCULATE(
+			    SUM('Ashton'[CUBES]),
+			    ALLEXCEPT('Ashton', 'Ashton'[CONTAINER#])
+			)
+		lineageTag: 2cc6496b-8326-4df6-938f-17cca7c8d998
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Ashton-e19c6474-69b5-4cd9-b956-026987cdc8b0 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("ashley-edw.database.windows.net", "ASHLEY_EDW", [Query="WITH MaxEnteredYard AS (#(lf)  SELECT#(lf)#(tab)equipment_id,#(lf)    MAX(entered_yard) AS max_entered_yard#(lf)  FROM#(lf)    Distribution_Warehouse_Wholesale.Trailer#(lf)  WHERE#(lf)    wh_id = '335'#(lf)    AND entered_yard >= DATEADD(DAY, -120, GETDATE())#(lf)  GROUP BY#(lf)    equipment_id),#(lf)-- ctn_nbr + size + enter yard max time#(lf)ctn AS#(lf)(#(lf)SELECT#(lf)  Distinct t1.equipment_id,#(lf)  t1.trailer_type_id AS trailer_type_id,#(lf)  t1.entered_yard AS entered_yard,#(lf)  CASE#(lf)#(tab)WHEN t1.trailer_type_id IN ('86') THEN '20FT'#(lf)#(tab)WHEN t1.trailer_type_id IN ('87') THEN '40FT'#(lf)#(tab)WHEN t1.trailer_type_id IN ('88') THEN '45FT'#(lf)#(tab)WHEN t1.trailer_type_id IN ('177') THEN '40H'#(lf)#(tab)WHEN t1.trailer_type_id IN ('324') THEN '53FT'#(lf)#(tab)ELSE '40H' END AS Ctn_size#(lf)FROM#(lf)  Distribution_Warehouse_Wholesale.Trailer t1#(lf)INNER JOIN MaxEnteredYard mey ON#(lf)  t1.equipment_id = mey.equipment_id#(lf)  AND t1.entered_yard = mey.max_entered_yard#(lf)WHERE#(lf)  t1.wh_id = '335'#(lf)  AND t1.entered_yard >= DATEADD(DAY, -120, GETDATE())#(lf)),#(lf)i AS#(lf)(#(lf)SELECT T1.STID, T1.ITNBR, T1.ITCLS, T1.UNMSR, T1.WEGHT, T1.B2Z95S as Unit_Cube, T1.ITDSC#(lf)FROM MasterData_ItemMaster_AFI.ITMRVA AS T1#(lf)WHERE T1.STID IN ('335')#(lf)),#(lf)--Trip and container# and container size#(lf)tp AS#(lf)(#(lf)SELECT DISTINCT CAST(SUBSTRING(t1.control_number_2, 1, CHARINDEX('-', t1.control_number_2) - 1) AS INT) AS trip_nbr#(lf)#(tab), t1.routing_code as ctn_nbr#(lf)#(tab), t1.start_tran_date#(lf)#(tab), ctn.Ctn_size#(lf)FROM Distribution_Warehouse_Wholesale.TranLog AS t1#(lf)LEFT JOIN ctn as ctn on ctn.equipment_id = t1.routing_code#(lf)WHERE t1.wh_id IN ('335') AND t1.start_tran_date >= DATEADD(DAY,-120,GETDATE()) AND t1.tran_type IN ('347')#(lf)),#(lf)--Mixed or None-Mixed container type#(lf)m AS#(lf)(#(lf)SELECT#(lf)#(tab)  b1.container#,#(lf)#(tab)  #(tab)  COUNT(DISTINCT b1.Product) AS Product_Category_Qty,#(lf)#(tab)#(tab)CASE#(lf)#(tab)#(tab)#(tab)WHEN COUNT(DISTINCT b1.Product) = 1 THEN 'None-Mixed'#(lf)#(tab)#(tab)#(tab)ELSE 'Mixed'  END AS ContainerType#(lf)#(tab) -- STRING_AGG(DISTINCT b1.Product, '-') AS Prodct_String#(lf)FROM#(lf)(#(lf)SELECT t1.item_number#(lf)#(tab), CASE#(lf)#(tab)#(tab)WHEN itm.ITCLS NOT LIKE 'Z%' THEN 'RP'#(lf)#(tab)#(tab)WHEN SUBSTRING(t1.item_number,1,1) IN ('A','B','D','E','G','H','L','M','P','Q','R','T','W','Z') THEN 'CG'#(lf)#(tab)#(tab)ELSE 'UPH' END AS Product#(lf)#(tab), t1.routing_code AS 'container#'#(lf)#(tab), CAST(SUBSTRING(t1.control_number_2,1,CHARINDEX('-',t1.control_number_2) -1) AS INT)  AS trip_nbr#(lf)FROM Distribution_Warehouse_Wholesale.TranLog AS t1#(lf)LEFT JOIN i AS itm ON t1.item_number = itm.ITNBR#(lf)WHERE t1.wh_id IN ('335') AND t1.start_tran_date >= DATEADD(DAY,-60,GETDATE()) AND t1.tran_type IN ('347')#(lf)) AS b1#(lf)GROUP BY  b1.container##(lf)),#(lf)--trip join ctn_number#(lf)tjc AS#(lf)(#(lf)SELECT DISTINCT T1.wh_id#(lf)#(tab), CAST(SUBSTRING(t1.load_id, 1, CHARINDEX('-', t1.load_id) - 1) AS INT) AS trip_nbr#(lf)#(tab), CONCAT(CAST(SUBSTRING(t1.load_id, 1, CHARINDEX('-', t1.load_id) - 1) AS INT), '_',  t1.bill_number) as trip_ctn#(lf)#(tab), t1.trailer_number as ctn_size_2#(lf)#(tab), t1.bill_number as ctn_nbr#(lf)#(tab), t1.shipment_status#(lf)#(tab), t1.dispatch_date#(lf)#(tab), t1.trip_type_id#(lf)FROM Distribution_Warehouse_Wholesale.LoadMaster AS T1#(lf)WHERE T1.wh_id IN ('335') AND T1.bill_number IS NOT NULL AND T1.dispatch_date >= DATEADD(DAY,-120,GETDATE())#(lf)#(tab)AND t1.shipment_status IN ('Shipped') AND T1.trailer_number IS NOT NULL#(lf))#(lf)-------------------------------------------MAIN-------------------------------------------------------------------#(lf)SELECT#(lf)#(tab)  t1.tran_type#(lf)#(tab), t1.start_tran_date AS INIVDT#(lf)#(tab), t1.wh_id AS INWHSE#(lf)#(tab), t1.item_number AS ITITNO#(lf)#(tab), CASE#(lf)#(tab)#(tab)WHEN itm.ITCLS NOT LIKE 'Z%' THEN 'RP'#(lf)#(tab)#(tab)WHEN SUBSTRING(t1.item_number,1,1) IN ('A','B','D','E','G','H','L','M','P','Q','R','T','W','Z') THEN 'CG'#(lf)#(tab)#(tab)ELSE 'UPH' END AS PRODUCT#(lf)#(tab), t1.routing_code AS CONTAINER##(lf)#(tab), tp.Ctn_size#(lf)#(tab), tjc.ctn_size_2#(lf)#(tab)--, CASE WHEN tjc.ctn_size_2 IS NOT NULL THEN tjc.ctn_size_2 ELSE tp.Ctn_size END AS Container_size_final#(lf)#(tab), CASE WHEN tp.Ctn_size IS NOT NULL THEN tp.Ctn_size ELSE tjc.ctn_size_2 END AS Container_size_final#(lf)#(tab), CAST(SUBSTRING(t1.control_number_2,1,CHARINDEX('-',t1.control_number_2) -1) AS INT)  AS TRIP##(lf)#(tab), m.ContainerType#(lf)#(tab), CASE#(lf)#(tab)#(tab)WHEN m.ContainerType IN ('None-Mixed') THEN  (CASE#(lf)#(tab)#(tab)WHEN itm.ITCLS NOT LIKE 'Z%' THEN 'RP'#(lf)#(tab)#(tab)WHEN SUBSTRING(t1.item_number,1,1) IN ('A','B','D','E','G','H','L','M','P','Q','R','T','W','Z') THEN 'CG'#(lf)#(tab)#(tab)ELSE 'UPH' END)#(lf)#(tab)#(tab)ELSE m.ContainerType END AS Cont_Categories#(lf)#(tab), itm.Unit_Cube#(lf)#(tab), SUM(t1.tran_qty) AS ITSHQT#(lf)#(tab), itm.Unit_Cube *  SUM(t1.tran_qty) AS CUBES#(lf)FROM Distribution_Warehouse_Wholesale.TranLog AS t1#(lf)LEFT JOIN i AS itm ON t1.item_number = itm.ITNBR#(lf)LEFT JOIN m AS m ON t1.routing_code = m.container##(lf)LEFT JOIN tp AS tp ON CAST(SUBSTRING(t1.control_number_2,1,CHARINDEX('-',t1.control_number_2) -1) AS INT) = tp.trip_nbr#(lf)LEFT JOIN tjc AS tjc ON tjc.trip_ctn = CONCAT(CAST(SUBSTRING(t1.control_number_2,1,CHARINDEX('-',t1.control_number_2) -1) AS INT),'_',t1.routing_code)#(lf)WHERE t1.wh_id IN ('335') AND t1.start_tran_date >= DATEADD(DAY,-60,GETDATE()) AND t1.tran_type IN ('347') #(lf)     --and t1.routing_code like  'WHSU648004%'#(lf)GROUP BY t1.tran_type#(lf)#(tab)#(tab), t1.start_tran_date#(lf)#(tab)#(tab), t1.wh_id#(lf)#(tab)#(tab), t1.item_number#(lf)#(tab)#(tab), CASE#(lf)#(tab)#(tab)#(tab)WHEN itm.ITCLS NOT LIKE 'Z%' THEN 'RP'#(lf)#(tab)#(tab)#(tab)WHEN SUBSTRING(t1.item_number,1,1) IN ('A','B','D','E','G','H','L','M','P','Q','R','T','W','Z') THEN 'CG'#(lf)#(tab)#(tab)#(tab)ELSE 'UPH' END#(lf)#(tab)#(tab), t1.routing_code#(lf)#(tab)#(tab), tp.Ctn_size      -- get the data from Trailer maximum(container entered into yard time)#(lf)#(tab)#(tab), tjc.ctn_size_2   -- get the data from loadMast that include trip_container#_size#(lf)#(tab)#(tab), CASE WHEN tjc.ctn_size_2 IS NOT NULL THEN tjc.ctn_size_2 ELSE tp.Ctn_size END#(lf)#(tab)#(tab), CAST(SUBSTRING(t1.control_number_2,1,CHARINDEX('-',t1.control_number_2) -1) as int)#(lf)#(tab)#(tab), m.ContainerType#(lf)#(tab)#(tab), CASE#(lf)#(tab)#(tab)#(tab)WHEN m.ContainerType IN ('None-Mixed') THEN#(lf)#(tab)#(tab)#(tab)(CASE#(lf)#(tab)#(tab)#(tab)#(tab)WHEN itm.ITCLS NOT LIKE 'Z%' THEN 'RP'#(lf)#(tab)#(tab)#(tab)#(tab)WHEN SUBSTRING(t1.item_number,1,1) IN ('A','B','D','E','G','H','L','M','P','Q','R','T','W','Z') THEN 'CG'#(lf)#(tab)#(tab)#(tab)#(tab)ELSE 'UPH' END)#(lf)#(tab)#(tab)#(tab)#(tab)ELSE m.ContainerType END#(lf)#(tab)#(tab), itm.Unit_Cube#(lf)ORDER BY t1.start_tran_date, CAST(SUBSTRING(t1.control_number_2,1,CHARINDEX('-',t1.control_number_2) -1) AS INT), t1.item_number", CommandTimeout=#duration(0, 1, 0, 0), CreateNavigationProperties=false]),
+				    #"Filtered Rows" = Table.SelectRows(Source, each ([INWHSE] = "335")),
+				    #"Duplicated Column" = Table.DuplicateColumn(#"Filtered Rows", "INIVDT", "INIVDT - Copy"),
+				    #"Renamed Columns" = Table.RenameColumns(#"Duplicated Column",{{"INIVDT - Copy", "Date"}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"Date", type date}}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Changed Type",{{"Ctn_size", "Container_Size"}})
+				in
+				    #"Renamed Columns1"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

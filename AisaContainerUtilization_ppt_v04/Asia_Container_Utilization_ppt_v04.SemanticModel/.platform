@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Asia_Container_Utilization_ppt_v04"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "82c5abf7-31be-4fa1-bd55-df88fb4a2d3f"
+  }
+}

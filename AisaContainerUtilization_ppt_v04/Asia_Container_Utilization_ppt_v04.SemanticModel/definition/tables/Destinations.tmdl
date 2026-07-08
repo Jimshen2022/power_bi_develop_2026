@@ -1,0 +1,24 @@
+table Destinations
+	lineageTag: 038cd8da-f0e0-40d9-aef8-78a8c678841b
+
+	column WCIDESTINATION
+		lineageTag: 8a5d1bcb-f92d-47f9-a3ca-ca1b1ae3d795
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: F_DATA[WCIDESTINATION]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Destinations = calculated
+		mode: import
+		source = ```
+				
+				FILTER(
+				    VALUES('F_DATA'[WCIDESTINATION]),
+				    NOT(ISBLANK('F_DATA'[WCIDESTINATION])) && 'F_DATA'[WCIDESTINATION] <> ""
+				)
+				
+				```
+
+	annotation PBI_Id = 511dda813b4348daa7bd26a4f19a9b66
+

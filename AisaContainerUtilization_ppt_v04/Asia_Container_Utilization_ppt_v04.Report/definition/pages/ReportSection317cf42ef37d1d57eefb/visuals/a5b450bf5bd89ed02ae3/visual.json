@@ -1,0 +1,214 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "a5b450bf5bd89ed02ae3",
+  "position": {
+    "x": 231.94029850746267,
+    "y": 216.71641791044775,
+    "z": 4000,
+    "height": 488.05970149253733,
+    "width": 1047.7611940298507
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_DATA"
+                    }
+                  },
+                  "Property": "DATE"
+                }
+              },
+              "queryRef": "F_DATA.DATE",
+              "nativeQueryRef": "DATE"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_DATA"
+                    }
+                  },
+                  "Property": "WH"
+                }
+              },
+              "queryRef": "F_DATA.WH",
+              "nativeQueryRef": "WH"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_DATA"
+                    }
+                  },
+                  "Property": "CONTAINER#2"
+                }
+              },
+              "queryRef": "F_DATA.CONTAINER#2",
+              "nativeQueryRef": "Container Number",
+              "displayName": "Container Number"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "A_Measure"
+                    }
+                  },
+                  "Property": "Cont_Qty"
+                }
+              },
+              "queryRef": "A_Measure.Cont_Qty",
+              "nativeQueryRef": "Cont_Qty"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_DATA"
+                        }
+                      },
+                      "Property": "QTY"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(F_DATA.QTY)",
+              "nativeQueryRef": "Qty",
+              "displayName": "Qty"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_DATA"
+                    }
+                  },
+                  "Property": "WCHCONTAINERSIZE"
+                }
+              },
+              "queryRef": "F_DATA.WCHCONTAINERSIZE",
+              "nativeQueryRef": "Container Size",
+              "displayName": "Container Size"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_DATA"
+                    }
+                  },
+                  "Property": "H_Cubes"
+                }
+              },
+              "queryRef": "F_DATA.H_Cubes",
+              "nativeQueryRef": "Cubes",
+              "displayName": "Cubes"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_DATA"
+                    }
+                  },
+                  "Property": "CONTAINERTYPE"
+                }
+              },
+              "queryRef": "F_DATA.CONTAINERTYPE",
+              "nativeQueryRef": "Container Type",
+              "displayName": "Container Type"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_DATA"
+                    }
+                  },
+                  "Property": "Cont_Categories"
+                }
+              },
+              "queryRef": "F_DATA.Cont_Categories",
+              "nativeQueryRef": "Cont_Categories"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "general": [
+        {
+          "properties": {}
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "84.85713918343895D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "F_DATA.H_Cubes"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "196.79025129987366D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "F_DATA.CONTAINER#2"
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "textSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

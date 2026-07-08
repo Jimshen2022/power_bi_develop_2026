@@ -1,0 +1,76 @@
+relationship c0f00d44-31dc-464c-b5c5-5379926a1a00
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Wanek.WCILASTMAINTENANCETIMESTAMP
+	toColumn: LocalDateTable_08cc516b-cba8-468c-8d6d-b1bf8354d9f5.Date
+
+relationship d85b9dd9-444d-43ca-a731-5c7da110d4ee
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Millennium.DATE
+	toColumn: LocalDateTable_3ef46374-c82e-4490-9d3d-be741ab54f92.Date
+
+relationship a8f1348f-2e5b-40dc-bb97-06b6b5848bf2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Ashton.Date
+	toColumn: LocalDateTable_d9e64242-f944-4622-a131-183a676b78e2.Date
+
+relationship 6f05d3ba-1874-4254-bd3f-96c296e3dd1e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Ashton.INIVDT
+	toColumn: LocalDateTable_3a8854b0-9a8f-4224-9219-006128b446dd.Date
+
+relationship AutoDetected_11045012-8f2e-4a0e-a14c-38b81b010605
+	fromColumn: Millennium.WH
+	toColumn: WH.WH
+
+relationship 8cc181a0-56f7-e33e-2b67-3ff916161a91
+	fromColumn: F_DATA.WCIDESTINATION
+	toColumn: Destinations.WCIDESTINATION
+
+relationship 4414cee3-a8e1-c86a-5983-16bc57fbd5af
+	fromColumn: F_DATA.Cont_Categories
+	toColumn: Container_Category.Cont_Categories
+
+relationship b3f9b0d6-a78d-405c-aa68-92da0f937cb8
+	fromColumn: F_DATA.WH
+	toColumn: WH.WH
+
+relationship 26879845-5aff-1f64-430a-a88882e4af02
+	fromColumn: F_Utilization_Summary.WH
+	toColumn: WH.WH
+
+relationship 952b8e0e-e47b-104a-724d-d13b37115f63
+	fromColumn: F_Utilization_Summary.Cont_Categories
+	toColumn: Container_Category.Cont_Categories
+
+relationship ce9ef237-27d4-f85a-b9da-53283b86dc17
+	fromColumn: F_Utilization_Summary.WCIDESTINATION
+	toColumn: Destinations.WCIDESTINATION
+
+relationship 8e0a77a4-0caa-4193-89a1-2053ee19cd27
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Wanek.WCHPOSTEDTIMESTAMP
+	toColumn: LocalDateTable_559bc77c-a6d2-4ed1-8ef3-6e99d68d8580.Date
+
+relationship 6281b9a7-fecd-4532-ac28-95578fa7f13c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: F_Utilization_Wanek_For_Tan.WCHPOSTEDTIMESTAMP
+	toColumn: LocalDateTable_f0bb2159-5d78-419c-81c1-8fefcf4a3336.Date
+
+relationship ca2edeab-e41f-4073-a1e7-39fa27ef8be2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: D_Date.Date
+	toColumn: LocalDateTable_be7d24df-7a4f-4cd4-bf64-376ba4498105.Date
+
+relationship ede77611-60cd-3c57-2677-b404e9668987
+	fromColumn: F_DATA.DATE
+	toColumn: D_Date.Date
+
+relationship b3b752ab-1ec6-47cb-45dc-8831c6d3c034
+	fromColumn: F_Utilization_Summary.Date
+	toColumn: D_Date.Date
+
+relationship 537fcbdb-eefb-429a-93d5-74a6addd0f48
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Wanek.SHIFT_DATE
+	toColumn: LocalDateTable_1bb3585b-0881-4548-99dc-2e13dfa22922.Date
+

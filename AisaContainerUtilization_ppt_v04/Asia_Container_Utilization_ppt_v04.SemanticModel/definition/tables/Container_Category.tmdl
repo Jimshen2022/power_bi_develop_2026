@@ -1,0 +1,24 @@
+table Container_Category
+	lineageTag: 7052e838-0b8a-4e04-a77e-bf17170dca92
+
+	column Cont_Categories
+		lineageTag: 75815821-17fa-4587-8f97-e5265edde7ec
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: F_DATA[Cont_Categories]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Container_Category = calculated
+		mode: import
+		source = ```
+				
+				FILTER(
+				    VALUES(F_DATA[Cont_Categories]),
+				    NOT(ISBLANK(F_DATA[Cont_Categories])) && F_DATA[Cont_Categories] <> ""
+				)
+				
+				```
+
+	annotation PBI_Id = d37fadf4e1214675ae97b58719efb211
+

@@ -1,0 +1,240 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.9.0/schema.json",
+  "name": "e23d745f8290b7601274",
+  "position": {
+    "x": 411.42857142857139,
+    "y": 442.44897959183669,
+    "z": 7000,
+    "height": 277.55102040816325,
+    "width": 853.87755102040808
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_DATA"
+                    }
+                  },
+                  "Property": "DATE"
+                }
+              },
+              "queryRef": "F_DATA.DATE",
+              "nativeQueryRef": "Date",
+              "displayName": "Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_DATA"
+                    }
+                  },
+                  "Property": "WH"
+                }
+              },
+              "queryRef": "F_DATA.WH",
+              "nativeQueryRef": "Whse",
+              "displayName": "Whse"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "F_DATA"
+                    }
+                  },
+                  "Property": "CONTAINER#2"
+                }
+              },
+              "queryRef": "F_DATA.CONTAINER#2",
+              "nativeQueryRef": "Container Number",
+              "displayName": "Container Number"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "F_DATA"
+                        }
+                      },
+                      "Property": "QTY"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(F_DATA.QTY)",
+              "nativeQueryRef": "Quantity",
+              "displayName": "Quantity"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "A_Measure"
+                    }
+                  },
+                  "Property": "SKUs"
+                }
+              },
+              "queryRef": "A_Measure.SKUs",
+              "nativeQueryRef": "SKUs"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "A_Measure"
+                    }
+                  },
+                  "Property": "Avg.SKUs/Container"
+                }
+              },
+              "queryRef": "A_Measure.Avg.SKUs/Container",
+              "nativeQueryRef": "Avg.SKUs/Container"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "A_Measure"
+                    }
+                  },
+                  "Property": "Cont_Qty(SKUsCalculation)"
+                }
+              },
+              "queryRef": "A_Measure.Cont_Qty(SKUsCalculation)",
+              "nativeQueryRef": "Cont_Qty",
+              "displayName": "Cont_Qty"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "F_DATA"
+                  }
+                },
+                "Property": "DATE"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "65.78086932793799D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "A_Measure.SKUs"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "159.6103898068658D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "A_Measure.Avg.SKUs/Container"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "102.75510204081633D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "F_DATA.DATE"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "75.67336481955645D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "F_DATA.WH"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "95.51171725026038D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(F_DATA.QTY)"
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "textSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

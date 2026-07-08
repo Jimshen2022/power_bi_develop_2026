@@ -1,0 +1,326 @@
+table Millennium
+	lineageTag: d7ca2282-7af7-45a2-857c-99f4e248137d
+
+	column WCIORIGIN
+		dataType: string
+		lineageTag: 87529767-ff27-4182-bd65-12c224fbe85b
+		summarizeBy: none
+		sourceColumn: WCIORIGIN
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTAINER#
+		dataType: string
+		lineageTag: 6b20497e-3531-4d44-8901-044645576399
+		summarizeBy: none
+		sourceColumn: CONTAINER#
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUBES
+		dataType: double
+		lineageTag: ac5e3d83-bc93-479d-ac30-348f7d53974c
+		summarizeBy: sum
+		sourceColumn: CUBES
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ITCLS
+		dataType: string
+		lineageTag: 58804238-c679-458e-b403-175a237c1c2f
+		summarizeBy: none
+		sourceColumn: ITCLS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT
+		dataType: string
+		lineageTag: 7185b262-2a77-4b64-bf5b-388c54933821
+		summarizeBy: none
+		sourceColumn: PRODUCT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCIDESTINATION
+		dataType: string
+		lineageTag: 25011f37-1c68-4cd8-bdd1-bf00a5d85196
+		summarizeBy: none
+		sourceColumn: WCIDESTINATION
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCIORDER
+		dataType: string
+		lineageTag: e8dc8c82-3ac9-4482-bad6-5be413fabe2a
+		summarizeBy: none
+		sourceColumn: WCIORDER
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ITEMNUMBER
+		dataType: string
+		lineageTag: e752c6a8-5928-452e-8949-1b865e802f49
+		summarizeBy: none
+		sourceColumn: ITEMNUMBER
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column QTY
+		dataType: double
+		lineageTag: 453cc345-df76-4d96-8cd0-af48ae016b40
+		summarizeBy: sum
+		sourceColumn: QTY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column WCILASTMAINTENANCETIMESTAMP
+		dataType: string
+		lineageTag: 0e30a5c9-6fda-4ffa-a8b4-50fe918aa445
+		summarizeBy: none
+		sourceColumn: WCILASTMAINTENANCETIMESTAMP
+
+		changedProperty = IsHidden
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTAINERNUMBER
+		dataType: string
+		lineageTag: b37c7203-e332-4262-a434-bec5e4855a36
+		summarizeBy: none
+		sourceColumn: CONTAINERNUMBER
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCILASTMAINTENANCEUSER
+		dataType: string
+		lineageTag: 4dfaaf98-803b-469a-beda-01e029189c7d
+		summarizeBy: none
+		sourceColumn: WCILASTMAINTENANCEUSER
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column ITMCQTY
+		dataType: double
+		lineageTag: c0b63e83-d27f-4626-8adb-a677e13fcc15
+		summarizeBy: sum
+		sourceColumn: ITMCQTY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UNITCUBE
+		dataType: double
+		lineageTag: 05769a8d-ccd8-4131-b86c-611ae973ade5
+		summarizeBy: sum
+		sourceColumn: UNITCUBE
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column UNITWEIGHT
+		dataType: double
+		lineageTag: 65718f5f-67e8-4820-9aba-fd23098151ca
+		summarizeBy: sum
+		sourceColumn: UNITWEIGHT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CARTONS
+		dataType: double
+		lineageTag: e7fe031a-fdeb-4480-a604-2510867ac018
+		summarizeBy: sum
+		sourceColumn: CARTONS
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CONTAINERTYPE
+		dataType: string
+		lineageTag: e561630c-03fd-4311-af90-d5d9a4cbc6b6
+		summarizeBy: none
+		sourceColumn: CONTAINERTYPE
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATE
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 0dd5dca0-0e3e-4df2-aed3-b9c00bfd594b
+		summarizeBy: none
+		sourceColumn: DATE
+
+		variation Variation
+			isDefault
+			relationship: d85b9dd9-444d-43ca-a731-5c7da110d4ee
+			defaultHierarchy: LocalDateTable_3ef46374-c82e-4490-9d3d-be741ab54f92.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column WCHCONTAINERSIZE
+		dataType: string
+		lineageTag: 32010369-4ff0-4c58-b11b-3759f727b61b
+		summarizeBy: none
+		sourceColumn: WCHCONTAINERSIZE
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column UTILIZATION
+		dataType: double
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 531284b9-fbc8-4254-8258-ab226b4e1b13
+		summarizeBy: sum
+		sourceColumn: UTILIZATION
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column MS = IF(AND('Millennium'[PRODUCT]="UPH",LOOKUPVALUE('M&S'[Kind],'M&S'[Item],'Millennium'[ITEMNUMBER])="Motion"),"Motion", IF(AND('Millennium'[PRODUCT]="UPH",LOOKUPVALUE('M&S'[Kind],'M&S'[Item],'Millennium'[ITEMNUMBER])<>"Motion"),"Stationary",""))
+		lineageTag: cff8d8ac-5c44-4f44-a45b-01992c42ea91
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cont_Categories = IF('Millennium'[ContainerType]="Mixed","Mixed",if(and('Millennium'[Product]="UPH",SUMX(FILTER('Millennium','Millennium'[Container#]=EARLIER('Millennium'[Container#])),'Millennium'[Judge])=0),"Motion",if(and('Millennium'[Product]="UPH",SUMX(FILTER('Millennium','Millennium'[Container#]=EARLIER('Millennium'[Container#])),'Millennium'[Judge])=COUNTX(FILTER('Millennium','Millennium'[Container#]=EARLIER('Millennium'[Container#])),'Millennium'[Judge])),"Stationary",if(and('Millennium'[Product]="UPH",SUMX(FILTER('Millennium','Millennium'[Container#]=EARLIER('Millennium'[Container#])),'Millennium'[Judge])<COUNTX(FILTER('Millennium','Millennium'[Container#]=EARLIER('Millennium'[Container#])),'Millennium'[Judge])),"Mixed",'Millennium'[Product]))))
+		lineageTag: c7942467-bd65-49fc-bf13-9f2385004ea4
+		summarizeBy: none
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Judge = if(and('Millennium'[PRODUCT]="UPH",'Millennium'[MS]="Motion"),0,if(and('Millennium'[Product]="UPH",'Millennium'[MS]="Stationary"),1,9999))
+		formatString: 0
+		lineageTag: b869ddcc-6291-495b-afe0-0e7ddf253476
+		summarizeBy: sum
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCHDOORNUMBER
+		dataType: double
+		lineageTag: b67ea756-2f06-4b97-8fc6-bfd5edadb16f
+		summarizeBy: sum
+		sourceColumn: WCHDOORNUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column WCHBUILDING
+		dataType: string
+		lineageTag: 36045fdd-d66a-4f32-a322-008ce348470d
+		summarizeBy: none
+		sourceColumn: WCHBUILDING
+
+		annotation SummarizationSetBy = Automatic
+
+	column H_CUBES
+		dataType: double
+		lineageTag: 73920d61-5ddd-40c4-9f8d-2592874c3f48
+		summarizeBy: sum
+		sourceColumn: H_CUBES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column WH
+		dataType: string
+		lineageTag: e04c4ad1-012f-4eb9-b8ce-36a8eb3345a2
+		summarizeBy: none
+		sourceColumn: WH
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTAINER#2
+		dataType: string
+		lineageTag: a99c3b0d-b8cf-44d2-8a5a-76579c03f6f0
+		summarizeBy: none
+		sourceColumn: CONTAINER#2
+
+		annotation SummarizationSetBy = Automatic
+
+	column SKU_COUNT
+		dataType: int64
+		formatString: 0
+		lineageTag: 9bfe802f-0b4e-47b5-b371-58ca14e93243
+		summarizeBy: sum
+		sourceColumn: SKU_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Millennium-3a40c12b-e621-4ba1-99ad-a263a132b6b9 = m
+		mode: import
+		source =
+				let
+				    Source = PowerPlatform.Dataflows(null),
+				    Workspaces = Source{[Id="Workspaces"]}[Data],
+				    #"5839814b-ec95-48ea-a07a-ec0241ac9946" = Workspaces{[workspaceId="5839814b-ec95-48ea-a07a-ec0241ac9946"]}[Data],
+				    #"61456a58-5221-49a3-a963-ca77dc011dac" = #"5839814b-ec95-48ea-a07a-ec0241ac9946"{[dataflowId="61456a58-5221-49a3-a963-ca77dc011dac"]}[Data],
+				    mil_daily_shipped_ = #"61456a58-5221-49a3-a963-ca77dc011dac"{[entity="mil_daily_shipped",version=""]}[Data],
+				    #"Reordered Columns" = Table.ReorderColumns(mil_daily_shipped_,{"WCIORIGIN", "CONTAINER#", "CUBES", "ITCLS", "PRODUCT", "WCIDESTINATION", "WCIORDER", "ITEMNUMBER", "QTY", "WCILASTMAINTENANCETIMESTAMP", "CONTAINERNUMBER", "CONTAINERTYPE", "WCILASTMAINTENANCEUSER", "ITMCQTY", "UNITCUBE", "UNITWEIGHT", "CARTONS", "WCHCONTAINERSIZE", "WCHDOORNUMBER", "WCHBUILDING", "H_CUBES", "UTILIZATION", "WH", "DATE"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Reordered Columns", each [#"CONTAINER#"] <> null and [#"CONTAINER#"] <> "")
+				in
+				    #"Filtered Rows"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

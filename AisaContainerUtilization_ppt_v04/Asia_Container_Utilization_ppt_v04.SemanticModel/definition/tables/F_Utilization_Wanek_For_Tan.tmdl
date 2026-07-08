@@ -1,0 +1,167 @@
+table F_Utilization_Wanek_For_Tan
+	lineageTag: 1c3bc1e8-12ee-421a-899b-7594914ad435
+
+	column WH
+		lineageTag: 338097c7-7a8c-4006-b93b-29e73e2adfde
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Wanek[WH]
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTAINER#
+		lineageTag: 7e402f81-9168-49f8-8237-d6e47cb08432
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Wanek[CONTAINER#]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cont_Categories
+		lineageTag: 98acd9f4-601c-486d-bf95-160b744564c5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Wanek[Cont_Categories]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCHCONTAINERSIZE
+		lineageTag: 6ec68114-526f-4774-867a-1e84a758dd24
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Wanek[WCHCONTAINERSIZE]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCIDESTINATION
+		lineageTag: c19811a4-f7ad-4c50-941b-f7abea2b0ea4
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Wanek[WCIDESTINATION]
+
+		annotation SummarizationSetBy = Automatic
+
+	column H_CUBES
+		lineageTag: 29add879-944d-4d93-9c82-3eec48a90c15
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Wanek[H_CUBES]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CONTAINER#2
+		lineageTag: 8113de00-6fe4-43b9-bc42-7ba7780bf615
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Wanek[CONTAINER#2]
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONTAINERTYPE
+		lineageTag: 43dd960c-2658-45da-8d8f-1e0cfe7c3655
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Wanek[CONTAINERTYPE]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Qty
+		lineageTag: 341ab9f4-c14a-4e02-b028-e15b20051ed9
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Qty]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Total_Cartons
+		lineageTag: 8d62d7a6-ef41-4317-b563-3f637aeb0b36
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Total_Cartons]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Date
+		lineageTag: a05c6f91-97c5-4506-a251-b95dd04f1e58
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCHPOSTEDTIMESTAMP
+		formatString: General Date
+		lineageTag: 7246f11f-0844-4af0-b673-f65e586d1ff2
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Wanek[WCHPOSTEDTIMESTAMP]
+
+		variation Variation
+			isDefault
+			relationship: 6281b9a7-fecd-4532-ac28-95578fa7f13c
+			defaultHierarchy: LocalDateTable_f0bb2159-5d78-419c-81c1-8fefcf4a3336.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCHDOORNUMBER
+		lineageTag: 8efbcd8b-3709-4cee-8260-802a4b8d6cf4
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Wanek[WCHDOORNUMBER]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column WCHBUILDING
+		lineageTag: 05f8b306-0465-4eb2-96e3-4439394a2425
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Wanek[WCHBUILDING]
+
+		annotation SummarizationSetBy = Automatic
+
+	column SKUs
+		formatString: 0
+		lineageTag: db6c5267-8083-4c53-842e-19d6ba7fd6cf
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: Wanek[SKUs]
+
+		annotation SummarizationSetBy = Automatic
+
+	column WCHCLOSEDUSER
+		lineageTag: 7a512b80-493c-4368-8970-88a71bb06d20
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: Wanek[WCHCLOSEDUSER]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Utilization =
+			SWITCH(TRUE(),
+			MID('F_Utilization_Wanek_For_Tan'[WCHCONTAINERSIZE],1,2) = "53", 'F_Utilization_Wanek_For_Tan'[H_CUBES]/3831,
+			MID('F_Utilization_Wanek_For_Tan'[WCHCONTAINERSIZE],1,2) = "50", 'F_Utilization_Wanek_For_Tan'[H_CUBES]/3333,
+			MID('F_Utilization_Wanek_For_Tan'[WCHCONTAINERSIZE],1,3) = "45", 'F_Utilization_Wanek_For_Tan'[H_CUBES]/3037,
+			MID('F_Utilization_Wanek_For_Tan'[WCHCONTAINERSIZE],1,3) = "40H", 'F_Utilization_Wanek_For_Tan'[H_CUBES]/2650,
+			MID('F_Utilization_Wanek_For_Tan'[WCHCONTAINERSIZE],1,3) = "40", 'F_Utilization_Wanek_For_Tan'[H_CUBES]/2383,
+			MID('F_Utilization_Wanek_For_Tan'[WCHCONTAINERSIZE],1,1) = "2", 'F_Utilization_Wanek_For_Tan'[H_CUBES]/1191,
+			'F_Utilization_Wanek_For_Tan'[H_CUBES]/2650)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 5320e4ea-cfab-40a6-be26-e4738bf90378
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition F_Utilization_Wanek_For_Tan = calculated
+		mode: import
+		source = SUMMARIZECOLUMNS('Wanek'[WH],'Wanek'[CONTAINER#],'Wanek'[Cont_Categories],'Wanek'[WCHCONTAINERSIZE],'Wanek'[WCIDESTINATION],'Wanek'[H_CUBES],'Wanek'[CONTAINER#2],'Wanek'[WCHPOSTEDTIMESTAMP],'Wanek'[CONTAINERTYPE],'Wanek'[WCHDOORNUMBER],'Wanek'[WCHBUILDING],'Wanek'[SKUs],'Wanek'[WCHCLOSEDUSER],"Qty",sum('Wanek'[QTY]),"Total_Cartons",sum('Wanek'[CARTONS]),"Date",MAX('Wanek'[DATE]))
+
+	annotation PBI_Id = ee282791e0bd4f008cd2cb229a1f4b5d
+

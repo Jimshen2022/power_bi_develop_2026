@@ -1,0 +1,28 @@
+table WH
+	lineageTag: 68af8f55-bae0-43ce-a61d-e4bf6fe5b6dd
+
+	column WH
+		dataType: string
+		lineageTag: fc245b28-c8bd-47cc-9d44-d284fc017f9e
+		summarizeBy: none
+		sourceColumn: WH
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition WH-e8b6d685-da8b-44a7-8312-eb9d0f0858db = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WcizOKMnPU4rViVYK9zMG0y7OYMrX00cpNhYA", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"Column1", "WH"}}),
+				    #"Appended Query" = Table.Combine({#"Renamed Columns", Table.FromRecords({[WH = "WN2"], [WH = "WN5"]})})
+				in
+				    #"Appended Query"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+
