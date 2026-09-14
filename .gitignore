@@ -5,3 +5,6 @@
 *.pbit
 # 忽略本地临时数据缓存
 .pbi/
+
+# Google Drive temporary upload files
+.tmp.driveupload/
